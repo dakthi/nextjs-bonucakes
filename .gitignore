@@ -1,0 +1,29 @@
+node_modules/
+dist/
+build/
+.next/
+
+# Env files (keep .example)
+.env
+.env.*
+!.env.*.example
+payload/.env
+deploy/.env.bonu
+
+# Build artifacts
+*.tar.gz
+*.log
+
+# Uploads
+uploads/
+
+# Generated
+payload/payload-types.ts
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  payload:
+    image: bonu:latest
+    container_name: bonu_payload
+    ports:
+      - "127.0.0.1:3018:3000"
+    env_file:
+      - .env.bonu
+    depends_on:
+      - db
+    volumes:
+      - ./uploads:/app/uploads
+    networks:
+      - bonu_network
+
+  db:
+    image: postgres:14
+    container_name: bonu_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: bonu_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: bonu_cms
+    volumes:
+      - /var/lib/bonu_pgdata:/var/lib/postgresql/data
+    networks:
+      - bonu_network
+
+networks:
+  bonu_network:
