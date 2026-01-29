@@ -3,7 +3,7 @@ FROM node:18-alpine AS base
 FROM base AS deps
 WORKDIR /app
 COPY payload/package*.json ./
-RUN npm ci
+RUN npm install
 
 FROM base AS builder
 WORKDIR /app
@@ -17,6 +17,7 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 payload
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 RUN mkdir -p uploads && chown -R payload:nodejs uploads
