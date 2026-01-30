@@ -113,8 +113,13 @@
                     headers: { 'Authorization': `token ${getToken()}` }
                 });
                 const data = await res.json();
+                if (data.message) {
+                    showStatus('GitHub error: ' + data.message, 'error');
+                    return;
+                }
                 fileSha = data.sha;
-                posts = JSON.parse(atob(data.content));
+                const content = data.content.replace(/\n/g, '');
+                posts = JSON.parse(decodeURIComponent(escape(atob(content))));
                 renderPosts();
             } catch (e) {
                 showStatus('Error loading posts: ' + e.message, 'error');
