@@ -340,7 +340,7 @@
                     const dateStr = wsDate.toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
                     workshopContainer.classList.remove('hidden');
                     workshopContainer.innerHTML = `
-                        <div class="bg-espresso p-8 md:p-10 text-warmwhite border-l-4 border-gold">
+                        <div class="bg-espresso p-8 md:p-10 text-warmwhite">
                             <div class="flex flex-wrap items-center gap-4 mb-6">
                                 <span class="bg-gold text-espresso px-3 py-1 text-sm font-semibold">${lang === 'vi' ? 'SẮP DIỄN RA' : 'UPCOMING'}</span>
                                 <span class="text-cream/60 text-sm">${dateStr} · ${ws.time} (UK)</span>
@@ -377,19 +377,18 @@
                 if (coursesContainer && c.courses.items) {
                     coursesContainer.innerHTML = c.courses.items.map(course => {
                         const isFree = course.price === 'Miễn phí' || course.price === 'Free';
-                        const priceClass = isFree ? 'text-green-700' : 'text-terracotta';
-                        const borderClass = isFree ? 'border-l-4 border-green-500' : 'border-l-4 border-terracotta';
                         return `
-                        <div class="bg-cream ${borderClass} p-6 hover:shadow-md transition-shadow">
-                            <div class="flex gap-3 mb-3 text-xs">
-                                <span class="${isFree ? 'text-green-700' : 'text-terracotta'} font-medium">${course.level?.[lang] || ''}</span>
-                                <span class="text-coffee">${course.duration?.[lang] || ''}</span>
+                        <div class="bg-cream border border-espresso/10 p-6">
+                            <div class="flex gap-3 mb-3 text-xs text-coffee">
+                                <span>${course.level?.[lang] || ''}</span>
+                                <span>·</span>
+                                <span>${course.duration?.[lang] || ''}</span>
                             </div>
                             <h3 class="text-lg font-bold text-espresso mb-2">${course.title?.[lang] || ''}</h3>
                             <p class="text-coffee text-sm mb-4">${course.description?.[lang] || ''}</p>
                             <div class="flex justify-between items-center pt-3 border-t border-espresso/10">
-                                <span class="${priceClass} font-bold">${course.price}</span>
-                                <a href="#contact" class="text-sm text-espresso font-medium hover:text-terracotta transition-colors">${lang === 'vi' ? 'Đăng ký →' : 'Register →'}</a>
+                                <span class="text-espresso font-semibold">${course.price}</span>
+                                <a href="#contact" class="text-sm text-coffee hover:text-terracotta transition-colors">${lang === 'vi' ? 'Đăng ký →' : 'Register →'}</a>
                             </div>
                         </div>
                     `}).join('');
