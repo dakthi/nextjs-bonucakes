@@ -7,5 +7,14 @@
     "date": "2026-01-29",
     "image": "https://thielts.chartedconsultants.com/bonu/post_1.webp",
     "status": "published"
+  },
+  {
+    "id": "1769732729258",
+    "title": "bài mới",
+    "slug": "bai-moi",
+    "excerpt": "mới viết",
+    "image": "",
+    "date": "2026-01-30",
+    "status": "draft"
   }
 ]
