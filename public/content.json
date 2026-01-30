@@ -311,14 +311,77 @@
     },
     "items": [
       {
-        "id": "course-1",
+        "id": "free-consultation",
         "title": {
-          "vi": "F&B Foundations - Nền tảng F&B",
-          "en": "F&B Foundations"
+          "vi": "Tư vấn 1-1 miễn phí",
+          "en": "Free 1-1 Consultation"
         },
         "description": {
-          "vi": "Khóa học cơ bản giúp bạn hiểu rõ ngành F&B từ A-Z, xây dựng nền tảng vững chắc cho sự nghiệp.",
-          "en": "Foundational course to understand F&B industry from A-Z, build a solid foundation for your career."
+          "vi": "30 phút trao đổi trực tiếp với Uyên để định hướng con đường F&B phù hợp với bạn.",
+          "en": "30 minutes direct conversation with Uyen to find the right F&B path for you."
+        },
+        "image": "",
+        "price": "Miễn phí",
+        "duration": {
+          "vi": "30 phút",
+          "en": "30 mins"
+        },
+        "level": {
+          "vi": "Miễn phí",
+          "en": "Free"
+        }
+      },
+      {
+        "id": "free-webinar",
+        "title": {
+          "vi": "Webinar: Bí quyết F&B",
+          "en": "Webinar: F&B Secrets"
+        },
+        "description": {
+          "vi": "Tham gia webinar hàng tháng để học các bí quyết xây dựng và vận hành F&B thành công.",
+          "en": "Join monthly webinars to learn secrets of building and running successful F&B businesses."
+        },
+        "image": "",
+        "price": "Miễn phí",
+        "duration": {
+          "vi": "60 phút",
+          "en": "60 mins"
+        },
+        "level": {
+          "vi": "Miễn phí",
+          "en": "Free"
+        }
+      },
+      {
+        "id": "free-ebook",
+        "title": {
+          "vi": "Ebook: F&B Expert Starter Kit",
+          "en": "Ebook: F&B Expert Starter Kit"
+        },
+        "description": {
+          "vi": "Tải ngay bộ tài liệu khởi đầu với checklist, template và hướng dẫn chi tiết cho người mới.",
+          "en": "Download the starter kit with checklists, templates and detailed guides for beginners."
+        },
+        "image": "",
+        "price": "Miễn phí",
+        "duration": {
+          "vi": "PDF",
+          "en": "PDF"
+        },
+        "level": {
+          "vi": "Miễn phí",
+          "en": "Free"
+        }
+      },
+      {
+        "id": "course-foundation",
+        "title": {
+          "vi": "Khóa học: Nền tảng F&B",
+          "en": "Course: F&B Foundations"
+        },
+        "description": {
+          "vi": "Khóa học toàn diện giúp bạn hiểu rõ ngành F&B từ A-Z, xây dựng nền tảng vững chắc.",
+          "en": "Comprehensive course to understand F&B industry from A-Z, build a solid foundation."
         },
         "image": "",
         "price": "Liên hệ",
@@ -332,10 +395,10 @@
         }
       },
       {
-        "id": "course-2",
+        "id": "course-branding",
         "title": {
-          "vi": "Xây dựng thương hiệu F&B",
-          "en": "F&B Branding"
+          "vi": "Khóa học: Xây dựng thương hiệu",
+          "en": "Course: F&B Branding"
         },
         "description": {
           "vi": "Học cách định vị thương hiệu, tạo bản sắc riêng và thu hút khách hàng mục tiêu.",
@@ -353,14 +416,14 @@
         }
       },
       {
-        "id": "course-3",
+        "id": "course-operations",
         "title": {
-          "vi": "Vận hành & Quản lý F&B",
-          "en": "F&B Operations & Management"
+          "vi": "Khóa học: Vận hành & Quản lý",
+          "en": "Course: Operations & Management"
         },
         "description": {
-          "vi": "Hệ thống hóa quy trình vận hành, quản lý nhân sự và tối ưu chi phí cho nhà hàng/quán.",
-          "en": "Systematize operations, manage staff and optimize costs for your restaurant/café."
+          "vi": "Hệ thống hóa quy trình vận hành, quản lý nhân sự và tối ưu chi phí cho nhà hàng.",
+          "en": "Systematize operations, manage staff and optimize costs for your restaurant."
         },
         "image": "",
         "price": "Liên hệ",
