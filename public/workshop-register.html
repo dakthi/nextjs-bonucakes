@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký Workshop - Bonu F&B</title>
+    <link rel="icon" href="https://thielts.chartedconsultants.com/bonu/profile.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{cream:'#FDF8F3',warmwhite:'#FFFBF5',terracotta:'#C4704A',espresso:'#3D2314',gold:'#D4A853',coffee:'#4A3728'}}}}</script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #C4704A;
+            border-radius: 4px;
+            background: #FFFBF5;
+            color: #3D2314;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #D4A853;
+            background: white;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3D2314;
+            font-weight: 600;
+        }
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: #C4704A;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .submit-btn:hover:not(:disabled) {
+            background: #A55E3E;
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .success-message {
+            background: #D4A853;
+            color: #3D2314;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            background: #ff6b6b;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-3xl font-bold text-gold" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
+            <div class="flex items-center gap-6">
+                <a href="/#courses" class="text-cream/80 hover:text-white transition-colors">Quay lại</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <!-- Workshop Info -->
+            <div id="workshop-info" class="mb-8 bg-espresso text-warmwhite p-8 rounded-lg">
+                <p class="text-gold uppercase tracking-widest text-sm mb-3">Workshop</p>
+                <h1 id="workshop-title" class="text-3xl md:text-4xl font-bold mb-4">Đang tải...</h1>
+                <div id="workshop-details" class="text-cream/80"></div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-white border-2 border-espresso/20 rounded-lg p-8">
+                <h2 class="text-2xl font-bold text-espresso mb-6">Đăng ký tham gia</h2>
+
+                <div id="success-container"></div>
+                <div id="error-container"></div>
+
+                <form id="registration-form">
+                    <!-- Name -->
+                    <div class="mb-6">
+                        <label class="form-label" for="name">Họ và tên <span class="text-terracotta">*</span></label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-6">
+                        <label class="form-label" for="email">Email <span class="text-terracotta">*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+
+                    <!-- Dynamic Questions Container -->
+                    <div id="questions-container"></div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <span id="submit-text">Đăng ký ngay</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-espresso border-t border-gold/20 py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <a href="/" class="text-2xl font-bold text-gold mb-4 inline-block" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
+            <p class="text-cream/40 text-sm">&copy; 2026 Uyên Nguyễn - F&B Business Design</p>
+        </div>
+    </footer>
+
+    <script>
+        let workshopData = null;
+        let workshopQuestions = [];
+
+        // Get workshop slug from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const workshopSlug = urlParams.get('workshop') || 'featured';
+
+        // Load workshop data
+        async function loadWorkshopData() {
+            try {
+                const res = await fetch('/content.json');
+                const content = await res.json();
+
+                if (content.courses && content.courses.featuredWorkshop) {
+                    workshopData = content.courses.featuredWorkshop;
+                    displayWorkshopInfo();
+                    loadWorkshopQuestions();
+                }
+            } catch (e) {
+                console.error('Error loading workshop data:', e);
+                showError('Không thể tải thông tin workshop. Vui lòng thử lại sau.');
+            }
+        }
+
+        function displayWorkshopInfo() {
+            if (!workshopData) return;
+
+            const title = workshopData.title?.vi || 'Workshop';
+            const description = workshopData.description?.vi || '';
+            const date = workshopData.date ? formatDate(workshopData.date) : '';
+            const time = workshopData.time || '';
+
+            document.getElementById('workshop-title').textContent = title;
+
+            let detailsHtml = '';
+            if (description) detailsHtml += `<p class="mb-4">${description}</p>`;
+            if (date) detailsHtml += `<p class="text-sm"><strong>Ngày:</strong> ${date}</p>`;
+            if (time) detailsHtml += `<p class="text-sm"><strong>Thời gian:</strong> ${time}</p>`;
+
+            document.getElementById('workshop-details').innerHTML = detailsHtml;
+            document.title = `Đăng ký: ${title} - Bonu F&B`;
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('vi-VN', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        // Load workshop-specific questions
+        function loadWorkshopQuestions() {
+            // Default questions for restaurant workshop
+            if (workshopSlug === 'featured' || workshopSlug === 'restaurant-20k') {
+                workshopQuestions = [
+                    {
+                        id: 'expectations',
+                        label: 'Bạn kỳ vọng gì từ workshop này?',
+                        placeholder: 'Ví dụ: Tôi muốn học cách lập ngân sách khởi nghiệp, tìm hiểu về các bước cần thiết để mở nhà hàng...',
+                        required: true
+                    },
+                    {
+                        id: 'outcomes',
+                        label: 'Sau workshop, bạn muốn đạt được điều gì cụ thể?',
+                        placeholder: 'Ví dụ: Có một bản kế hoạch tài chính cụ thể, biết cách tìm địa điểm phù hợp...',
+                        required: true
+                    },
+                    {
+                        id: 'challenges',
+                        label: 'Những khó khăn/nỗi đau lớn nhất bạn đang gặp phải trong hành trình F&B?',
+                        placeholder: 'Ví dụ: Không biết bắt đầu từ đâu, thiếu vốn, không có kinh nghiệm quản lý...',
+                        required: true
+                    }
+                ];
+            }
+
+            renderQuestions();
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = workshopQuestions.map(q => `
+                <div class="mb-6">
+                    <label class="form-label" for="${q.id}">
+                        ${q.label} ${q.required ? '<span class="text-terracotta">*</span>' : ''}
+                    </label>
+                    <textarea
+                        id="${q.id}"
+                        name="${q.id}"
+                        class="form-input form-textarea"
+                        placeholder="${q.placeholder || ''}"
+                        ${q.required ? 'required' : ''}
+                    ></textarea>
+                </div>
+            `).join('');
+        }
+
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const submitText = document.getElementById('submit-text');
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitText.textContent = 'Đang gửi...';
+
+            // Clear previous messages
+            document.getElementById('success-container').innerHTML = '';
+            document.getElementById('error-container').innerHTML = '';
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                workshopTitle: workshopData?.title?.vi || 'Workshop',
+                questions: workshopQuestions.map(q => ({
+                    question: q.label,
+                    answer: document.getElementById(q.id).value.trim()
+                }))
+            };
+
+            try {
+                const response = await fetch('http://localhost:3010/api/workshop/bonubonu', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showSuccess(result.message || 'Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.');
+                    document.getElementById('registration-form').reset();
+                } else {
+                    throw new Error(result.error || 'Có lỗi xảy ra');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError(error.message || 'Không thể gửi đăng ký. Vui lòng thử lại sau.');
+            } finally {
+                submitBtn.disabled = false;
+                submitText.textContent = 'Đăng ký ngay';
+            }
+        });
+
+        function showSuccess(message) {
+            document.getElementById('success-container').innerHTML = `
+                <div class="success-message">
+                    <p class="font-semibold mb-2">✓ Thành công!</p>
+                    <p>${message}</p>
+                </div>
+            `;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showError(message) {
+            document.getElementById('error-container').innerHTML = `
+                <div class="error-message">
+                    <p class="font-semibold mb-2">✗ Có lỗi xảy ra</p>
+                    <p>${message}</p>
+                </div>
+            `;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize
+        loadWorkshopData();
+    </script>
+</body>
+</html>
