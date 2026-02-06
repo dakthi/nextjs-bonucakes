@@ -15,6 +15,17 @@
         .prose ul, .prose ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         .prose li { margin-bottom: 0.5rem; }
         .prose blockquote { border-left: 4px solid #C4704A; padding-left: 1rem; font-style: italic; color: #4A3728; }
+
+        /* Drop cap styling */
+        .prose > p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            line-height: 0.9;
+            float: left;
+            margin: 0.1em 0.1em 0 0;
+            color: #C4704A;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body class="bg-cream min-h-screen">
