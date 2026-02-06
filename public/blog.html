@@ -29,9 +29,9 @@
 
     <!-- Header -->
     <header class="bg-warmwhite py-24 md:py-28 border-b border-espresso/10">
-        <div class="max-w-6xl mx-auto px-6 text-center">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center">
             <h1 class="text-4xl font-bold text-espresso mb-4">Blog</h1>
-            <p class="text-coffee max-w-2xl mx-auto">Chia sẻ kinh nghiệm, góc nhìn và hành trình trong ngành F&B</p>
+            <p class="text-coffee max-w-2xl">Chia sẻ kinh nghiệm, góc nhìn và hành trình trong ngành F&B</p>
         </div>
     </header>
 
@@ -125,7 +125,9 @@
                     <div class="grid md:grid-cols-2 gap-8 items-center">
                         ${featured.image ? `
                             <div class="bg-white border-2 border-espresso/10 p-3">
-                                <img src="${featured.image}" alt="${featured.title}" class="w-full h-auto object-contain">
+                                <div class="relative w-full" style="padding-bottom: 56.25%;">
+                                    <img src="${featured.image}" alt="${featured.title}" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
                             </div>
                         ` : `
                             <div class="bg-gradient-to-br from-terracotta/10 to-gold/10 h-96"></div>
@@ -162,8 +164,10 @@
                     <a href="/blog/${post.slug}.html" class="block group">
                         ${post.image ? `
                             <div class="mb-4 bg-white border border-espresso/5 p-2">
-                                <img src="${post.image}" alt="${post.title}"
-                                     class="w-full h-auto object-contain">
+                                <div class="relative w-full" style="padding-bottom: 56.25%;">
+                                    <img src="${post.image}" alt="${post.title}"
+                                         class="absolute inset-0 w-full h-full object-cover">
+                                </div>
                             </div>
                         ` : ''}
                         <time class="text-xs text-coffee/60 uppercase tracking-wider">${formatDate(post.date)}</time>
