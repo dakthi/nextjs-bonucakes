@@ -37,6 +37,11 @@
 
     <!-- Posts Grid -->
     <main class="max-w-7xl mx-auto px-6 py-12">
+        <!-- Hero/Lead Story -->
+        <div id="featured-post" class="mb-12 pb-12 border-b-2 border-espresso/20">
+            <!-- Featured post loaded here -->
+        </div>
+
         <!-- 3 Column Newspaper Grid -->
         <div id="posts-grid" class="grid md:grid-cols-3 gap-8">
             <!-- Posts loaded here -->
@@ -111,9 +116,48 @@
             const endIndex = startIndex + POSTS_PER_PAGE;
             const pagePosts = allPosts.slice(startIndex, endIndex);
 
-            // 3 column newspaper grid
+            // Show featured post only on page 1
+            const featuredEl = document.getElementById('featured-post');
+            if (currentPage === 1 && pagePosts.length > 0) {
+                const featured = pagePosts[0];
+                featuredEl.classList.remove('hidden');
+                featuredEl.innerHTML = `
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        ${featured.image ? `
+                            <div class="bg-white border-2 border-espresso/10 p-3">
+                                <img src="${featured.image}" alt="${featured.title}" class="w-full h-auto object-contain">
+                            </div>
+                        ` : `
+                            <div class="bg-gradient-to-br from-terracotta/10 to-gold/10 h-96"></div>
+                        `}
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-terracotta font-bold mb-2">BÀI VIẾT CHÍNH</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-espresso mb-4 leading-tight">
+                                <a href="/blog/${featured.slug}.html" class="hover:text-terracotta transition-colors">
+                                    ${featured.title}
+                                </a>
+                            </h2>
+                            ${featured.excerpt ? `
+                                <p class="text-coffee text-lg mb-4 leading-relaxed">
+                                    ${featured.excerpt}
+                                </p>
+                            ` : ''}
+                            <div class="flex items-center gap-4 text-sm text-coffee/70">
+                                <time>${formatDate(featured.date)}</time>
+                                <span>•</span>
+                                <a href="/blog/${featured.slug}.html" class="text-terracotta font-medium hover:underline">Đọc tiếp →</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                featuredEl.classList.add('hidden');
+            }
+
+            // 3 column newspaper grid (skip first post on page 1)
             const grid = document.getElementById('posts-grid');
-            grid.innerHTML = pagePosts.map((post) => `
+            const gridPosts = currentPage === 1 ? pagePosts.slice(1) : pagePosts;
+            grid.innerHTML = gridPosts.map((post) => `
                 <article class="border-b border-espresso/10 pb-8 hover:border-terracotta/30 transition-colors">
                     <a href="/blog/${post.slug}.html" class="block group">
                         ${post.image ? `
