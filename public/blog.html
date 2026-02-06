@@ -145,7 +145,7 @@
                             <div class="flex items-center gap-4 text-sm text-coffee/70">
                                 <time>${formatDate(featured.date)}</time>
                                 <span>•</span>
-                                <a href="/blog/${featured.slug}.html" class="text-terracotta font-medium hover:underline">Đọc tiếp →</a>
+                                <a href="/blog/${featured.slug}.html" class="text-terracotta font-medium hover:underline">Đọc tiếp</a>
                             </div>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                             </p>
                         ` : ''}
                         <span class="text-terracotta text-sm font-medium group-hover:underline">
-                            Đọc tiếp →
+                            Đọc tiếp
                         </span>
                     </a>
                 </article>
@@ -241,7 +241,7 @@
                 html += `
                     <a href="?page=${currentPage + 1}"
                        class="px-4 py-2 rounded-lg bg-white text-coffee border border-coffee/20 hover:bg-terracotta hover:text-white transition-colors">
-                        Tiếp →
+                        Tiếp
                     </a>
                 `;
             }
