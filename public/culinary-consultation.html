@@ -30,76 +30,22 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="relative text-espresso pt-32 pb-16 md:pt-40 md:pb-24">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">Dịch vụ độc quyền</p>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Tư vấn công thức ẩm thực<br>cá nhân hóa 1-1</h1>
-            <p class="text-xl text-coffee mb-8 max-w-2xl mx-auto">Nhận công thức đã được test và tối ưu hóa cho nguyên liệu tại địa phương của bạn. Làm một phát, ăn ngay. Cam kết hoàn tiền nếu không thành công.</p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="#services" class="bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors">Khám phá dịch vụ</a>
-                <a href="#how-it-works" class="border-2 border-espresso text-espresso px-8 py-4 font-semibold hover:bg-espresso/5 transition-colors">Quy trình làm việc</a>
-            </div>
-        </div>
-    </header>
+    <script>
+      // Show only the services grid; hide other sections/hero
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('body > header, body > section').forEach(el => {
+          if (!el.matches('#services')) el.style.display = 'none';
+        });
+        // Ensure services has top padding below fixed nav
+        const svc = document.getElementById('services');
+        if (svc) svc.classList.add('pt-24','md:pt-28','pb-16','md:pb-24');
+      });
+    </script>
 
-    <!-- Stats -->
-    <section class="bg-espresso text-warmwhite py-12">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <p class="text-4xl font-bold text-gold mb-2">10+</p>
-                    <p class="text-cream/70 text-sm">Năm kinh nghiệm</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-bold text-gold mb-2">100%</p>
-                    <p class="text-cream/70 text-sm">Cam kết thành công</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-bold text-gold mb-2">3 ngày</p>
-                    <p class="text-cream/70 text-sm">Nhận công thức</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-bold text-gold mb-2">Toàn cầu</p>
-                    <p class="text-cream/70 text-sm">Mọi địa điểm</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-16 md:py-24 bg-warmwhite">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">Quy trình</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-espresso mb-4">Làm thế nào nó hoạt động?</h2>
-                <p class="text-coffee max-w-2xl mx-auto">Quy trình đơn giản, kết quả chắc chắn</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-cream p-8 border-l-4 border-terracotta">
-                    <div class="w-12 h-12 bg-terracotta rounded-full flex items-center justify-center mb-4 text-white font-bold text-xl">1</div>
-                    <h3 class="text-xl font-bold text-espresso mb-3">Chụp nguyên liệu</h3>
-                    <p class="text-coffee">Đi siêu thị, chụp hết tất cả loại bột và nguyên liệu có sẵn tại nơi bạn ở. Gửi ảnh kèm thành phần cho Bo.</p>
-                </div>
-
-                <div class="bg-cream p-8 border-l-4 border-gold">
-                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4 text-espresso font-bold text-xl">2</div>
-                    <h3 class="text-xl font-bold text-espresso mb-3">Nhận công thức chuẩn</h3>
-                    <p class="text-coffee">Trong vòng 3 ngày, Bo sẽ test nguyên liệu và gửi cho bạn công thức đã được tối ưu hóa cho nguyên liệu của bạn.</p>
-                </div>
-
-                <div class="bg-cream p-8 border-l-4 border-espresso">
-                    <div class="w-12 h-12 bg-espresso rounded-full flex items-center justify-center mb-4 text-warmwhite font-bold text-xl">3</div>
-                    <h3 class="text-xl font-bold text-espresso mb-3">Làm một phát, ăn ngay</h3>
-                    <p class="text-coffee">Nếu gặp vấn đề, quay video clip gửi Bo. Bo sẽ xem và chỉ ra chính xác đâu là lỗi. Cam kết thành công hoặc hoàn tiền.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Services -->
-    <section id="services" class="py-16 md:py-24 bg-cream">
+    <section id="services" class="pt-24 md:pt-28 pb-16 md:pb-24 bg-cream">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">Dịch vụ</p>
@@ -247,49 +193,6 @@
         </div>
     </section>
 
-    <!-- Testimonials (Anonymous) -->
-    <section class="py-16 md:py-24 bg-warmwhite">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">Khách hàng nói gì</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-espresso mb-4">Câu chuyện thành công</h2>
-                <p class="text-coffee max-w-2xl mx-auto">Khách hàng của Bo từ khắp nơi trên thế giới</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-cream p-6 border-l-4 border-gold">
-                    <div class="mb-4">
-                        <svg class="w-8 h-8 text-gold/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                    </div>
-                    <p class="text-coffee mb-4 italic">"Công thức của chị là đỉnh của đỉnh. Cốt bánh tan trong miệng, để một đêm vẫn mềm mịn. 6 năm làm bánh, chưa có công thức nào bằng."</p>
-                    <p class="text-espresso font-semibold">Khách hàng tại Na Uy</p>
-                    <p class="text-coffee/60 text-sm">Bông lan trứng muối</p>
-                </div>
-
-                <div class="bg-cream p-6 border-l-4 border-terracotta">
-                    <div class="mb-4">
-                        <svg class="w-8 h-8 text-terracotta/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                    </div>
-                    <p class="text-coffee mb-4 italic">"Chỉ cần test một lần là ăn ngay. Chị test với nguyên liệu bên Mỹ, công thức chuẩn không cần chỉnh."</p>
-                    <p class="text-espresso font-semibold">Khách hàng tại Mỹ</p>
-                    <p class="text-coffee/60 text-sm">Các món Việt truyền thống</p>
-                </div>
-
-                <div class="bg-cream p-6 border-l-4 border-espresso">
-                    <div class="mb-4">
-                        <svg class="w-8 h-8 text-espresso/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                    </div>
-                    <p class="text-coffee mb-4 italic">"Em làm theo đúng hướng dẫn, một phát ăn luôn. Chị support video call rất chi tiết."</p>
-                    <p class="text-espresso font-semibold">Khách hàng tại Pháp</p>
-                    <p class="text-coffee/60 text-sm">Bông lan phô mai</p>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <p class="text-coffee italic">*Thông tin khách hàng được bảo mật theo yêu cầu</p>
-            </div>
-        </div>
-    </section>
 
     <!-- FAQ -->
     <section class="py-16 md:py-24 bg-cream">
