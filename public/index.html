@@ -269,7 +269,7 @@
                 <!-- Loaded via JS -->
             </div>
 
-            <div id="courses-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+            <div id="courses-grid" class="">
                 <!-- Courses loaded via JS -->
             </div>
             <div class="text-center mt-12">
@@ -530,10 +530,20 @@
 
                 const coursesContainer = document.getElementById('courses-grid');
                 if (coursesContainer && c.courses.items) {
-                    coursesContainer.innerHTML = c.courses.items.map(course => {
-                        const isFree = course.price === 'Miễn phí' || course.price === 'Free';
-                        return `
-                        <div class="bg-cream border border-espresso/10 p-6 hover-lift h-full flex flex-col">
+                    const items = c.courses.items;
+                    const labelTitle = lang==='vi' ? 'Dịch vụ/Khóa học' : 'Service/Course';
+                    const labelLevel = lang==='vi' ? 'Mức' : 'Level';
+                    const labelDuration = lang==='vi' ? 'Thời lượng' : 'Duration';
+                    const labelPrice = lang==='vi' ? 'Giá' : 'Price';
+                    const labelAction = lang==='vi' ? 'Xem chi tiết' : 'View';
+                    const linkFor = (slug) => slug === 'salted-egg-sponge-cake' ? '/landing/salted-egg-sponge-cake.html'
+                        : slug === 'vietnamese-food-mastery' ? '/landing/vietnamese-food-mastery.html'
+                        : slug === 'premium-recipe-consultation' ? '/landing/premium-recipe-consultation.html'
+                        : slug === 'milk-tea-program' ? '/landing/milk-tea-program.html'
+                        : `/course.html?slug=${slug}`;
+
+                    const mobileCards = items.map(course => `
+                        <div class="bg-cream border border-espresso/10 p-6 hover-lift flex flex-col">
                             <div>
                                 <div class="flex gap-3 mb-3 text-xs text-coffee">
                                     <span>${course.level?.[lang] || ''}</span>
@@ -543,12 +553,45 @@
                                 <h3 class="text-lg font-bold text-espresso mb-2">${course.title?.[lang] || ''}</h3>
                                 <p class="text-coffee text-sm">${course.description?.[lang] || ''}</p>
                             </div>
-                            <div class="mt-auto flex justify-between items-center pt-4 border-t border-espresso/10">
+                            <div class="mt-4 flex justify-between items-center pt-4 border-t border-espresso/10">
                                 <span class="text-espresso font-semibold">${course.price}</span>
-                                <a href="${course.slug === 'salted-egg-sponge-cake' ? '/landing/salted-egg-sponge-cake.html' : course.slug === 'vietnamese-food-mastery' ? '/landing/vietnamese-food-mastery.html' : course.slug === 'premium-recipe-consultation' ? '/landing/premium-recipe-consultation.html' : course.slug === 'milk-tea-program' ? '/landing/milk-tea-program.html' : `/course.html?slug=${course.slug}`}" class="text-sm text-coffee hover:text-terracotta transition-colors">${lang === 'vi' ? 'Xem dịch vụ/khóa học →' : 'View service/course →'}</a>
+                                <a href="${linkFor(course.slug)}" class="text-sm text-coffee hover:text-terracotta transition-colors">${labelAction}</a>
                             </div>
                         </div>
-                    `}).join('');
+                    `).join('');
+
+                    const desktopTable = `
+                        <div class="overflow-x-auto hidden md:block">
+                          <table class="w-full border-collapse">
+                            <thead>
+                              <tr class="text-left bg-cream">
+                                <th class="p-3 border border-espresso/10">${labelTitle}</th>
+                                <th class="p-3 border border-espresso/10 w-40">${labelLevel}</th>
+                                <th class="p-3 border border-espresso/10 w-40">${labelDuration}</th>
+                                <th class="p-3 border border-espresso/10 w-32">${labelPrice}</th>
+                                <th class="p-3 border border-espresso/10 w-40"></th>
+                              </tr>
+                            </thead>
+                            <tbody class="text-coffee">
+                              ${items.map((course,i)=>`
+                                <tr class="${i%2? 'bg-warmwhite/50':''}">
+                                  <td class="p-3 border border-espresso/10 font-semibold text-espresso">${course.title?.[lang] || ''}</td>
+                                  <td class="p-3 border border-espresso/10">${course.level?.[lang] || ''}</td>
+                                  <td class="p-3 border border-espresso/10">${course.duration?.[lang] || ''}</td>
+                                  <td class="p-3 border border-espresso/10">${course.price || ''}</td>
+                                  <td class="p-3 border border-espresso/10">
+                                    <a href="${linkFor(course.slug)}" class="text-sm text-terracotta hover:underline">${labelAction}</a>
+                                  </td>
+                                </tr>
+                              `).join('')}
+                            </tbody>
+                          </table>
+                        </div>`;
+
+                    coursesContainer.innerHTML = `
+                        <div class="md:hidden space-y-4">${mobileCards}</div>
+                        ${desktopTable}
+                    `;
                 }
             }
 
