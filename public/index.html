@@ -16,11 +16,24 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .lang-btn { transition: all 0.2s ease; }
         .lang-btn.active { background-color: #C4704A; color: white; }
+        html { scroll-behavior: smooth; }
+        /* Subtle lift on hover */
+        .hover-lift { transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+        /* Hide momentum scrollbars on mobile carousels */
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        /* Stronger nav shadow on scroll */
+        .nav-scrolled { box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+            html { scroll-behavior: auto; }
+        }
     </style>
 </head>
 <body class="bg-cream">
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm" id="site-nav">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="text-3xl font-bold text-gold" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
             <div class="flex items-center gap-6">
@@ -37,7 +50,7 @@
     </nav>
 
     <!-- Hero -->
-    <header class="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <header class="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden fade-in">
         <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
             <source src="https://thielts.chartedconsultants.com/bonu/hero-bg.mp4" type="video/mp4">
         </video>
@@ -48,14 +61,14 @@
             <p class="text-xl text-cream/80 mb-8 max-w-2xl mx-auto" data-en="No confusion about identity. No burnout while growing." data-vi="Không mơ hồ về bản sắc. Không kiệt sức khi tăng trưởng.">Không mơ hồ về bản sắc. Không kiệt sức khi tăng trưởng.</p>
             <p class="text-lg text-cream/70 mb-8 max-w-2xl mx-auto" data-en="A comprehensive operating system to transform your F&B expertise into real assets." data-vi="Hệ điều hành toàn diện giúp bạn chuyển hóa chuyên môn F&B thành tài sản thực sự.">Hệ điều hành toàn diện giúp bạn chuyển hóa chuyên môn F&B thành tài sản thực sự.</p>
             <div class="flex flex-wrap gap-4 justify-center">
-                <a href="#roadmap" class="bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors" data-en="Explore the roadmap" data-vi="Khám phá lộ trình">Khám phá lộ trình</a>
-                <a href="#contact" class="border border-gold/50 text-gold px-8 py-4 font-semibold hover:bg-gold/10 transition-colors" data-en="Contact for consultation" data-vi="Liên hệ tư vấn">Liên hệ tư vấn</a>
+                <a href="#roadmap" class="bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors transition-transform hover:-translate-y-0.5" data-en="Explore the roadmap" data-vi="Khám phá lộ trình">Khám phá lộ trình</a>
+                <a href="#contact" class="border border-gold/50 text-gold px-8 py-4 font-semibold hover:bg-gold/10 transition-colors transition-transform hover:-translate-y-0.5" data-en="Contact for consultation" data-vi="Liên hệ tư vấn">Liên hệ tư vấn</a>
             </div>
         </div>
     </header>
 
     <!-- Stats -->
-    <section class="bg-warmwhite py-12 border-b border-espresso/10">
+    <section class="bg-warmwhite py-12 border-b border-espresso/10 fade-in">
         <div class="max-w-6xl mx-auto px-6">
             <div id="stats-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
                 <!-- Dynamic stats loaded from content.json -->
@@ -181,7 +194,7 @@
     </section>
 
     <!-- F&B DNA Journey -->
-    <section class="py-16 md:py-24 bg-espresso text-warmwhite">
+    <section class="py-16 md:py-24 bg-espresso text-warmwhite fade-in">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <p class="text-gold uppercase tracking-widest text-sm mb-4 font-medium" data-content="dna-tagline">Tuyên ngôn sống & làm nghề</p>
@@ -194,7 +207,7 @@
     </section>
 
     <!-- Roadmap -->
-    <section id="roadmap" class="py-16 md:py-24 bg-warmwhite">
+    <section id="roadmap" class="py-16 md:py-24 bg-warmwhite fade-in">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium" data-content="roadmap-tagline">Lộ trình F&B Expert</p>
@@ -213,7 +226,7 @@
     </section>
 
     <!-- Blog Highlights -->
-    <section class="py-16 md:py-24 bg-espresso">
+    <section class="py-16 md:py-24 bg-espresso fade-in">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <p class="text-gold uppercase tracking-widest text-sm mb-4 font-medium" data-en="From the Blog" data-vi="Từ Blog">Từ Blog</p>
@@ -229,7 +242,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="py-16 md:py-24 bg-cream">
+    <section class="py-16 md:py-24 bg-cream fade-in">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">FAQ</p>
@@ -242,7 +255,7 @@
     </section>
 
     <!-- Courses -->
-    <section id="courses" class="py-16 md:py-24 bg-warmwhite">
+    <section id="courses" class="py-16 md:py-24 bg-warmwhite fade-in">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <p class="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium" data-content="courses-tagline">Khóa học</p>
@@ -265,12 +278,12 @@
     </section>
 
     <!-- CTA -->
-    <section id="contact" class="py-16 md:py-24 bg-espresso text-warmwhite">
+    <section id="contact" class="py-16 md:py-24 bg-espresso text-warmwhite fade-in">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <p class="text-gold uppercase tracking-widest text-sm mb-4 font-medium" data-content="cta-tagline">Bắt đầu ngay</p>
             <h2 class="text-3xl md:text-4xl font-bold mb-6" data-content="cta-title">Sẵn sàng chuyển đổi hành trình F&B của bạn?</h2>
             <p class="text-xl text-cream/80 mb-8 max-w-2xl mx-auto" data-content="cta-description">Liên hệ với mình để thảo luận về nơi bạn đang ở, nơi bạn muốn đến, và cách chúng ta cùng đến đó.</p>
-            <a id="cta-link" href="https://www.facebook.com/profile.php?id=100009102362568" target="_blank" class="inline-flex items-center gap-3 bg-terracotta text-white px-8 py-4 font-semibold text-lg hover:bg-terracotta/90 transition-colors">
+            <a id="cta-link" href="https://www.facebook.com/profile.php?id=100009102362568" target="_blank" class="inline-flex items-center gap-3 bg-terracotta text-white px-8 py-4 font-semibold text-lg hover:bg-terracotta/90 transition-colors transition-transform hover:-translate-y-0.5">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 <span data-content="cta-button">Nhắn tin cho Uyên</span>
             </a>
@@ -346,7 +359,7 @@
                 const statsContainer = document.getElementById('stats-container');
                 if (statsContainer) {
                     statsContainer.innerHTML = c.stats.map(s => `
-                        <div>
+                        <div class="fade-in">
                             <p class="text-3xl md:text-4xl font-bold text-terracotta">${s.value}</p>
                             <p class="text-coffee text-sm">${s.label?.[lang] || ''}</p>
                         </div>
@@ -377,10 +390,10 @@
                 if (dnaContainer && c.dna.steps) {
                     dnaContainer.innerHTML = `
                         <!-- Mobile: horizontal carousel -->
-                        <div class="md:hidden -mx-6 px-6 overflow-x-auto snap-x snap-mandatory">
+                        <div class="md:hidden -mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory" style="-webkit-overflow-scrolling: touch;">
                             <div class="flex gap-4">
                                 ${c.dna.steps.map((s, i) => `
-                                    <div class="min-w-[80%] bg-cream/10 p-6 text-center snap-center">
+                                    <div class="min-w-[80%] bg-cream/10 p-6 text-center snap-center hover-lift">
                                         <div class="w-12 h-12 bg-terracotta rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">${i + 1}</div>
                                         <h3 class="font-semibold mb-2">${s.title?.[lang] || ''}</h3>
                                         <p class="text-cream/70 text-sm">${s.description?.[lang] || ''}</p>
@@ -392,7 +405,7 @@
                         <!-- Desktop: grid -->
                         <div class="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-6">
                             ${c.dna.steps.map((s, i) => `
-                                <div class="bg-cream/10 p-6 text-center">
+                                <div class="bg-cream/10 p-6 text-center hover-lift">
                                     <div class="w-12 h-12 bg-terracotta rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">${i + 1}</div>
                                     <h3 class="font-semibold mb-2">${s.title?.[lang] || ''}</h3>
                                     <p class="text-cream/70 text-sm">${s.description?.[lang] || ''}</p>
@@ -418,7 +431,7 @@
                         <!-- Mobile: stacked cards -->
                         <div class="space-y-4 md:hidden">
                             ${c.roadmap.phases.map((p, i) => `
-                                <div class="bg-warmwhite border border-espresso/10">
+                                <div class="bg-warmwhite border border-espresso/10 hover-lift">
                                     <div class="p-4">
                                         <p class="text-terracotta font-semibold text-sm mb-1">${labelPhase} ${p.number}</p>
                                         <h3 class="font-bold text-espresso">${p.title?.[lang] || ''}</h3>
@@ -537,7 +550,7 @@
                     coursesContainer.innerHTML = c.courses.items.map(course => {
                         const isFree = course.price === 'Miễn phí' || course.price === 'Free';
                         return `
-                        <div class="bg-cream border border-espresso/10 p-6">
+                        <div class="bg-cream border border-espresso/10 p-6 hover-lift">
                             <div class="flex gap-3 mb-3 text-xs text-coffee">
                                 <span>${course.level?.[lang] || ''}</span>
                                 <span>·</span>
@@ -582,6 +595,15 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+        // Elevate nav on scroll
+        const nav = document.getElementById('site-nav');
+        function updateNavShadow() {
+            if (!nav) return;
+            if (window.scrollY > 10) nav.classList.add('nav-scrolled'); else nav.classList.remove('nav-scrolled');
+        }
+        updateNavShadow();
+        window.addEventListener('scroll', updateNavShadow, { passive: true });
+
         // Load blog posts
         async function loadBlogPosts() {
             try {
@@ -599,7 +621,7 @@
                 }
 
                 container.innerHTML = published.map(post => `
-                    <article class="bg-cream/10 rounded-lg overflow-hidden hover:bg-cream/20 transition-colors">
+                    <article class="bg-cream/10 rounded-lg overflow-hidden hover:bg-cream/20 transition-colors hover-lift">
                         ${post.image ? `
                             <a href="/blog/post.html?slug=${post.slug}">
                                 <img src="${post.image}" alt="${post.title}" class="w-full h-40 object-cover">
