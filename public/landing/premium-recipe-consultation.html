@@ -92,7 +92,38 @@
     </section>
 
     <!-- Outcomes & mini cases -->
-    <section class="grid md:grid-cols-3 gap-6 mb-10">
+    <section class="mb-10">
+      <!-- Mobile stacked -->
+      <div class="md:hidden space-y-3">
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">Khảo sát:</span> 1–3 ngày</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">Thiết kế + test:</span> 3–7 ngày</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">Tinh chỉnh:</span> 3–7 ngày (tùy món)</p></div>
+      </div>
+      <!-- Desktop table -->
+      <div class="hidden md:block overflow-x-auto mb-6">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="text-left bg-cream">
+              <th class="p-3 border border-espresso/10 w-56">Giai đoạn</th>
+              <th class="p-3 border border-espresso/10">Thời gian</th>
+            </tr>
+          </thead>
+          <tbody class="text-coffee">
+            <tr>
+              <td class="p-3 border border-espresso/10">Khảo sát</td>
+              <td class="p-3 border border-espresso/10">1–3 ngày</td>
+            </tr>
+            <tr class="bg-warmwhite/50">
+              <td class="p-3 border border-espresso/10">Thiết kế + test</td>
+              <td class="p-3 border border-espresso/10">3–7 ngày</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-espresso/10">Tinh chỉnh</td>
+              <td class="p-3 border border-espresso/10">3–7 ngày (tùy món)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="bg-warmwhite border border-espresso/10 p-6">
         <h3 class="font-semibold text-espresso mb-2">Bạn sẽ có</h3>
         <ul class="list-disc pl-5 text-coffee space-y-1">
@@ -109,14 +140,7 @@
           <li>NA: quy trình giao xa không mất cấu trúc</li>
         </ul>
       </div>
-      <div class="bg-warmwhite border border-espresso/10 p-6">
-        <h3 class="font-semibold text-espresso mb-2">Thời gian</h3>
-        <ul class="list-disc pl-5 text-coffee space-y-1">
-          <li>Khảo sát: 1–3 ngày</li>
-          <li>Thiết kế + test: 3–7 ngày</li>
-          <li>Tinh chỉnh: 3–7 ngày (tùy món)</li>
-        </ul>
-      </div>
+      
     </section>
 
     <!-- Beyond recipes: F&B mindset -->

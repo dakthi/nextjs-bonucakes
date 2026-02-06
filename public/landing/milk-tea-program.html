@@ -78,7 +78,38 @@
     </section>
 
     <!-- Outcomes & examples -->
-    <section class="grid md:grid-cols-3 gap-6 mb-10">
+    <section class="mb-10">
+      <!-- Mobile stacked table replacement -->
+      <div class="md:hidden space-y-3 mb-6">
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">Base/Syrup/Topping:</span> Nền ổn định, không tách lớp</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">Signature:</span> 3–5 vị riêng</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">KPIs:</span> Thời gian pha, cost/ly, tỉ lệ lặp lại</p></div>
+      </div>
+      <!-- Desktop 2-col table -->
+      <div class="hidden md:block overflow-x-auto mb-6">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="text-left bg-cream">
+              <th class="p-3 border border-espresso/10 w-64">Hạng mục</th>
+              <th class="p-3 border border-espresso/10">Chi tiết</th>
+            </tr>
+          </thead>
+          <tbody class="text-coffee">
+            <tr>
+              <td class="p-3 border border-espresso/10">Base/Syrup/Topping</td>
+              <td class="p-3 border border-espresso/10">Nền ổn định, không tách lớp, chuẩn hóa dễ</td>
+            </tr>
+            <tr class="bg-warmwhite/50">
+              <td class="p-3 border border-espresso/10">Signature flavors</td>
+              <td class="p-3 border border-espresso/10">3–5 hương vị riêng do quán “ký tên”</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-espresso/10">KPIs</td>
+              <td class="p-3 border border-espresso/10">Thời gian pha/ly, cost/ly, tỉ lệ lặp lại</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="bg-white border border-espresso/10 p-6">
         <h3 class="font-semibold text-espresso mb-2">Bạn sẽ có</h3>
         <ul class="list-disc pl-5 text-coffee space-y-1">
@@ -95,14 +126,7 @@
           <li>Trà ô long x phô mai nhẹ không tách lớp</li>
         </ul>
       </div>
-      <div class="bg-white border border-espresso/10 p-6">
-        <h3 class="font-semibold text-espresso mb-2">Chỉ số theo dõi</h3>
-        <ul class="list-disc pl-5 text-coffee space-y-1">
-          <li>Thời gian pha/ly</li>
-          <li>Cost/ly & biên lợi nhuận</li>
-          <li>Tỉ lệ lặp lại order món signature</li>
-        </ul>
-      </div>
+      
     </section>
 
     <!-- Beyond recipes: F&B mindset -->
