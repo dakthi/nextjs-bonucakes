@@ -58,8 +58,32 @@
             <div id="course-body" class="text-coffee leading-7">
                 <p class="text-coffee/70">Chi tiết sẽ được trao đổi theo nhu cầu. Vui lòng liên hệ để nhận lộ trình phù hợp.</p>
             </div>
-            <div class="mt-8">
-                <a href="/culinary-consultation.html#contact" class="inline-flex items-center gap-3 bg-terracotta text-white px-8 py-3 font-semibold hover:bg-terracotta/90 transition-colors">Liên hệ tư vấn</a>
+        </div>
+
+        <!-- Expansion questions -->
+        <section class="mt-8 bg-warmwhite border border-espresso/10 p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-espresso mb-4">Câu hỏi để xác định phù hợp / Expansion prompts</h2>
+            <p class="text-coffee mb-4">Trước khi bắt đầu, hãy xem bạn đã rõ các điểm sau chưa. Nếu chưa, mình sẽ đồng hành để làm rõ từng mục:</p>
+            <ul class="list-disc pl-6 text-coffee space-y-2">
+                <li>Mục tiêu của bạn trong 3–6 tháng tiếp theo là gì? (doanh thu, sản phẩm, hệ thống)</li>
+                <li>Khách hàng mục tiêu và bối cảnh địa phương (nguyên liệu, thị hiếu) của bạn ra sao?</li>
+                <li>Cấu trúc menu/tổ hợp sản phẩm nào phù hợp để thử nghiệm nhanh nhất?</li>
+                <li>Nguồn lực hiện tại: thời gian, nhân sự, thiết bị — thiếu gì sẽ bổ sung thế nào?</li>
+                <li>Chỉ số thành công bạn muốn đo (KPIs) và mốc kiểm tra theo tuần/tháng.</li>
+            </ul>
+        </section>
+
+        <!-- CTA: contact + signup -->
+        <section id="enroll" class="mt-8 bg-espresso text-warmwhite p-6 md:p-8">
+            <div class="md:flex md:items-center md:justify-between gap-6">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold mb-2">Sẵn sàng đăng ký?</h2>
+                    <p class="text-cream/80">Liên hệ để nhận lộ trình phù hợp và lịch học khả dụng. Bạn có thể đăng ký nhanh để giữ chỗ.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="/culinary-consultation.html#contact" class="inline-flex items-center justify-center gap-3 bg-gold text-espresso px-6 py-3 font-semibold hover:bg-gold/90 transition-colors">Liên hệ tư vấn</a>
+                    <a id="signup-link" href="/workshop-register.html" class="inline-flex items-center justify-center gap-3 border-2 border-warmwhite text-warmwhite px-6 py-3 font-semibold hover:bg-warmwhite/10 transition-colors">Đăng ký nhanh</a>
+                </div>
             </div>
         </div>
     </main>
@@ -114,6 +138,10 @@
           setText(price, found.price || '');
           // Optional long body: reuse description as default
           setText(body, found.longDescription?.[currentLang] || found.description?.[currentLang] || '');
+
+          // Pass slug to signup link
+          const signup = document.getElementById('signup-link');
+          if (signup && found.slug) signup.href = `/workshop-register.html?course=${encodeURIComponent(found.slug)}`;
         } catch (e) {
           console.error(e);
         }
@@ -122,4 +150,3 @@
     </script>
 </body>
 </html>
-
