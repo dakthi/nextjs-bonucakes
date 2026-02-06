@@ -37,13 +37,8 @@
 
     <!-- Posts Grid -->
     <main class="max-w-7xl mx-auto px-6 py-12">
-        <!-- Featured Post -->
-        <div id="featured-post" class="mb-12">
-            <!-- Featured post loaded here -->
-        </div>
-
-        <!-- Secondary Posts -->
-        <div id="posts-grid" class="space-y-8">
+        <!-- 3 Column Newspaper Grid -->
+        <div id="posts-grid" class="grid md:grid-cols-3 gap-8">
             <!-- Posts loaded here -->
         </div>
 
@@ -79,7 +74,7 @@
     </footer>
 
     <script>
-        const POSTS_PER_PAGE = 11; // 1 featured + 10 regular
+        const POSTS_PER_PAGE = 12; // 3 columns x 4 rows
         let allPosts = [];
         let currentPage = 1;
 
@@ -116,103 +111,32 @@
             const endIndex = startIndex + POSTS_PER_PAGE;
             const pagePosts = allPosts.slice(startIndex, endIndex);
 
-            // Show featured post only on page 1
-            const featuredEl = document.getElementById('featured-post');
-            if (currentPage === 1 && pagePosts.length > 0) {
-                const featured = pagePosts[0];
-                featuredEl.classList.remove('hidden');
-                featuredEl.innerHTML = `
-                    <article class="relative bg-white rounded-2xl shadow-xl overflow-hidden group">
-                        <a href="/blog/${featured.slug}.html" class="block">
-                            ${featured.image ? `
-                                <div class="relative h-96 overflow-hidden">
-                                    <img src="${featured.image}" alt="${featured.title}"
-                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent"></div>
-                                </div>
-                            ` : `
-                                <div class="h-96 bg-gradient-to-br from-terracotta/30 to-gold/30"></div>
-                            `}
-                            <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
-                                <span class="inline-block px-3 py-1 bg-terracotta rounded-full text-xs font-medium mb-4">
-                                    MỚI NHẤT
-                                </span>
-                                <time class="block text-sm text-cream/80 mb-3">${formatDate(featured.date)}</time>
-                                <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                                    ${featured.title}
-                                </h2>
-                                <p class="text-lg text-cream/90 line-clamp-2 mb-4">${featured.excerpt || ''}</p>
-                                <span class="text-gold font-medium group-hover:underline">
-                                    Đọc tiếp
-                                </span>
-                            </div>
-                        </a>
-                    </article>
-                `;
-            } else {
-                featuredEl.classList.add('hidden');
-            }
-
-            // Rest of posts with alternating layout
+            // 3 column newspaper grid
             const grid = document.getElementById('posts-grid');
-            const remaining = currentPage === 1 ? pagePosts.slice(1) : pagePosts;
-
-                grid.innerHTML = remaining.map((post, index) => {
-                    // Every 3rd post is full width
-                    const isLarge = index % 5 === 0;
-
-                    if (isLarge) {
-                        return `
-                            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                                <a href="/blog/${post.slug}.html" class="block md:flex md:flex-row">
-                                    ${post.image ? `
-                                        <div class="md:w-2/5 h-64 md:h-auto overflow-hidden">
-                                            <img src="${post.image}" alt="${post.title}"
-                                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                        </div>
-                                    ` : `
-                                        <div class="md:w-2/5 h-64 md:h-auto bg-gradient-to-br from-terracotta/20 to-gold/20"></div>
-                                    `}
-                                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
-                                        <time class="text-sm text-coffee/60 mb-2">${formatDate(post.date)}</time>
-                                        <h2 class="text-2xl md:text-3xl font-bold text-espresso mb-4 hover:text-terracotta transition-colors">
-                                            ${post.title}
-                                        </h2>
-                                        <p class="text-coffee line-clamp-3 mb-4 text-lg">${post.excerpt || ''}</p>
-                                        <span class="text-terracotta font-medium hover:underline">
-                                            Đọc tiếp
-                                        </span>
-                                    </div>
-                                </a>
-                            </article>
-                        `;
-                    } else {
-                        return `
-                            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                                <a href="/blog/${post.slug}.html" class="block">
-                                    ${post.image ? `
-                                        <div class="h-56 overflow-hidden">
-                                            <img src="${post.image}" alt="${post.title}"
-                                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                        </div>
-                                    ` : `
-                                        <div class="h-56 bg-gradient-to-br from-terracotta/20 to-gold/20"></div>
-                                    `}
-                                    <div class="p-6">
-                                        <time class="text-sm text-coffee/60">${formatDate(post.date)}</time>
-                                        <h2 class="text-xl font-bold text-espresso mt-2 mb-3 hover:text-terracotta transition-colors">
-                                            ${post.title}
-                                        </h2>
-                                        <p class="text-coffee line-clamp-3 mb-4">${post.excerpt || ''}</p>
-                                        <span class="text-terracotta font-medium hover:underline">
-                                            Đọc tiếp
-                                        </span>
-                                    </div>
-                                </a>
-                            </article>
-                        `;
-                    }
-                }).join('');
+            grid.innerHTML = pagePosts.map((post) => `
+                <article class="border-b border-espresso/10 pb-8 hover:border-terracotta/30 transition-colors">
+                    <a href="/blog/${post.slug}.html" class="block group">
+                        ${post.image ? `
+                            <div class="mb-4 bg-white border border-espresso/5 p-2">
+                                <img src="${post.image}" alt="${post.title}"
+                                     class="w-full h-auto object-contain">
+                            </div>
+                        ` : ''}
+                        <time class="text-xs text-coffee/60 uppercase tracking-wider">${formatDate(post.date)}</time>
+                        <h2 class="text-xl font-bold text-espresso mt-2 mb-3 leading-tight group-hover:text-terracotta transition-colors">
+                            ${post.title}
+                        </h2>
+                        ${post.excerpt ? `
+                            <p class="text-coffee text-sm leading-relaxed line-clamp-3 mb-3">
+                                ${post.excerpt}
+                            </p>
+                        ` : ''}
+                        <span class="text-terracotta text-sm font-medium group-hover:underline">
+                            Đọc tiếp →
+                        </span>
+                    </a>
+                </article>
+            `).join('');
 
             // Render pagination
             renderPagination();
