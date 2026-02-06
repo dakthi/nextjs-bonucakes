@@ -566,11 +566,8 @@
                           <table class="w-full border-collapse">
                             <thead>
                               <tr class="text-left bg-cream">
-                                <th class="p-3 border border-espresso/10">${labelTitle}</th>
+                                <th class="p-3 border border-espresso/10 w-64">${labelTitle}</th>
                                 <th class="p-3 border border-espresso/10">${labelDescription}</th>
-                                <th class="p-3 border border-espresso/10 w-32">${labelLevel}</th>
-                                <th class="p-3 border border-espresso/10 w-32">${labelDuration}</th>
-                                <th class="p-3 border border-espresso/10 w-32">${labelPrice}</th>
                                 <th class="p-3 border border-espresso/10 w-32"></th>
                               </tr>
                             </thead>
@@ -579,9 +576,6 @@
                                 <tr class="${i%2? 'bg-warmwhite/50':''}">
                                   <td class="p-3 border border-espresso/10 font-semibold text-espresso align-top">${course.title?.[lang] || ''}</td>
                                   <td class="p-3 border border-espresso/10 text-sm leading-relaxed align-top">${course.description?.[lang] || ''}</td>
-                                  <td class="p-3 border border-espresso/10 align-top">${course.level?.[lang] || ''}</td>
-                                  <td class="p-3 border border-espresso/10 align-top">${course.duration?.[lang] || ''}</td>
-                                  <td class="p-3 border border-espresso/10 align-top">${course.price || ''}</td>
                                   <td class="p-3 border border-espresso/10 align-top">
                                     <a href="${linkFor(course.slug)}" class="text-sm text-terracotta hover:underline">${labelAction}</a>
                                   </td>
