@@ -268,7 +268,7 @@
                 <!-- Loaded via JS -->
             </div>
 
-            <div id="courses-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="courses-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
                 <!-- Courses loaded via JS -->
             </div>
             <div class="text-center mt-12">
@@ -532,15 +532,17 @@
                     coursesContainer.innerHTML = c.courses.items.map(course => {
                         const isFree = course.price === 'Miễn phí' || course.price === 'Free';
                         return `
-                        <div class="bg-cream border border-espresso/10 p-6 hover-lift">
-                            <div class="flex gap-3 mb-3 text-xs text-coffee">
-                                <span>${course.level?.[lang] || ''}</span>
-                                <span>·</span>
-                                <span>${course.duration?.[lang] || ''}</span>
+                        <div class="bg-cream border border-espresso/10 p-6 hover-lift h-full flex flex-col">
+                            <div>
+                                <div class="flex gap-3 mb-3 text-xs text-coffee">
+                                    <span>${course.level?.[lang] || ''}</span>
+                                    <span>·</span>
+                                    <span>${course.duration?.[lang] || ''}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-espresso mb-2">${course.title?.[lang] || ''}</h3>
+                                <p class="text-coffee text-sm">${course.description?.[lang] || ''}</p>
                             </div>
-                            <h3 class="text-lg font-bold text-espresso mb-2">${course.title?.[lang] || ''}</h3>
-                            <p class="text-coffee text-sm mb-4">${course.description?.[lang] || ''}</p>
-                            <div class="flex justify-between items-center pt-3 border-t border-espresso/10">
+                            <div class="mt-auto flex justify-between items-center pt-4 border-t border-espresso/10">
                                 <span class="text-espresso font-semibold">${course.price}</span>
                                 <a href="/culinary-consultation.html#services" class="text-sm text-coffee hover:text-terracotta transition-colors">${lang === 'vi' ? 'Xem chi tiết →' : 'View Details →'}</a>
                             </div>
