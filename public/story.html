@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành trình 10+ năm - Câu chuyện Bonu F&B</title>
+    <meta name="description" content="Từ bán bánh online đến nhà hàng ở trung tâm London, Manchester, và giờ là Memoire Saigon tại Wales. Hành trình 10+ năm xây dựng thương hiệu F&B.">
+    <link rel="icon" href="https://thielts.chartedconsultants.com/bonu/profile.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{cream:'#FDF8F3',warmwhite:'#FFFBF5',terracotta:'#C4704A',espresso:'#3D2314',gold:'#D4A853',coffee:'#4A3728'}}}}</script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .timeline-dot { width: 16px; height: 16px; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-3xl font-bold text-gold" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-cream/80 hover:text-white transition-colors">Trang chủ</a>
+                <a href="/blog.html" class="text-cream/80 hover:text-white transition-colors">Blog</a>
+                <a href="#contact" class="text-cream/80 hover:text-white transition-colors">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 bg-espresso">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="text-gold uppercase tracking-widest text-sm mb-4 font-medium">The Journey</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Hành trình 10+ năm<br>xây dựng Memoire Saigon</h1>
+            <p class="text-xl text-cream/80 mb-8 max-w-2xl mx-auto">Từ bán bánh online, qua London, Manchester, đến Wales. Mỗi thất bại là một bài học. Mỗi thành công là một bước tiến.</p>
+        </div>
+    </header>
+
+    <!-- Opening Quote -->
+    <section class="py-16 bg-warmwhite">
+        <div class="max-w-4xl mx-auto px-6">
+            <blockquote class="text-center">
+                <p class="text-2xl md:text-3xl font-serif text-espresso italic mb-4">"Để có Memoire Saigon hôm nay,<br>đã phải trải qua hơn 10 năm khởi nghiệp."</p>
+                <cite class="text-coffee text-lg not-italic">— Uyên Nguyễn</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-16 md:py-24 bg-cream">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-espresso mb-4">Hành trình</h2>
+                <p class="text-coffee">Mỗi chặng đường, một bài học quý giá</p>
+            </div>
+
+            <!-- Timeline Items -->
+            <div class="space-y-12">
+                <!-- 2005-2013: Bán bánh online -->
+                <div class="relative pl-8 md:pl-16 border-l-4 border-terracotta">
+                    <div class="absolute -left-2 top-0 timeline-dot bg-terracotta rounded-full"></div>
+                    <div class="bg-warmwhite p-6 md:p-8 shadow-sm">
+                        <span class="text-terracotta font-bold text-sm uppercase tracking-wider">2005 - 2013</span>
+                        <h3 class="text-2xl font-bold text-espresso mt-2 mb-4">Khởi đầu: Bán bánh online 8 năm</h3>
+                        <p class="text-coffee mb-4">Bắt đầu với niềm đam mê patisserie, tôi đã bán bánh online trong 8 năm. Mỗi chiếc bánh được làm bằng tay, giao tận nơi. Từ đây, tôi nghĩ mình đã hiểu rõ về kinh doanh F&B.</p>
+                        <div class="bg-cream/50 p-4 rounded border-l-4 border-gold">
+                            <p class="text-coffee/80 italic text-sm">💡 Bài học: Online business xây dựng nền tảng về chất lượng sản phẩm và quản lý đơn hàng.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2013: Bonu Cafe London -->
+                <div class="relative pl-8 md:pl-16 border-l-4 border-gold">
+                    <div class="absolute -left-2 top-0 timeline-dot bg-gold rounded-full"></div>
+                    <div class="bg-warmwhite p-6 md:p-8 shadow-sm">
+                        <span class="text-gold font-bold text-sm uppercase tracking-wider">2013</span>
+                        <h3 class="text-2xl font-bold text-espresso mt-2 mb-4">Bonu Cafe - Central London</h3>
+                        <p class="text-coffee mb-4">Với background về patisserie, tôi mở Bonu Cafe tại trung tâm London. Chuyên về bánh, trà sữa, và bánh mì Việt Nam. Địa điểm đẹp, sản phẩm ngon. Ban đầu rất thành công.</p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <div class="text-center p-3 bg-cream/50 rounded">
+                                <p class="text-espresso font-bold">Central London</p>
+                                <p class="text-coffee/60 text-sm">Vị trí đắc địa</p>
+                            </div>
+                            <div class="text-center p-3 bg-cream/50 rounded">
+                                <p class="text-espresso font-bold">Bánh & Trà sữa</p>
+                                <p class="text-coffee/60 text-sm">Signature items</p>
+                            </div>
+                            <div class="text-center p-3 bg-cream/50 rounded">
+                                <p class="text-espresso font-bold">Bánh mì VN</p>
+                                <p class="text-coffee/60 text-sm">Đặc trưng</p>
+                            </div>
+                        </div>
+                        <p class="text-coffee mb-4">Nhưng sau hơn một năm, tôi phải đóng cửa.</p>
+                        <div class="bg-espresso/5 p-4 rounded border-l-4 border-espresso">
+                            <p class="text-espresso font-semibold mb-2">⚠️ Thất bại lớn đầu tiên</p>
+                            <p class="text-coffee/80 text-sm">Tôi quá chủ quan. Tôi nghĩ kinh nghiệm 8 năm bán online đủ để vận hành một tiệm. Nhưng thực tế: <strong>online và offline là hai mô hình hoàn toàn khác nhau</strong>. Offline business đòi hỏi business skills nhiều hơn, không chỉ là làm sản phẩm ngon.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-COVID: Learning Period -->
+                <div class="relative pl-8 md:pl-16 border-l-4 border-coffee">
+                    <div class="absolute -left-2 top-0 timeline-dot bg-coffee rounded-full"></div>
+                    <div class="bg-warmwhite p-6 md:p-8 shadow-sm">
+                        <span class="text-coffee font-bold text-sm uppercase tracking-wider">Sau London</span>
+                        <h3 class="text-2xl font-bold text-espresso mt-2 mb-4">Thời kỳ học hỏi và đau đớn</h3>
+                        <p class="text-coffee mb-4">Sau thất bại ở London, đặc biệt qua giai đoạn COVID, tôi dừng lại để suy nghĩ. Tôi nhận ra:</p>
+                        <ul class="space-y-3 mb-4">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-terracotta flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span class="text-coffee"><strong>Sản phẩm ngon ≠ Kinh doanh thành công</strong></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-terracotta flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span class="text-coffee"><strong>Cần học business skills</strong>: vị trí, marketing, quản lý nhân sự, tài chính</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-terracotta flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span class="text-coffee"><strong>Đam mê không đủ</strong> - cần chiến lược và hệ thống</span>
+                            </li>
+                        </ul>
+                        <div class="bg-cream/50 p-4 rounded border-l-4 border-gold">
+                            <p class="text-coffee/80 italic text-sm">💡 Bài học: Thất bại là phần không thể thiếu của hành trình. Điều quan trọng là học được gì từ nó.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manchester: Wow Banh Mi -->
+                <div class="relative pl-8 md:pl-16 border-l-4 border-terracotta">
+                    <div class="absolute -left-2 top-0 timeline-dot bg-terracotta rounded-full"></div>
+                    <div class="bg-warmwhite p-6 md:p-8 shadow-sm">
+                        <span class="text-terracotta font-bold text-sm uppercase tracking-wider">Manchester</span>
+                        <h3 class="text-2xl font-bold text-espresso mt-2 mb-4">Wow Banh Mi - Thành công ở Manchester</h3>
+                        <p class="text-coffee mb-4">Học từ thất bại, tôi chuyển đến Manchester và trở thành co-founder của một nhà hàng nhỏ. Lần này, tôi áp dụng những gì đã học được.</p>
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-cream/50 p-4 rounded">
+                                <p class="text-espresso font-semibold mb-2">Menu đặc trưng</p>
+                                <ul class="text-coffee text-sm space-y-1">
+                                    <li>• Bánh mì Việt Nam</li>
+                                    <li>• Phở truyền thống</li>
+                                    <li>• Cà phê Việt Nam</li>
+                                    <li>• Các món ăn truyền thống</li>
+                                </ul>
+                            </div>
+                            <div class="bg-cream/50 p-4 rounded">
+                                <p class="text-espresso font-semibold mb-2">Kết quả</p>
+                                <ul class="text-coffee text-sm space-y-1">
+                                    <li>✨ Best Bánh Mì in Manchester</li>
+                                    <li>📈 Business đang phát triển tốt</li>
+                                    <li>🎯 Mô hình bền vững</li>
+                                    <li>💪 Đội ngũ vững mạnh</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-cream/50 p-4 rounded border-l-4 border-gold">
+                            <p class="text-coffee/80 italic text-sm">💡 Bài học: Áp dụng đúng business skills + chất lượng sản phẩm = Thành công bền vững.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wales: Memoire Saigon -->
+                <div class="relative pl-8 md:pl-16 border-l-4 border-gold">
+                    <div class="absolute -left-2 top-0 timeline-dot bg-gold rounded-full shadow-lg"></div>
+                    <div class="bg-espresso text-warmwhite p-6 md:p-8 shadow-lg">
+                        <span class="text-gold font-bold text-sm uppercase tracking-wider">Hiện tại - Wales</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-4">Memoire Saigon - Hành trình mới</h3>
+                        <p class="text-cream/90 mb-4">Sau khi không còn muốn sống ở thành phố lớn, tôi tìm đến Wales - nơi yên bình, riêng tư hơn. Đây là lúc tôi tạo ra Memoire Saigon.</p>
+                        <p class="text-cream/90 mb-4">Không phải là bắt đầu lại từ đầu. Memoire Saigon là kết tinh của hơn 10 năm kinh nghiệm, thất bại, học hỏi, và thành công.</p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="text-center p-4 bg-cream/10 rounded">
+                                <p class="text-3xl font-bold text-gold mb-1">10+</p>
+                                <p class="text-cream/70 text-sm">Năm kinh nghiệm</p>
+                            </div>
+                            <div class="text-center p-4 bg-cream/10 rounded">
+                                <p class="text-3xl font-bold text-gold mb-1">3</p>
+                                <p class="text-cream/70 text-sm">Thành phố</p>
+                            </div>
+                            <div class="text-center p-4 bg-cream/10 rounded">
+                                <p class="text-3xl font-bold text-gold mb-1">∞</p>
+                                <p class="text-cream/70 text-sm">Bài học</p>
+                            </div>
+                        </div>
+                        <div class="bg-warmwhite/10 p-4 rounded border-l-4 border-gold">
+                            <p class="text-cream/90 font-semibold mb-2">🌟 Memoire Saigon hôm nay</p>
+                            <p class="text-cream/70 text-sm">Không chỉ là một nhà hàng. Đây là nơi tôi áp dụng tất cả những gì đã học được: chất lượng sản phẩm, business skills, hệ thống vận hành, và quan trọng nhất - sự cân bằng trong cuộc sống.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Lessons -->
+    <section class="py-16 md:py-24 bg-espresso text-warmwhite">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Những bài học quan trọng</h2>
+                <p class="text-cream/70">Từ 10+ năm trên hành trình F&B</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-cream/10 p-6 rounded">
+                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Thất bại là bài học quý nhất</h3>
+                    <p class="text-cream/80">Đóng cửa Bonu ở London là thất bại lớn nhất. Nhưng cũng là bài học giá trị nhất - dạy tôi về business skills, không chỉ product skills.</p>
+                </div>
+
+                <div class="bg-cream/10 p-6 rounded">
+                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Online ≠ Offline</h3>
+                    <p class="text-cream/80">8 năm bán online không tự động chuyển thành thành công offline. Hai mô hình cần skillsets hoàn toàn khác nhau.</p>
+                </div>
+
+                <div class="bg-cream/10 p-6 rounded">
+                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Chất lượng + Business Skills</h3>
+                    <p class="text-cream/80">Sản phẩm ngon là nền tảng, nhưng không đủ. Cần kết hợp với business strategy, marketing, và hệ thống vận hành.</p>
+                </div>
+
+                <div class="bg-cream/10 p-6 rounded">
+                    <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tìm cân bằng riêng</h3>
+                    <p class="text-cream/80">Từ London đến Manchester, rồi Wales - hành trình tìm kiếm không chỉ là thành công kinh doanh mà còn là chất lượng cuộc sống.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="contact" class="py-16 md:py-24 bg-warmwhite">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-espresso mb-6">Bạn cũng đang trên hành trình F&B?</h2>
+            <p class="text-xl text-coffee mb-8 max-w-2xl mx-auto">Hãy để tôi chia sẻ những gì tôi đã học được qua 10+ năm - từ thất bại đến thành công. Có thể câu chuyện của tôi sẽ giúp bạn tránh được những sai lầm tôi đã mắc phải.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/culinary-consultation.html" class="inline-flex items-center justify-center gap-3 bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors">
+                    <span>Tư vấn dịch vụ</span>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100009102362568" target="_blank" class="inline-flex items-center justify-center gap-3 border-2 border-espresso text-espresso px-8 py-4 font-semibold hover:bg-espresso/5 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <span>Kết nối với Uyên</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-espresso border-t border-gold/20 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="/" class="text-2xl font-bold text-gold" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
+                <div class="flex gap-6 text-cream/60 text-sm">
+                    <a href="/" class="hover:text-white transition-colors">Trang chủ</a>
+                    <a href="/story.html" class="hover:text-white transition-colors">Câu chuyện</a>
+                    <a href="/blog.html" class="hover:text-white transition-colors">Blog</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Liên hệ</a>
+                </div>
+            </div>
+            <div class="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
+                <p>&copy; 2026 Uyên Nguyễn - F&B Journey</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
