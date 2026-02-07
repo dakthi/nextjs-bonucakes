@@ -51,6 +51,12 @@
                 <a href="/#courses" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Tư vấn" data-en="Services">Tư vấn</a>
                 <a href="/blog.html" class="text-cream/80 hover:text-white transition-colors hidden md:block">Blog</a>
                 <a href="/#contact" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+                <a href="/cart.html" class="relative text-white font-semibold transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-terracotta text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                </a>
                 <div class="flex bg-espresso border border-gold/30 rounded-full p-1">
                     <button onclick="setLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm text-cream/80 hover:text-white" id="btn-en">EN</button>
                     <button onclick="setLang('vi')" class="lang-btn px-3 py-1 rounded-full text-sm text-cream/80 hover:text-white active" id="btn-vi">VI</button>
@@ -211,35 +217,95 @@
             // Sort by sortOrder
             availableProducts.sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
 
-            grid.innerHTML = availableProducts.map(product => {
+            grid.innerHTML = availableProducts.map((product, index) => {
                 const name = product.name[currentLang] || product.name.vi;
                 const shortDesc = product.shortDescription[currentLang] || product.shortDescription.vi;
                 const promotion = product.promotion ? (product.promotion[currentLang] || product.promotion.vi) : '';
                 const image = product.images && product.images.length > 0 ? product.images[0] : '/placeholder-product.webp';
 
                 return `
-                    <a href="/banh-mi/product.html?slug=${product.slug}" class="flex flex-col bg-white border border-espresso/10 overflow-hidden hover-lift cursor-pointer">
-                        <div class="relative">
+                    <div class="flex flex-col bg-white border border-espresso/10 overflow-hidden hover-lift">
+                        <a href="/banh-mi/product.html?slug=${product.slug}" class="relative">
                             <img src="${image}" alt="${name}" class="w-full h-64 object-cover" onerror="this.src='/placeholder-product.webp'">
                             ${product.featured ? `<div class="absolute top-4 right-4 bg-gold text-espresso px-3 py-1 text-sm font-semibold">${currentLang === 'vi' ? 'Nổi bật' : 'Featured'}</div>` : ''}
                             ${promotion ? `<div class="absolute top-4 left-4 bg-terracotta text-white px-3 py-1 text-sm font-semibold">${promotion}</div>` : ''}
-                        </div>
+                        </a>
                         <div class="flex flex-col flex-grow p-6">
-                            <h3 class="text-2xl font-bold text-espresso mb-2">${name}</h3>
+                            <a href="/banh-mi/product.html?slug=${product.slug}">
+                                <h3 class="text-2xl font-bold text-espresso mb-2 hover:text-terracotta transition-colors">${name}</h3>
+                            </a>
                             <p class="text-coffee mb-4 flex-grow">${shortDesc}</p>
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="text-2xl font-bold text-terracotta">${product.price.displayPrice}</div>
+                            <div class="text-2xl font-bold text-terracotta mb-4">${product.price.displayPrice}</div>
+
+                            <!-- Quantity Controls -->
+                            <div class="flex items-center gap-3 mb-4">
+                                <button onclick="decreaseQuantity(${index})" class="w-10 h-10 border-2 border-espresso/20 hover:border-terracotta hover:bg-terracotta hover:text-white transition-all flex items-center justify-center font-bold text-lg">-</button>
+                                <input type="number" id="quantity-${index}" value="1" min="1" max="50" class="w-16 text-center text-lg font-semibold border-2 border-espresso/20 focus:border-terracotta focus:outline-none py-2" readonly>
+                                <button onclick="increaseQuantity(${index})" class="w-10 h-10 border-2 border-espresso/20 hover:border-terracotta hover:bg-terracotta hover:text-white transition-all flex items-center justify-center font-bold text-lg">+</button>
                             </div>
-                            <div class="block w-full text-center bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors">
-                                ${currentLang === 'vi' ? 'Xem chi tiết & Đặt hàng' : 'View Details & Order'}
-                            </div>
+
+                            <!-- Add to Cart Button -->
+                            <button onclick="addToCart('${product.id}', ${index})" class="w-full bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors mb-2" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">${currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart'}</button>
+
+                            <!-- View Details Link -->
+                            <a href="/banh-mi/product.html?slug=${product.slug}" class="block w-full text-center border border-espresso/20 text-espresso px-6 py-3 font-semibold hover:bg-espresso/5 transition-colors" data-vi="Xem chi tiết" data-en="View Details">${currentLang === 'vi' ? 'Xem chi tiết' : 'View Details'}</a>
                         </div>
-                    </a>
+                    </div>
                 `;
             }).join('');
 
             noProducts.classList.add('hidden');
         }
+
+        // Quantity controls
+        function increaseQuantity(index) {
+            const input = document.getElementById(`quantity-${index}`);
+            const currentValue = parseInt(input.value) || 1;
+            if (currentValue < 50) {
+                input.value = currentValue + 1;
+            }
+        }
+
+        function decreaseQuantity(index) {
+            const input = document.getElementById(`quantity-${index}`);
+            const currentValue = parseInt(input.value) || 1;
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        }
+
+        // Add to cart
+        function addToCart(productId, index) {
+            const quantity = parseInt(document.getElementById(`quantity-${index}`).value) || 1;
+            const product = productsData.products.find(p => p.id === productId);
+
+            if (product) {
+                Cart.addToCart(product, quantity);
+
+                // Reset quantity to 1
+                document.getElementById(`quantity-${index}`).value = 1;
+
+                // Show feedback (you could add a toast notification here)
+                alert(currentLang === 'vi' ? 'Đã thêm vào giỏ hàng!' : 'Added to cart!');
+            }
+        }
+
+        // Update cart badge
+        function updateCartBadge() {
+            const count = Cart.getCartCount();
+            const badge = document.getElementById('cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                if (count > 0) {
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+        }
+
+        // Listen for cart updates
+        window.addEventListener('cartUpdated', updateCartBadge);
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
@@ -255,7 +321,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             setLang(currentLang);
             loadProducts();
+            updateCartBadge();
         });
     </script>
+
+    <!-- Cart JS -->
+    <script src="/js/cart.js"></script>
 </body>
 </html>
