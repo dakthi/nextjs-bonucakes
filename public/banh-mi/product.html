@@ -103,12 +103,8 @@
 
                         <!-- Add to Cart Controls -->
                         <div class="bg-white border border-espresso/10 p-6 mb-4">
-                            <!-- Row 1: Price on left, CTA on right -->
-                            <div class="flex items-center justify-between gap-4">
-                                <div id="cart-price-group" class="flex items-baseline gap-2">
-                                    <span class="text-coffee text-sm" data-vi="Giá" data-en="Price">Giá</span>
-                                    <span class="text-3xl font-bold text-terracotta" id="cart-price-display">£9</span>
-                                </div>
+                            <!-- Row 1: Primary CTA only (price shown above already) -->
+                            <div class="flex items-center justify-end gap-4">
                                 <button onclick="addToCart()" class="bg-terracotta text-white px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg hover:bg-terracotta/90 transition-colors" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">Thêm vào giỏ hàng</button>
                             </div>
 
@@ -417,18 +413,15 @@
             const quantity = parseInt(document.getElementById('cart-quantity').value) || 1;
             const unitPrice = currentProduct.price.amount;
             const currency = currentProduct.price.currency;
-            const priceGroup = document.getElementById('cart-price-group');
-
-            if (!unitPrice || unitPrice <= 0) {
-                // Hide price group when no numeric price
-                if (priceGroup) priceGroup.classList.add('hidden');
-                return;
+            // Price is displayed in the main header; compact bar no longer shows price.
+            // Safe no-op to keep logic consistent when quantity changes.
+            if (!unitPrice || unitPrice <= 0) return;
+            // If in the future we re-add an inline total, guard DOM first.
+            const inlineEl = document.getElementById('cart-price-display');
+            if (inlineEl) {
+                const totalPrice = quantity * unitPrice;
+                inlineEl.textContent = currency === 'GBP' ? `£${totalPrice}` : `${totalPrice.toLocaleString()}₫`;
             }
-
-            if (priceGroup) priceGroup.classList.remove('hidden');
-            const totalPrice = quantity * unitPrice;
-            const totalDisplay = currency === 'GBP' ? `£${totalPrice}` : `${totalPrice.toLocaleString()}₫`;
-            document.getElementById('cart-price-display').textContent = totalDisplay;
         }
 
         // Add to cart
