@@ -134,7 +134,7 @@
         "en": "Beef balls made entirely in-house following standard procedures, no preservatives used. Very fresh and bouncy texture, suitable for families with children. Can be used for pho, hu tieu, or other dishes."
       },
       "images": [
-        "/images/products/bo-vien.webp"
+        "/images/products/bo-vien-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -200,7 +200,7 @@
         "en": "Chicken balls made entirely in-house following standard procedures, no preservatives used. Very fresh and bouncy texture, suitable for families with children. Can be used for pho, hu tieu, or other dishes."
       },
       "images": [
-        "/images/products/ga-vien.webp"
+        "/images/products/ga-vien-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -266,7 +266,7 @@
         "en": "Char siu marinated and roasted following traditional recipe. Can be eaten with noodles, rice, or bread. Separately packed for easy use."
       },
       "images": [
-        "/images/products/xa-xiu.webp"
+        "/images/products/xa-xiu-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -332,8 +332,8 @@
         "en": "Crispy skin roast duck, pre-cut for convenience. Reheat in oven or microwave. Includes exclusive recipe for duck noodle soup made from duck bones."
       },
       "images": [
-        "/images/products/vit-quay.webp",
-        "/images/products/vit-quay-2.webp"
+        "/images/products/vit-quay-v2.webp",
+        "/images/products/vit-quay-2-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -399,10 +399,10 @@
         "en": "Homemade pork nem lui, can be eaten with vermicelli, spring rolls, or simply with rice and fresh vegetables. Very convenient for nail shops or busy days - just grill or microwave."
       },
       "images": [
-        "/images/products/nem-lui.webp",
-        "/images/products/nem-lui-2.webp",
-        "/images/products/nem-lui-3.webp",
-        "/images/products/nem-lui-4.webp"
+        "/images/products/nem-lui-v2.webp",
+        "/images/products/nem-lui-2-v2.webp",
+        "/images/products/nem-lui-3-v2.webp",
+        "/images/products/nem-lui-4-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -470,7 +470,7 @@
         "en": "Traditional Vietnamese ham made in-house. Can be used for banh mi, eaten with rice, or in other dishes."
       },
       "images": [
-        "/images/products/cha-lua.webp"
+        "/images/products/cha-lua-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -534,7 +534,7 @@
         "en": "Homemade pork liver pate following traditional recipe. Can be used for banh mi or eaten with crackers."
       },
       "images": [
-        "/images/products/pate.webp"
+        "/images/products/pate-v2.webp"
       ],
       "price": {
         "amount": 0,
@@ -598,7 +598,7 @@
         "en": "Homemade cold cuts made in-house. Can be used for banh mi or eaten directly."
       },
       "images": [
-        "/images/products/thit-nguoi.webp"
+        "/images/products/thit-nguoi-v2.webp"
       ],
       "price": {
         "amount": 0,
