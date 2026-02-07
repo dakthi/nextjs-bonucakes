@@ -182,12 +182,12 @@
                 const name = product.name[currentLang] || product.name.vi;
                 const shortDesc = product.shortDescription[currentLang] || product.shortDescription.vi;
                 const promotion = product.promotion ? (product.promotion[currentLang] || product.promotion.vi) : '';
-                const image = product.images && product.images.length > 0 ? product.images[0] : '/img/profile.webp';
+                const image = product.images && product.images.length > 0 ? product.images[0] : '/placeholder-product.webp';
 
                 return `
                     <a href="/banh-mi/product.html?slug=${product.slug}" class="block bg-white border border-espresso/10 overflow-hidden hover-lift cursor-pointer">
                         <div class="relative">
-                            <img src="${image}" alt="${name}" class="w-full h-64 object-cover" onerror="this.src='/img/profile.webp'">
+                            <img src="${image}" alt="${name}" class="w-full h-64 object-cover" onerror="this.src='/placeholder-product.webp'">
                             ${product.featured ? `<div class="absolute top-4 right-4 bg-gold text-espresso px-3 py-1 text-sm font-semibold">${currentLang === 'vi' ? 'Nổi bật' : 'Featured'}</div>` : ''}
                             ${promotion ? `<div class="absolute top-4 left-4 bg-terracotta text-white px-3 py-1 text-sm font-semibold">${promotion}</div>` : ''}
                         </div>
