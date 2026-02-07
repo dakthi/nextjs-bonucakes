@@ -237,15 +237,8 @@
                             <p class="text-coffee mb-4 flex-grow">${shortDesc}</p>
                             <div class="text-2xl font-bold text-terracotta mb-4">${product.price.displayPrice}</div>
 
-                            <!-- Quantity Controls -->
-                            <div class="flex items-center gap-3 mb-4">
-                                <button onclick="decreaseQuantity(${index})" class="w-10 h-10 border-2 border-espresso/20 hover:border-terracotta hover:bg-terracotta hover:text-white transition-all flex items-center justify-center font-bold text-lg">-</button>
-                                <input type="number" id="quantity-${index}" value="1" min="1" max="50" class="w-16 text-center text-lg font-semibold border-2 border-espresso/20 focus:border-terracotta focus:outline-none py-2" readonly>
-                                <button onclick="increaseQuantity(${index})" class="w-10 h-10 border-2 border-espresso/20 hover:border-terracotta hover:bg-terracotta hover:text-white transition-all flex items-center justify-center font-bold text-lg">+</button>
-                            </div>
-
-                            <!-- Add to Cart Button -->
-                            <button onclick="addToCart('${product.id}', ${index})" class="w-full bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors mb-2" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">${currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart'}</button>
+                            <!-- Add to Cart Button (defaults to quantity 1) -->
+                            <button onclick="addToCart('${product.id}')" class="w-full bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors mb-2" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">${currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart'}</button>
 
                             <!-- View Details Link -->
                             <a href="/banh-mi/product.html?slug=${product.slug}" class="block w-full text-center border border-espresso/20 text-espresso px-6 py-3 font-semibold hover:bg-espresso/5 transition-colors" data-vi="Xem chi tiết" data-en="View Details">${currentLang === 'vi' ? 'Xem chi tiết' : 'View Details'}</a>
@@ -257,35 +250,11 @@
             noProducts.classList.add('hidden');
         }
 
-        // Quantity controls
-        function increaseQuantity(index) {
-            const input = document.getElementById(`quantity-${index}`);
-            const currentValue = parseInt(input.value) || 1;
-            if (currentValue < 50) {
-                input.value = currentValue + 1;
-            }
-        }
-
-        function decreaseQuantity(index) {
-            const input = document.getElementById(`quantity-${index}`);
-            const currentValue = parseInt(input.value) || 1;
-            if (currentValue > 1) {
-                input.value = currentValue - 1;
-            }
-        }
-
-        // Add to cart
-        function addToCart(productId, index) {
-            const quantity = parseInt(document.getElementById(`quantity-${index}`).value) || 1;
+        // Add to cart (default quantity 1)
+        function addToCart(productId) {
             const product = productsData.products.find(p => p.id === productId);
-
             if (product) {
-                Cart.addToCart(product, quantity);
-
-                // Reset quantity to 1
-                document.getElementById(`quantity-${index}`).value = 1;
-
-                // Show feedback (you could add a toast notification here)
+                Cart.addToCart(product, 1);
                 alert(currentLang === 'vi' ? 'Đã thêm vào giỏ hàng!' : 'Added to cart!');
             }
         }
