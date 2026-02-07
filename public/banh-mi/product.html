@@ -373,9 +373,6 @@
                 .map(line => `<p>${line}</p>`).join('');
             document.getElementById('assembly-text').innerHTML = assemblyHtml;
 
-            // Price display
-            document.getElementById('unit-price-display').textContent = currentProduct.price.displayPrice;
-
             // Initialize cart price display
             updatePriceDisplay();
         }
