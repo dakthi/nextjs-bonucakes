@@ -103,13 +103,14 @@
 
                         <!-- Add to Cart Controls -->
                         <div class="bg-white border border-espresso/10 p-6 mb-4">
-                            <!-- Row 1: Primary CTA only (price shown above already) -->
-                            <div class="flex items-center justify-end gap-4">
+                            <!-- Row 1: Top-left products link + primary CTA on right -->
+                            <div class="flex items-center justify-between gap-4">
+                                <a href="/products.html" class="text-coffee hover:text-espresso transition-colors text-sm" data-vi="Xem sản phẩm" data-en="View Products">Xem sản phẩm</a>
                                 <button onclick="addToCart()" class="bg-terracotta text-white px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg hover:bg-terracotta/90 transition-colors" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">Thêm vào giỏ hàng</button>
                             </div>
 
-                            <!-- Row 2: Quantity + promo on left, Continue link on right -->
-                            <div class="mt-4 flex items-center justify-between gap-4 flex-wrap">
+                            <!-- Row 2: Quantity + promo -->
+                            <div class="mt-4 flex items-center justify-start gap-4 flex-wrap">
                                 <div class="flex items-center gap-3 flex-wrap">
                                     <span class="text-coffee font-semibold" data-vi="Số lượng" data-en="Quantity">Số lượng</span>
                                     <div class="flex items-center gap-2">
@@ -119,7 +120,6 @@
                                     </div>
                                     <span class="text-xs text-coffee/80 bg-gold/10 border border-gold/30 px-2 py-1 rounded" id="promotion-hint" data-vi="Mua 10 tặng 1" data-en="Buy 10 get 1 free">Mua 10 tặng 1</span>
                                 </div>
-                                <a href="/products.html" class="text-coffee hover:text-espresso transition-colors text-sm whitespace-nowrap" data-vi="← Tiếp tục mua sắm" data-en="← Continue Shopping">← Tiếp tục mua sắm</a>
                             </div>
 
                             <!-- Success Message -->
