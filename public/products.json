@@ -515,7 +515,7 @@
         "en": "Orders placed today will be prepared and shipped tomorrow. You will receive your order the day after. Shipping via DPD or DHL."
       },
       "available": true,
-      "featured": false,
+      "featured": true,
       "sortOrder": 7
     },
     {
@@ -579,7 +579,7 @@
         "en": "Orders placed today will be prepared and shipped tomorrow. You will receive your order the day after. Shipping via DPD or DHL."
       },
       "available": true,
-      "featured": false,
+      "featured": true,
       "sortOrder": 8
     },
     {
