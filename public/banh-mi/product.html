@@ -352,9 +352,9 @@
                 const display = currentProduct.price.displayPrice || '';
                 const priceEl = document.getElementById('product-price');
                 const currencyEl = document.getElementById('product-currency');
-                const isBanhMi = currentProduct.slug === 'banh-mi-sai-gon-half-baked';
+                const isUnitDisplay = ['banh-mi-sai-gon-half-baked','cha-bong'].includes(currentProduct.slug);
 
-                if (isBanhMi && display) {
+                if (isUnitDisplay && display) {
                     priceEl.textContent = display;
                     currencyEl.textContent = '';
                 } else if (amount > 0) {

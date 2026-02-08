@@ -781,8 +781,8 @@
                     const amount = Number(p.price?.amount || 0);
                     const currency = p.price?.currency || 'GBP';
                     const display = p.price?.displayPrice || '';
-                    const isBanhMi = p.slug === 'banh-mi-sai-gon-half-baked';
-                    const priceText = (isBanhMi && display)
+                    const showDisplay = ['banh-mi-sai-gon-half-baked','cha-bong'].includes(p.slug);
+                    const priceText = (showDisplay && display)
                         ? display
                         : (amount > 0 ? (currency === 'GBP' ? `£${amount}` : `${amount.toLocaleString()}₫`) : (display || ''));
                     return `
