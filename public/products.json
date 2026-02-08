@@ -269,10 +269,10 @@
         "/images/products/xa-xiu-v2.webp"
       ],
       "price": {
-        "amount": 0,
+        "amount": 16,
         "currency": "GBP",
-        "displayPrice": "Liên hệ",
-        "displayPriceVi": "Liên hệ để biết giá"
+        "displayPrice": "£16 / 500g",
+        "displayPriceVi": "£16 / 500gr"
       },
       "ingredients": {
         "vi": [
