@@ -188,10 +188,9 @@
                                     const amount = Number(product.price.amount || 0);
                                     const currency = product.price.currency || 'GBP';
                                     const display = product.price.displayPrice || '';
-                                    const showDisplay = ['banh-mi-sai-gon-half-baked','cha-bong'].includes(product.slug);
-                                    if (showDisplay && display) return display;
+                                    if (display) return display;
                                     if (amount > 0) return currency === 'GBP' ? `£${amount}` : `${amount.toLocaleString()}₫`;
-                                    return display;
+                                    return '';
                                 })()}
                             </div>
 
