@@ -261,9 +261,15 @@
             }).join('');
 
             // Update totals
-            const totalCount = Cart.getCartCount();
-            const subtotal = Cart.getCartTotal();
-            const shipping = Cart.getShippingFee();
+            // Compute summary directly from current cart snapshot
+            const totalCount = cart.items.reduce((sum, it) => sum + Number(it.quantity || 0), 0);
+            const subtotal = cart.items.reduce((sum, it) => {
+                const qty = Number(it.quantity || 0);
+                let price = Number(it.unitPrice || 0);
+                if (!price || price <= 0) price = Cart.parseDisplayPrice(it.displayPrice || '');
+                return sum + (qty * (price || 0));
+            }, 0);
+            const shipping = cart.items.length > 0 ? Cart.SHIPPING_FEE : 0;
             const grand = subtotal + shipping;
             document.getElementById('checkout-count').textContent = `${totalCount} ${currentLang === 'vi' ? 'sản phẩm' : 'items'}`;
             document.getElementById('checkout-shipping').textContent = `£${shipping}`;
@@ -309,8 +315,7 @@
 
             const cart = Cart.getCart();
             const items = Cart.getCartForAPI();
-            const subtotal = Cart.getCartTotal();
-            const shippingFee = Cart.getShippingFee();
+            const shippingFee = Cart.SHIPPING_FEE;
             const grandTotal = subtotal + shippingFee;
 
             const orderData = {
