@@ -88,8 +88,8 @@
 
                             <div class="space-y-4 mb-6">
                                 <div class="flex justify-between text-coffee">
-                                    <span data-vi="Số lượng" data-en="Total Items">Số lượng</span>
-                                    <span id="summary-count">0</span>
+                                    <span data-vi="Thành tiền" data-en="Subtotal">Thành tiền</span>
+                                    <span id="summary-subtotal">£0</span>
                                 </div>
                                 <div class="flex justify-between text-coffee">
                                     <span data-vi="Phí giao hàng (Nội địa UK)" data-en="Shipping (UK Mainland)">Phí giao hàng (Nội địa UK)</span>
@@ -222,7 +222,6 @@
 
             // Update summary
             // Compute summary directly from current cart snapshot
-            const totalCount = cart.items.reduce((sum, it) => sum + Number(it.quantity || 0), 0);
             const subtotal = cart.items.reduce((sum, it) => {
                 const qty = Number(it.quantity || 0);
                 let price = Number(it.unitPrice || 0);
@@ -231,7 +230,7 @@
             }, 0);
             const shipping = cart.items.length > 0 ? Number((window.Cart && Cart.SHIPPING_FEE) || 8) : 0;
             const grand = subtotal + shipping;
-            document.getElementById('summary-count').textContent = `${totalCount} ${currentLang === 'vi' ? 'sản phẩm' : 'items'}`;
+            document.getElementById('summary-subtotal').textContent = `£${subtotal}`;
             document.getElementById('summary-shipping').textContent = `£${shipping}`;
             document.getElementById('summary-total').textContent = `£${grand}`;
 
