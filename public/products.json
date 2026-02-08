@@ -662,7 +662,8 @@
         "en": "Handmade pork floss using a traditional recipe. Light, fluffy strands with balanced seasoning. Great with rice, congee, sticky rice, or banh mi."
       },
       "images": [
-        "/placeholder-product.webp"
+        "/images/products/cha-bong-1.jpg",
+        "/images/products/cha-bong-2.jpg"
       ],
       "price": {
         "amount": 35,
