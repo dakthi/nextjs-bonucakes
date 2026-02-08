@@ -412,18 +412,6 @@
             document.getElementById('mentor-image').value = content.mentor?.image || '';
             document.getElementById('mentor-badges').value = (content.mentor?.badges || []).join(', ');
 
-            // DNA
-            populateBilingualField('dna', 'tagline');
-            document.getElementById('dna-title').value = content.dna?.title || '';
-            renderDnaSteps();
-
-            // Roadmap
-            populateBilingualField('roadmap', 'tagline');
-            populateBilingualField('roadmap', 'subtitle');
-            populateBilingualField('roadmap', 'ctaText');
-            document.getElementById('roadmap-title').value = content.roadmap?.title || '';
-            renderRoadmapPhases();
-
             // FAQ
             populateBilingualField('faq', 'title');
             renderFaqList();
@@ -433,9 +421,6 @@
             populateBilingualField('cta', 'title');
             populateBilingualField('cta', 'description');
             populateBilingualField('cta', 'buttonText');
-
-            // Stats
-            renderStats();
         }
 
         function populateBilingualField(section, field) {
@@ -479,22 +464,6 @@
                 badges: document.getElementById('mentor-badges').value.split(',').map(s => s.trim()).filter(Boolean)
             };
 
-            // DNA
-            content.dna = {
-                tagline: collectBilingual('dna', 'tagline'),
-                title: document.getElementById('dna-title').value,
-                steps: collectDnaSteps()
-            };
-
-            // Roadmap
-            content.roadmap = {
-                tagline: collectBilingual('roadmap', 'tagline'),
-                title: document.getElementById('roadmap-title').value,
-                subtitle: collectBilingual('roadmap', 'subtitle'),
-                ctaText: collectBilingual('roadmap', 'ctaText'),
-                phases: collectRoadmapPhases()
-            };
-
             // FAQ
             content.faq = {
                 title: collectBilingual('faq', 'title'),
@@ -508,9 +477,6 @@
                 description: collectBilingual('cta', 'description'),
                 buttonText: collectBilingual('cta', 'buttonText')
             };
-
-            // Stats
-            content.stats = collectStats();
         }
 
         function collectBilingual(section, field) {
