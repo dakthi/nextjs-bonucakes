@@ -25,8 +25,8 @@
       "price": {
         "amount": 9,
         "currency": "GBP",
-        "displayPrice": "£9",
-        "displayPriceVi": "£9"
+        "displayPrice": "£9 / ổ",
+        "displayPriceVi": "£9/ổ"
       },
       "promotion": {
         "vi": "Mua 10 tặng 1",
