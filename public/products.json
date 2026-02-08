@@ -338,7 +338,7 @@
       "price": {
         "amount": 32,
         "currency": "GBP",
-        "displayPrice": "£32",
+        "displayPrice": "£32 / con",
         "displayPriceVi": "£32 / con"
       },
       "ingredients": {
