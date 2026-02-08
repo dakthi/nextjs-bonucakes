@@ -275,7 +275,9 @@
                             <span id="upload-status" class="text-sm text-gray-500 self-center"></span>
                         </div>
                         <input type="text" id="post-image" class="w-full border p-3 rounded" placeholder="Image URL">
-                        <div id="image-preview" class="mt-2 hidden"><img id="preview-img" class="max-h-40 rounded border"></div>
+                        <div id="image-preview" class="mt-2 hidden">
+                            <img id="preview-img" class="max-h-40 rounded border" onerror="this.parentElement.classList.add('hidden')" onload="this.parentElement.classList.remove('hidden')">
+                        </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -731,7 +733,8 @@
                 document.getElementById('post-status').value = post.status;
                 document.getElementById('delete-btn').classList.remove('hidden');
                 if (post.image) {
-                    document.getElementById('preview-img').src = post.image;
+                    const imgUrl = post.image.startsWith('/') ? `https://raw.githubusercontent.com/${REPO}/main/public${post.image}` : post.image;
+                    document.getElementById('preview-img').src = imgUrl;
                     document.getElementById('image-preview').classList.remove('hidden');
                 } else {
                     document.getElementById('image-preview').classList.add('hidden');
