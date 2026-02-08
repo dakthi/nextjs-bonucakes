@@ -139,7 +139,7 @@
     </footer>
 
     <!-- Cart JS -->
-    <script src="/js/cart.js"></script>
+    <script src="./js/cart.js"></script>
     <script>
         let currentLang = localStorage.getItem('lang') || 'vi';
 
@@ -214,7 +214,12 @@
                             <div class="flex items-center gap-3">
                                 <button onclick="updateQuantity('${item.productId}', ${item.quantity - 1})" class="w-8 h-8 border border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold">-</button>
                                 <span class="w-12 text-center font-semibold">${item.quantity}</span>
-                                ${(() => { const u = currentLang === 'vi' ? (item.unitVi || Cart.parseDisplayUnit(item.displayPriceVi || item.displayPrice || '')) : (item.unitEn || Cart.parseDisplayUnit(item.displayPrice || item.displayPriceVi || '')); return u ? `<span class=\"text-sm text-coffee\">(${u})</span>` : ''; })()}
+                                ${(() => {
+                                    const u = currentLang === 'vi'
+                                        ? (item.unitVi || Cart.parseDisplayUnit(item.displayPriceVi || item.displayPrice || ''))
+                                        : (item.unitEn || Cart.parseDisplayUnit(item.displayPrice || item.displayPriceVi || ''));
+                                    return u ? ('<span class="text-sm text-coffee">(' + u + ')</span>') : '';
+                                })()}
                                 <button onclick="updateQuantity('${item.productId}', ${item.quantity + 1})" class="w-8 h-8 border border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold">+</button>
                                 <button onclick="removeItem('${item.productId}')" class="ml-auto text-terracotta hover:text-terracotta/80 text-sm font-semibold" data-vi="Xóa" data-en="Remove">${currentLang === 'vi' ? 'Xóa' : 'Remove'}</button>
                             </div>
