@@ -382,7 +382,7 @@
                 console.error('Order submission error:', error);
                 const errorMsg = error.message || 'Unknown error';
                 formError.textContent = currentLang === 'vi'
-                    ? `Có lỗi xảy ra: ${errorMsg}. Vui lòng thử lại hoặc liên hệ trực tiếp với chúng tôi.`
+                    ? `Có lỗi xảy ra: ${errorMsg}. Vui lòng thử lại hoặc liên hệ trực tiếp với Bếp Bà Bo.`
                     : `An error occurred: ${errorMsg}. Please try again or contact us directly.`;
                 formError.classList.add('active');
                 submitButton.disabled = false;
