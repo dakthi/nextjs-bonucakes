@@ -143,6 +143,13 @@
     <script>
         let currentLang = localStorage.getItem('lang') || 'vi';
 
+        // Fallback unit parser (avoids dependency on Cart.parseDisplayUnit at render time)
+        function parseUnit(text) {
+            if (!text || typeof text !== 'string') return '';
+            const m = text.match(/\/\s*(.+)$/);
+            return m ? m[1].trim() : '';
+        }
+
         // Language switcher
         function setLang(lang) {
             currentLang = lang;
@@ -202,7 +209,7 @@
                             <p class="text-terracotta font-semibold mb-2">
                                 ${(() => {
                                     const amount = Number(item.unitPrice || 0);
-                                    const unit = currentLang === 'vi' ? (item.unitVi || Cart.parseDisplayUnit(item.displayPriceVi || item.displayPrice || '')) : (item.unitEn || Cart.parseDisplayUnit(item.displayPrice || item.displayPriceVi || ''));
+                                    const unit = currentLang === 'vi' ? (item.unitVi || parseUnit(item.displayPriceVi || item.displayPrice || '')) : (item.unitEn || parseUnit(item.displayPrice || item.displayPriceVi || ''));
                                     if (amount > 0 && unit) return `£${amount} / ${unit}`;
                                     const localizedDisplay = currentLang === 'vi' ? (item.displayPriceVi || item.displayPrice) : (item.displayPrice || item.displayPriceVi);
                                     if (localizedDisplay) return `${localizedDisplay}`;
@@ -216,8 +223,8 @@
                                 <span class="w-12 text-center font-semibold">${item.quantity}</span>
                                 ${(() => {
                                     const u = currentLang === 'vi'
-                                        ? (item.unitVi || Cart.parseDisplayUnit(item.displayPriceVi || item.displayPrice || ''))
-                                        : (item.unitEn || Cart.parseDisplayUnit(item.displayPrice || item.displayPriceVi || ''));
+                                        ? (item.unitVi || parseUnit(item.displayPriceVi || item.displayPrice || ''))
+                                        : (item.unitEn || parseUnit(item.displayPrice || item.displayPriceVi || ''));
                                     return u ? ('<span class="text-sm text-coffee">(' + u + ')</span>') : '';
                                 })()}
                                 <button onclick="updateQuantity('${item.productId}', ${item.quantity + 1})" class="w-8 h-8 border border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold">+</button>
