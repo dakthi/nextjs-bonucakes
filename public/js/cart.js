@@ -40,12 +40,14 @@ const Cart = {
             existingItem.quantity += quantity;
         } else {
             // Add new item
+            const amount = Number(product.price.amount || 0);
+            const unitPrice = amount > 0 ? amount : this.parseDisplayPrice(product.price.displayPrice || '');
             cart.items.push({
                 productId: product.id,
                 productSlug: product.slug,
                 productName: product.name,
                 quantity: quantity,
-                unitPrice: product.price.amount,
+                unitPrice: unitPrice,
                 currency: product.price.currency,
                 displayPrice: product.price.displayPrice,
                 image: product.images && product.images.length > 0 ? product.images[0] : null
@@ -96,7 +98,13 @@ const Cart = {
     // Get merchandise subtotal
     getCartTotal() {
         const cart = this.getCart();
-        return cart.items.reduce((total, item) => total + (item.quantity * item.unitPrice), 0);
+        return cart.items.reduce((total, item) => {
+            const qty = Number(item.quantity || 0);
+            let price = Number(item.unitPrice || 0);
+            if (!price || price <= 0) price = this.parseDisplayPrice(item.displayPrice || '');
+            if (!price || !qty) return total;
+            return total + (qty * price);
+        }, 0);
     },
 
     // Flat shipping fee per order (applies if cart has items)
@@ -107,7 +115,9 @@ const Cart = {
 
     // Grand total = subtotal + shipping
     getGrandTotal() {
-        return this.getCartTotal() + this.getShippingFee();
+        const sub = this.getCartTotal();
+        const ship = this.getShippingFee();
+        return sub + ship;
     },
 
     // Utility: parse number from display price like "£15 / 500gr"
