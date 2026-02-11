@@ -154,18 +154,18 @@
                 return;
             }
 
-            // Filter available products
-            const availableProducts = productsData.products.filter(p => p.available);
+            // Show all products (available and unavailable)
+            const allProducts = productsData.products.slice();
 
-            if (availableProducts.length === 0) {
+            if (allProducts.length === 0) {
                 noProducts.classList.remove('hidden');
                 return;
             }
 
             // Sort by sortOrder
-            availableProducts.sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
+            allProducts.sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
 
-            grid.innerHTML = availableProducts.map((product, index) => {
+            grid.innerHTML = allProducts.map((product, index) => {
                 const name = product.name[currentLang] || product.name.vi;
                 const shortDesc = product.shortDescription[currentLang] || product.shortDescription.vi;
                 const promotion = product.promotion ? (product.promotion[currentLang] || product.promotion.vi) : '';
@@ -176,7 +176,8 @@
                         <a href="/banh-mi/product.html?slug=${product.slug}" class="relative">
                             <img src="${image}" alt="${name}" class="w-full h-64 object-cover" onerror="this.src='/placeholder-product.webp'">
                             ${product.featured ? `<div class="absolute top-4 right-4 bg-gold text-espresso px-3 py-1 text-sm font-semibold">${currentLang === 'vi' ? 'Nổi bật' : 'Featured'}</div>` : ''}
-                            ${promotion ? `<div class="absolute top-4 left-4 bg-terracotta text-white px-3 py-1 text-sm font-semibold">${promotion}</div>` : ''}
+                            ${promotion && product.available ? `<div class="absolute top-4 left-4 bg-terracotta text-white px-3 py-1 text-sm font-semibold">${promotion}</div>` : ''}
+                            ${!product.available ? `<div class="absolute bottom-4 right-4 bg-gray-800 text-white px-3 py-1 text-sm font-semibold">${currentLang === 'vi' ? 'Hết hàng' : 'Out of stock'}</div>` : ''}
                         </a>
                         <div class="flex flex-col flex-grow p-6">
                             <a href="/banh-mi/product.html?slug=${product.slug}">
@@ -200,7 +201,9 @@
                             </div>
 
                             <!-- Add to Cart Button (defaults to quantity 1) -->
-                            <button onclick="addToCart('${product.id}')" class="w-full bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors mb-2" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">${currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart'}</button>
+                            ${product.available
+                                ? `<button onclick="addToCart('${product.id}')" class="w-full bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors mb-2" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">${currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart'}</button>`
+                                : `<button disabled class="w-full bg-gray-300 text-espresso px-6 py-3 font-semibold opacity-60 cursor-not-allowed mb-2">${currentLang === 'vi' ? 'Tạm hết hàng' : 'Out of stock'}</button>`}
 
                             <!-- View Details Link -->
                             <a href="/banh-mi/product.html?slug=${product.slug}" class="block w-full text-center border border-espresso/20 text-espresso px-6 py-3 font-semibold hover:bg-espresso/5 transition-colors" data-vi="Chi tiết" data-en="View Details">${currentLang === 'vi' ? 'Chi tiết' : 'View Details'}</a>
@@ -216,6 +219,10 @@
         function addToCart(productId) {
             const product = productsData.products.find(p => p.id === productId);
             if (product) {
+                if (!product.available) {
+                    alert(currentLang === 'vi' ? 'Sản phẩm tạm hết hàng.' : 'Item is out of stock.');
+                    return;
+                }
                 Cart.addToCart(product, 1);
                 alert(currentLang === 'vi' ? 'Đã thêm vào giỏ hàng!' : 'Added to cart!');
             }
