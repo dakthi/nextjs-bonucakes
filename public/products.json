@@ -316,7 +316,7 @@
         "vi": "Đơn hàng trong ngày sẽ được chế biến và gửi vào ngày hôm sau. Bạn sẽ nhận hàng vào ngày kế tiếp. Bếp Bà Bo giao hàng qua DPD hoặc DHL.",
         "en": "Orders placed today will be prepared and shipped tomorrow. You will receive your order the day after. Shipping via DPD or DHL."
       },
-      "available": true,
+      "available": false,
       "featured": true,
       "sortOrder": 4
     },
@@ -716,7 +716,7 @@
         "vi": "Đóng gói cẩn thận, giao nhanh qua DPD/DHL.",
         "en": "Carefully packed, fast delivery via DPD/DHL."
       },
-      "available": true,
+      "available": false,
       "featured": false,
       "sortOrder": 10
     }
