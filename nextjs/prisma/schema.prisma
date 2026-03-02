@@ -741,6 +741,41 @@ model SocialPost {
 }
 
 // ============================================================================
+// Events Management
+// ============================================================================
+
+model Event {
+  id                Int      @id @default(autoincrement())
+  titleVi           String   @map("title_vi")
+  titleEn           String   @map("title_en")
+  descriptionVi     String   @db.Text @map("description_vi")
+  descriptionEn     String   @db.Text @map("description_en")
+  slug              String   @unique
+  image             String?
+  eventDate         DateTime @map("event_date")
+  eventTime         String?  @map("event_time")
+  locationVi        String?  @map("location_vi")
+  locationEn        String?  @map("location_en")
+  addressVi         String?  @db.Text @map("address_vi")
+  addressEn         String?  @db.Text @map("address_en")
+  maxAttendees      Int?     @map("max_attendees")
+  currentAttendees  Int      @default(0) @map("current_attendees")
+  price             Decimal? @db.Decimal(10, 2)
+  category          String?
+  featured          Boolean  @default(false)
+  published         Boolean  @default(false)
+  registrationUrl   String?  @map("registration_url")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  @@index([eventDate])
+  @@index([published])
+  @@index([featured])
+  @@index([slug])
+  @@map("events")
+}
+
+// ============================================================================
 // Newsletter & Contact
 // ============================================================================
 
