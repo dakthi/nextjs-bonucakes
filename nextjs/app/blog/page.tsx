@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import BlogCard, { BlogPost } from '@/components/BlogCard';
@@ -112,7 +112,8 @@ const mockPosts: BlogPost[] = [
 
 const POSTS_PER_PAGE = 12;
 
-export default function BlogPage() {
+// Component that uses search params - must be wrapped in Suspense
+function BlogContent() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -250,5 +251,18 @@ export default function BlogPage() {
         </div>
       </footer>
     </>
+  );
+}
+
+// Main page component with Suspense boundary
+export default function BlogPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-cream flex items-center justify-center">
+        <div className="text-espresso">Loading...</div>
+      </div>
+    }>
+      <BlogContent />
+    </Suspense>
   );
 }
