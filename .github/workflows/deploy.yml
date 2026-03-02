@@ -1,21 +1,69 @@
-name: Deploy to VPS
+name: Build and Deploy Bonucakes Next.js
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    defaults:
+      run:
+        working-directory: ./nextjs
 
-      - name: Deploy to VPS
-        uses: appleboy/scp-action@v0.1.7
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          host: 178.128.41.146
-          username: root
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'nextjs/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker buildx build --platform linux/amd64 -t bonucakes:latest --load .
+
+      - name: Save Docker image to tar.gz
+        run: docker save bonucakes:latest | gzip > bonucakes.tar.gz
+
+      - name: Copy image to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "public/*"
-          target: "/var/www/bonu"
+          source: "nextjs/bonucakes.tar.gz"
+          target: "/root/docker-images/bonucakes/"
           strip_components: 1
+
+      - name: Copy deployment files to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "nextjs/deploy-bonucakes.sh,nextjs/docker-compose.yml"
+          target: "/root/docker-images/bonucakes/"
+          strip_components: 1
+
+      - name: Deploy on VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            chmod +x /root/docker-images/bonucakes/deploy-bonucakes.sh
+            /root/docker-images/bonucakes/deploy-bonucakes.sh
