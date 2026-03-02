@@ -20,13 +20,29 @@ async function createAdmin() {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
 
+    // Find or create admin role
+    let adminRole = await prisma.role.findUnique({
+      where: { name: 'admin' }
+    })
+
+    if (!adminRole) {
+      adminRole = await prisma.role.create({
+        data: {
+          name: 'admin',
+          description: 'Administrator with full access'
+        }
+      })
+    }
+
     // Create admin user
     const admin = await prisma.user.create({
       data: {
         email,
         name,
         password: hashedPassword,
-        role: 'admin',
+        role: {
+          connect: { id: adminRole.id }
+        },
         active: true,
       }
     })
