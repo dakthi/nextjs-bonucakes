@@ -1,0 +1,449 @@
+{
+  "settings": {
+    "siteTitle": "F&B Business mentor - Nguyễn Ngọc Minh Uyên",
+    "siteDescription": "Xây dựng sự nghiệp F&B từ chuyên môn độc lập, tự chủ, bền vững.",
+    "favicon": "https://thielts.chartedconsultants.com/bonu/profile.webp",
+    "facebook": "https://www.facebook.com/profile.php?id=100009102362568",
+    "instagram": "",
+    "footerText": "© 2026 Uyên Nguyễn - F&B business mentor"
+  },
+  "hero": {
+    "tagline": {
+      "vi": "F&B Business Design",
+      "en": "F&B Business Design"
+    },
+    "title": {
+      "vi": "Xây dựng sự nghiệp F&B từ<br>chuyên môn độc lập<br>tự chủ, bền vững.",
+      "en": "Build your F&B career from<br>independent expertise.<br>Sustainable, self-directed."
+    },
+    "subtitle": {
+      "vi": "Không mơ hồ về bản sắc. Không kiệt sức khi tăng trưởng.",
+      "en": "No confusion about identity. No burnout while growing."
+    },
+    "description": {
+      "vi": "Hệ điều hành toàn diện giúp bạn chuyển hóa chuyên môn F&B thành tài sản thực sự.",
+      "en": "A comprehensive operating system to transform your F&B expertise into real assets."
+    },
+    "ctaPrimary": {
+      "vi": "Khám phá lộ trình",
+      "en": "Explore the roadmap"
+    },
+    "ctaSecondary": {
+      "vi": "Liên hệ tư vấn",
+      "en": "Contact for consultation"
+    },
+    "backgroundVideo": "https://thielts.chartedconsultants.com/bonu/hero-bg.mp4"
+  },
+  "stats": [
+    {
+      "value": "10+",
+      "label": {
+        "vi": "Năm kinh nghiệm",
+        "en": "Years of experience"
+      }
+    },
+    {
+      "value": "5+",
+      "label": {
+        "vi": "Nhà hàng đã mở",
+        "en": "Restaurants opened"
+      }
+    },
+    {
+      "value": "500+",
+      "label": {
+        "vi": "Giờ tư vấn",
+        "en": "Consulting hours"
+      }
+    },
+    {
+      "value": "50+",
+      "label": {
+        "vi": "Khách hàng",
+        "en": "Clients served"
+      }
+    },
+    {
+      "value": "1",
+      "label": {
+        "vi": "Bằng Le Cordon Bleu",
+        "en": "Le Cordon Bleu degree"
+      }
+    },
+    {
+      "value": "UK",
+      "label": {
+        "vi": "Tại Wales, Anh",
+        "en": "Based in Wales"
+      }
+    }
+  ],
+  "mentor": {
+    "tagline": {
+      "vi": "Mở quán nhỏ tại UK – Tránh những sai lầm đắt giá",
+      "en": "No shortcuts. Just real guidance for small F&B businesses."
+    },
+    "name": "Nguyễn Ngọc Minh Uyên",
+    "greeting": {
+      "vi": "Chào bạn,<br>mình là",
+      "en": "Hello,<br>I'm"
+    },
+    "bio1": {
+      "vi": "Mình đã từng bắt đầu mà không biết mình đang thiếu điều gì.\nMình đã từng trả giá vì những sai lầm rất nhỏ nhưng rất đắt.\nMình đã đi qua hành trình hơn 10 năm trong ngành F&B, từ phụ bếp đến chủ nhà hàng. Mình đã trải qua niềm vui của những đêm đông khách và nỗi đau của việc đóng cửa nhà hàng.\n\nVì vậy, mình không hứa hẹn những con đường nhanh hay kết quả hào nhoáng.\nỞ đây để giúp bạn bắt đầu đúng thứ tự, tránh những bước mù mờ,\nvà xây một mô hình F&B nhỏ có thể sống được trong đời thực.",
+      "en": "I once started without knowing what I was missing.\nI’ve paid for very small mistakes and the cost was never small.\n\nI’ve spent over ten years in the F&B industry, moving from a kitchen porter to a restaurant owner. I’ve experienced the joy of fully booked nights, and the pain of shutting down a restaurant.\n\nThat’s why I don’t promise shortcuts or glamorous outcomes.\nI’m here to help you start in the right order, avoid unnecessary confusion,\nand build a small F&B model that can actually survive in the real world."
+    },
+    "bio2": {
+      "vi": "Hiện tại, mình đang trực tiếp điều hành nhà hàng Memoire Saigon tại Wales.\n\nMình không tự hào vì những con số, mà vì những gì mình đã học được sau từng va vấp. Có những bài học chỉ đến khi bạn thật sự trả giá, thật sự ngã, rồi tự mình đứng dậy và đi tiếp.\n\nNhững trải nghiệm đó định hình cách mình làm nghề hôm nay chậm hơn, chắc hơn, và thực tế hơn.\n",
+      "en": "At present, I’m directly involved in running Memoire Saigon restaurant in Wales.\n\nWhat matters most to me isn’t the numbers, but the lessons earned through experience. Some lessons only come through setbacks when you fall, take responsibility for the outcome, and find your way forward with clarity and resilience."
+    },
+    "image": "https://thielts.chartedconsultants.com/bonu/profile.webp",
+    "badges": [
+      "Le Cordon Bleu",
+      "F&B business mentor"
+    ]
+  },
+  "dna": {
+    "tagline": {
+      "vi": "Tuyên ngôn sống & làm nghề",
+      "en": "Philosophy"
+    },
+    "title": "The F&B Expert DNA",
+    "steps": [
+      {
+        "title": {
+          "vi": "Học chuyên môn",
+          "en": "Learn deeply"
+        },
+        "description": {
+          "vi": "Đầu tư nghiêm túc vào chuyên môn",
+          "en": "Invest seriously in expertise"
+        }
+      },
+      {
+        "title": {
+          "vi": "Thực hành",
+          "en": "Apply & practice"
+        },
+        "description": {
+          "vi": "Áp dụng chuyên môn ở quy mô nhỏ",
+          "en": "Apply expertise at small scale"
+        }
+      },
+      {
+        "title": {
+          "vi": "Chia sẻ",
+          "en": "Share value"
+        },
+        "description": {
+          "vi": "Cho đi giá trị trước khi bán",
+          "en": "Give value before selling"
+        }
+      },
+      {
+        "title": {
+          "vi": "Hệ thống hóa",
+          "en": "Systemize"
+        },
+        "description": {
+          "vi": "Đóng gói kiến thức thành sản phẩm",
+          "en": "Package knowledge into products"
+        }
+      },
+      {
+        "title": {
+          "vi": "Thu nhập bền vững",
+          "en": "Sustainable income"
+        },
+        "description": {
+          "vi": "Sống tự chủ, sự nghiệp bền vững",
+          "en": "Live freely, career sustainably"
+        }
+      }
+    ]
+  },
+  "roadmap": {
+    "tagline": {
+      "vi": "Lộ trình F&B Expert",
+      "en": "Roadmap"
+    },
+    "title": "F&B Expert OS Stack",
+    "subtitle": {
+      "vi": "Bản đồ chiến lược giúp bạn tìm đúng thứ mình cần, đi đúng hướng, đúng thời điểm.",
+      "en": "Strategic map to help you find what you need, go the right direction, at the right time."
+    },
+    "ctaText": {
+      "vi": "Đặt lịch tư vấn lộ trình",
+      "en": "Book a roadmap consultation"
+    },
+    "phases": [
+      {
+        "number": "1",
+        "color": "terracotta",
+        "title": {
+          "vi": "Khám phá & làm quen",
+          "en": "Discovery & Familiarization"
+        },
+        "subtitle": {
+          "vi": "Nếu bạn mới tìm hiểu, chưa muốn cam kết lớn",
+          "en": "If you're new, not ready for big commitments"
+        },
+        "requirements": {
+          "vi": "Tư duy mở, sẵn sàng tiếp cận cách thức xây dựng sự nghiệp độc lập dựa trên năng lực thực tế.",
+          "en": "Open mindset, ready to approach independent career building based on real capabilities."
+        },
+        "value": {
+          "vi": "Hiểu rõ lộ trình phát triển bền vững, tránh lãng phí thời gian vào các mô hình kinh doanh thiếu chiều sâu.",
+          "en": "Understand sustainable development roadmap, avoid wasting time on shallow business models."
+        }
+      },
+      {
+        "number": "2",
+        "color": "gold",
+        "title": {
+          "vi": "Bản sắc & ngách",
+          "en": "Identity & Niche"
+        },
+        "subtitle": {
+          "vi": "Nếu bạn muốn xác định bản sắc & ngách",
+          "en": "If you want to define your identity & niche"
+        },
+        "requirements": {
+          "vi": "Trung thực với năng lực bản thân, dám lựa chọn thị trường ngách để tạo dựng vị thế riêng.",
+          "en": "Honest about your capabilities, willing to choose a niche market to establish a unique position."
+        },
+        "value": {
+          "vi": "Sở hữu bản đồ định vị độc bản, thoát khỏi sự cạnh tranh đại trà.",
+          "en": "Own a unique positioning map, escape mass competition."
+        }
+      },
+      {
+        "number": "3",
+        "color": "espresso",
+        "title": {
+          "vi": "Uy tín & nội dung",
+          "en": "Credibility & Content"
+        },
+        "subtitle": {
+          "vi": "Nếu bạn muốn xây uy tín & nội dung thu hút",
+          "en": "If you want to build credibility & attractive content"
+        },
+        "requirements": {
+          "vi": "Cam kết chia sẻ giá trị thực, chấp nhận quá trình xây dựng niềm tin từ tệp khán giả chất lượng.",
+          "en": "Committed to sharing real value, accepting the process of building trust from quality audience."
+        },
+        "value": {
+          "vi": "Xây dựng tiếng nói chuyên gia, thu hút cơ hội hợp tác tự nhiên.",
+          "en": "Build expert authority, attract natural collaboration opportunities."
+        }
+      },
+      {
+        "number": "4",
+        "color": "terracotta",
+        "title": {
+          "vi": "Tạo dòng tiền",
+          "en": "Monetization"
+        },
+        "subtitle": {
+          "vi": "Nếu bạn muốn ra tiền từ sản phẩm tri thức",
+          "en": "If you want to earn from knowledge products"
+        },
+        "requirements": {
+          "vi": "Có chuyên môn sâu, sẵn sàng đóng gói giá trị thành giải pháp thực tế cho khách hàng.",
+          "en": "Have deep expertise, ready to package value into practical solutions for customers."
+        },
+        "value": {
+          "vi": "Sở hữu hệ thống sản phẩm dịch vụ chuẩn chỉnh và dòng tiền từ chính tri thức của mình.",
+          "en": "Own a standard product/service system and cash flow from your own knowledge."
+        }
+      }
+    ]
+  },
+  "faq": {
+    "title": {
+      "vi": "Câu hỏi thường gặp",
+      "en": "Frequently asked questions"
+    },
+    "items": [
+      {
+        "question": {
+          "vi": "Tư vấn công thức có phù hợp với nguyên liệu tại địa phương tôi không?",
+          "en": "Will the recipe consultation work with my local ingredients?"
+        },
+        "answer": {
+          "vi": "Có. Bạn chụp ảnh nguyên liệu có sẵn tại địa phương và gửi cho mình. Mình sẽ điều chỉnh công thức cho phù hợp với nguyên liệu đó. Cam kết làm một phát ăn ngay, hoặc hoàn tiền.",
+          "en": "Yes. You send photos of your local ingredients. I'll adjust the recipe to work with what you have. Success on first try guaranteed, or money back."
+        }
+      },
+      {
+        "question": {
+          "vi": "Tại sao nên chọn tư vấn từ Uyên thay vì học từ YouTube?",
+          "en": "Why choose Uyên's consultation instead of learning from YouTube?"
+        },
+        "answer": {
+          "vi": "YouTube cho kiến thức chung. Tư vấn từ mình cho công thức cụ thể đã được test và điều chỉnh cho chính nguyên liệu của bạn. Mình có 10+ năm kinh nghiệm thực chiến, từ thất bại đến Best Bánh Mì in Manchester. Mình biết những sai lầm phải tránh.",
+          "en": "YouTube gives general knowledge. My consultation gives you specific, tested recipes adjusted for YOUR ingredients. I have 10+ years real experience, from failures to Best Bánh Mì in Manchester. I know what mistakes to avoid."
+        }
+      },
+      {
+        "question": {
+          "vi": "Tôi chưa có kinh nghiệm F&B, có thể học được không?",
+          "en": "I have no F&B experience, can I still learn?"
+        },
+        "answer": {
+          "vi": "Được. Chương trình Mastery được thiết kế để bạn làm chủ món từ đầu, kể cả khi chưa có kinh nghiệm. Công thức đơn giản, rõ ràng, và mình sẽ hướng dẫn chi tiết từng bước.",
+          "en": "Yes. The Mastery programs are designed for you to master dishes from scratch, even with no experience. Recipes are simple, clear, and I guide you step by step."
+        }
+      },
+      {
+        "question": {
+          "vi": "Làm sao biết công thức có phù hợp với thị trường UK không?",
+          "en": "How do I know the recipes work for the UK market?"
+        },
+        "answer": {
+          "vi": "Mình đã vận hành F&B tại London, Manchester, và Wales suốt 10+ năm. Công thức đã được test với nguyên liệu UK, khẩu vị địa phương, và yêu cầu về Food Safety. Wow Banh Mi được bình chọn Best Bánh Mì in Manchester chính là minh chứng.",
+          "en": "I've run F&B in London, Manchester, and Wales for 10+ years. Recipes are tested with UK ingredients, local taste preferences, and Food Safety requirements. Wow Banh Mi being voted Best Bánh Mì in Manchester is proof."
+        }
+      },
+      {
+        "question": {
+          "vi": "Sau khi học xong, tôi có được hỗ trợ thêm không?",
+          "en": "Do I get ongoing support after the program?"
+        },
+        "answer": {
+          "vi": "Có. Bạn có thể liên hệ mình nếu gặp vấn đề khi thực hành công thức. Mình cam kết hỗ trợ đến khi bạn làm được món ngon và ổn định.",
+          "en": "Yes. You can contact me if you face issues when practicing the recipes. I'm committed to supporting you until you can make consistently good dishes."
+        }
+      }
+    ]
+  },
+  "courses": {
+    "tagline": {
+      "vi": "Dịch vụ & Khóa học",
+      "en": "Services & Courses"
+    },
+    "title": {
+      "vi": "Dịch vụ tư vấn & Đào tạo F&B",
+      "en": "F&B Consulting & Training Services"
+    },
+    "subtitle": {
+      "vi": "Tư vấn công thức ẩm thực độc quyền 1-1. Cam kết thành công ngay lần đầu hoặc hoàn tiền.",
+      "en": "Premium 1-1 culinary recipe consultation. Success on first try or money back guarantee."
+    },
+    "featuredWorkshop": {
+      "enabled": false
+    },
+    "items": [
+      {
+        "id": "premium-recipe-consultation",
+        "title": {
+          "vi": "Tư vấn công thức độc quyền 1-1",
+          "en": "Premium 1-1 Recipe Consultation"
+        },
+        "description": {
+          "vi": "Nhận công thức đã được test và tối ưu hóa cho nguyên liệu tại địa phương của bạn. Chụp ảnh nguyên liệu , Nhận công thức chuẩn chỉnh , Làm một phát ăn ngay. Cam kết hoàn tiền nếu không thành công.",
+          "en": "Receive tested and optimized recipes for your local ingredients. Send ingredient photos , Get precise formula , Success on first try. Money-back guarantee."
+        },
+        "image": "",
+        "price": "Liên hệ",
+        "duration": {
+          "vi": "Trọn gói",
+          "en": "Full package"
+        },
+        "level": {
+          "vi": "Signature",
+          "en": "Signature"
+        },
+        "slug": "premium-recipe-consultation"
+      },
+      {
+        "id": "vietnamese-food-mastery",
+        "title": {
+          "vi": "Chương trình Mastery Món Việt",
+          "en": "Vietnamese Food Mastery Program"
+        },
+        "description": {
+          "vi": "Học làm chủ các món đặc trưng Việt Nam: Bánh mì (pate, thịt nguội, chả), Phở, và các món Việt truyền thống. Công thức được điều chỉnh cho bất kỳ địa điểm nào trên thế giới. Bao ngon, không ngon hoàn tiền.",
+          "en": "Master signature Vietnamese dishes: Banh Mi (pate, cold cuts, cha), Pho, and traditional Vietnamese dishes. Recipes adapted for anywhere in the world. Quality guaranteed or money back."
+        },
+        "image": "",
+        "price": "Liên hệ",
+        "duration": {
+          "vi": "Theo nhu cầu",
+          "en": "Customized"
+        },
+        "level": {
+          "vi": "Signature",
+          "en": "Signature"
+        },
+        "slug": "vietnamese-food-mastery"
+      },
+      {
+        "id": "milk-tea-program",
+        "title": {
+          "vi": "Chương trình Trà sữa độc quyền",
+          "en": "Milk Tea Signature Program"
+        },
+        "description": {
+          "vi": "Thiết kế menu trà sữa độc bản cho quán bạn: nền công thức vững, syrup/topping chuẩn, mix‑flavor tạo vị riêng. Kinh nghiệm thực chiến từ Trung Quốc, Thượng Hải, Đài Loan và chuỗi Nhật.",
+          "en": "Design a unique milk tea menu for your shop: solid base recipes, proper syrups/toppings, and signature flavor design. Hands‑on experience from China (Shanghai), Taiwan, and Japanese chains."
+        },
+        "image": "",
+        "price": "Liên hệ",
+        "duration": {
+          "vi": "Theo nhu cầu",
+          "en": "Customized"
+        },
+        "level": {
+          "vi": "Signature",
+          "en": "Signature"
+        },
+        "slug": "milk-tea-program"
+      },
+      {
+        "id": "salted-egg-sponge-cake",
+        "title": {
+          "vi": "Bông lan trứng muối - Công thức đặc trưng",
+          "en": "Salted Egg Sponge Cake - Signature Recipe"
+        },
+        "description": {
+          "vi": "Công thức nổi tiếng được duy trì suốt 10+ năm với chất lượng ổn định. Tan trong miệng, để qua đêm vẫn mềm mịn không xẹp. Tự nghiên cứu và hoàn thiện qua hàng trăm lần thử nghiệm, sau đó nâng cấp với nguyên liệu 5 sao từ khách sạn Pháp.",
+          "en": "Famous recipe maintained for 10+ years with consistent quality. Melts in mouth, stays soft overnight. Self-developed and perfected through hundreds of tests, upgraded with 5-star ingredients from French hotels."
+        },
+        "image": "",
+        "price": "Liên hệ",
+        "duration": {
+          "vi": "Công thức trọn đời",
+          "en": "Lifetime formula"
+        },
+        "level": {
+          "vi": "Signature",
+          "en": "Signature"
+        },
+        "slug": "salted-egg-sponge-cake"
+      }
+    ],
+    "ctaText": {
+      "vi": "Chi tiết",
+      "en": "Details"
+    },
+    "ctaLink": "/culinary-consultation.html"
+  },
+  "cta": {
+    "tagline": {
+      "vi": "Bắt đầu ngay",
+      "en": "Get started"
+    },
+    "title": {
+      "vi": "Sẵn sàng chuyển đổi hành trình F&B của bạn?",
+      "en": "Ready to transform your F&B journey?"
+    },
+    "description": {
+      "vi": "Liên hệ với mình để thảo luận về nơi bạn đang ở, nơi bạn muốn đến, và cách chúng ta cùng đến đó.",
+      "en": "Contact me to discuss where you are, where you want to go, and how we'll get there together."
+    },
+    "buttonText": {
+      "vi": "Nhắn tin cho Uyên",
+      "en": "Message Uyen on Facebook"
+    }
+  }
+}

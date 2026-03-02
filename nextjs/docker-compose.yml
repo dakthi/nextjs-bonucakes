@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  app:
+    image: bonucakes:latest
+    container_name: nextjs_bonucakes
+    ports:
+      - "127.0.0.1:3006:3000"
+    env_file:
+      - .env.bonucakes
+    depends_on:
+      - db
+    networks:
+      - bonucakes_network
+
+  db:
+    image: postgres:14
+    container_name: bonucakes_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: bonucakes_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: bonucakes_db
+      UPLOAD_PATH: /app/uploads/
+    volumes:
+      - /var/lib/bonucakes_pgdata:/var/lib/postgresql/data
+      - ./uploads:/app/uploads
+    networks:
+      - bonucakes_network
+
+networks:
+  bonucakes_network:

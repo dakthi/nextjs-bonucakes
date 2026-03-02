@@ -1,0 +1,775 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// Authentication & Authorization Models (NextAuth compatible)
+// ============================================================================
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  lastActivity DateTime @default(now()) @map("last_activity")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  password      String?
+  image         String?
+  active        Boolean   @default(true)
+  lastLogin     DateTime? @map("last_login")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  roleId        String?   @map("role_id")
+  accounts      Account[]
+  authLogs      AuthLog[]
+  sessions      Session[]
+  role          Role?     @relation(fields: [roleId], references: [id])
+  orders        Order[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Role {
+  id          String       @id @default(cuid())
+  name        String       @unique
+  description String?
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  users       User[]
+  permissions Permission[] @relation("PermissionToRole")
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  resource    String
+  action      String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  roles       Role[]   @relation("PermissionToRole")
+
+  @@unique([resource, action])
+  @@map("permissions")
+}
+
+model AuthLog {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  action    String
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  success   Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("auth_logs")
+}
+
+// ============================================================================
+// Product Models (F&B Products - Multilingual)
+// ============================================================================
+
+model Product {
+  id                    Int                   @id @default(autoincrement())
+  // Vietnamese fields
+  nameVi                String                @map("name_vi")
+  descriptionVi         String                @db.Text @map("description_vi")
+  shortDescriptionVi    String?               @db.Text @map("short_description_vi")
+  ingredientsVi         String?               @db.Text @map("ingredients_vi")
+  howToUseVi            String?               @db.Text @map("how_to_use_vi")
+  // English fields
+  nameEn                String                @map("name_en")
+  descriptionEn         String                @db.Text @map("description_en")
+  shortDescriptionEn    String?               @db.Text @map("short_description_en")
+  ingredientsEn         String?               @db.Text @map("ingredients_en")
+  howToUseEn            String?               @db.Text @map("how_to_use_en")
+  // Common fields
+  slug                  String                @unique
+  sku                   String?               @unique
+  price                 Decimal               @db.Decimal(10, 2)
+  compareAtPrice        Decimal?              @db.Decimal(10, 2) @map("compare_at_price")
+  cost                  Decimal?              @db.Decimal(10, 2)
+  // Product properties
+  category              String                @default("food")
+  tags                  String[]              @default([])
+  weight                Decimal?              @db.Decimal(10, 2) // in grams
+  weightUnit            String?               @default("g") @map("weight_unit")
+  servingSize           String?               @map("serving_size")
+  servingsPerContainer  Int?                  @map("servings_per_container")
+  calories              Int?
+  allergens             String[]              @default([])
+  storageInstructions   String?               @db.Text @map("storage_instructions")
+  shelfLife             String?               @map("shelf_life")
+  // Images
+  imageSrc              String?               @map("image_src")
+  imageAlt              String?               @map("image_alt")
+  images                String[]              @default([])
+  // Status and inventory
+  featured              Boolean               @default(false)
+  available             Boolean               @default(true)
+  stock                 Int                   @default(0)
+  stockStatus           String                @default("in_stock") @map("stock_status") // in_stock, low_stock, out_of_stock
+  trackInventory        Boolean               @default(true) @map("track_inventory")
+  // Product relationships
+  complementaryProducts Int[]                 @default([]) @map("complementary_products")
+  // Promotional content
+  promoTitle            String?               @map("promo_title")
+  promoDescription      String?               @db.Text @map("promo_description")
+  promoImage            String?               @map("promo_image")
+  promoButtonText       String?               @map("promo_button_text")
+  promoButtonLink       String?               @map("promo_button_link")
+  // SEO and metadata
+  metaTitle             String?               @map("meta_title")
+  metaDescription       String?               @db.Text @map("meta_description")
+  // Timestamps
+  createdAt             DateTime              @default(now()) @map("created_at")
+  updatedAt             DateTime              @updatedAt @map("updated_at")
+  // Relations
+  reviews               Review[]
+  orderItems            OrderItem[]
+  productFaqs           ProductFaq[]
+  discountApplications  DiscountApplication[]
+  productVariants       ProductVariant[]
+  nutritionInfo         NutritionInfo?
+
+  @@index([category])
+  @@index([slug])
+  @@index([available])
+  @@index([featured])
+  @@index([stockStatus])
+  @@map("products")
+}
+
+model ProductVariant {
+  id        Int      @id @default(autoincrement())
+  productId Int      @map("product_id")
+  nameVi    String   @map("name_vi")
+  nameEn    String   @map("name_en")
+  sku       String?  @unique
+  price     Decimal  @db.Decimal(10, 2)
+  stock     Int      @default(0)
+  available Boolean  @default(true)
+  options   Json? // e.g., {"size": "500g", "flavor": "original"}
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_variants")
+}
+
+model NutritionInfo {
+  id               Int      @id @default(autoincrement())
+  productId        Int      @unique @map("product_id")
+  servingSize      String   @map("serving_size")
+  calories         Int
+  totalFat         Decimal? @db.Decimal(10, 2) @map("total_fat")
+  saturatedFat     Decimal? @db.Decimal(10, 2) @map("saturated_fat")
+  transFat         Decimal? @db.Decimal(10, 2) @map("trans_fat")
+  cholesterol      Decimal? @db.Decimal(10, 2)
+  sodium           Decimal? @db.Decimal(10, 2)
+  totalCarbs       Decimal? @db.Decimal(10, 2) @map("total_carbs")
+  dietaryFiber     Decimal? @db.Decimal(10, 2) @map("dietary_fiber")
+  sugars           Decimal? @db.Decimal(10, 2)
+  protein          Decimal? @db.Decimal(10, 2)
+  vitaminD         Decimal? @db.Decimal(10, 2) @map("vitamin_d")
+  calcium          Decimal? @db.Decimal(10, 2)
+  iron             Decimal? @db.Decimal(10, 2)
+  potassium        Decimal? @db.Decimal(10, 2)
+  additionalInfo   Json? // for other vitamins/minerals @map("additional_info")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  product          Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("nutrition_info")
+}
+
+model ProductFaq {
+  id           Int      @id @default(autoincrement())
+  productId    Int      @map("product_id")
+  questionVi   String   @map("question_vi")
+  questionEn   String   @map("question_en")
+  answerVi     String   @db.Text @map("answer_vi")
+  answerEn     String   @db.Text @map("answer_en")
+  displayOrder Int      @default(0) @map("display_order")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@index([active])
+  @@map("product_faqs")
+}
+
+// ============================================================================
+// Course Models (F&B Courses - Multilingual)
+// ============================================================================
+
+model Course {
+  id                 Int         @id @default(autoincrement())
+  // Vietnamese fields
+  titleVi            String      @map("title_vi")
+  descriptionVi      String      @db.Text @map("description_vi")
+  shortDescriptionVi String?     @db.Text @map("short_description_vi")
+  syllabusVi         String?     @db.Text @map("syllabus_vi")
+  prerequisitesVi    String?     @db.Text @map("prerequisites_vi")
+  // English fields
+  titleEn            String      @map("title_en")
+  descriptionEn      String      @db.Text @map("description_en")
+  shortDescriptionEn String?     @db.Text @map("short_description_en")
+  syllabusEn         String?     @db.Text @map("syllabus_en")
+  prerequisitesEn    String?     @db.Text @map("prerequisites_en")
+  // Common fields
+  slug               String      @unique
+  price              Decimal     @db.Decimal(10, 2)
+  compareAtPrice     Decimal?    @db.Decimal(10, 2) @map("compare_at_price")
+  duration           Int // in hours
+  durationUnit       String      @default("hours") @map("duration_unit")
+  level              String      @default("beginner") // beginner, intermediate, advanced
+  category           String      @default("cooking")
+  maxStudents        Int?        @map("max_students")
+  currentEnrollment  Int         @default(0) @map("current_enrollment")
+  instructor         String?
+  instructorImage    String?     @map("instructor_image")
+  instructorBio      String?     @db.Text @map("instructor_bio")
+  // Images
+  image              String?
+  images             String[]    @default([])
+  videoUrl           String?     @map("video_url")
+  // Schedule
+  schedule           Json? // flexible schedule structure
+  location           String?
+  onlineAvailable    Boolean     @default(false) @map("online_available")
+  // Status
+  featured           Boolean     @default(false)
+  published          Boolean     @default(false)
+  enrollmentOpen     Boolean     @default(true) @map("enrollment_open")
+  startDate          DateTime?   @map("start_date")
+  endDate            DateTime?   @map("end_date")
+  // SEO
+  metaTitle          String?     @map("meta_title")
+  metaDescription    String?     @db.Text @map("meta_description")
+  // Timestamps
+  createdAt          DateTime    @default(now()) @map("created_at")
+  updatedAt          DateTime    @updatedAt @map("updated_at")
+  // Relations
+  reviews            Review[]
+  courseFaqs         CourseFaq[]
+
+  @@index([slug])
+  @@index([category])
+  @@index([level])
+  @@index([published])
+  @@index([featured])
+  @@map("courses")
+}
+
+model CourseFaq {
+  id           Int      @id @default(autoincrement())
+  courseId     Int      @map("course_id")
+  questionVi   String   @map("question_vi")
+  questionEn   String   @map("question_en")
+  answerVi     String   @db.Text @map("answer_vi")
+  answerEn     String   @db.Text @map("answer_en")
+  displayOrder Int      @default(0) @map("display_order")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  course       Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId])
+  @@index([active])
+  @@map("course_faqs")
+}
+
+// ============================================================================
+// Review Model (Unified for Products & Courses)
+// ============================================================================
+
+model Review {
+  id         Int      @id @default(autoincrement())
+  productId  Int?     @map("product_id")
+  courseId   Int?     @map("course_id")
+  name       String
+  email      String
+  rating     Int // 1-5
+  title      String?
+  comment    String   @db.Text
+  images     String[] @default([])
+  verified   Boolean  @default(false)
+  approved   Boolean  @default(false)
+  helpful    Int      @default(0)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  product    Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  course     Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@index([courseId])
+  @@index([approved])
+  @@index([rating])
+  @@map("reviews")
+}
+
+// ============================================================================
+// Blog Models (Multilingual)
+// ============================================================================
+
+model BlogPost {
+  id             Int       @id @default(autoincrement())
+  // Vietnamese fields
+  titleVi        String    @map("title_vi")
+  excerptVi      String?   @db.Text @map("excerpt_vi")
+  contentVi      String    @db.Text @map("content_vi")
+  // English fields
+  titleEn        String    @map("title_en")
+  excerptEn      String?   @db.Text @map("excerpt_en")
+  contentEn      String    @db.Text @map("content_en")
+  // Common fields
+  slug           String    @unique
+  image          String?
+  images         String[]  @default([])
+  category       String?
+  tags           String[]  @default([])
+  author         String?
+  authorImage    String?   @map("author_image")
+  authorRole     String?   @map("author_role")
+  featured       Boolean   @default(false)
+  published      Boolean   @default(false)
+  publishedAt    DateTime? @map("published_at")
+  readingTime    Int?      @map("reading_time")
+  views          Int       @default(0)
+  // SEO
+  metaTitle      String?   @map("meta_title")
+  metaDescription String?  @db.Text @map("meta_description")
+  // Timestamps
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  @@index([slug])
+  @@index([published])
+  @@index([featured])
+  @@index([publishedAt])
+  @@index([category])
+  @@map("blog_posts")
+}
+
+// ============================================================================
+// FAQ Models (General FAQs - Multilingual)
+// ============================================================================
+
+model Faq {
+  id           Int      @id @default(autoincrement())
+  category     String
+  questionVi   String   @map("question_vi")
+  questionEn   String   @map("question_en")
+  answerVi     String   @db.Text @map("answer_vi")
+  answerEn     String   @db.Text @map("answer_en")
+  displayOrder Int      @default(0) @map("display_order")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@index([active])
+  @@map("faqs")
+}
+
+// ============================================================================
+// Order Models
+// ============================================================================
+
+model Order {
+  id                 String          @id @default(cuid())
+  orderNumber        String          @unique @map("order_number")
+  userId             String?         @map("user_id")
+  // Customer information
+  customerName       String          @map("customer_name")
+  customerEmail      String          @map("customer_email")
+  customerPhone      String          @map("customer_phone")
+  // Shipping information
+  shippingAddress    Json            @map("shipping_address") // {street, city, district, ward, country, postalCode}
+  billingAddress     Json?           @map("billing_address")
+  // Order details
+  subtotal           Decimal         @db.Decimal(10, 2)
+  shippingCost       Decimal         @default(0) @db.Decimal(10, 2) @map("shipping_cost")
+  tax                Decimal         @default(0) @db.Decimal(10, 2)
+  discount           Decimal         @default(0) @db.Decimal(10, 2)
+  total              Decimal         @db.Decimal(10, 2)
+  currency           String          @default("VND")
+  // Status
+  status             String          @default("pending") // pending, confirmed, processing, shipped, delivered, cancelled
+  paymentStatus      String          @default("pending") @map("payment_status") // pending, paid, failed, refunded
+  paymentMethod      String?         @map("payment_method") // cod, bank_transfer, momo, vnpay
+  shippingMethod     String?         @map("shipping_method")
+  // Delivery tracking
+  trackingNumber     String?         @map("tracking_number")
+  estimatedDelivery  DateTime?       @map("estimated_delivery")
+  deliveredAt        DateTime?       @map("delivered_at")
+  // Notes
+  customerNote       String?         @db.Text @map("customer_note")
+  adminNote          String?         @db.Text @map("admin_note")
+  // Timestamps
+  createdAt          DateTime        @default(now()) @map("created_at")
+  updatedAt          DateTime        @updatedAt @map("updated_at")
+  paidAt             DateTime?       @map("paid_at")
+  cancelledAt        DateTime?       @map("cancelled_at")
+  // Relations
+  user               User?           @relation(fields: [userId], references: [id])
+  items              OrderItem[]
+  orderDiscounts     OrderDiscount[]
+  orderHistory       OrderHistory[]
+
+  @@index([orderNumber])
+  @@index([userId])
+  @@index([status])
+  @@index([paymentStatus])
+  @@index([createdAt])
+  @@map("orders")
+}
+
+model OrderItem {
+  id          Int      @id @default(autoincrement())
+  orderId     String   @map("order_id")
+  productId   Int      @map("product_id")
+  productName String   @map("product_name")
+  productSku  String?  @map("product_sku")
+  quantity    Int
+  price       Decimal  @db.Decimal(10, 2)
+  subtotal    Decimal  @db.Decimal(10, 2)
+  variant     Json? // variant options if applicable
+  createdAt   DateTime @default(now()) @map("created_at")
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}
+
+model OrderHistory {
+  id        Int      @id @default(autoincrement())
+  orderId   String   @map("order_id")
+  status    String
+  note      String?  @db.Text
+  createdBy String?  @map("created_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([createdAt])
+  @@map("order_history")
+}
+
+// ============================================================================
+// Discount Models
+// ============================================================================
+
+model Discount {
+  id                   Int                           @id @default(autoincrement())
+  name                 String
+  description          String?                       @db.Text
+  type                 String // percentage, fixed_amount, free_shipping
+  value                Decimal                       @db.Decimal(10, 2)
+  priority             Int                           @default(0)
+  stackable            Boolean                       @default(false)
+  startDate            DateTime                      @map("start_date")
+  endDate              DateTime                      @map("end_date")
+  status               String                        @default("active")
+  maxUses              Int?                          @map("max_uses")
+  usedCount            Int                           @default(0) @map("used_count")
+  minPurchaseAmount    Decimal?                      @db.Decimal(10, 2) @map("min_purchase_amount")
+  createdAt            DateTime                      @default(now()) @map("created_at")
+  updatedAt            DateTime                      @updatedAt @map("updated_at")
+  applications         DiscountApplication[]
+  auditLogs            DiscountAuditLog[]
+  codes                DiscountCode[]
+  conditions           DiscountCondition[]
+  customerRestrictions DiscountCustomerRestriction[]
+  orderDiscounts       OrderDiscount[]
+
+  @@index([status])
+  @@index([startDate, endDate])
+  @@map("discounts")
+}
+
+model DiscountCode {
+  id             Int             @id @default(autoincrement())
+  discountId     Int             @map("discount_id")
+  code           String          @unique
+  usageLimit     Int?            @map("usage_limit")
+  usedCount      Int             @default(0) @map("used_count")
+  customerLimit  Int?            @map("customer_limit")
+  expiresAt      DateTime?       @map("expires_at")
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+  discount       Discount        @relation(fields: [discountId], references: [id], onDelete: Cascade)
+  orderDiscounts OrderDiscount[]
+
+  @@index([code])
+  @@index([discountId])
+  @@map("discount_codes")
+}
+
+model DiscountCondition {
+  id             Int      @id @default(autoincrement())
+  discountId     Int      @map("discount_id")
+  conditionType  String   @map("condition_type")
+  conditionValue Json     @map("condition_value")
+  discount       Discount @relation(fields: [discountId], references: [id], onDelete: Cascade)
+
+  @@index([discountId])
+  @@map("discount_conditions")
+}
+
+model DiscountApplication {
+  id         Int      @id @default(autoincrement())
+  discountId Int      @map("discount_id")
+  appliesTo  String   @map("applies_to") // all, specific_products, specific_categories
+  scopeValue Json?    @map("scope_value")
+  productId  Int?     @map("product_id")
+  discount   Discount @relation(fields: [discountId], references: [id], onDelete: Cascade)
+  product    Product? @relation(fields: [productId], references: [id])
+
+  @@index([discountId])
+  @@index([productId])
+  @@map("discount_applications")
+}
+
+model DiscountCustomerRestriction {
+  id         Int      @id @default(autoincrement())
+  discountId Int      @map("discount_id")
+  customerId String?  @map("customer_id")
+  segment    String?
+  discount   Discount @relation(fields: [discountId], references: [id], onDelete: Cascade)
+
+  @@index([discountId])
+  @@index([customerId])
+  @@map("discount_customer_restrictions")
+}
+
+model OrderDiscount {
+  id             Int           @id @default(autoincrement())
+  orderId        String        @map("order_id")
+  discountId     Int           @map("discount_id")
+  discountCodeId Int?          @map("discount_code_id")
+  amount         Decimal       @db.Decimal(10, 2)
+  createdAt      DateTime      @default(now()) @map("created_at")
+  order          Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  discountCode   DiscountCode? @relation(fields: [discountCodeId], references: [id])
+  discount       Discount      @relation(fields: [discountId], references: [id])
+
+  @@index([orderId])
+  @@index([discountId])
+  @@map("order_discounts")
+}
+
+model DiscountAuditLog {
+  id         Int      @id @default(autoincrement())
+  discountId Int      @map("discount_id")
+  orderId    String?  @map("order_id")
+  customerId String?  @map("customer_id")
+  event      String
+  details    Json?
+  createdAt  DateTime @default(now()) @map("created_at")
+  discount   Discount @relation(fields: [discountId], references: [id], onDelete: Cascade)
+
+  @@index([discountId])
+  @@index([orderId])
+  @@index([customerId])
+  @@index([createdAt])
+  @@map("discount_audit_logs")
+}
+
+// ============================================================================
+// Media & Content Models
+// ============================================================================
+
+model Media {
+  id           Int      @id @default(autoincrement())
+  filename     String   @unique
+  originalName String   @map("original_name")
+  filePath     String   @map("file_path")
+  fileType     String   @map("file_type")
+  fileSize     Int?     @map("file_size")
+  altText      String?  @map("alt_text")
+  caption      String?
+  storageType  String   @default("local") @map("storage_type")
+  uploadedAt   DateTime @default(now()) @map("uploaded_at")
+
+  @@map("media")
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  role      String?
+  image     String?
+  contentVi String   @db.Text @map("content_vi")
+  contentEn String   @db.Text @map("content_en")
+  rating    Int      @default(5)
+  featured  Boolean  @default(false)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("testimonials")
+}
+
+model PromotionalBanner {
+  id             Int      @id @default(autoincrement())
+  titleVi        String   @map("title_vi")
+  titleEn        String   @map("title_en")
+  descriptionVi  String?  @db.Text @map("description_vi")
+  descriptionEn  String?  @db.Text @map("description_en")
+  buttonTextVi   String?  @map("button_text_vi")
+  buttonTextEn   String?  @map("button_text_en")
+  buttonLink     String?  @map("button_link")
+  image          String?
+  bgColor        String?  @map("bg_color")
+  textColor      String?  @map("text_color")
+  active         Boolean  @default(true)
+  displayOrder   Int      @default(0) @map("display_order")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@map("promotional_banners")
+}
+
+model Hero {
+  id             Int      @id @default(autoincrement())
+  titleVi        String   @map("title_vi")
+  titleEn        String   @map("title_en")
+  subtitleVi     String?  @map("subtitle_vi")
+  subtitleEn     String?  @map("subtitle_en")
+  descriptionVi  String?  @db.Text @map("description_vi")
+  descriptionEn  String?  @db.Text @map("description_en")
+  image          String?
+  ctaTextVi      String?  @map("cta_text_vi")
+  ctaTextEn      String?  @map("cta_text_en")
+  ctaLink        String?  @map("cta_link")
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@map("hero")
+}
+
+model GalleryPost {
+  id           Int      @id @default(autoincrement())
+  titleVi      String   @map("title_vi")
+  titleEn      String   @map("title_en")
+  descriptionVi String? @db.Text @map("description_vi")
+  descriptionEn String? @db.Text @map("description_en")
+  image        String
+  link         String?
+  category     String?
+  featured     Boolean  @default(false)
+  active       Boolean  @default(true)
+  displayOrder Int      @default(0) @map("display_order")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@index([featured])
+  @@map("gallery_posts")
+}
+
+model SocialPost {
+  id           Int      @id @default(autoincrement())
+  platform     String // instagram, facebook, tiktok, youtube
+  image        String
+  link         String?
+  caption      String?  @db.Text
+  featured     Boolean  @default(false)
+  active       Boolean  @default(true)
+  displayOrder Int      @default(0) @map("display_order")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([platform])
+  @@index([featured])
+  @@map("social_posts")
+}
+
+// ============================================================================
+// Newsletter & Contact
+// ============================================================================
+
+model Newsletter {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  name        String?
+  active      Boolean  @default(true)
+  source      String?  // where they signed up from
+  subscribedAt DateTime @default(now()) @map("subscribed_at")
+  unsubscribedAt DateTime? @map("unsubscribed_at")
+
+  @@index([email])
+  @@index([active])
+  @@map("newsletter")
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String   @db.Text
+  status    String   @default("new") // new, in_progress, resolved
+  respondedAt DateTime? @map("responded_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_submissions")
+}

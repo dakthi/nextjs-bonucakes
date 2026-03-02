@@ -1,0 +1,492 @@
+'use client';
+
+import { useEffect } from 'react';
+import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import FadeInObserver from '@/components/FadeInObserver';
+import { useLanguage } from '@/components/LanguageToggle';
+
+export default function StoryPage() {
+  const currentLang = useLanguage();
+
+  useEffect(() => {
+    // Smooth scroll for anchor links
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a[href^="#"]') as HTMLAnchorElement;
+
+      if (anchor && anchor.getAttribute('href') !== '#') {
+        e.preventDefault();
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
+  return (
+    <div className="bg-cream">
+      {/* Structured Data (JSON-LD) for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Hành trình 10+ năm - Câu chuyện Bonu F&B",
+            "description": "Từ bán bánh online đến nhà hàng ở trung tâm London, Manchester, và giờ là Memoire Saigon tại Wales. Hành trình 10+ năm xây dựng thương hiệu F&B.",
+            "image": "https://bonucakes.com/images/community-mindmap.webp",
+            "author": {
+              "@type": "Person",
+              "name": "Uyen Nguyen",
+              "url": "https://bonucakes.com/story"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Bonu F&B",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://bonucakes.com/images/community-mindmap.webp"
+              }
+            },
+            "datePublished": "2026-02-06",
+            "dateModified": "2026-02-06",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://bonucakes.com/story"
+            }
+          })
+        }}
+      />
+      <FadeInObserver />
+      <Navbar />
+
+      {/* Hero */}
+      <header className="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 bg-espresso">
+        <div className="max-w-6xl mx-auto px-6 text-left">
+          <p className="text-gold uppercase tracking-widest text-sm mb-4 font-medium">The Journey</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight max-w-3xl">
+            {currentLang === 'vi' ? (
+              <>
+                Hành trình 10+ năm<br />xây dựng <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-warmwhite transition-colors">Memoire Saigon</a>
+              </>
+            ) : (
+              <>
+                10+ Years Journey<br />Building <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-warmwhite transition-colors">Memoire Saigon</a>
+              </>
+            )}
+          </h1>
+          <p className="text-xl text-cream/80 mb-8 max-w-2xl">
+            {currentLang === 'vi'
+              ? 'Từ bán bánh online, qua London, Manchester, đến Wales. Mỗi thất bại là một bài học. Mỗi thành công là một bước tiến.'
+              : 'From selling cakes online, through London, Manchester, to Wales. Every failure is a lesson. Every success is a step forward.'}
+          </p>
+        </div>
+      </header>
+
+      {/* Opening Quote */}
+      <section className="py-16 bg-warmwhite">
+        <div className="max-w-6xl mx-auto px-6">
+          <blockquote className="text-center">
+            <p className="text-2xl md:text-3xl font-serif text-espresso italic mb-4">
+              {currentLang === 'vi'
+                ? '"Để có Memoire Saigon hôm nay, đã phải trải qua hơn 10 năm khởi nghiệp."'
+                : '"To have Memoire Saigon today, it took over 10 years of entrepreneurship."'}
+            </p>
+            <cite className="text-coffee text-lg not-italic">— Uyên Nguyễn</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Bonu Intro */}
+      <section className="py-16 bg-warmwhite">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="bg-white p-4 sm:p-6 md:p-8 shadow-sm article-text">
+            {currentLang === 'vi' ? (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold text-espresso mb-4">Xin chào các bạn, các khách hàng thân thương</h2>
+                <p>Nếu bạn vừa ghé vào trang này lần đầu, hoặc đã theo dõi BONU một thời gian nhưng chưa thực sự biết BONU đang làm gì, thì đây là bài viết dành cho bạn.</p>
+                <p>Cảm ơn tất cả vì đã, đang và sẽ theo dõi, và yêu thích những gì mà BONU chia sẻ từ trang cá nhân này.</p>
+                <p>Năm nay với ý định mở rộng mối quan hệ, kết nối thêm nhiều bạn bè cùng tần số, đồng môn cùng học hỏi nên BONU quyết định chia sẻ đôi điều về bản thân để chúng ta làm quen với nhau, hoặc hiểu rõ hơn về nhau, thậm chí là trở thành người đồng hành cùng nhau trên con đường sự nghiệp cũng như trên hành trình phát triển bản thân.</p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold text-espresso mb-4">Hello friends and dear customers</h2>
+                <p>If this is your first time here, or you've followed BONU for a while but aren't quite sure what BONU actually does, this section is for you.</p>
+                <p>Thank you for following, supporting, and enjoying what BONU shares here.</p>
+                <p>This year, with the intention to expand connections with like‑minded friends and peers, BONU is sharing more about myself—so we can get to know each other better and perhaps even become companions on our career and personal‑growth journeys.</p>
+              </>
+            )}
+
+            <hr className="my-8 border-espresso/10" />
+
+            {currentLang === 'vi' ? (
+              <>
+                <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">VÀI THÔNG TIN CÁ NHÂN VỀ BONU</h3>
+                <p>Mọi người thường gọi mình là Bo hoặc Bonu (nickname từ nhỏ đến giờ). Tên thật là Minh Uyên, lớn lên ở Sài Gòn từ năm 1988 và đã chuyển sang Anh sống 20 năm nay. Uyên thuộc nhóm người đa năng Multipotentialite, thỉnh thoảng hướng nội và thường xuyên hướng ngoại.</p>
+                <p>Lúc vui vui ham chơi thì về ngoại, nhoi nhoi quá thì lại về nội tịnh tâm. Uyên yêu thích sự tự do, thử thách, mạo hiểm và trải nghiệm nên hay bay nhảy khắp nơi. Không thích làm một việc, không thích ở yên một chỗ và đặc biệt là không bao giờ giới hạn bản thân trong vùng an toàn.</p>
+                <p><strong>Điểm mạnh cá nhân:</strong> leadership và giàu lòng trắc ẩn.</p>
+                <p>Uyên có nhiều năm học tập, có bằng cấp/chứng chỉ, làm việc và đặc biệt quan tâm tới các chuyên môn sau đây (tại Việt Nam, Anh, Pháp, Hàn Quốc, Đài Loan):</p>
+              </>
+            ) : (
+              <>
+                <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">A FEW THINGS ABOUT BONU</h3>
+                <p>People usually call me Bo or Bonu (a childhood nickname). My full name is Minh Uyên, born and raised in Saigon (1988), and I've lived in the UK for 20 years. I'm a multipotentialite—sometimes introverted, often extroverted.</p>
+                <p>I love freedom, challenges, adventure and learning through experience. I rarely sit still, don't like doing only one thing, and I don't limit myself to a comfort zone.</p>
+                <p><strong>Personal strengths:</strong> leadership and compassion.</p>
+                <p>I've studied, gained certifications, worked and focused on these fields (in Vietnam, the UK, France, Korea, Taiwan):</p>
+              </>
+            )}
+
+            <ul className="list-disc pl-6">
+              <li>Tốt nghiệp Diplome de Patisserie trường Le Cordon Bleu London</li>
+              <li>Các chứng chỉ, bằng cấp về ngành Bánh tại Việt Nam, Pháp, Hàn Quốc</li>
+              <li>Bằng Nails, Beauty Therapist, Facial</li>
+            </ul>
+
+            {currentLang === 'vi' ? (
+              <>
+                <p className="mt-4"><strong>15 năm qua Uyên đã làm gì nhiều nhất?</strong></p>
+                <ul className="list-disc pl-6">
+                  <li>Làm một người viết nội dung, cụ thể là nội dung phục vụ cho tiếp thị, kinh doanh và xây dựng thương hiệu cá nhân (từ 2015 tới nay)</li>
+                  <li>Làm giảng viên đào tạo dạy nghề Bánh, Bếp…</li>
+                  <li>Là một solopreneur, một người tự phát triển sự nghiệp độc lập dựa trên chuyên môn của mình (từ 2018)</li>
+                  <li>Làm chủ doanh nghiệp — trực tiếp tham gia xây dựng và vận hành nhiều mô hình F&B tại UK, từ quán nhỏ tới restaurant concept</li>
+                </ul>
+              </>
+            ) : (
+              <>
+                <p className="mt-4"><strong>What have I done most in the last 15 years?</strong></p>
+                <ul className="list-disc pl-6">
+                  <li>Content writer focused on marketing, business and personal brand building (since 2015)</li>
+                  <li>Instructor for pastry/kitchen vocational training</li>
+                  <li>Solopreneur—building an independent career from my own expertise (since 2018)</li>
+                  <li>Business owner—hands‑on in building and operating multiple F&B models in the UK</li>
+                </ul>
+              </>
+            )}
+
+            <hr className="my-8 border-espresso/10" />
+
+            <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">BUSINESS/CHUYÊN MÔN BO ĐANG THEO ĐUỔI</h3>
+            <p><strong>Hiện tại BONU đang làm gì?</strong></p>
+            <p>Uyên tập trung vào vai trò Business Mentor cho người Việt muốn khởi nghiệp và phát triển trong ngành F&B, đặc biệt là những bạn:</p>
+            <ul className="list-disc pl-6">
+              <li>có tay nghề</li>
+              <li>có đam mê</li>
+              <li>nhưng còn mơ hồ về kinh doanh, chiến lược và hướng đi dài hạn</li>
+            </ul>
+            <p>Uyên không đứng ngoài để nói lý thuyết. Uyên làm việc với F&B từ bếp, quầy, vận hành, đến mô hình kinh doanh – và hiểu rất rõ cảm giác: làm rất cực, rất tâm huyết, nhưng không chắc mình đang đi đúng hướng hay chưa.</p>
+            <p><strong>Uyên hiểu rõ điều gì trong ngành F&B?</strong></p>
+            <p>Uyên thấy rất nhiều người:</p>
+            <ul className="list-disc pl-6">
+              <li>yêu nghề</li>
+              <li>làm việc chăm chỉ</li>
+              <li>hy sinh rất nhiều</li>
+            </ul>
+            <p>Nhưng:</p>
+            <ul className="list-disc pl-6">
+              <li>thiếu một bức tranh tổng thể</li>
+              <li>thiếu người nhìn cùng họ từ trên cao</li>
+              <li>dễ mắc kẹt trong vòng xoáy làm – mệt – lo – nghi ngờ bản thân</li>
+            </ul>
+            <p>Uyên ở đây để giúp bạn nhìn rõ hơn con đường, không phải bằng lời động viên sáo rỗng, mà bằng:</p>
+            <ul className="list-disc pl-6">
+              <li>tư duy kinh doanh thực tế</li>
+              <li>chiến lược phù hợp với từng giai đoạn</li>
+              <li>sự đồng hành đủ sát để bạn không phải đi một mình</li>
+            </ul>
+            <p>Uyên dành hơn 20 năm sống, làm việc và khởi nghiệp tại Anh, trực tiếp đi qua đủ những giai đoạn của nghề: học nghề – mở quán – vận hành – vấp ngã – làm lại – và sau này là đồng hành cùng người khác trên con đường họ chọn.</p>
+            <p><strong>Uyên giúp được gì cho bạn?</strong></p>
+            <p>Uyên thường đồng hành cùng học viên ở những việc rất cụ thể:</p>
+            <ul className="list-disc pl-6">
+              <li>làm rõ hướng đi khi khởi nghiệp F&B</li>
+              <li>xác định mô hình, concept, menu, thị trường</li>
+              <li>setup từng bước từ ý tưởng đến vận hành</li>
+              <li>thử nghiệm, điều chỉnh và tạo doanh thu trong thời gian sớm nhất có thể</li>
+              <li>và quan trọng không kém: giữ tinh thần vững vàng khi mọi thứ không đi đúng kế hoạch</li>
+            </ul>
+            <p>Uyên tin rằng kinh doanh F&B không chỉ là bán đồ ăn, mà là một con đường rèn luyện con người: từ kỷ luật, tư duy, đến nội lực và cách bạn đối diện với chính mình.</p>
+
+            <p className="mt-6"><strong>VÀI CON SỐ để mọi người dễ nhớ:</strong></p>
+            <p>Uyên chia sẻ ở đây những gì Uyên đã trải qua, đã trả giá, đã học được, từ góc nhìn của một người làm nghề lâu năm sống tại Anh và đã từng bắt đầu từ con số 0:</p>
+            <ul className="list-disc pl-6">
+              <li>0 học hành đến nơi đến chốn</li>
+              <li>0 một ai bên cạnh</li>
+              <li>0 nhà</li>
+              <li>0 tiền</li>
+              <li>0 kỹ năng</li>
+              <li>0 có nền tảng</li>
+            </ul>
+            <p>Nhưng lại có số nhiều:</p>
+            <ul className="list-disc pl-6">
+              <li>Nhiều lần thất bại</li>
+              <li>Nhiều lần mất phương hướng</li>
+              <li>Nhiều lần mất tiền ngu</li>
+            </ul>
+            <p>Và cuối cùng là:</p>
+            <ul className="list-disc pl-6">
+              <li>Uyên đã qua 4 lần khởi nghiệp ngành F&B từ căn bếp nhỏ kinh doanh online tại nhà đến nhà hàng ngay giữa trung tâm thành phố lớn như London – Manchester và Wales</li>
+              <li>Uyên có 11 năm làm Entrepreneur và Solopreneur, chỉ từ chuyên môn kinh nghiệm và chia sẻ trải nghiệm trong ngành F&B</li>
+              <li>Uyên có 13 năm kinh nghiệm trong việc nuôi dạy và đồng hành cùng con, vì Uyên có tận 3 nhóc</li>
+            </ul>
+
+            <hr className="my-8 border-espresso/10" />
+
+            <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">VÀI TRIẾT LÝ MÀ UYÊN THEO ĐUỔI</h3>
+            <p><strong>Trong việc làm ngành F&B nói chung:</strong><br />
+            "Ẩm thực Việt Nam không chỉ là món ăn, còn là cầu nối văn hóa, là phương tiện để bảo tồn ký ức, kết nối văn hóa, phát triển con người, và tạo ra sự thay đổi tích cực trong cộng đồng - tất cả được thực hiện với ý thức cao về chiến lược kinh doanh và phát triển bản thân." Thành công đến từ việc không ngừng học hỏi mỗi ngày, nâng cấp bản thân kết hợp đam mê với chiến lược để tạo ra giá trị.</p>
+            <p><strong>Trong phát triển con người:</strong><br />
+            "Con người phát triển toàn diện nhất không phải qua lý thuyết mà qua việc TẬN TÂM LÀM TỐT một công việc CỤ THỂ (ví dụ như F&B) với ý thức về sự kết nối giữa hành động bên ngoài và sự chuyển hóa bên trong, đồng thời sử dụng sự thành thạo đó để NÂNG CAO, GIÚP ĐỠ NGƯỜI KHÁC, tạo nên một vòng tròn liên tục của học hỏi, làm chủ, và chia sẻ - tất cả được thống nhất trong bốn chiều: Thân - Tâm - Trí - Thần." Mỗi người đều sở hữu tiềm năng vô hạn và mình tin rằng ai cũng tài giỏi, bạn chỉ cần quan sát, chiêm nghiệm, quay về bên trong để hiểu chính mình hơn, chỉ khi ấy bạn mới có thể đánh thức được tiềm năng vô hạn bên trong bạn.</p>
+            <p>Công việc là nơi giúp bạn rèn luyện khả năng. Khó khăn thử thách giúp bạn mạnh mẽ hơn. Quá trình là kết quả. Thành thạo để trao đi giá trị. Chia sẻ dạy lại để học hiểu sâu hơn. Và cuối cùng hãy tin vào bản thân, hãy là chính mình, trở thành một phiên bản tốt hơn.</p>
+            <p><strong>Trong kinh doanh chuyên môn:</strong><br />
+            "Xây dựng doanh nghiệp F&B bền vững bằng cách kết hợp TRÁI TIM (văn hóa, cộng đồng, ý nghĩa) với TƯ DUY (chiến lược, dữ liệu, hệ thống), tạo ra ecosystem tự củng cố nơi restaurant, consulting và community cùng phát triển, phục vụ SỨ MỆNH lớn hơn là phát triển con người qua nghề F&B."</p>
+            <p><strong>Trong định nghĩa về thành công:</strong><br />
+            "Thành công là khi Uyên sống một cuộc đời TOÀN VẸN không phải chia nhỏ bản thân, nơi mọi vai trò (làm đầu bếp, làm mẹ, làm chủ doanh nghiệp, làm giáo viên, làm mentor) cùng phục vụ một mục đích lớn hơn là PHÁT TRIỂN BẢN THÂN VÀ NGƯỜI KHÁC, đồng thời tạo ra giá trị bền vững cho người thân, cộng đồng và văn hóa."</p>
+            <p><strong>Trong cuộc sống nói chung:</strong><br />
+            "Sống là nghệ thuật hòa quyện mọi mặt của đời người - việc làm và đời sống tâm linh, bản thân với người khác, nỗ lực và buông bỏ, hiện tại và tương lai - thành một sự trọn vẹn có ý thức, trong đó từng phút giây đều là dịp để ta trưởng thành, phụng sự và cống hiến, với nhận thức rằng đời người vừa quý báu vừa phù du, vừa gian nan vừa đầy ý nghĩa, và thành công chân thật là sống đúng với giá trị bản thân trong khi giúp người khác cũng làm được như vậy."</p>
+
+            <p className="mt-6">Nếu bạn:</p>
+            <ul className="list-disc pl-6">
+              <li>Có đam mê, đang làm hoặc muốn khởi nghiệp ngành F&B</li>
+              <li>muốn xây dựng một con đường bền vững – có chiều sâu</li>
+              <li>tin rằng làm nghề cũng là một cách phát triển bản thân</li>
+              <li>thích trải nghiệm, mê học hỏi</li>
+            </ul>
+            <p>thì có thể theo dõi BONU nhé. Cảm ơn bạn đã ở đây. Nếu có duyên, hy vọng chúng ta sẽ đồng hành cùng nhau trên một chặng đường đủ dài.</p>
+            <p>Trân trọng và biết ơn vô cùng vì bạn đã dành thời gian đọc hết bài chia sẻ về mình</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Article */}
+      <section className="py-16 md:py-24 bg-warmwhite">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-terracotta uppercase tracking-widest text-sm mb-2 font-medium">The Full Story</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-espresso mb-4">
+              {currentLang === 'vi'
+                ? 'Mười năm, ba thành phố, vô số bài học'
+                : 'Ten years, three cities, countless lessons'}
+            </h2>
+            <p className="text-coffee/60 italic">
+              {currentLang === 'vi'
+                ? 'Một hành trình từ bán bánh online đến nhà hàng ở Wales'
+                : 'A journey from selling cakes online to a restaurant in Wales'}
+            </p>
+          </div>
+
+          <div className="article-text bg-white p-4 sm:p-8 md:p-12 shadow-sm">
+            <p className="year-marker">2015-2023</p>
+
+            <p className="drop-cap">Bắt đầu với niềm đam mê patisserie, Bo đã bán bánh online trong 8 năm. Mỗi chiếc bánh được làm bằng tay, giao tận nơi. Những ngày đầu rất đơn giản: làm bánh buổi sáng, chụp ảnh, đăng lên mạng, rồi giao hàng chiều tối. Từ từ, khách hàng tích lũy, đơn hàng nhiều hơn. Bo nghĩ mình đã hiểu rõ về kinh doanh F&B. Bo biết làm sao để tạo ra sản phẩm ngon, biết cách quản lý đơn hàng, biết cách giữ chân khách hàng.</p>
+
+            <p>Nhưng thực ra, Bo chỉ mới biết một phần nhỏ của câu chuyện.</p>
+
+            <p className="year-marker">2023</p>
+
+            <p>Sau 8 năm xây dựng danh tiếng online, Bo quyết định mở Bonu Cakes and Tea tại trung tâm London. Đó là một quyết định táo bạo. Một địa điểm đắc địa ngay Central London. Một không gian đẹp. Menu đa dạng với bánh ngọt, trà sữa, và bánh mì Việt Nam.</p>
+
+            <p>Ban đầu, mọi thứ rất tốt đẹp. Khách đến đông. Sản phẩm được khen ngợi. Bo tự hào về những gì mình đã tạo ra. Nhưng sau đó, những con số bắt đầu không còn như Bo nghĩ. Chi phí vận hành cao hơn dự tính. Quản lý nhân sự phức tạp hơn nhiều. Marketing offline khác hoàn toàn với online.</p>
+
+            <p className="pull-quote">"Sau hơn một năm, Bo phải đóng cửa. Đó là thất bại lớn đầu tiên của Bo."</p>
+
+            <p>Bo quá chủ quan. Bo nghĩ kinh nghiệm 8 năm bán online đủ để vận hành một tiệm. Nhưng thực tế đã dạy Bo một bài học đắt giá: <em>online và offline là hai mô hình hoàn toàn khác nhau</em>. Offline business đòi hỏi business skills nhiều hơn, không chỉ là làm sản phẩm ngon. Nó cần chiến lược về vị trí, về giá cả, về cạnh tranh, về cash flow. Những thứ mà Bo chưa từng thật sự phải đối mặt khi bán online.</p>
+
+            <div className="bg-cream/30 p-6 my-8 border-l-4 border-terracotta">
+              <p className="text-sm uppercase tracking-wider text-terracotta font-semibold mb-2">Thời kỳ COVID và sau đó</p>
+              <p className="text-coffee">Sau khi đóng cửa Bonu Cakes and Tea ở London, đặc biệt qua giai đoạn COVID, Bo dừng lại để suy nghĩ. Bo nhận ra ba điều then chốt: <strong>Sản phẩm ngon không bằng kinh doanh thành công</strong>. Bo cần học business skills thật sự - từ vị trí, marketing, quản lý nhân sự, đến tài chính. Và cuối cùng, <strong>đam mê không đủ</strong> - cần có chiến lược và hệ thống.</p>
+            </div>
+
+            <p className="year-marker">2024</p>
+
+            <p className="drop-cap">Manchester là khởi đầu mới. Lần này, Bo không đi một mình. Bo trở thành co-founder của Wow Banh Mi, một nhà hàng nhỏ chuyên về các món truyền thống Việt Nam. Khác với lần trước, lần này Bo đã chuẩn bị kỹ hơn. Bo áp dụng những gì đã học được từ thất bại ở London.</p>
+
+            <p>Wow Banh Mi không chỉ bán bánh mì. Bonu F&B có phở, cà phê Việt Nam, và các món ăn truyền thống khác. Nhưng điều quan trọng hơn là cách Bonu F&B xây dựng business. Bonu F&B có hệ thống. Bonu F&B có chiến lược. Bonu F&B hiểu rõ thị trường địa phương.</p>
+
+            <p>Và kết quả đã chứng minh mọi thứ. Wow Banh Mi được bình chọn là <strong><a href="https://www.manchestersfinest.com/articles/vietnamese-sandwiches-done-right-and-a-very-very-good-bowl-of-pho-on-oldham-road/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-terracotta hover:underline transition-colors">Best Bánh Mì in Manchester</a></strong>. Business đang phát triển tốt. Mô hình bền vững. Đội ngũ vững mạnh. Lần này, Bonu F&B đã làm đúng.</p>
+
+            {/* Wales: Memoire Saigon */}
+            <div className="relative pl-8 md:pl-16 border-l-4 border-gold">
+              <div className="absolute -left-2 top-0 timeline-dot bg-gold rounded-full shadow-lg"></div>
+              <div className="bg-espresso text-warmwhite px-4 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8 shadow-lg">
+                <span className="text-gold font-bold text-sm uppercase tracking-wider">2025 - Saundersfoot, Wales</span>
+                <h3 className="text-2xl font-bold mt-2 mb-4">
+                  <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-warmwhite hover:text-gold transition-colors">Memoire Saigon</a> - Hành trình mới
+                </h3>
+                <p className="text-cream/90 mb-4">Sau khi không còn muốn sống ở thành phố lớn, Bo tìm đến Saundersfoot, Wales - nơi yên bình, riêng tư hơn. Đây là lúc Bo tạo ra Memoire Saigon.</p>
+                <p className="text-cream/90 mb-4">Không phải là bắt đầu lại từ đầu. Memoire Saigon là kết tinh của 10 năm kinh nghiệm (2015-2025), thất bại, học hỏi, và thành công.</p>
+                <div className="grid md:grid-cols-3 gap-3 md:gap-4 mb-6">
+                  <div className="text-center p-4 bg-cream/10 rounded">
+                    <p className="text-3xl font-bold text-gold mb-1">10+</p>
+                    <p className="text-cream/70 text-sm">Năm kinh nghiệm</p>
+                  </div>
+                  <div className="text-center p-4 bg-cream/10 rounded">
+                    <p className="text-3xl font-bold text-gold mb-1">3</p>
+                    <p className="text-cream/70 text-sm">Thành phố</p>
+                  </div>
+                  <div className="text-center p-4 bg-cream/10 rounded">
+                    <p className="text-3xl font-bold text-gold mb-1">∞</p>
+                    <p className="text-cream/70 text-sm">Bài học</p>
+                  </div>
+                </div>
+                <div className="bg-warmwhite/10 p-4 rounded border-l-4 border-gold">
+                  <p className="text-cream/90 font-semibold mb-2">Memoire Saigon hôm nay</p>
+                  <p className="text-cream/70 text-sm">Không chỉ là một nhà hàng. Đây là nơi Bo áp dụng tất cả những gì đã học được: chất lượng sản phẩm, business skills, hệ thống vận hành, và quan trọng nhất - sự cân bằng trong cuộc sống.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Lessons */}
+      <section className="py-16 md:py-24 bg-espresso text-warmwhite">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {currentLang === 'vi' ? 'Những bài học quan trọng' : 'Key Lessons'}
+            </h2>
+            <p className="text-cream/70">
+              {currentLang === 'vi' ? 'Từ 10+ năm trên hành trình F&B' : 'From 10+ years in F&B journey'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-cream/10 p-6 rounded">
+              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">1</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">
+                {currentLang === 'vi' ? 'Thất bại là bài học quý nhất' : 'Failure is the most valuable lesson'}
+              </h3>
+              <p className="text-cream/80">
+                {currentLang === 'vi'
+                  ? 'Đóng cửa Bonu ở London là thất bại lớn nhất. Nhưng cũng là bài học giá trị nhất - dạy Bo về business skills, không chỉ product skills.'
+                  : 'Closing Bonu in London was the biggest failure. But also the most valuable lesson - teaching Bo about business skills, not just product skills.'}
+              </p>
+            </div>
+
+            <div className="bg-cream/10 p-6 rounded">
+              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">2</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Online ≠ Offline</h3>
+              <p className="text-cream/80">
+                {currentLang === 'vi'
+                  ? '8 năm bán online không tự động chuyển thành thành công offline. Hai mô hình cần skillsets hoàn toàn khác nhau.'
+                  : '8 years of online sales don\'t automatically translate to offline success. Two models require completely different skillsets.'}
+              </p>
+            </div>
+
+            <div className="bg-cream/10 p-6 rounded">
+              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">3</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">
+                {currentLang === 'vi' ? 'Chất lượng + Business Skills' : 'Quality + Business Skills'}
+              </h3>
+              <p className="text-cream/80">
+                {currentLang === 'vi'
+                  ? 'Sản phẩm ngon là nền tảng, nhưng không đủ. Cần kết hợp với business strategy, marketing, và hệ thống vận hành.'
+                  : 'Good product is the foundation, but not enough. Need to combine with business strategy, marketing, and operational systems.'}
+              </p>
+            </div>
+
+            <div className="bg-cream/10 p-6 rounded">
+              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">4</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3">
+                {currentLang === 'vi' ? 'Tìm cân bằng riêng' : 'Finding your own balance'}
+              </h3>
+              <p className="text-cream/80">
+                {currentLang === 'vi'
+                  ? 'Từ London đến Manchester, rồi Wales - hành trình tìm kiếm không chỉ là thành công kinh doanh mà còn là chất lượng cuộc sống.'
+                  : 'From London to Manchester, then Wales - the journey seeking not just business success but also quality of life.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section id="contact" className="py-16 md:py-24 bg-warmwhite">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-espresso mb-6">
+            {currentLang === 'vi' ? 'Bạn cũng đang trên hành trình F&B?' : 'Are you on your F&B journey too?'}
+          </h2>
+          <p className="text-xl text-coffee mb-8 max-w-2xl mx-auto">
+            {currentLang === 'vi'
+              ? 'Hãy để Bo chia sẻ những gì Bo đã học được qua 10+ năm - từ thất bại đến thành công. Có thể câu chuyện của Bo sẽ giúp bạn tránh được những sai lầm Bo đã mắc phải.'
+              : 'Let Bo share what Bo has learned over 10+ years - from failure to success. Perhaps Bo\'s story will help you avoid the mistakes Bo made.'}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/culinary-consultation" className="inline-flex items-center justify-center gap-3 bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors">
+              <span>{currentLang === 'vi' ? 'Tư vấn dịch vụ' : 'Consultation Services'}</span>
+            </Link>
+            <a href="https://www.facebook.com/profile.php?id=100009102362568" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 border-2 border-espresso text-espresso px-8 py-4 font-semibold hover:bg-espresso/5 transition-colors">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span>{currentLang === 'vi' ? 'Kết nối với Uyên' : 'Connect with Uyen'}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style jsx>{`
+        .timeline-dot {
+          width: 16px;
+          height: 16px;
+        }
+
+        .drop-cap::first-letter {
+          float: left;
+          font-size: 4.5rem;
+          line-height: 0.85;
+          margin: 0.1em 0.1em 0 0;
+          font-family: 'Playfair Display', serif;
+          font-weight: 700;
+          color: #C4704A;
+        }
+
+        .article-text {
+          font-size: 1.125rem;
+          line-height: 1.75;
+          color: #4A3728;
+        }
+
+        .article-text p {
+          margin-bottom: 1.5rem;
+        }
+
+        .year-marker {
+          font-family: 'Playfair Display', serif;
+          font-size: 2rem;
+          font-weight: 700;
+          color: #C4704A;
+          margin: 2rem 0 1rem 0;
+        }
+
+        .pull-quote {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.5rem;
+          font-style: italic;
+          color: #3D2314;
+          border-left: 4px solid #D4A853;
+          padding-left: 1.5rem;
+          margin: 2rem 0;
+        }
+      `}</style>
+    </div>
+  );
+}

@@ -1,0 +1,304 @@
+/**
+ * Order Success Page
+ * Order confirmation with payment instructions and storage guidelines
+ */
+
+'use client';
+
+import { useEffect, useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { CheckCircle, AlertTriangle } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageToggle';
+
+function OrderSuccessContent() {
+  const currentLang = useLanguage();
+  const searchParams = useSearchParams();
+  const [orderId, setOrderId] = useState<string>('');
+  const [displayCode, setDisplayCode] = useState<string>('');
+
+  useEffect(() => {
+    const id = searchParams.get('orderId');
+    const code = searchParams.get('code');
+
+    if (id) {
+      setOrderId(id);
+      if (code && /^[0-9]{4}$/.test(code)) {
+        setDisplayCode(`#${code}`);
+      } else {
+        // Generate code from order ID if not provided
+        const generated = shortCodeFrom(id);
+        setDisplayCode(`#${generated}`);
+      }
+    } else {
+      setDisplayCode('N/A');
+    }
+  }, [searchParams]);
+
+  const shortCodeFrom = (id: string): string => {
+    if (!id) return '';
+    let h = 5381;
+    for (let i = 0; i < id.length; i++) {
+      h = ((h << 5) + h) + id.charCodeAt(i);
+    }
+    const n = Math.abs(h >>> 0) % 10000;
+    return String(n).padStart(4, '0');
+  };
+
+  const translations = {
+    title: { vi: 'Đặt hàng thành công!', en: 'Order Placed Successfully!' },
+    subtitle: {
+      vi: 'Cảm ơn bạn đã đặt hàng tại Bonu F&B',
+      en: 'Thank you for your order at Bonu F&B',
+    },
+    orderIdLabel: { vi: 'Mã đơn hàng', en: 'Order ID' },
+    confirmationSent: { vi: 'Email xác nhận đã được gửi', en: 'Confirmation Email Sent' },
+    confirmationText: {
+      vi: 'Bếp Bà Bo đã gửi email xác nhận đơn hàng và hướng dẫn thanh toán đến địa chỉ email của bạn.',
+      en: 'We have sent an order confirmation email and payment instructions to your email address.',
+    },
+    paymentInstructions: { vi: 'Hướng dẫn thanh toán', en: 'Payment Instructions' },
+    bank: { vi: 'Ngân hàng', en: 'Bank' },
+    accountName: { vi: 'Tên tài khoản', en: 'Account Name' },
+    sortCode: { vi: 'Sort Code', en: 'Sort Code' },
+    accountNumber: { vi: 'Số tài khoản', en: 'Account Number' },
+    transferNote: { vi: 'Nội dung chuyển khoản', en: 'Transfer Note' },
+    amount: { vi: 'Số tiền', en: 'Amount' },
+    noteLabel: { vi: 'Lưu ý:', en: 'Note:' },
+    noteText: {
+      vi: 'Vui lòng chuyển khoản đúng nội dung để Bếp xác nhận đơn hàng nhanh hơn.',
+      en: 'Please transfer with the correct note for faster order confirmation.',
+    },
+    whatHappensNext: { vi: 'Tiếp theo sẽ như thế nào?', en: 'What Happens Next?' },
+    step1Title: { vi: 'Thanh toán', en: 'Payment' },
+    step1Text: {
+      vi: 'Chuyển khoản theo hướng dẫn bên trên với nội dung chính xác',
+      en: 'Transfer payment as instructed above with the exact transfer note',
+    },
+    step2Title: { vi: 'Xác nhận', en: 'Confirmation' },
+    step2Text: {
+      vi: 'Sau khi nhận được thanh toán, Bếp sẽ liên hệ với bạn để xác nhận đơn hàng và thời gian giao',
+      en: 'After receiving payment, we will contact you to confirm your order and delivery time',
+    },
+    step3Title: { vi: 'Chuẩn bị', en: 'Preparation' },
+    step3Text: {
+      vi: 'Đơn hàng của bạn sẽ được làm tươi vào sáng và chuẩn bị giao hàng',
+      en: 'Your order will be made fresh in the morning and prepared for delivery',
+    },
+    step4Title: { vi: 'Giao hàng', en: 'Delivery' },
+    step4Text: {
+      vi: 'Bếp sẽ giao hàng qua DPD hoặc DHL. Bạn sẽ nhận hàng vào ngày đã chọn.',
+      en: 'Next-day shipping via DPD or DHL. You will receive your order on the selected date.',
+    },
+    shippingWarningTitle: { vi: 'Lưu ý quan trọng về giao hàng', en: 'Important Shipping Notice' },
+    shippingWarning1: {
+      vi: 'Bếp Bà Bo kiểm soát chất lượng đồ ăn khi đóng gói nhưng KHÔNG THỂ kiểm soát thời gian giao hàng của đơn vị vận chuyển (DPD/DHL). Nếu đơn hàng bị giao trễ, Bếp không thể đảm bảo chất lượng sản phẩm.',
+      en: 'We control food quality during packaging but CANNOT control delivery delays by shipping companies (DPD/DHL). If delivery is delayed, we cannot guarantee product quality.',
+    },
+    shippingWarning2: {
+      vi: 'Nếu bạn nhận đồ hư hỏng hoặc không ăn được, vui lòng báo ngay cho Bếp. Bếp sẽ refund hoặc gửi lại đơn hàng mới.',
+      en: 'If you receive damaged or inedible food, please report immediately. We will refund or send a new order.',
+    },
+    storageInstructions: { vi: 'Hướng dẫn bảo quản', en: 'Storage Instructions' },
+    storage1: {
+      vi: 'Cho vào tủ lạnh NGAY khi nhận hàng',
+      en: 'Refrigerate IMMEDIATELY upon receiving',
+    },
+    storage2: { vi: 'Bảo quản trong tủ lạnh: 1 tuần', en: 'Refrigerated storage: 1 week' },
+    storage3: { vi: 'Bảo quản trong tủ đá: 1-3 tháng', en: 'Frozen storage: 1-3 months' },
+    storage4: {
+      vi: 'Nếu đông đá, chia nhỏ từng phần để dễ sử dụng',
+      en: 'If freezing, divide into portions for easier use',
+    },
+    needHelp: { vi: 'Cần hỗ trợ?', en: 'Need Help?' },
+    needHelpText: {
+      vi: 'Nếu có bất kỳ thắc mắc nào về đơn hàng, vui lòng liên hệ với Bếp:',
+      en: 'If you have any questions about your order, please contact us:',
+    },
+    messageFacebook: { vi: 'Nhắn tin Facebook', en: 'Message on Facebook' },
+    continueShopping: { vi: 'Tiếp tục mua sắm', en: 'Continue Shopping' },
+    backToHome: { vi: 'Quay lại trang chủ', en: 'Back to Home' },
+  };
+
+  return (
+    <div className="min-h-screen bg-cream">
+      <main className="pt-32 pb-16">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* Success Header */}
+          <div className="text-center mb-12">
+            <CheckCircle className="h-20 w-20 mx-auto text-green-600 mb-4" />
+            <h1 className="text-4xl font-bold text-espresso mb-4 font-serif">
+              {translations.title[currentLang]}
+            </h1>
+            <p className="text-xl text-coffee">{translations.subtitle[currentLang]}</p>
+          </div>
+
+          {/* Order Details */}
+          <div className="bg-white border border-espresso/10 p-8 mb-8">
+            <div className="border-b border-espresso/10 pb-4 mb-6">
+              <h2 className="text-2xl font-bold text-espresso mb-2 font-serif">
+                {translations.orderIdLabel[currentLang]}
+              </h2>
+              <p className="text-3xl font-bold text-terracotta">{displayCode}</p>
+            </div>
+
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-espresso mb-3">
+                {translations.confirmationSent[currentLang]}
+              </h3>
+              <p className="text-coffee">{translations.confirmationText[currentLang]}</p>
+            </div>
+          </div>
+
+          {/* Payment Instructions */}
+          <div className="bg-gold/10 border-2 border-gold/50 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-espresso mb-6 font-serif">
+              {translations.paymentInstructions[currentLang]}
+            </h2>
+
+            <div className="space-y-4 text-coffee">
+              <div className="flex justify-between border-b border-gold/30 pb-3">
+                <span className="font-semibold">{translations.bank[currentLang]}</span>
+                <span className="text-right">HSBC</span>
+              </div>
+              <div className="flex justify-between border-b border-gold/30 pb-3">
+                <span className="font-semibold">{translations.accountName[currentLang]}</span>
+                <span className="text-right">N M U NGUYEN</span>
+              </div>
+              <div className="flex justify-between border-b border-gold/30 pb-3">
+                <span className="font-semibold">{translations.sortCode[currentLang]}</span>
+                <span className="text-right font-mono">40-20-16</span>
+              </div>
+              <div className="flex justify-between border-b border-gold/30 pb-3">
+                <span className="font-semibold">{translations.accountNumber[currentLang]}</span>
+                <span className="text-right font-mono">22101505</span>
+              </div>
+              <div className="flex justify-between border-b border-gold/30 pb-3">
+                <span className="font-semibold">{translations.transferNote[currentLang]}</span>
+                <span className="text-right font-mono font-bold">{displayCode}</span>
+              </div>
+            </div>
+
+            <div className="mt-6 bg-white p-4 border border-gold/30">
+              <p className="text-sm text-coffee">
+                <strong>{translations.noteLabel[currentLang]}</strong>{' '}
+                {translations.noteText[currentLang]}
+              </p>
+            </div>
+          </div>
+
+          {/* What Happens Next */}
+          <div className="bg-warmwhite border border-espresso/10 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-espresso mb-6 font-serif">
+              {translations.whatHappensNext[currentLang]}
+            </h2>
+
+            <div className="space-y-6">
+              {[
+                { title: translations.step1Title, text: translations.step1Text },
+                { title: translations.step2Title, text: translations.step2Text },
+                { title: translations.step3Title, text: translations.step3Text },
+                { title: translations.step4Title, text: translations.step4Text },
+              ].map((step, index) => (
+                <div key={index} className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-terracotta text-white rounded-full flex items-center justify-center font-bold">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-espresso mb-2">
+                      {step.title[currentLang]}
+                    </h3>
+                    <p className="text-coffee">{step.text[currentLang]}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Shipping Warning */}
+          <div className="bg-red-50 border-2 border-red-300 p-6 mb-8">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold text-red-900 mb-2">
+                  {translations.shippingWarningTitle[currentLang]}
+                </h3>
+                <p className="text-red-800 text-sm mb-2">
+                  {translations.shippingWarning1[currentLang]}
+                </p>
+                <p className="text-red-800 text-sm">
+                  {translations.shippingWarning2[currentLang]}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Storage Instructions */}
+          <div className="bg-warmwhite border border-espresso/10 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+              {translations.storageInstructions[currentLang]}
+            </h2>
+            <ul className="space-y-3 text-coffee">
+              {[
+                translations.storage1,
+                translations.storage2,
+                translations.storage3,
+                translations.storage4,
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="text-terracotta font-bold">•</span>
+                  <span>{item[currentLang]}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="bg-espresso text-warmwhite p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 font-serif">
+              {translations.needHelp[currentLang]}
+            </h2>
+            <p className="mb-4">{translations.needHelpText[currentLang]}</p>
+            <a
+              href="https://www.facebook.com/profile.php?id=100009102362568"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+              <span>{translations.messageFacebook[currentLang]}</span>
+            </a>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="text-center space-y-4">
+            <Link
+              href="/products"
+              className="inline-block bg-terracotta text-white px-8 py-4 font-semibold text-lg hover:bg-terracotta/90 transition-colors"
+            >
+              {translations.continueShopping[currentLang]}
+            </Link>
+            <div>
+              <Link
+                href="/"
+                className="text-coffee hover:text-terracotta transition-colors"
+              >
+                {translations.backToHome[currentLang]}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default function OrderSuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-cream pt-32">Loading...</div>}>
+      <OrderSuccessContent />
+    </Suspense>
+  );
+}

@@ -1,0 +1,66 @@
+{
+  "name": "bonucakes-nextjs",
+  "version": "1.0.0",
+  "description": "Bonu F&B - F&B Business Design Platform",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "build:check": "npm run type-check && npm run lint && npm run build",
+    "pre-deploy": "npm run build:check",
+    "db:seed": "tsx prisma/seed.ts",
+    "create-admin": "tsx src/lib/create-admin.ts"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.10.0",
+    "@aws-sdk/client-s3": "^3.864.0",
+    "@aws-sdk/s3-request-presigner": "^3.864.0",
+    "@headlessui/react": "^2.0.3",
+    "@heroicons/react": "^2.1.3",
+    "@prisma/client": "^6.13.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.27",
+    "bcryptjs": "^3.0.2",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.511.0",
+    "next": "14.2.3",
+    "next-auth": "^4.24.11",
+    "next-intl": "^3.22.1",
+    "prisma": "^6.13.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.4",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-html": "^16.0.1",
+    "resend": "^4.7.0",
+    "sharp": "^0.34.3",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run type-check",
+      "npm run lint:fix"
+    ]
+  }
+}

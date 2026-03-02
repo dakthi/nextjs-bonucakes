@@ -1,0 +1,63 @@
+name: Build and Deploy Bonucakes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker buildx build --platform linux/amd64 -t bonucakes:latest --load .
+
+      - name: Save Docker image to tar.gz
+        run: docker save bonucakes:latest | gzip > bonucakes.tar.gz
+
+      - name: Copy image to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "bonucakes.tar.gz"
+          target: "/root/docker-images/bonucakes/"
+
+      - name: Copy deployment files to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "deploy-bonucakes.sh,docker-compose.yml"
+          target: "/root/docker-images/bonucakes/"
+
+      - name: Deploy on VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            chmod +x /root/docker-images/bonucakes/deploy-bonucakes.sh
+            /root/docker-images/bonucakes/deploy-bonucakes.sh
