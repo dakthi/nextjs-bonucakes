@@ -198,7 +198,7 @@ export default function AdminOrdersPage() {
                             {new Date(order.createdAt).toLocaleDateString('vi-VN')}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            ₫{Number(order.total).toLocaleString('vi-VN')}
+                            £{Number(order.total).toLocaleString('en-GB')}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center gap-2">
@@ -274,7 +274,7 @@ export default function AdminOrdersPage() {
                             <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
                           </div>
                           <p className="text-sm font-medium text-gray-900">
-                            ₫{Number(item.price).toLocaleString('vi-VN')}
+                            £{Number(item.price).toLocaleString('en-GB')}
                           </p>
                         </div>
                       ))}
@@ -284,7 +284,7 @@ export default function AdminOrdersPage() {
                   <div className="border-t pt-4">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Total</p>
-                      <p>₫{Number(selectedOrder.total).toLocaleString('vi-VN')}</p>
+                      <p>£{Number(selectedOrder.total).toLocaleString('en-GB')}</p>
                     </div>
                   </div>
 
