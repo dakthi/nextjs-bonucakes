@@ -59,16 +59,16 @@ export default function AdminDashboard() {
       ])
 
       const [productsData, ordersData, postsData] = await Promise.all([
-        productsRes.ok ? productsRes.json() : { pagination: { totalCount: 0 }, products: [] },
+        productsRes.ok ? productsRes.json() : { pagination: { total: 0 }, products: [] },
         ordersRes.ok ? ordersRes.json() : { orders: [], stats: { totalRevenue: 0 } },
-        postsRes.ok ? postsRes.json() : { pagination: { totalCount: 0 }, posts: [] },
+        postsRes.ok ? postsRes.json() : { pagination: { total: 0 }, posts: [] },
       ])
 
       setStats({
-        totalProducts: productsData.pagination?.totalCount || 0,
+        totalProducts: productsData.pagination?.total || 0,
         totalOrders: ordersData.pagination?.totalCount || ordersData.orders?.length || 0,
         totalRevenue: ordersData.stats?.totalRevenue || 0,
-        totalBlogPosts: postsData.pagination?.totalCount || 0,
+        totalBlogPosts: postsData.pagination?.total || 0,
         recentOrders: ordersData.orders?.slice(0, 5) || [],
         recentPosts: postsData.posts?.slice(0, 5) || [],
       })
