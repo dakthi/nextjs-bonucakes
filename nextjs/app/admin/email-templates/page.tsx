@@ -27,6 +27,7 @@ export default function EmailTemplatesPage() {
   const [editingTemplate, setEditingTemplate] = useState<EmailTemplate | null>(null)
   const [saving, setSaving] = useState(false)
   const [previewHtml, setPreviewHtml] = useState<string | null>(null)
+  const [showLivePreview, setShowLivePreview] = useState(false)
 
   const [formData, setFormData] = useState({
     name: "",
@@ -156,8 +157,18 @@ export default function EmailTemplatesPage() {
     const sampleHtml = template.htmlContent
       .replace(/{name}/g, "John Doe")
       .replace(/{email}/g, "john@example.com")
+      .replace(/{content}/g, "This is sample content for the preview.")
 
     setPreviewHtml(sampleHtml)
+  }
+
+  const getLivePreviewHtml = () => {
+    if (!formData.htmlContent) return "<p>Enter HTML content to preview</p>"
+
+    return formData.htmlContent
+      .replace(/{name}/g, "John Doe")
+      .replace(/{email}/g, "john@example.com")
+      .replace(/{content}/g, "This is sample content for the preview.")
   }
 
   return (
@@ -376,19 +387,47 @@ export default function EmailTemplatesPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      HTML Content * <Code className="inline h-4 w-4" />
-                    </label>
-                    <textarea
-                      value={formData.htmlContent}
-                      onChange={(e) => setFormData({...formData, htmlContent: e.target.value})}
-                      placeholder="<!DOCTYPE html>..."
-                      rows={15}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500 font-mono text-sm"
-                    />
-                    <p className="mt-1 text-xs text-gray-500">
-                      Use <code className="bg-gray-100 px-1 rounded">{`{name}`}</code>, <code className="bg-gray-100 px-1 rounded">{`{email}`}</code> and other variables to personalize.
-                    </p>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        HTML Content * <Code className="inline h-4 w-4" />
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setShowLivePreview(!showLivePreview)}
+                        className="inline-flex items-center px-3 py-1 text-xs font-medium text-amber-700 bg-amber-100 rounded hover:bg-amber-200"
+                      >
+                        <Eye className="h-3 w-3 mr-1" />
+                        {showLivePreview ? "Hide" : "Show"} Preview
+                      </button>
+                    </div>
+
+                    <div className={`grid ${showLivePreview ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
+                      <div>
+                        <textarea
+                          value={formData.htmlContent}
+                          onChange={(e) => setFormData({...formData, htmlContent: e.target.value})}
+                          placeholder="<!DOCTYPE html>..."
+                          rows={15}
+                          className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500 font-mono text-sm"
+                        />
+                        <p className="mt-1 text-xs text-gray-500">
+                          Use <code className="bg-gray-100 px-1 rounded">{`{name}`}</code>, <code className="bg-gray-100 px-1 rounded">{`{email}`}</code>, <code className="bg-gray-100 px-1 rounded">{`{content}`}</code> to personalize.
+                        </p>
+                      </div>
+
+                      {showLivePreview && (
+                        <div>
+                          <p className="text-xs text-gray-500 mb-1">Live Preview:</p>
+                          <div className="border rounded-md bg-gray-50 h-[400px] overflow-auto">
+                            <iframe
+                              srcDoc={getLivePreviewHtml()}
+                              className="w-full h-full bg-white"
+                              title="Live Email Preview"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
