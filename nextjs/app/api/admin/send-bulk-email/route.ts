@@ -3,7 +3,12 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResendClient() {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("RESEND_API_KEY is not configured")
+  }
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 const emailTemplates = {
   plain: (content: string, name: string) => content.replace(/{name}/g, name),
@@ -197,6 +202,8 @@ export async function POST(request: NextRequest) {
     const errors: string[] = []
 
     // Send emails in batches to avoid rate limits
+    const resend = getResendClient()
+
     for (const recipient of recipients) {
       try {
         const html = templateFn(content, recipient.name)
