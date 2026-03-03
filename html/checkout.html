@@ -279,7 +279,7 @@
                 if (!price || price <= 0) price = Cart.parseDisplayPrice(it.displayPrice || '');
                 return sum + (qty * (price || 0));
             }, 0);
-            const shipping = cart.items.length > 0 ? Number((window.Cart && Cart.SHIPPING_FEE) || 8) : 0;
+            const shipping = cart.items.length > 0 ? Number((window.Cart && Cart.SHIPPING_FEE) || 10) : 0;
             const grand = subtotal + shipping;
             document.getElementById('checkout-subtotal').textContent = `£${subtotal}`;
             document.getElementById('checkout-shipping').textContent = `£${shipping}`;
@@ -319,7 +319,7 @@
 
             const cart = Cart.getCart();
             const items = Cart.getCartForAPI();
-            const shippingFee = Number((window.Cart && Cart.SHIPPING_FEE) || 8);
+            const shippingFee = Number((window.Cart && Cart.SHIPPING_FEE) || 10);
             const subtotal = Cart.getCartTotal();
             const grandTotal = subtotal + shippingFee;
 

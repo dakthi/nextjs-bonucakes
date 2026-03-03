@@ -1,7 +1,7 @@
 // Cart management using localStorage
 const Cart = {
     STORAGE_KEY: 'bonu_cart',
-    SHIPPING_FEE: 8,
+    SHIPPING_FEE: 10,
 
     // Get current cart (migrates missing numeric prices from displayPrice)
     getCart() {
