@@ -253,7 +253,7 @@ export async function POST(request: NextRequest) {
         const finalHtml = personalizedHtml.replace(/{content}/g, content)
 
         await resend.emails.send({
-          from: "Bonu Cakes <noreply@bonucakes.co.uk>",
+          from: "Bonu Cakes <onboarding@resend.dev>", // Temporary: change to noreply@bonucakes.co.uk after domain verification
           to: recipient.email,
           subject: subject,
           html: finalHtml,
