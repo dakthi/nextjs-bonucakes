@@ -1,9 +1,10 @@
 /**
  * Sync customer data with their orders
- * Updates totalSpent, totalOrders, and lastOrderDate for each customer
+ * Updates totalSpent, totalOrders, lastOrderDate, tags, and segment for each customer
  */
 
 import { PrismaClient } from '@prisma/client'
+import { generateOrderTags, mergeTags, calculateSegment } from '../lib/auto-tagging'
 
 const prisma = new PrismaClient()
 
@@ -56,20 +57,31 @@ async function syncCustomerOrders() {
         // Find or create customer
         let customer = customers.find(c => c.email.toLowerCase() === email)
 
+        // Generate order-based tags
+        const orderTags = generateOrderTags(totalOrders, totalSpent)
+
+        // Calculate segment
+        const segment = calculateSegment(totalOrders, totalSpent, lastOrderDate)
+
         if (customer) {
-          // Update existing customer
+          // Update existing customer with auto-tagging
+          const existingTags = customer.tags || []
+          const updatedTags = mergeTags(existingTags, orderTags)
+
           await prisma.customer.update({
             where: { id: customer.id },
             data: {
               totalOrders,
               totalSpent,
               lastOrderDate,
+              tags: updatedTags,
+              segment,
             }
           })
-          console.log(`✅ Updated: ${customer.name} (${email}) - ${totalOrders} orders, £${totalSpent.toFixed(2)}`)
+          console.log(`✅ Updated: ${customer.name} (${email}) - ${totalOrders} orders, £${totalSpent.toFixed(2)}, segment: ${segment}, tags: ${orderTags.join(', ')}`)
           updated++
         } else {
-          // Create new customer from order data
+          // Create new customer from order data with auto-tagging
           const firstOrder = customerOrders[customerOrders.length - 1] // Oldest order
           customer = await prisma.customer.create({
             data: {
@@ -81,9 +93,11 @@ async function syncCustomerOrders() {
               totalOrders,
               totalSpent,
               lastOrderDate,
+              tags: orderTags,
+              segment,
             }
           })
-          console.log(`✨ Created: ${customer.name} (${email}) - ${totalOrders} orders, £${totalSpent.toFixed(2)}`)
+          console.log(`✨ Created: ${customer.name} (${email}) - ${totalOrders} orders, £${totalSpent.toFixed(2)}, segment: ${segment}, tags: ${orderTags.join(', ')}`)
           created++
         }
       } catch (error: any) {
