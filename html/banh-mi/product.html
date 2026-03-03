@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2YKRZNC4F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2YKRZNC4F');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Bánh Mì - Bonu F&B</title>
+    <meta name="description" id="page-description" content="Bánh mì Sài Gòn truyền thống">
+
+    <link rel="icon" href="https://thielts.chartedconsultants.com/bonu/profile.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{cream:'#FDF8F3',warmwhite:'#FFFBF5',terracotta:'#C4704A',espresso:'#3D2314',gold:'#D4A853',coffee:'#4A3728'}}}}</script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .lang-btn { transition: all 0.2s ease; }
+        .lang-btn.active { background-color: #C4704A; color: white; }
+        .nav-scrolled { box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .accordion-content.active { max-height: 1000px; }
+        .error-message { display: none; }
+        .error-message.active { display: block; }
+        .input-error { border-color: #ef4444 !important; }
+    </style>
+</head>
+<body class="bg-cream">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm" id="site-nav">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-3xl font-bold text-gold" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
+            <div class="flex items-center gap-6">
+                <a href="/story.html" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Câu chuyện" data-en="Story">Câu chuyện</a>
+                <a href="/products.html" class="text-white font-semibold transition-colors hidden md:block" data-vi="Sản phẩm" data-en="Products">Sản phẩm</a>
+                <a href="https://bonucakes.com/culinary-consultation.html" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Tư vấn" data-en="Services">Tư vấn</a>
+                <a href="/blog.html" class="text-cream/80 hover:text-white transition-colors hidden md:block">Blog</a>
+                <a href="/#contact" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+                <a href="/cart.html" class="relative text-white font-semibold transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-terracotta text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                </a>
+                <div class="flex bg-espresso border border-gold/30 rounded-full p-1">
+                    <button onclick="setLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm text-cream/80 hover:text-white" id="btn-en">EN</button>
+                    <button onclick="setLang('vi')" class="lang-btn px-3 py-1 rounded-full text-sm text-cream/80 hover:text-white active" id="btn-vi">VI</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div id="loading" class="pt-32 pb-16 text-center">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-coffee">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Product Not Found -->
+    <div id="not-found" class="pt-32 pb-16 text-center hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <h1 class="text-3xl font-bold text-espresso mb-4" data-vi="Không tìm thấy sản phẩm" data-en="Product not found">Không tìm thấy sản phẩm</h1>
+            <a href="/products.html" class="text-terracotta hover:underline" data-vi="Quay lại danh sách sản phẩm" data-en="Back to products">Quay lại danh sách sản phẩm</a>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <div id="product-detail" class="hidden">
+        <!-- Hero Section -->
+        <section class="bg-warmwhite pt-32 pb-12 border-b border-espresso/10">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <!-- Product Images -->
+                    <div>
+                        <div id="main-image-container" class="mb-4 cursor-pointer bg-white h-[24rem] md:h-[28rem] lg:h-[32rem] flex items-center justify-center" onclick="openLightbox()">
+                            <img id="main-image" src="" alt="" class="w-full h-full object-contain border border-espresso/10">
+                        </div>
+                        <div id="image-thumbnails" class="flex gap-4 overflow-x-auto">
+                            <!-- Thumbnail images loaded via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div>
+                        <div id="promotion-badge" class="inline-block bg-terracotta text-white px-4 py-2 text-sm font-semibold mb-4 hidden"></div>
+                        <h1 id="product-name" class="text-4xl font-bold text-espresso mb-4"></h1>
+                        <div class="flex items-baseline gap-4 mb-6">
+                            <div id="product-price" class="text-4xl font-bold text-terracotta"></div>
+                            <div id="product-currency" class="text-xl text-coffee"></div>
+                        </div>
+                        <div id="product-description" class="text-coffee mb-6 text-lg"></div>
+                        <div id="delivery-info" class="bg-gold/10 border border-gold/30 p-4 mb-6">
+                            <p class="text-coffee font-semibold"></p>
+                        </div>
+
+                        <!-- Add to Cart Controls -->
+                        <div class="bg-white border border-espresso/10 p-6 mb-4">
+                            <!-- Row 1: Top-left products link + primary CTA on right -->
+                            <div class="flex items-center justify-between gap-4">
+                                <a href="/products.html" class="text-coffee hover:text-espresso transition-colors text-sm" data-vi="Xem sản phẩm" data-en="View Products">Xem sản phẩm</a>
+                                <button id="add-to-cart-btn" onclick="addToCart()" class="bg-terracotta text-white px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg hover:bg-terracotta/90 transition-colors" data-vi="Thêm vào giỏ hàng" data-en="Add to Cart">Thêm vào giỏ hàng</button>
+                            </div>
+
+                            <!-- Row 2: Quantity + promo -->
+                            <div class="mt-4 flex items-center justify-start gap-4 flex-wrap">
+                                <div class="flex items-center gap-3 flex-wrap">
+                                    <span class="text-coffee font-semibold" data-vi="Số lượng" data-en="Quantity">Số lượng</span>
+                                    <div class="flex items-center gap-2">
+                                        <button aria-label="Giảm số lượng" onclick="decreaseQuantity()" class="w-10 h-10 md:w-12 md:h-12 border-2 border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold text-xl">-</button>
+                                        <input aria-label="Số lượng" type="number" id="cart-quantity" value="1" min="1" max="50" class="w-10 h-10 md:w-12 md:h-12 text-center text-xl md:text-2xl font-bold border-2 border-espresso/20 focus:border-terracotta focus:outline-none">
+                                        <button aria-label="Tăng số lượng" onclick="increaseQuantity()" class="w-10 h-10 md:w-12 md:h-12 border-2 border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold text-xl">+</button>
+                                    </div>
+                                    <span class="text-xs text-coffee/80 bg-gold/10 border border-gold/30 px-2 py-1 rounded" id="promotion-hint" data-vi="Mua 10 tặng 1" data-en="Buy 10 get 1 free">Mua 10 tặng 1</span>
+                                </div>
+                            </div>
+
+                            <!-- Success Message -->
+                            <div id="cart-success" class="hidden bg-gold/10 border border-gold/30 p-4 rounded text-center mt-4">
+                                <p class="text-espresso font-semibold mb-2" data-vi="Đã thêm vào giỏ hàng!" data-en="Added to cart!">Đã thêm vào giỏ hàng!</p>
+                                <div class="flex gap-2 justify-center">
+                                    <a href="/cart.html" class="inline-block bg-espresso text-white px-6 py-2 font-semibold hover:bg-espresso/90 transition-colors text-sm" data-vi="Xem giỏ hàng" data-en="View Cart">Xem giỏ hàng</a>
+                                    <a href="/checkout.html" class="inline-block bg-gold text-espresso px-6 py-2 font-semibold hover:bg-gold/90 transition-colors text-sm" data-vi="Thanh toán" data-en="Checkout">Thanh toán</a>
+                                </div>
+                            </div>
+                            <!-- Out of Stock Message -->
+                            <div id="out-of-stock" class="hidden bg-red-50 border border-red-200 text-red-800 p-4 rounded text-center mt-4 font-semibold" data-vi="Sản phẩm tạm hết hàng. Vui lòng quay lại sau." data-en="This item is currently out of stock. Please check back later.">
+                                Sản phẩm tạm hết hàng. Vui lòng quay lại sau.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!-- Product Details Tabs -->
+        <section class="py-16 bg-cream">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Ingredients -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-espresso mb-4" data-vi="Thành phần" data-en="Ingredients">Thành phần</h2>
+                    <ul id="ingredients-list" class="grid md:grid-cols-2 gap-3">
+                        <!-- Loaded via JS -->
+                    </ul>
+                </div>
+
+                <!-- Packaging -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-espresso mb-4" data-vi="Đóng gói" data-en="Packaging">Đóng gói</h2>
+                    <div id="packaging-info" class="bg-warmwhite border border-espresso/10 p-6">
+                        <!-- Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Usage Instructions (Expanded) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-espresso mb-6" data-vi="Hướng dẫn sử dụng" data-en="Usage Instructions">Hướng dẫn sử dụng</h2>
+
+                    <!-- Storage Instructions (Critical) -->
+                    <div class="mb-6 border-2 border-red-500 bg-red-50 p-6">
+                        <h3 class="font-semibold text-red-700 text-lg mb-3">
+                            <span data-vi="Bảo quản (QUAN TRỌNG)" data-en="Storage (CRITICAL)">Bảo quản (QUAN TRỌNG)</span>
+                        </h3>
+                        <p id="storage-text" class="text-red-900 font-medium"></p>
+                    </div>
+
+                    <!-- Preparation -->
+                    <div id="preparation-section" class="mb-6 border border-espresso/20 bg-white p-6">
+                        <h3 class="font-semibold text-espresso text-lg mb-3">
+                            <span data-vi="Cách sử dụng" data-en="Preparation">Cách sử dụng</span>
+                        </h3>
+                        <div id="reheating-text" class="text-coffee space-y-2"></div>
+                    </div>
+
+                    <!-- Preparing Fillings -->
+                    <div id="fillings-section" class="mb-6 border border-espresso/20 bg-white p-6 hidden">
+                        <h3 class="font-semibold text-espresso text-lg mb-3">
+                            <span data-vi="Chuẩn bị nhân" data-en="Preparing Fillings">Chuẩn bị nhân</span>
+                        </h3>
+                        <div id="fillings-text" class="text-coffee space-y-2"></div>
+                    </div>
+
+                    <!-- Assembly -->
+                    <div id="assembly-section" class="mb-6 border border-espresso/20 bg-white p-6 hidden">
+                        <h3 class="font-semibold text-espresso text-lg mb-3">
+                            <span data-vi="Cách ráp bánh" data-en="Assembly">Cách ráp bánh</span>
+                        </h3>
+                        <div id="assembly-text" class="text-coffee space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div id="image-lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onclick="closeLightbox()">
+        <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">&times;</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-espresso border-t border-gold/20 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="/" class="text-2xl font-bold text-gold" style="font-family: 'Playfair Display', serif;">Bonu F&B</a>
+                <div class="flex gap-6 text-cream/60 text-sm">
+                    <a href="/story.html" class="hover:text-white transition-colors" data-vi="Câu chuyện" data-en="Story">Câu chuyện</a>
+                    <a href="/products.html" class="hover:text-white transition-colors" data-vi="Sản phẩm" data-en="Products">Sản phẩm</a>
+                    <a href="/#courses" class="hover:text-white transition-colors" data-vi="Tư vấn" data-en="Services">Tư vấn</a>
+                    <a href="/blog.html" class="hover:text-white transition-colors">Blog</a>
+                    <a href="/#contact" class="hover:text-white transition-colors" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+                </div>
+            </div>
+            <div class="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
+                <p>&copy; 2026 Uyen Nguyen - F&B Business Design</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = localStorage.getItem('lang') || 'vi';
+        let productData = null;
+        let currentProduct = null;
+
+        // Get slug from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productSlug = urlParams.get('slug');
+
+        // Language switcher
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+
+            document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+            document.querySelectorAll('[data-vi]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            });
+
+            if (currentProduct) {
+                renderProduct();
+            }
+        }
+
+        // Toggle accordion
+        function toggleAccordion(section) {
+            const content = document.getElementById(`${section}-content`);
+            const icon = document.getElementById(`${section}-icon`);
+
+            content.classList.toggle('active');
+            icon.textContent = content.classList.contains('active') ? '-' : '+';
+        }
+
+        // Load product data
+        async function loadProduct() {
+            try {
+                const response = await fetch('/products.json');
+                productData = await response.json();
+
+                currentProduct = productData.products.find(p => p.slug === productSlug);
+
+                if (!currentProduct) {
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('not-found').classList.remove('hidden');
+                    return;
+                }
+
+                renderProduct();
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('product-detail').classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error loading product:', error);
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('not-found').classList.remove('hidden');
+            }
+        }
+
+        // Render product details
+        function renderProduct() {
+            const name = currentProduct.name[currentLang];
+            const desc = currentProduct.description[currentLang];
+            const shortDesc = currentProduct.shortDescription[currentLang];
+
+            // Update meta
+            document.getElementById('page-title').textContent = name + ' - Bonu F&B';
+            document.getElementById('page-description').content = shortDesc;
+
+            // Main image
+            const mainImage = currentProduct.images && currentProduct.images.length > 0
+                ? currentProduct.images[0]
+                : '/placeholder-product.webp';
+            document.getElementById('main-image').src = mainImage;
+            document.getElementById('main-image').alt = name;
+
+            // Thumbnails
+            if (currentProduct.images && currentProduct.images.length > 1) {
+                const thumbnailsHtml = currentProduct.images.map((img, index) =>
+                    `<img src="${img}" alt="${name}" class="w-20 h-20 object-cover border border-espresso/20 cursor-pointer hover:border-terracotta" onclick="changeMainImage('${img}')">`
+                ).join('');
+                document.getElementById('image-thumbnails').innerHTML = thumbnailsHtml;
+            }
+
+            // Promotion badge
+            if (currentProduct.promotion) {
+                const promoText = currentProduct.promotion[currentLang];
+                document.getElementById('promotion-badge').textContent = promoText;
+                document.getElementById('promotion-badge').classList.remove('hidden');
+            }
+
+            // Product info
+            document.getElementById('product-name').textContent = name;
+            // Localized price display: prefer amount + unit if available; fallback to display strings
+            (function () {
+                const amount = Number(currentProduct.price.amount || 0);
+                const currency = currentProduct.price.currency || 'GBP';
+                const unit = currentProduct.price.unit && (currentProduct.price.unit[currentLang] || currentProduct.price.unit.vi || currentProduct.price.unit.en);
+                const display = (currentLang === 'vi')
+                    ? (currentProduct.price.displayPriceVi || currentProduct.price.displayPrice || '')
+                    : (currentProduct.price.displayPrice || currentProduct.price.displayPriceVi || '');
+                const priceEl = document.getElementById('product-price');
+                const currencyEl = document.getElementById('product-currency');
+                if (amount > 0 && unit) {
+                    const money = currency === 'GBP' ? `£${amount}` : `${amount.toLocaleString()}₫`;
+                    priceEl.textContent = `${money} / ${unit}`;
+                    currencyEl.textContent = '';
+                } else if (display && !/contact for pricing/i.test(display)) {
+                    priceEl.textContent = display;
+                    currencyEl.textContent = '';
+                } else if (amount > 0) {
+                    priceEl.textContent = currency === 'GBP' ? `£${amount}` : `${amount.toLocaleString()}₫`;
+                    currencyEl.textContent = '';
+                } else {
+                    priceEl.textContent = '';
+                    currencyEl.textContent = '';
+                }
+            })();
+            document.getElementById('product-description').textContent = desc;
+
+            // Delivery info
+            const deliveryText = currentProduct.deliveryInfo[currentLang];
+            document.querySelector('#delivery-info p').textContent = deliveryText;
+            const faqDeliveryEl = document.getElementById('faq-delivery');
+            if (faqDeliveryEl) faqDeliveryEl.textContent = deliveryText;
+
+            // Ingredients
+            const ingredientsHtml = currentProduct.ingredients[currentLang].map(ing =>
+                `<li class="flex items-start gap-2"><span class="text-terracotta">•</span><span>${ing}</span></li>`
+            ).join('');
+            document.getElementById('ingredients-list').innerHTML = ingredientsHtml;
+
+            // Packaging
+            document.getElementById('packaging-info').textContent = currentProduct.packaging[currentLang];
+
+            // Usage instructions - only render if they exist
+            if (currentProduct.usageInstructions && currentProduct.usageInstructions.storage) {
+                document.getElementById('storage-text').textContent = currentProduct.usageInstructions.storage[currentLang];
+            }
+
+            if (currentProduct.usageInstructions && currentProduct.usageInstructions.reheating) {
+                const reheatingHtml = currentProduct.usageInstructions.reheating[currentLang]
+                    .map(line => `<p>${line}</p>`).join('');
+                document.getElementById('reheating-text').innerHTML = reheatingHtml;
+            } else if (currentProduct.usageInstructions && currentProduct.usageInstructions.preparation) {
+                // Use preparation field for non-banh-mi products
+                const preparationHtml = currentProduct.usageInstructions.preparation[currentLang]
+                    .map(line => `<p>${line}</p>`).join('');
+                document.getElementById('reheating-text').innerHTML = preparationHtml;
+            }
+
+            if (currentProduct.usageInstructions && currentProduct.usageInstructions.preparingFillings) {
+                const fillingsHtml = currentProduct.usageInstructions.preparingFillings[currentLang]
+                    .map(line => `<p>${line}</p>`).join('');
+                document.getElementById('fillings-text').innerHTML = fillingsHtml;
+                document.getElementById('fillings-section').classList.remove('hidden');
+            }
+
+            if (currentProduct.usageInstructions && currentProduct.usageInstructions.assembly) {
+                const assemblyHtml = currentProduct.usageInstructions.assembly[currentLang]
+                    .map(line => `<p>${line}</p>`).join('');
+                document.getElementById('assembly-text').innerHTML = assemblyHtml;
+                document.getElementById('assembly-section').classList.remove('hidden');
+            }
+
+            // Handle availability (disable ordering if out of stock)
+            (function (){
+                const isAvailable = !!currentProduct.available;
+                const addBtn = document.getElementById('add-to-cart-btn');
+                const qtyInput = document.getElementById('cart-quantity');
+                const promoHint = document.getElementById('promotion-hint');
+                const oosMsg = document.getElementById('out-of-stock');
+                if (!isAvailable) {
+                    // Disable button
+                    if (addBtn) {
+                        addBtn.disabled = true;
+                        addBtn.textContent = currentLang === 'vi' ? 'Tạm hết hàng' : 'Out of stock';
+                        addBtn.classList.remove('bg-terracotta', 'hover:bg-terracotta/90');
+                        addBtn.classList.add('bg-gray-300', 'cursor-not-allowed', 'opacity-60', 'text-espresso');
+                    }
+                    // Disable quantity input
+                    if (qtyInput) {
+                        qtyInput.disabled = true;
+                        qtyInput.classList.add('opacity-60', 'cursor-not-allowed');
+                    }
+                    // Hide promo hint if present
+                    if (promoHint) {
+                        promoHint.classList.add('hidden');
+                    }
+                    // Show out-of-stock message
+                    if (oosMsg) {
+                        oosMsg.classList.remove('hidden');
+                        // Update localized text
+                        oosMsg.textContent = oosMsg.getAttribute(`data-${currentLang}`) || oosMsg.textContent;
+                    }
+                } else {
+                    // Ensure normal state
+                    if (addBtn) {
+                        addBtn.disabled = false;
+                        addBtn.textContent = currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart';
+                        addBtn.classList.add('bg-terracotta', 'hover:bg-terracotta/90');
+                        addBtn.classList.remove('bg-gray-300', 'cursor-not-allowed', 'opacity-60', 'text-espresso');
+                    }
+                    if (qtyInput) {
+                        qtyInput.disabled = false;
+                        qtyInput.classList.remove('opacity-60', 'cursor-not-allowed');
+                    }
+                    if (promoHint) {
+                        promoHint.classList.remove('hidden');
+                    }
+                    if (oosMsg) {
+                        oosMsg.classList.add('hidden');
+                    }
+                }
+            })();
+
+            // Initialize cart price display
+            updatePriceDisplay();
+        }
+
+        // Change main image
+        function changeMainImage(src) {
+            document.getElementById('main-image').src = src;
+        }
+
+        // Cart quantity controls
+        function increaseQuantity() {
+            const input = document.getElementById('cart-quantity');
+            const currentValue = parseInt(input.value) || 1;
+            if (currentValue < 50) {
+                input.value = currentValue + 1;
+                updatePriceDisplay();
+            }
+        }
+
+        function decreaseQuantity() {
+            const input = document.getElementById('cart-quantity');
+            const currentValue = parseInt(input.value) || 1;
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+                updatePriceDisplay();
+            }
+        }
+
+        function updatePriceDisplay() {
+            const quantity = parseInt(document.getElementById('cart-quantity').value) || 1;
+            const unitPrice = currentProduct.price.amount;
+            const currency = currentProduct.price.currency;
+            // Price is displayed in the main header; compact bar no longer shows price.
+            // Safe no-op to keep logic consistent when quantity changes.
+            if (!unitPrice || unitPrice <= 0) return;
+            // If in the future we re-add an inline total, guard DOM first.
+            const inlineEl = document.getElementById('cart-price-display');
+            if (inlineEl) {
+                const totalPrice = quantity * unitPrice;
+                inlineEl.textContent = currency === 'GBP' ? `£${totalPrice}` : `${totalPrice.toLocaleString()}₫`;
+            }
+        }
+
+        // Add to cart
+        function addToCart() {
+            const quantity = parseInt(document.getElementById('cart-quantity').value) || 1;
+            if (!currentProduct || !currentProduct.available) {
+                alert(currentLang === 'vi' ? 'Sản phẩm tạm hết hàng.' : 'Item is out of stock.');
+                return;
+            }
+            Cart.addToCart(currentProduct, quantity);
+
+            // Show success message
+            document.getElementById('cart-success').classList.remove('hidden');
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('cart-success').classList.add('hidden');
+            }, 5000);
+        }
+
+        // Update cart badge
+        function updateCartBadge() {
+            const count = Cart.getCartCount();
+            const badge = document.getElementById('cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                if (count > 0) {
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+        }
+
+        // Image lightbox
+        function openLightbox() {
+            const mainImage = document.getElementById('main-image');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightbox = document.getElementById('image-lightbox');
+
+            lightboxImage.src = mainImage.src;
+            lightboxImage.alt = mainImage.alt;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            setLang(currentLang);
+
+            if (!productSlug) {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('not-found').classList.remove('hidden');
+                return;
+            }
+
+            loadProduct();
+
+            // Quantity change listener for price update
+            document.getElementById('cart-quantity').addEventListener('input', updatePriceDisplay);
+
+            // Update cart badge on page load
+            updateCartBadge();
+        });
+
+        // Listen for cart updates
+        window.addEventListener('cartUpdated', updateCartBadge);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('site-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+
+    <!-- Cart JS -->
+    <script src="../js/cart.js"></script>
+</body>
+</html>

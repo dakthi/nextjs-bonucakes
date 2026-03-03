@@ -1,0 +1,55 @@
+
+RESEND DATA IMPORT SUMMARY
+==========================
+Generated: 2026-03-03T13:09:25.693Z
+
+CUSTOMERS
+---------
+Created: 0
+Updated: 0
+Skipped: 0
+Total Unique: 0
+
+ORDERS
+------
+Unique order numbers found: 2
+  #1414 - info@012.vn (2/24/2026)
+  #0970 - bonucakes@gmail.com (3/1/2026)
+
+WORKSHOPS
+---------
+  Workshop: Bí Quyết Kinh Doanh F&B Bền Vững
+    Attendees: 30
+    List: Goto.Minhha@gmail.com, Minhtrangle274@gmail.com, tuedang9999@gmail.com, Dinhhaphuong3498@gmail.com, Trangpull@gmail.com...
+
+  Workshop sắp bắt đầu - Chủ Nhật 01/03 | Bonu F&B
+    Attendees: 1
+    List: dakthi9@gmail.com
+
+  Workshop: Từ Căn Bếp Nhỏ Đến Thương Hiệu Riêng
+    Attendees: 1
+    List: dakthi9@gmail.com
+
+  Workshop Reminder: Chủ Nhật 01/03 - Từ đam mê nấu ăn đến quán đầu tiên
+    Attendees: 1
+    List: dakthi9@gmail.com
+
+CONTACT FORMS
+-------------
+Total submissions: 8
+  "Table booking request" from bonunguyen0101@gmail.com
+  "Table booking request" from bonunguyen0101@gmail.com
+  "Will be late sorry" from bonunguyen0101@gmail.com
+  "Table booking request" from bonunguyen0101@gmail.com
+  "Table booking request" from bonunguyen0101@gmail.com
+  "Table booking request" from bonunguyen0101@gmail.com
+  "Table booking request" from bonunguyen0101@gmail.com
+  "Table booking request" from bonunguyen0101@gmail.com
+
+RECOMMENDATIONS
+--------------
+✓ Check if orders #1414, #0970 exist in your database
+✓ Consider creating an Event/Workshop management system
+✓ Follow up with contact form submissions
+✓ All customers have been imported with marketing consent
+✓ Customer names extracted from email content where available

@@ -1,0 +1,64 @@
+UNIQUE CUSTOMER EMAILS FROM RESEND
+===================================
+
+Script Bug Fixed: The original export had 3,150 files because it fetched
+the same 63 emails 50 times due to missing pagination cursor.
+
+ACTUAL NUMBERS:
+- Total unique emails sent: 63
+- Unique customer addresses: 46
+
+CUSTOMER EMAIL LIST (46 contacts):
+===================================
+
+1. Aineehoang1707@gmail.com
+2. Btt_hang89@yahoo.com.vn
+3. Buithilen58@gmail.com
+4. Chloe8292@gmail.com
+5. Dangphuongthaohvtc@gmail.com
+6. Dinhhaphuong3498@gmail.com
+7. Goto.Minhha@gmail.com
+8. Hanoi97@yahoo.com
+9. Jamesle2126@yahoo.com
+10. Langtoi2003@yahoo.com
+11. Leona.tran1089@gmail.com
+12. Locha15384@gmail.com
+13. Minhtrangle274@gmail.com
+14. Miumeobg@yahoo.com
+15. Naminguyen7592@gmail.com
+16. Namtruong243@gmail.con
+17. Nbcle.28@gmail.com
+18. Thanhnguyenuk89@gmail.com
+19. Thaothu1992@gmail.com
+20. Trangpull@gmail.com
+21. Trungvu171076@gmail.com
+22. Uyen.nguyen162@gmail.com
+23. aivan.furtado@gmail.com
+24. bangtuyennorway@gmail.com
+25. bonucakes@gmail.com (internal)
+26. bonunguyen0101@gmail.com (internal)
+27. dakthi9@gmail.com (internal)
+28. dgnhattan@gmail.com
+29. fionatranle1976@gmail.com
+30. hannahuynh.work@gmail.com
+31. herryemma55@gmail.com
+32. huynhngochoan1994@gmail.com
+33. info@012.vn
+34. ivyhaphuong@gmail.com
+35. jasoncuame@yahoo.com
+36. kiaravu1512@gmail.com
+37. lenanguyen5719@gmail.com
+38. lesuongthi@yahoo.co.uk
+39. ngocyen8496@gmail.com
+40. nhitransandy@gmail.com
+41. prettymignon0126@gmail.com
+42. ptyn92@gmail.com
+43. song1.nguyen@gmail.com
+44. sophianguyen_2005@yahoo.com
+45. tranminhhai1012@gmail.com
+46. tuedang9999@gmail.com
+
+NOTES:
+- Emails marked "(internal)" are likely team/admin accounts
+- Actual customer count (excluding internal): ~43
+- These are from workshop registrations, orders, and contact forms

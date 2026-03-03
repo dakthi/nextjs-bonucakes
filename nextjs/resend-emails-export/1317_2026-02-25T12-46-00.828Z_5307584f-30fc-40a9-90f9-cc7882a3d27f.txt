@@ -1,0 +1,23 @@
+
+========================================
+EMAIL 1317
+========================================
+
+ID: 5307584f-30fc-40a9-90f9-cc7882a3d27f
+From: Bonu F&B <noreply@chartedconsultants.com>
+To: dakthi9@gmail.com
+Subject: HTML Test Email from Bonubonu API
+Created: 2026-02-25 12:46:00.828527+00
+Last Event: delivered
+
+----------------------------------------
+HTML CONTENT:
+----------------------------------------
+No HTML content
+
+----------------------------------------
+TEXT CONTENT:
+----------------------------------------
+No text content
+
+========================================
