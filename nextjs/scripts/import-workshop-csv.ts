@@ -17,7 +17,7 @@ interface WorkshopCSVRow {
   '7. Bạn có điều gì muốn nhắn nhủ hoặc đặt câu hỏi trước cho Bo không?  ': string;
   '0. Bạn đến từ đâu?': string;
   'Hãy tham gia nhóm này để nhận các thông báo cập nhật cũng như quà tặng sau buổi workshop nhé : ': string;
-  '4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?': string;
+  [key: string]: string; // Allow any additional columns
 }
 
 // Auto-tagging logic based on workshop registration data
@@ -110,8 +110,7 @@ async function importWorkshopCSV(csvFilePath: string) {
           data: {
             name,
             email,
-            phone: row['4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?'] ||
-                   row['4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?'] || null,
+            phone: row['4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?'] || null,
             marketingConsent: true,
             consentedAt: registrationDate,
             consentSource: 'workshop',
@@ -153,8 +152,7 @@ async function importWorkshopCSV(csvFilePath: string) {
             registrationDate,
             age: row['2. Bạn sinh năm bao nhiêu?'] || null,
             location: row['0. Bạn đến từ đâu?'] || null,
-            phone: row['4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?'] ||
-                   row['4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?'] || null,
+            phone: row['4. Số điện thoại của bạn (WhatsApp hoặc Zalo nếu có)?'] || null,
             referralSource: row['5.  Bạn biết đến workshop này qua đâu? '] || null,
             goals: row['  6. Mong muốn của bạn khi đến với WS này là gì?'] || null,
             specificQuestions: row['7. Bạn có điều gì muốn nhắn nhủ hoặc đặt câu hỏi trước cho Bo không?  '] || null,

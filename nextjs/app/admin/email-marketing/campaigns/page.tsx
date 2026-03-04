@@ -12,6 +12,8 @@ interface EmailTemplate {
   subject: string
   htmlContent: string
   variables: string[]
+  active: boolean
+  category: string | null
 }
 
 interface Customer {
