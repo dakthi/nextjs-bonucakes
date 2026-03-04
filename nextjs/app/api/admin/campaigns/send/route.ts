@@ -4,8 +4,6 @@ import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // POST /api/admin/campaigns/send - Send email campaign
 export async function POST(request: NextRequest) {
   try {
@@ -70,6 +68,9 @@ export async function POST(request: NextRequest) {
         sentAt: new Date(),
       },
     });
+
+    // Initialize Resend client at runtime
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Send emails and create recipient records
     const sendPromises = customers.map(async (customer) => {
