@@ -22,7 +22,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const currentLang = useLanguage();
-  const cartCount = useCartStore((state) => state.getCartCount());
+  const items = useCartStore((state) => state.items);
+  const cartCount = items.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     setMounted(true);
