@@ -302,10 +302,10 @@ export async function POST(request: NextRequest) {
 
       console.log(`[bonucakes] Admin notification sent for order ${orderCode}`);
 
-      // Send customer confirmation
+      // Send customer confirmation (to customer and admin)
       await resend.emails.send({
         from: FROM_EMAIL,
-        to: [customerEmail],
+        to: [customerEmail, ADMIN_EMAIL],
         subject: `Xác nhận đơn hàng #${orderCode} - Bonu Cakes`,
         html: generateCustomerEmail(emailData, BANK_DETAILS),
       });
