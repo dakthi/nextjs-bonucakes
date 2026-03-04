@@ -38,12 +38,22 @@ async function sendEmailsInBatches(
           .replace(/{email}/g, customer.email);
 
         // Send email via Resend
-        await resend.emails.send({
+        const result = await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'noreply@chartedconsultants.com',
           to: customer.email,
           subject: subject,
           html: personalizedHtml,
         });
+
+        // Check if Resend actually accepted the email
+        if (result.error) {
+          console.error(`Resend rejected ${customer.email}:`, result.error);
+          failedCount++;
+          failedEmails.push(customer.email);
+          continue;
+        }
+
+        console.log(`✓ Sent to ${customer.email} (ID: ${result.data?.id})`);
 
         // Create recipient record
         await prisma.emailCampaignRecipient.create({
@@ -55,6 +65,9 @@ async function sendEmailsInBatches(
         });
 
         successCount++;
+
+        // Add small delay between each email to avoid rate limiting
+        await delay(100);
       } catch (error: any) {
         console.error(`Failed to send to ${customer.email}:`, error);
         failedCount++;
