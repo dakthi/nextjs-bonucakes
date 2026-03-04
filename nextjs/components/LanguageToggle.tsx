@@ -57,13 +57,15 @@ export default function LanguageToggle({ className = '' }: LanguageToggleProps) 
 
 // Hook to use language in other components
 export function useLanguage() {
-  const [currentLang, setCurrentLang] = useState<Language>('vi');
+  const [currentLang, setCurrentLang] = useState<Language>(() => {
+    // Initialize from localStorage if available
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('lang') as Language) || 'vi';
+    }
+    return 'vi';
+  });
 
   useEffect(() => {
-    // Load initial language
-    const savedLang = (localStorage.getItem('lang') as Language) || 'vi';
-    setCurrentLang(savedLang);
-
     // Listen for language changes
     const handleLanguageChange = (e: CustomEvent<{ language: Language }>) => {
       setCurrentLang(e.detail.language);
@@ -73,7 +75,7 @@ export function useLanguage() {
     return () => {
       window.removeEventListener('languageChange', handleLanguageChange as EventListener);
     };
-  }, []);
+  }, []); // Empty dependency array to run only once
 
   return currentLang;
 }
