@@ -13,6 +13,7 @@ interface Order {
   total: number
   status: string
   paymentStatus: string
+  paymentMethod: string | null
   createdAt: string
   items: Array<{
     productName: string
@@ -75,6 +76,31 @@ export default function AdminOrdersPage() {
       setError(err.message)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const markAsPaid = async (orderId: string) => {
+    if (!confirm('Mark this order as paid?')) return
+
+    try {
+      const res = await fetch(`/api/admin/orders/${orderId}/update`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          paymentStatus: 'paid',
+          reason: 'Marked as paid manually by admin',
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) throw new Error(data.error || 'Failed to update order')
+
+      // Refresh orders list
+      fetchOrders()
+      alert('Order marked as paid successfully')
+    } catch (err: any) {
+      alert(`Error: ${err.message}`)
     }
   }
 
@@ -209,18 +235,38 @@ export default function AdminOrdersPage() {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${paymentStatusColors[order.paymentStatus] || 'bg-gray-100 text-gray-800'}`}>
-                              {order.paymentStatus}
-                            </span>
+                            <div className="flex flex-col gap-1">
+                              <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${paymentStatusColors[order.paymentStatus] || 'bg-gray-100 text-gray-800'}`}>
+                                {order.paymentStatus}
+                              </span>
+                              {order.paymentMethod && (
+                                <span className="text-xs text-gray-500">
+                                  {order.paymentMethod === 'stripe' ? 'Card' : 'Bank Transfer'}
+                                </span>
+                              )}
+                            </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button
-                              onClick={() => setSelectedOrder(order)}
-                              className="text-amber-600 hover:text-amber-900 inline-flex items-center"
-                            >
-                              <Eye className="h-4 w-4 mr-1" />
-                              View
-                            </button>
+                            <div className="flex items-center justify-end gap-2">
+                              {order.paymentStatus === 'pending' && order.paymentMethod === 'bank_transfer' && (
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    markAsPaid(order.id)
+                                  }}
+                                  className="text-green-600 hover:text-green-900 text-xs font-medium px-2 py-1 border border-green-600 rounded hover:bg-green-50"
+                                >
+                                  Mark Paid
+                                </button>
+                              )}
+                              <button
+                                onClick={() => setSelectedOrder(order)}
+                                className="text-amber-600 hover:text-amber-900 inline-flex items-center"
+                              >
+                                <Eye className="h-4 w-4 mr-1" />
+                                View
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       )

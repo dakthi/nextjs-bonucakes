@@ -127,6 +127,7 @@ async function importCustomers(emails: EmailData[]) {
     // Skip internal emails
     if (
       emailLower.includes('bonucakes@gmail.com') ||
+      emailLower.includes('bonucakes6@gmail.com') ||
       emailLower.includes('bonunguyen0101@gmail.com') ||
       emailLower.includes('dakthi9@gmail.com')
     ) {

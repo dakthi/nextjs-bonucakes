@@ -58,7 +58,7 @@ async function findAllOrders() {
         const orderNumber = match[1]
 
         // Only keep customer confirmations, not admin notifications
-        if (!email.to[0].includes('bonucakes@gmail.com')) {
+        if (!email.to[0].includes('bonucakes@gmail.com') && !email.to[0].includes('bonucakes6@gmail.com')) {
           if (!orders.has(orderNumber)) {
             orders.set(orderNumber, {
               id: email.id,

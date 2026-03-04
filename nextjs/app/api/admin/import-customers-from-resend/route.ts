@@ -80,6 +80,7 @@ export async function POST(request: NextRequest) {
         // Skip admin/system emails
         if (
           emailLower.includes('bonucakes@gmail.com') ||
+          emailLower.includes('bonucakes6@gmail.com') ||
           emailLower.includes('noreply') ||
           emailLower.includes('no-reply')
         ) {
