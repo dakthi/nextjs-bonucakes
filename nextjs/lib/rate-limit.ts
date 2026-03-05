@@ -18,7 +18,8 @@ class InMemoryRateLimiter {
 
     // Clean up expired entries periodically
     if (Math.random() < 0.01) {
-      for (const [key, value] of this.requests.entries()) {
+      const entries = Array.from(this.requests.entries());
+      for (const [key, value] of entries) {
         if (value.resetAt < now) {
           this.requests.delete(key);
         }
@@ -80,7 +81,7 @@ const createRateLimiter = (requests: number, window: string) => {
 
     const upstashLimiter = new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(requests, window),
+      limiter: Ratelimit.slidingWindow(requests, window as any),
       analytics: true,
     });
 

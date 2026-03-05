@@ -179,14 +179,24 @@ export default function AdminOrdersPage() {
 
       const data = await res.json()
 
-      if (!res.ok) throw new Error(data.error || 'Failed to refund order')
+      if (!res.ok) {
+        // Show detailed error message
+        throw new Error(data.error || data.details || 'Failed to refund order')
+      }
 
       // Refresh orders list
       fetchOrders()
       setOrderToRefund(null)
-      alert('Order refunded successfully')
+
+      // Show success message
+      const refundedOrder = orders.find(o => o.id === orderToRefund)
+      if (refundedOrder?.paymentMethod === 'stripe') {
+        alert('✓ Stripe refund processed successfully! The refund will appear in the customer\'s account within 5-10 business days.')
+      } else {
+        alert('✓ Order marked as refunded. Please process the bank transfer refund manually.')
+      }
     } catch (err: any) {
-      alert(`Error: ${err.message}`)
+      alert(`Refund Error: ${err.message}`)
       setOrderToRefund(null)
     }
   }
@@ -298,8 +308,8 @@ export default function AdminOrdersPage() {
                       <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
                         Order
                       </th>
-                      <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">
-                        Date
+                      <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">
+                        Date & Time
                       </th>
                       <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">
                         Customer
@@ -336,8 +346,9 @@ export default function AdminOrdersPage() {
                               {order.items?.length || 0} items
                             </div>
                           </td>
-                          <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500 w-28">
-                            {new Date(order.createdAt).toLocaleDateString('en-GB')}
+                          <td className="px-2 py-4 text-sm text-gray-500 w-32">
+                            <div>{new Date(order.createdAt).toLocaleDateString('en-GB')}</div>
+                            <div className="text-xs text-gray-400">{new Date(order.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</div>
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap w-32">
                             <div className="text-sm font-medium text-gray-900 truncate">
@@ -350,51 +361,51 @@ export default function AdminOrdersPage() {
                           <td className="px-2 py-4 whitespace-nowrap w-20">
                             <div className="flex items-center justify-center">
                               {order.status === 'pending' && (
-                                <Clock className="h-5 w-5 text-yellow-600" title="Pending" />
+                                <Clock className="h-5 w-5 text-yellow-600" />
                               )}
                               {order.status === 'confirmed' && (
-                                <CheckCircle className="h-5 w-5 text-blue-600" title="Confirmed" />
+                                <CheckCircle className="h-5 w-5 text-blue-600" />
                               )}
                               {order.status === 'processing' && (
-                                <Package className="h-5 w-5 text-purple-600" title="Processing" />
+                                <Package className="h-5 w-5 text-purple-600" />
                               )}
                               {order.status === 'shipped' && (
-                                <Truck className="h-5 w-5 text-indigo-600" title="Shipped" />
+                                <Truck className="h-5 w-5 text-indigo-600" />
                               )}
                               {order.status === 'delivered' && (
-                                <CheckCircle className="h-5 w-5 text-green-600" title="Delivered" />
+                                <CheckCircle className="h-5 w-5 text-green-600" />
                               )}
                               {order.status === 'cancelled' && (
-                                <XCircle className="h-5 w-5 text-red-600" title="Cancelled" />
+                                <XCircle className="h-5 w-5 text-red-600" />
                               )}
                             </div>
                           </td>
                           <td className="px-2 py-4 whitespace-nowrap w-20">
                             <div className="flex items-center justify-center">
                               {order.paymentStatus === 'paid' && (
-                                <CreditCard className="h-5 w-5 text-green-600" title="Paid" />
+                                <CreditCard className="h-5 w-5 text-green-600" />
                               )}
                               {order.paymentStatus === 'pending' && (
-                                <Clock className="h-5 w-5 text-yellow-600" title="Pending" />
+                                <Clock className="h-5 w-5 text-yellow-600" />
                               )}
                               {order.paymentStatus === 'failed' && (
-                                <XCircle className="h-5 w-5 text-red-600" title="Failed" />
+                                <XCircle className="h-5 w-5 text-red-600" />
                               )}
                               {order.paymentStatus === 'refunded' && (
-                                <RotateCcw className="h-5 w-5 text-gray-600" title="Refunded" />
+                                <RotateCcw className="h-5 w-5 text-gray-600" />
                               )}
                             </div>
                           </td>
                           <td className="px-2 py-4 whitespace-nowrap w-20">
                             <div className="flex items-center justify-center">
                               {(!order.shippingStatus || order.shippingStatus === 'not_shipped') && (
-                                <Package className="h-5 w-5 text-gray-400" title="Not Shipped" />
+                                <Package className="h-5 w-5 text-gray-400" />
                               )}
                               {order.shippingStatus === 'shipped' && (
-                                <Truck className="h-5 w-5 text-indigo-600" title="Shipped" />
+                                <Truck className="h-5 w-5 text-indigo-600" />
                               )}
                               {order.shippingStatus === 'delivered' && (
-                                <CheckCircle className="h-5 w-5 text-green-600" title="Delivered" />
+                                <CheckCircle className="h-5 w-5 text-green-600" />
                               )}
                             </div>
                           </td>
@@ -704,7 +715,13 @@ export default function AdminOrdersPage() {
                   Refund Payment
                 </h3>
                 <p className="text-sm text-gray-500 mb-6">
-                  Are you sure you want to refund this order? This action will update the payment status to "refunded". You will need to process the actual refund separately.
+                  {(() => {
+                    const orderToRefundDetails = orders.find(o => o.id === orderToRefund)
+                    if (orderToRefundDetails?.paymentMethod === 'stripe') {
+                      return 'Are you sure you want to refund this order? This will automatically process a Stripe refund and return the money to the customer\'s card within 5-10 business days.'
+                    }
+                    return 'Are you sure you want to refund this order? This will mark the order as refunded. You will need to process the bank transfer refund manually.'
+                  })()}
                 </p>
                 <div className="flex gap-3 justify-center">
                   <button

@@ -28,20 +28,23 @@ export async function middleware(request: NextRequest) {
   let rateLimitResult;
 
   // Apply different rate limits based on route
-  if (pathname.startsWith('/api/admin/send-bulk-email')) {
-    // Strictest limit for bulk operations
-    rateLimitResult = await bulkRateLimiter.check(identifier);
+  if (pathname.startsWith('/api/admin')) {
+    // Admin routes are already auth-protected, skip rate limiting except for sensitive ops
+    if (pathname.startsWith('/api/admin/send-bulk-email')) {
+      // Strictest limit for bulk email operations only
+      rateLimitResult = await bulkRateLimiter.check(identifier);
+    } else {
+      // No rate limiting for other admin operations (auth-protected)
+      rateLimitResult = { success: true, remaining: 9999, reset: Date.now() + 60000 };
+    }
   } else if (
     pathname.match(/\/api\/products\/[^/]+\/reviews$/) && request.method === 'POST' ||
     pathname === '/api/orders' && request.method === 'POST'
   ) {
     // Strict limit for write operations (reviews, orders)
     rateLimitResult = await writeRateLimiter.check(identifier);
-  } else if (
-    pathname.startsWith('/api/auth') ||
-    pathname.startsWith('/api/admin')
-  ) {
-    // Moderate limit for auth and admin operations
+  } else if (pathname.startsWith('/api/auth')) {
+    // Moderate limit for auth operations
     rateLimitResult = await authRateLimiter.check(identifier);
   } else if (pathname.startsWith('/api/')) {
     // General API rate limit
