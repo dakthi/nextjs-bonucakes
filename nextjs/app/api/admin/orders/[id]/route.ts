@@ -14,10 +14,10 @@ import { z } from 'zod';
 const orderUpdateSchema = z.object({
   status: z.enum(['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled']).optional(),
   paymentStatus: z.enum(['pending', 'paid', 'failed', 'refunded']).optional(),
-  trackingNumber: z.string().optional(),
-  estimatedDelivery: z.string().optional(),
-  adminNote: z.string().optional(),
-});
+  trackingNumber: z.string().optional().nullable(),
+  estimatedDelivery: z.string().optional().nullable(),
+  adminNote: z.string().optional().nullable(),
+}).passthrough(); // Allow additional fields to pass through without validation
 
 // Check if user is authenticated and is admin
 async function checkAdminAuth() {
@@ -153,7 +153,7 @@ export async function PUT(
     }
 
     if (validatedData.trackingNumber !== undefined) {
-      updateData.trackingNumber = validatedData.trackingNumber;
+      updateData.trackingNumber = validatedData.trackingNumber || null;
     }
 
     if (validatedData.estimatedDelivery !== undefined) {
@@ -161,7 +161,7 @@ export async function PUT(
     }
 
     if (validatedData.adminNote !== undefined) {
-      updateData.adminNote = validatedData.adminNote;
+      updateData.adminNote = validatedData.adminNote || null;
     }
 
     // Update the order

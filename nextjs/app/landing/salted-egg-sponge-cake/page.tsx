@@ -1,8 +1,6 @@
 'use client';
 
 import { useLanguage } from '@/components/LanguageToggle';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -21,9 +19,7 @@ export default function SaltedEggSpongeCakePage() {
   }, []);
 
   return (
-    <div className="bg-cream">
-      <Navbar />
-
+    <>
       {/* Hero */}
       <header className="pt-24 md:pt-28 pb-10 bg-warmwhite border-b border-espresso/10">
         <div className="max-w-5xl mx-auto px-6">
@@ -482,8 +478,6 @@ export default function SaltedEggSpongeCakePage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

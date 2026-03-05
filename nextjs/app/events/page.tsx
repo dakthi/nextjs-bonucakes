@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 
 interface Event {
   id: number
@@ -70,10 +68,7 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-
-      <main className="flex-grow pt-20">
+    <div className="min-h-screen flex flex-col pt-20">
         <div className="bg-amber-50 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
@@ -266,9 +261,6 @@ export default function EventsPage() {
             </div>
           )}
         </div>
-      </main>
-
-      <Footer />
     </div>
   )
 }

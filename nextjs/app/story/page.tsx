@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import FadeInObserver from '@/components/FadeInObserver';
 import { useLanguage } from '@/components/LanguageToggle';
 
@@ -33,7 +31,7 @@ export default function StoryPage() {
   }, []);
 
   return (
-    <div className="bg-cream">
+    <>
       {/* Structured Data (JSON-LD) for SEO */}
       <script
         type="application/ld+json"
@@ -67,7 +65,6 @@ export default function StoryPage() {
         }}
       />
       <FadeInObserver />
-      <Navbar />
 
       {/* Hero */}
       <header className="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 bg-espresso">
@@ -441,8 +438,6 @@ export default function StoryPage() {
         </div>
       </section>
 
-      <Footer />
-
       <style jsx>{`
         .timeline-dot {
           width: 16px;
@@ -487,6 +482,6 @@ export default function StoryPage() {
           margin: 2rem 0;
         }
       `}</style>
-    </div>
+    </>
   );
 }

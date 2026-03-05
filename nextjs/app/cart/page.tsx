@@ -9,8 +9,6 @@ import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageToggle';
 import { useCartStore, useCartItems } from '@/lib/stores/cart-store';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import CartItem from '@/components/CartItem';
 import OrderSummary from '@/components/OrderSummary';
 
@@ -37,10 +35,8 @@ export default function CartPage() {
 
   return (
     <>
-      <Navbar />
-      <div className="min-h-screen bg-cream">
-        {/* Hero Section */}
-        <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
+      {/* Hero Section */}
+      <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-espresso mb-4 font-serif">
             {translations.title[currentLang]}
@@ -94,8 +90,6 @@ export default function CartPage() {
           )}
         </div>
       </section>
-      </div>
-      <Footer />
     </>
   );
 }

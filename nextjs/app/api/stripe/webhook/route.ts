@@ -47,13 +47,24 @@ export async function POST(request: NextRequest) {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log('Payment succeeded:', paymentIntent.id);
 
-        // Find Order by stripePaymentIntentId
-        const order = await prisma.order.findFirst({
+        // Find Order by stripePaymentIntentId first, then fallback to metadata orderId
+        let order = await prisma.order.findFirst({
           where: { stripePaymentIntentId: paymentIntent.id },
           include: {
             items: true,
           },
         });
+
+        // If not found by payment intent ID, try finding by orderId in metadata
+        if (!order && paymentIntent.metadata.orderId) {
+          order = await prisma.order.findFirst({
+            where: { id: paymentIntent.metadata.orderId },
+            include: {
+              items: true,
+            },
+          });
+          console.log('Order found via metadata:', order?.id);
+        }
 
         if (order) {
           // Update status to "confirmed" and paymentStatus to "paid"
@@ -62,6 +73,7 @@ export async function POST(request: NextRequest) {
             data: {
               status: 'confirmed',
               paymentStatus: 'paid',
+              paymentMethod: 'stripe', // Set payment method when payment succeeds
               paidAt: new Date(),
               updatedAt: new Date(),
             },
@@ -120,6 +132,43 @@ export async function POST(request: NextRequest) {
         } else {
           console.warn(
             `No Order found for PaymentIntent ${paymentIntent.id}`
+          );
+        }
+        break;
+      }
+
+      case 'charge.refunded': {
+        const charge = event.data.object as Stripe.Charge;
+        console.log('Charge refunded:', charge.id);
+
+        // Find Order by stripePaymentIntentId
+        const order = await prisma.order.findFirst({
+          where: { stripePaymentIntentId: charge.payment_intent as string },
+        });
+
+        if (order) {
+          // Update paymentStatus to "refunded"
+          await prisma.order.update({
+            where: { id: order.id },
+            data: {
+              paymentStatus: 'refunded',
+              updatedAt: new Date(),
+            },
+          });
+
+          // Create order history entry
+          await prisma.orderHistory.create({
+            data: {
+              orderId: order.id,
+              status: order.status,
+              note: `Payment refunded via Stripe. Refund ID: ${charge.refunds?.data[0]?.id || 'N/A'}`,
+            },
+          });
+
+          console.log(`Order ${order.id} marked as refunded`);
+        } else {
+          console.warn(
+            `No Order found for charge payment_intent ${charge.payment_intent}`
           );
         }
         break;

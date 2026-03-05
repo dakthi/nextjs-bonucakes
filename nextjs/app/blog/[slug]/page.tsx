@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import Navbar from '@/components/Navbar';
 import BlogContent, { BlogContentData } from '@/components/BlogContent';
 import { useLanguage } from '@/components/LanguageToggle';
 import Link from 'next/link';
@@ -294,8 +293,6 @@ export default function BlogPostPage() {
 
   return (
     <>
-      <Navbar />
-
       {loading ? (
         <div className="max-w-4xl mx-auto px-6 pt-24 md:pt-28 pb-12 text-center text-coffee">
           {currentLang === 'vi' ? 'Đang tải...' : 'Loading...'}

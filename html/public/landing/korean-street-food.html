@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2YKRZNC4F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N2YKRZNC4F');
+    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mô hình Korean Street Food (dễ vận hành) | Bonu F&B</title>
+  <meta name="description" content="Set up nhanh, dễ vận hành. Menu mẫu: Corndog, Bibimbap, Kimbap, Ramen, Gà chiên. Công thức ổn định, quy trình gọn, phù hợp nhân sự mỏng.">
+  <link rel="icon" href="https://thielts.chartedconsultants.com/bonu/profile.webp">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{cream:'#FDF8F3',warmwhite:'#FFFBF5',terracotta:'#C4704A',espresso:'#3D2314',gold:'#D4A853',coffee:'#4A3728'}}}};</script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',sans-serif}h1,h2,h3{font-family:'Playfair Display',serif}</style>
+</head>
+<body class="bg-cream">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm" id="site-nav">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-3xl font-bold text-gold" style="font-family:'Playfair Display',serif;">Bonu F&B</a>
+      <div class="flex items-center gap-6">
+        <a href="/story.html" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Câu chuyện" data-en="Story">Câu chuyện</a>
+        <a href="/products.html" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Sản phẩm" data-en="Products">Sản phẩm</a>
+        <a href="/culinary-consultation.html" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Tư vấn" data-en="Services">Tư vấn</a>
+        <a href="/blog.html" class="text-cream/80 hover:text-white transition-colors hidden md:block">Blog</a>
+        <a href="/#contact" class="text-cream/80 hover:text-white transition-colors hidden md:block" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+        <a href="/cart.html" class="relative text-cream/80 hover:text-white transition-colors" id="cart-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span id="cart-badge" class="absolute -top-2 -right-2 bg-terracotta text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+        </a>
+        <div class="flex bg-espresso border border-gold/30 rounded-full p-1">
+          <button onclick="setLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm text-cream/80 hover:text-white" id="btn-en">EN</button>
+          <button onclick="setLang('vi')" class="lang-btn px-3 py-1 rounded-full text-sm text-cream/80 hover:text-white active" id="btn-vi">VI</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="pt-24 md:pt-28 pb-10 bg-warmwhite border-b border-espresso/10">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-terracotta uppercase tracking-widest text-sm mb-3 font-medium">Model • Dễ vận hành</p>
+      <h1 class="text-3xl md:text-5xl font-bold text-espresso mb-4">Mô hình Korean Street Food</h1>
+      <p class="text-lg text-coffee max-w-3xl">Set up nhanh, dễ vận hành, phù hợp mở nhỏ gọn hoặc mở rộng dần. Quy trình gọn, công thức ổn định, phù hợp nhân sự mỏng.</p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm text-coffee/80">
+        <span class="px-3 py-1 bg-cream border border-espresso/10">Menu tối ưu</span>
+        <span class="px-3 py-1 bg-cream border border-espresso/10">Công thức ổn định</span>
+        <span class="px-3 py-1 bg-cream border border-espresso/10">Vận hành gọn</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <section class="grid md:grid-cols-2 gap-8 mb-10">
+      <div class="bg-white border border-espresso/10 p-6">
+        <h2 class="text-2xl font-bold text-espresso mb-4">Menu mẫu</h2>
+        <ul class="space-y-2 text-coffee">
+          <li>• Corndog</li>
+          <li>• Bibimbap</li>
+          <li>• Kimbap</li>
+          <li>• Ramen</li>
+          <li>• Gà chiên</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-espresso/10 p-6">
+        <h2 class="text-2xl font-bold text-espresso mb-4">Bạn nhận được</h2>
+        <ul class="space-y-2 text-coffee">
+          <li>• Công thức ổn định, dễ chuẩn hóa</li>
+          <li>• Quy trình vận hành gọn cho nhân sự mỏng</li>
+          <li>• Setup, layout bếp, thiết bị đề xuất</li>
+          <li>• Kiểm soát cost & chất lượng</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bg-white border border-espresso/10 p-6 md:p-8 mb-10">
+      <h2 class="text-2xl font-bold text-espresso mb-4">Quy trình</h2>
+      <div class="md:hidden space-y-3">
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">1.</span> Khảo sát thị trường & vị trí mô hình phù hợp.</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">2.</span> Chọn danh mục ưu tiên và test món.</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">3.</span> Chuẩn hóa công thức + SOP vận hành.</p></div>
+        <div class="border border-espresso/10 p-3"><p class="text-coffee"><span class="font-semibold">4.</span> Thử bán nhỏ, đo lường, tối ưu.</p></div>
+      </div>
+      <div class="hidden md:block overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="text-left bg-cream">
+              <th class="p-3 border border-espresso/10 w-24">Bước</th>
+              <th class="p-3 border border-espresso/10">Nội dung</th>
+            </tr>
+          </thead>
+          <tbody class="text-coffee">
+            <tr>
+              <td class="p-3 border border-espresso/10">1</td>
+              <td class="p-3 border border-espresso/10">Khảo sát thị trường & vị trí mô hình phù hợp.</td>
+            </tr>
+            <tr class="bg-warmwhite/50">
+              <td class="p-3 border border-espresso/10">2</td>
+              <td class="p-3 border border-espresso/10">Chọn danh mục ưu tiên và test món.</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-espresso/10">3</td>
+              <td class="p-3 border border-espresso/10">Chuẩn hóa công thức + SOP vận hành.</td>
+            </tr>
+            <tr class="bg-warmwhite/50">
+              <td class="p-3 border border-espresso/10">4</td>
+              <td class="p-3 border border-espresso/10">Thử bán nhỏ, đo lường, tối ưu.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Narrative + outcomes -->
+    <section class="grid md:grid-cols-3 gap-6 mb-10">
+      <div class="bg-warmwhite border border-espresso/10 p-6">
+        <h3 class="font-semibold text-espresso mb-2">Tại sao model này?</h3>
+        <p class="text-coffee">Danh mục món gọn, biên lợi nhuận tốt, triển khai nhanh – phù hợp test thị trường trước khi đầu tư lớn.</p>
+      </div>
+      <div class="bg-warmwhite border border-espresso/10 p-6">
+        <h3 class="font-semibold text-espresso mb-2">Bạn sẽ có</h3>
+        <ul class="list-disc pl-5 text-coffee space-y-1">
+          <li>Công thức ổn định, SOP vận hành</li>
+          <li>Set‑up bếp & quy trình theo ca</li>
+          <li>Checklist QA & cost sheet cơ bản</li>
+        </ul>
+      </div>
+      <div class="bg-warmwhite border border-espresso/10 p-6">
+        <h3 class="font-semibold text-espresso mb-2">Bước tiếp theo</h3>
+        <ul class="list-disc pl-5 text-coffee space-y-1">
+          <li>Thử bán nhỏ 2–4 tuần</li>
+          <li>Đo lường món chạy/không chạy</li>
+          <li>Quyết định mở rộng danh mục</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Beyond recipes: F&B mindset -->
+    <section class="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
+      <h2 class="text-2xl font-bold text-espresso mb-4">Không chỉ là công thức: tư duy vận hành F&B</h2>
+      <p class="text-coffee mb-3">Model dễ vận hành vẫn cần tư duy đúng để bền.</p>
+      <ul class="list-disc pl-5 text-coffee space-y-1">
+        <li>Khách hàng mục tiêu & chân dung nhu cầu</li>
+        <li>Nhân sự ca: phân vai, training nhanh, tạo động lực</li>
+        <li>Hàng hóa/nguyên liệu: nhập, bảo quản, cost</li>
+        <li>Quy trình: SOP theo ca, checklist QA</li>
+        <li>Định vị: menu ngắn nhưng “nói đúng” câu chuyện</li>
+      </ul>
+    </section>
+
+    <section class="bg-espresso text-warmwhite p-6 md:p-8">
+      <div class="md:flex md:items-center md:justify-between gap-6">
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-2xl font-bold mb-2">Tư vấn mô hình Korean Street Food</h2>
+          <p class="text-cream/80">Liên hệ để nhận tư vấn theo địa điểm và nguồn lực của bạn.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/culinary-consultation.html#services" class="inline-flex items-center justify-center gap-3 bg-gold text-espresso px-6 py-3 font-semibold hover:bg-gold/90 transition-colors">Liên hệ tư vấn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-espresso border-t border-gold/20 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <a href="/" class="text-2xl font-bold text-gold" style="font-family:'Playfair Display',serif;">Bonu F&B</a>
+        <div class="flex gap-6 text-cream/60 text-sm">
+          <a href="/story.html" class="hover:text-white transition-colors">Câu chuyện</a>
+          <a href="/blog.html" class="hover:text-white transition-colors">Blog</a>
+        </div>
+      </div>
+      <div class="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
+        <p>&copy; 2026 Bonu F&B</p>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/cart.js"></script>
+  <script>
+    let currentLang = localStorage.getItem('lang') || 'vi';
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = lang === 'en' ? el.dataset.en : el.dataset.vi;
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+      document.getElementById('btn-en').classList.toggle('bg-gold/20', lang === 'en');
+      document.getElementById('btn-vi').classList.toggle('bg-gold/20', lang === 'vi');
+    }
+    setLang(currentLang);
+    function updateCartBadge() {
+      const count = Cart.getCartCount();
+      const badge = document.getElementById('cart-badge');
+      if (badge) { badge.textContent = count; badge.classList.toggle('hidden', count === 0); }
+    }
+    updateCartBadge();
+    window.addEventListener('cartUpdated', updateCartBadge);
+  </script>
+</body>
+</html>

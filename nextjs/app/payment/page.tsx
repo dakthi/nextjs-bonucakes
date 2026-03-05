@@ -5,8 +5,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { useLanguage } from '@/components/LanguageToggle';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { PaymentForm } from '@/components/PaymentForm';
 
 let stripePromise: Promise<Stripe | null> | null = null;
@@ -69,9 +67,13 @@ function PaymentContent() {
       return;
     }
 
+    let isMounted = true; // Prevent state updates on unmounted component
+
     // Load Stripe
     getStripePromise().then((stripeInstance) => {
-      setStripe(stripeInstance);
+      if (isMounted) {
+        setStripe(stripeInstance);
+      }
     });
 
     // Create payment intent and get order total
@@ -80,6 +82,8 @@ function PaymentContent() {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (!isMounted) return; // Skip if component unmounted
+
         if (data.clientSecret) {
           setClientSecret(data.clientSecret);
         } else {
@@ -91,13 +95,20 @@ function PaymentContent() {
         }
       })
       .catch((err) => {
+        if (!isMounted) return; // Skip if component unmounted
         console.error('Payment setup error:', err);
         setError(translations.paymentLoadError[currentLang]);
       })
       .finally(() => {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       });
-  }, [orderId, currentLang]);
+
+    return () => {
+      isMounted = false; // Cleanup
+    };
+  }, [orderId]); // Removed currentLang to prevent re-running on language change
 
   const handlePaymentSuccess = () => {
     router.push(`/order-success?orderId=${orderId}&code=${orderCode}`);
@@ -108,11 +119,9 @@ function PaymentContent() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen bg-cream">
-        {/* Hero Section */}
-        <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
+    <div className="min-h-screen bg-cream">
+      {/* Hero Section */}
+      <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-espresso mb-4 font-serif">
               {translations.title[currentLang]}
@@ -194,9 +203,7 @@ function PaymentContent() {
             )}
           </div>
         </section>
-      </div>
-      <Footer />
-    </>
+    </div>
   );
 }
 

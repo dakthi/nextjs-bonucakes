@@ -52,6 +52,8 @@ interface OrderRequest {
   customerEmail: string;
   customerPhone: string;
   deliveryAddress: string;
+  deliveryCity?: string;
+  deliveryPostcode?: string;
   deliveryDate?: string;
   specialNotes?: string;
   paymentMethod?: 'bank_transfer' | 'stripe';
@@ -205,9 +207,9 @@ export async function POST(request: NextRequest) {
     // Save order to database
     const shippingAddress = {
       street: deliveryAddress,
-      city: '',
+      city: body.deliveryCity || '',
       country: 'UK',
-      postalCode: '',
+      postalCode: body.deliveryPostcode || '',
     };
 
     const order = await prisma.order.create({
@@ -223,7 +225,7 @@ export async function POST(request: NextRequest) {
         currency: pricing.currency || 'GBP',
         status: 'pending',
         paymentStatus: 'pending',
-        paymentMethod: body.paymentMethod || 'bank_transfer',
+        paymentMethod: null, // Only set when payment is confirmed
         shippingMethod: pricing.shippingLabel || 'UK Mainland',
         customerNote: body.specialNotes || null,
         items: {

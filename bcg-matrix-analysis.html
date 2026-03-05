@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiểu về Ma Trận BCG - Bonucakes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 0.3em;
+            color: #1a1a1a;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 2em;
+            font-style: italic;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin: 2em 0 0.8em 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin: 1.5em 0 0.5em 0;
+            color: #34495e;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: #ecf0f1;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .example-box {
+            background: #fff9e6;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .example-box h3 {
+            color: #d68910;
+            margin-top: 0;
+        }
+
+        .simple-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .matrix-box {
+            padding: 25px;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+        }
+
+        .matrix-box h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .matrix-box p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .star-box {
+            background: #e8e3f3;
+            border-color: #8e44ad;
+        }
+
+        .question-box {
+            background: #fde8f0;
+            border-color: #e74c3c;
+        }
+
+        .cash-box {
+            background: #d6eef7;
+            border-color: #3498db;
+        }
+
+        .dog-box {
+            background: #d5f4e6;
+            border-color: #27ae60;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95em;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #3498db, transparent);
+            margin: 50px 0;
+        }
+
+        .callout {
+            background: #d6eef7;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            font-size: 1.05em;
+        }
+
+        .conclusion {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .conclusion h2 {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ma Trận BCG Là Gì và Làm Sao Áp Dụng Vào Kinh Doanh?</h1>
+        <p class="subtitle">Phân tích chiến lược cho Bonucakes</p>
+
+        <p>
+            Bạn có bao giờ tự hỏi tại sao một số sản phẩm trong doanh nghiệp của bạn luôn mang lại lợi nhuận ổn định,
+            trong khi những sản phẩm khác lại tốn kém thời gian và tiền bạc nhưng không sinh ra kết quả? Đó chính là
+            lý do tại sao Ma trận BCG ra đời - một công cụ đơn giản nhưng cực kỳ mạnh mẽ để giúp bạn quyết định nên
+            đầu tư vào đâu, cắt giảm gì, và phát triển thế nào.
+        </p>
+
+        <h2>Ma Trận BCG - Bắt Đầu Từ Đâu?</h2>
+
+        <p>
+            Vào những năm 1970, công ty tư vấn Boston Consulting Group (BCG) đã phát triển một công cụ phân tích
+            danh mục đầu tư. Ý tưởng cơ bản rất đơn giản: họ nhận ra rằng mọi sản phẩm hoặc dịch vụ trong một
+            doanh nghiệp có thể được phân loại dựa trên hai yếu tố chính:
+        </p>
+
+        <ul>
+            <li><strong>Tốc độ tăng trưởng của thị trường:</strong> Thị trường này đang phát triển nhanh hay chậm?</li>
+            <li><strong>Thị phần tương đối:</strong> Bạn có phần lớn thị trường này hay chỉ một phần nhỏ?</li>
+        </ul>
+
+        <p>
+            Khi kết hợp hai yếu tố này, bạn sẽ có một ma trận 2x2 với 4 ô vuông, mỗi ô đại diện cho một loại
+            sản phẩm/dịch vụ khác nhau. Mỗi loại có đặc điểm riêng và cần chiến lược riêng.
+        </p>
+
+        <h2>4 Loại Sản Phẩm/Dịch Vụ Trong Ma Trận BCG</h2>
+
+        <p>
+            Hãy tưởng tượng bạn đang điều hành một trang trại. Trong trang trại của bạn có nhiều con vật khác nhau,
+            mỗi con đóng vai trò khác nhau. Ma trận BCG cũng tương tự như vậy:
+        </p>
+
+        <div class="simple-matrix">
+            <div class="matrix-box star-box">
+                <h4>⭐ Ngôi Sao (Star)</h4>
+                <p><strong>Thị phần:</strong> Cao</p>
+                <p><strong>Tăng trưởng:</strong> Cao</p>
+                <p style="margin-top: 15px;">Đây là những sản phẩm/dịch vụ đang "lên ngôi" - vừa có thị phần lớn,
+                vừa đang trong thị trường tăng trưởng nhanh.</p>
+            </div>
+
+            <div class="matrix-box question-box">
+                <h4>❓ Dấu Hỏi (Question Mark)</h4>
+                <p><strong>Thị phần:</strong> Thấp</p>
+                <p><strong>Tăng trưởng:</strong> Cao</p>
+                <p style="margin-top: 15px;">Sản phẩm mới trong thị trường đầy tiềm năng, nhưng bạn chưa chiếm được
+                nhiều thị phần. Câu hỏi là: có nên đầu tư mạnh không?</p>
+            </div>
+
+            <div class="matrix-box cash-box">
+                <h4>🐄 Bò Sữa (Cash Cow)</h4>
+                <p><strong>Thị phần:</strong> Cao</p>
+                <p><strong>Tăng trưởng:</strong> Thấp</p>
+                <p style="margin-top: 15px;">Sản phẩm "vàng" - bạn đã có thị phần lớn, thị trường ổn định,
+                lợi nhuận chảy về đều đặn như bò cho sữa.</p>
+            </div>
+
+            <div class="matrix-box dog-box">
+                <h4>🐕 Con Chó (Dog)</h4>
+                <p><strong>Thị phần:</strong> Thấp</p>
+                <p><strong>Tăng trưởng:</strong> Thấp</p>
+                <p style="margin-top: 15px;">Sản phẩm "thua kém" - thị phần nhỏ, thị trường không còn tăng trưởng.
+                Thường nên cắt giảm hoặc loại bỏ.</p>
+            </div>
+        </div>
+
+        <h3>Hãy Cùng Xem Ví Dụ Thực Tế</h3>
+
+        <div class="example-box">
+            <h3>📱 Ví dụ: Apple và các sản phẩm của họ (2015-2020)</h3>
+
+            <p><strong>⭐ Ngôi Sao - iPhone:</strong> Vào giai đoạn 2015-2017, iPhone chiếm thị phần lớn trong
+            phân khúc cao cấp và thị trường smartphone vẫn đang tăng trưởng mạnh mẽ ở nhiều quốc gia.</p>
+
+            <p><strong>❓ Dấu Hỏi - Apple Watch:</strong> Khi mới ra mắt, Apple Watch có thị phần nhỏ nhưng
+            thị trường đồng hồ thông minh đang bùng nổ. Apple đã đầu tư mạnh và giờ nó đã trở thành Star.</p>
+
+            <p><strong>🐄 Bò Sữa - iPad:</strong> Thị trường máy tính bảng không còn tăng trưởng nóng như trước,
+            nhưng iPad vẫn chiếm thị phần lớn và mang về lợi nhuận ổn định.</p>
+
+            <p><strong>🐕 Con Chó - iPod:</strong> Thị trường máy nghe nhạc giảm mạnh (vì smartphone thay thế),
+            thị phần iPod cũng giảm theo. Apple đã dừng sản xuất iPod.</p>
+        </div>
+
+        <div class="example-box">
+            <h3>☕ Ví dụ: Một quán cà phê nhỏ ở Sài Gòn</h3>
+
+            <p><strong>⭐ Ngôi Sao - Cà phê sữa đá phong cách Sài Gòn hiện đại:</strong> Món này đang hot,
+            quán bạn pha ngon nhất khu vực, khách xếp hàng đặt.</p>
+
+            <p><strong>❓ Dấu Hỏi - Trà sữa cheese foam:</strong> Trà sữa đang rất thịnh hành, nhưng quán bạn
+            mới thử nghiệm, chưa được khách biết đến nhiều.</p>
+
+            <p><strong>🐄 Bò Sữa - Bánh mì pate:</strong> Món truyền thống, không còn "hot" như xưa, nhưng
+            vẫn có khách quen mua đều đặn mỗi sáng, lợi nhuận ổn định.</p>
+
+            <p><strong>🐕 Con Chó - Sinh tố bơ:</strong> Ít người uống, mùa hè cũng vắng khách, nguyên liệu
+            hỏng nhanh. Nên cân nhắc bỏ khỏi menu.</p>
+        </div>
+
+        <h2>Chiến Lược Cho Từng Loại Sản Phẩm</h2>
+
+        <div class="highlight-box">
+            <h3>Nguyên tắc vàng:</h3>
+            <p>
+                Mục tiêu là biến <strong>Dấu Hỏi</strong> thành <strong>Ngôi Sao</strong>, sau đó khi thị trường
+                bão hòa, chúng sẽ trở thành <strong>Bò Sữa</strong>. Dùng tiền từ <strong>Bò Sữa</strong> để nuôi
+                <strong>Ngôi Sao</strong> và đầu tư vào <strong>Dấu Hỏi</strong> tiềm năng. Cắt giảm hoặc loại bỏ
+                <strong>Con Chó</strong>.
+            </p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Loại</th>
+                    <th>Đặc điểm Dòng Tiền</th>
+                    <th>Chiến Lược</th>
+                    <th>Ví Dụ Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>⭐ Ngôi Sao</strong></td>
+                    <td>Cần đầu tư để duy trì vị thế, nhưng cũng sinh lợi nhuận</td>
+                    <td>Đầu tư mạnh để bảo vệ và tăng thị phần</td>
+                    <td>Marketing mạnh, nâng cấp sản phẩm, mở rộng phân phối</td>
+                </tr>
+                <tr>
+                    <td><strong>❓ Dấu Hỏi</strong></td>
+                    <td>Tiêu tốn tiền nhiều, chưa sinh lời</td>
+                    <td>Quyết định: Đầu tư mạnh hoặc từ bỏ</td>
+                    <td>Nghiên cứu thị trường, test pilot, sau đó all-in hoặc dừng</td>
+                </tr>
+                <tr>
+                    <td><strong>🐄 Bò Sữa</strong></td>
+                    <td>Sinh lợi nhuận cao, ít cần đầu tư</td>
+                    <td>Thu hoạch lợi nhuận, tối ưu chi phí</td>
+                    <td>Giảm chi phí marketing, tối ưu quy trình, thu lợi nhuận</td>
+                </tr>
+                <tr>
+                    <td><strong>🐕 Con Chó</strong></td>
+                    <td>Không sinh lời, chiếm nguồn lực</td>
+                    <td>Giảm thiểu hoặc loại bỏ</td>
+                    <td>Ngừng sản xuất, thanh lý tồn kho, chuyển nguồn lực</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="divider"></div>
+
+        <h2>Áp Dụng Ma Trận BCG Vào Bonucakes</h2>
+
+        <p>
+            Bây giờ, hãy cùng phân tích các hoạt động kinh doanh của Bonucakes bằng công cụ BCG này.
+            Chúng ta sẽ xem xét ba hoạt động chính và xem chúng rơi vào ô nào trong ma trận.
+        </p>
+
+        <h3>🐄 Bò Sữa: Dịch Vụ Ship Bánh Mì Cho Cộng Đồng Người Việt</h3>
+
+        <p>
+            Đây rõ ràng là "Bò Sữa" của Bonucakes. Tại sao?
+        </p>
+
+        <ul>
+            <li><strong>Thị phần cao:</strong> Bonucakes đã có uy tín và khách hàng quen trong cộng đồng người Việt</li>
+            <li><strong>Tăng trưởng thấp:</strong> Cộng đồng người Việt ở địa phương có quy mô cố định, không tăng đột biến</li>
+            <li><strong>Dòng tiền dương:</strong> Khách đặt đều đặn, chi phí vận hành đã tối ưu, lợi nhuận ổn định</li>
+            <li><strong>Ít cần đầu tư:</strong> Không cần quảng cáo nhiều, khách truyền miệng</li>
+        </ul>
+
+        <div class="callout">
+            <strong>💡 Chiến lược cho Bò Sữa:</strong> Duy trì chất lượng, tối ưu chi phí vận hành, và quan trọng nhất -
+            sử dụng lợi nhuận từ đây để đầu tư vào cơ hội tăng trưởng mới (như mở rộng sang thị trường người Anh).
+        </div>
+
+        <h3>❓ Dấu Hỏi: Dịch Vụ Tư Vấn F&B (Food & Beverage)</h3>
+
+        <p>
+            Đây là một "Dấu Hỏi" điển hình:
+        </p>
+
+        <ul>
+            <li><strong>Thị phần thấp:</strong> Bonucakes mới bắt đầu, chưa có nhiều khách hàng tư vấn</li>
+            <li><strong>Tăng trưởng cao:</strong> Ngành F&B đang phát triển, nhiều người muốn mở quán/cà phê</li>
+            <li><strong>Dòng tiền âm:</strong> Cần thời gian xây dựng portfolio, marketing, chưa sinh lời nhiều</li>
+            <li><strong>Tiềm năng:</strong> Nếu làm tốt, có thể trở thành nguồn thu nhập lớn</li>
+        </ul>
+
+        <div class="callout">
+            <strong>💡 Quyết định quan trọng:</strong> Với "Dấu Hỏi", bạn phải trả lời: "Tôi có nên đầu tư mạnh vào đây không?"
+            Điều này phụ thuộc vào:
+            <ul style="margin-top: 10px;">
+                <li>Bạn có đủ nguồn lực (thời gian, tiền, năng lực) để cạnh tranh không?</li>
+                <li>Bạn có lợi thế cạnh tranh gì (kinh nghiệm F&B, mạng lưới, chuyên môn)?</li>
+                <li>Thị trường có đủ lớn để sinh lời không?</li>
+            </ul>
+            Nếu câu trả lời là "Có", hãy đầu tư mạnh trong 6-12 tháng tới để biến nó thành Star. Nếu "Không", hãy từ bỏ sớm.
+        </div>
+
+        <h3>🐕 Con Chó: Workshop Tự Phát Triển Cho Cộng Đồng Việt Nam</h3>
+
+        <p>
+            Đây là một "Con Chó" rõ ràng:
+        </p>
+
+        <ul>
+            <li><strong>Thị phần thấp:</strong> Không phải chuyên gia self-help, khó cạnh tranh với chuyên gia thực sự</li>
+            <li><strong>Tăng trưởng thấp:</strong> Thị trường workshop tự phát triển cho cộng đồng Việt rất nhỏ</li>
+            <li><strong>Không sinh lời:</strong> Tốn thời gian chuẩn bị, ít người tham gia, lợi nhuận thấp hoặc lỗ</li>
+            <li><strong>Không phải lĩnh vực chính:</strong> Làm mất focus khỏi thế mạnh F&B</li>
+        </ul>
+
+        <div class="callout" style="background: #f8d7da; border-left-color: #e74c3c;">
+            <strong>⚠️ Khuyến nghị mạnh mẽ:</strong> Dừng hoặc giảm thiểu hoạt động này ngay. Đây là một "lỗi" phổ biến
+            của nhiều doanh nghiệp nhỏ - cố gắng làm quá nhiều thứ. Thời gian và năng lượng bỏ vào workshop này nên
+            được dùng để:
+            <ul style="margin-top: 10px;">
+                <li>Cải thiện chất lượng bánh mì (Bò Sữa)</li>
+                <li>Xây dựng dịch vụ tư vấn F&B (Dấu Hỏi)</li>
+                <li>Mở rộng sang thị trường người Anh (Cơ hội mới)</li>
+            </ul>
+        </div>
+
+        <h3>⭐ Cơ Hội Ngôi Sao: Mở Rộng Sang Thị Trường Người Anh</h3>
+
+        <p>
+            Hiện tại Bonucakes chưa có "Ngôi Sao", nhưng có một cơ hội rất rõ ràng: biến "Bò Sữa" hiện tại
+            (bánh mì cho người Việt) thành "Ngôi Sao" bằng cách mở rộng sang khách hàng người Anh địa phương.
+        </p>
+
+        <p><strong>Tại sao đây có thể là Ngôi Sao?</strong></p>
+
+        <ul>
+            <li><strong>Thị phần tiềm năng cao:</strong> Nếu thành công, bạn sẽ có thị phần lớn trong "bánh mì Việt Nam authentic"</li>
+            <li><strong>Tăng trưởng cao:</strong> Thị trường người Anh quan tâm ẩm thực Á Đông đang tăng trưởng nhanh</li>
+            <li><strong>Lợi thế cạnh tranh:</strong> Bạn đã có sản phẩm tốt, chỉ cần marketing và điều chỉnh một chút</li>
+            <li><strong>Sử dụng nguồn lực hiện có:</strong> Cùng nhà bếp, cùng nguyên liệu, chỉ cần mở rộng khách hàng</li>
+        </ul>
+
+        <div class="callout" style="background: #d6eef7;">
+            <strong>🎯 Lộ trình biến Cơ hội thành Ngôi Sao:</strong>
+            <ol style="margin-top: 10px;">
+                <li><strong>Tháng 1-2:</strong> Nghiên cứu - Khảo sát khẩu vị người Anh, phân tích đối thủ</li>
+                <li><strong>Tháng 3-4:</strong> Thử nghiệm - Tặng bánh mì cho đồng nghiệp/bạn bè người Anh, nhận feedback</li>
+                <li><strong>Tháng 5-6:</strong> Pilot - Mở đặt hàng thử nghiệm qua Instagram/Facebook, hợp tác với 2-3 văn phòng</li>
+                <li><strong>Tháng 7-12:</strong> Mở rộng - Nếu pilot thành công, tăng marketing, mở rộng delivery</li>
+            </ol>
+        </div>
+
+        <h2>Bảng Tổng Hợp Phân Tích Bonucakes</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Hoạt Động</th>
+                    <th>Phân Loại BCG</th>
+                    <th>Ưu Tiên</th>
+                    <th>Hành Động Cụ Thể</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #d6eef7;">
+                    <td>Ship bánh mì (Người Việt)</td>
+                    <td><strong>🐄 Bò Sữa</strong></td>
+                    <td style="color: #27ae60; font-weight: bold;">Cao</td>
+                    <td>
+                        • Duy trì chất lượng<br>
+                        • Tối ưu chi phí<br>
+                        • Thu lợi nhuận ổn định
+                    </td>
+                </tr>
+                <tr style="background: #e8e3f3;">
+                    <td>Mở rộng sang thị trường Anh</td>
+                    <td><strong>⭐ Tiềm năng Star</strong></td>
+                    <td style="color: #8e44ad; font-weight: bold;">Rất Cao</td>
+                    <td>
+                        • Nghiên cứu thị trường<br>
+                        • Pilot trong 6 tháng<br>
+                        • Đầu tư marketing có chọn lọc
+                    </td>
+                </tr>
+                <tr style="background: #fde8f0;">
+                    <td>Tư vấn F&B</td>
+                    <td><strong>❓ Dấu Hỏi</strong></td>
+                    <td style="color: #f39c12; font-weight: bold;">Trung Bình</td>
+                    <td>
+                        • Đánh giá trong 3-6 tháng<br>
+                        • Quyết định: All-in hoặc Dừng<br>
+                        • Xây dựng 2-3 case study
+                    </td>
+                </tr>
+                <tr style="background: #d5f4e6;">
+                    <td>Workshop tự phát triển</td>
+                    <td><strong>🐕 Con Chó</strong></td>
+                    <td style="color: #e74c3c; font-weight: bold;">Thấp → Loại bỏ</td>
+                    <td>
+                        • Dừng ngay<br>
+                        • Chuyển năng lượng sang F&B<br>
+                        • Tập trung vào thế mạnh
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Phân Bổ Thời Gian & Nguồn Lực Đề Xuất</h2>
+
+        <div class="highlight-box">
+            <h3>Hiện tại (Chưa tối ưu):</h3>
+            <p>
+                🐄 Bánh mì (Việt): 50% | ❓ Tư vấn F&B: 20% | 🐕 Workshop: 20% | ⭐ Mở rộng (Anh): 10%
+            </p>
+
+            <h3 style="margin-top: 20px;">Đề xuất mới (Tối ưu hóa):</h3>
+            <p>
+                🐄 Bánh mì (Việt): 30% (tối ưu hóa, ít tốn công hơn) |
+                ⭐ Mở rộng (Anh): 45% (đầu tư mạnh) |
+                ❓ Tư vấn F&B: 25% (test & decide) |
+                🐕 Workshop: 0% (dừng)
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>Tại Sao Ma Trận BCG Quan Trọng?</h2>
+
+        <p>
+            Ma trận BCG giúp bạn tránh được những sai lầm phổ biến nhất trong kinh doanh nhỏ:
+        </p>
+
+        <ol>
+            <li><strong>Làm quá nhiều thứ:</strong> Thay vì tập trung vào 2-3 việc quan trọng, bạn cố gắng làm
+            10 việc và không làm tốt việc nào.</li>
+
+            <li><strong>Bỏ tiền vào chỗ sai:</strong> Đầu tư vào những sản phẩm/dịch vụ không có tương lai
+            (Con Chó) thay vì vào cơ hội tăng trưởng (Dấu Hỏi tiềm năng).</li>
+
+            <li><strong>Không tối ưu hóa "Bò Sữa":</strong> Bỏ qua việc giảm chi phí và thu lợi nhuận từ sản phẩm
+            đang sinh tiền tốt.</li>
+
+            <li><strong>Giữ "Con Chó" quá lâu:</strong> Vì lý do cảm tính hoặc sợ bỏ đi, bạn giữ những hoạt động
+            không hiệu quả, làm mất thời gian và tiền bạc.</li>
+        </ol>
+
+        <div class="example-box">
+            <h3>📖 Câu Chuyện Thực Tế: Cửa Hàng Thời Trang Nhỏ</h3>
+            <p>
+                Mai có một cửa hàng thời trang nhỏ. Cô bán cả quần áo, phụ kiện, túi xách, và còn nhận
+                may đo theo yêu cầu. Sau khi phân tích bằng BCG:
+            </p>
+            <ul>
+                <li><strong>Bò Sữa:</strong> Quần áo công sở - bán chạy nhất, lợi nhuận cao, khách quen</li>
+                <li><strong>Dấu Hỏi:</strong> Túi xách handmade - thị trường đang hot, nhưng chưa có nhiều khách</li>
+                <li><strong>Con Chó:</strong> May đo theo yêu cầu - tốn thời gian, ít khách, lợi nhuận thấp</li>
+            </ul>
+            <p>
+                <strong>Quyết định của Mai:</strong> Dừng dịch vụ may đo, dùng tiền lời từ quần áo công sở để
+                đầu tư marketing cho túi xách handmade (tuyển influencer review, mở gian hàng online).
+                Kết quả: Sau 6 tháng, doanh thu tăng 40%, túi xách trở thành sản phẩm Star.
+            </p>
+        </div>
+
+        <div class="conclusion">
+            <h2>Kết Luận: Lộ Trình Hành Động Cho Bonucakes</h2>
+
+            <p style="margin: 20px 0;">
+                Dựa trên phân tích Ma trận BCG, đây là những bước cụ thể Bonucakes nên thực hiện:
+            </p>
+
+            <h3 style="color: white; margin-top: 25px;">Ngay Lập Tức (Tuần này):</h3>
+            <ol style="line-height: 2;">
+                <li>Dừng hoặc giảm mạnh workshop tự phát triển (🐕 Con Chó)</li>
+                <li>Cam kết duy trì chất lượng bánh mì cho khách Việt hiện tại (🐄 Bò Sữa)</li>
+            </ol>
+
+            <h3 style="color: white; margin-top: 25px;">Tháng Tới:</h3>
+            <ol style="line-height: 2;">
+                <li>Bắt đầu nghiên cứu thị trường người Anh: khảo sát, tặng mẫu, nhận feedback</li>
+                <li>Đánh giá nghiêm túc dịch vụ tư vấn F&B: Có nên tiếp tục không? Nếu có, cần gì để thành công?</li>
+            </ol>
+
+            <h3 style="color: white; margin-top: 25px;">3-6 Tháng Tới:</h3>
+            <ol style="line-height: 2;">
+                <li>Chạy pilot mở rộng bánh mì sang khách Anh (⭐ Tiềm năng Star)</li>
+                <li>Quyết định rõ ràng về tư vấn F&B: All-in hoặc Dừng (❓ Dấu Hỏi)</li>
+                <li>Đo lường kết quả, điều chỉnh chiến lược</li>
+            </ol>
+
+            <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 1.1em;">
+                <strong>💡 Nhớ rằng:</strong> Thành công không đến từ việc làm nhiều thứ, mà đến từ việc làm
+                đúng những thứ quan trọng. Ma trận BCG giúp bạn nhìn rõ đâu là "đúng" và "quan trọng"
+                trong từng giai đoạn phát triển của doanh nghiệp.
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>Kiểm Tra Kiến Thức: Quiz Ma Trận BCG</h2>
+
+        <p>
+            Hãy thử làm bài quiz này để kiểm tra xem bạn đã hiểu về Ma trận BCG chưa nhé!
+        </p>
+
+        <div id="quiz-container">
+            <div class="quiz-question">
+                <h3>Câu 1: Sản phẩm nào sau đây NÊN được loại bỏ hoặc giảm thiểu?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="a">
+                        <span>A. Ngôi Sao (Star) - Thị phần cao, tăng trưởng cao</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="b">
+                        <span>B. Bò Sữa (Cash Cow) - Thị phần cao, tăng trưởng thấp</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="c">
+                        <span>C. Con Chó (Dog) - Thị phần thấp, tăng trưởng thấp</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="d">
+                        <span>D. Dấu Hỏi (Question Mark) - Thị phần thấp, tăng trưởng cao</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q1"></div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Câu 2: Dịch vụ ship bánh mì cho cộng đồng người Việt của Bonucakes thuộc loại nào?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="a">
+                        <span>A. Ngôi Sao - vì đang kiếm được nhiều tiền</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="b">
+                        <span>B. Bò Sữa - vì có thị phần cao trong cộng đồng nhưng thị trường không còn tăng trưởng</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="c">
+                        <span>C. Con Chó - vì chỉ phục vụ cộng đồng nhỏ</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="d">
+                        <span>D. Dấu Hỏi - vì chưa rõ tương lai</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q2"></div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Câu 3: Nên làm gì với "Bò Sữa" (Cash Cow)?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="a">
+                        <span>A. Đầu tư mạnh để tăng trưởng nhanh hơn</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="b">
+                        <span>B. Dừng ngay vì không còn tiềm năng</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="c">
+                        <span>C. Duy trì, tối ưu chi phí, và dùng lợi nhuận để đầu tư vào sản phẩm khác</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="d">
+                        <span>D. Không cần quan tâm, để nó tự chạy</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q3"></div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Câu 4: Workshop tự phát triển của Bonucakes được xếp vào "Con Chó" vì lý do nào?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="a">
+                        <span>A. Vì workshop không có giá trị</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="b">
+                        <span>B. Vì thị phần thấp (không phải chuyên môn), thị trường nhỏ, không sinh lời</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="c">
+                        <span>C. Vì cộng đồng Việt không thích workshop</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="d">
+                        <span>D. Vì workshop quá đắt</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q4"></div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Câu 5: Với "Dấu Hỏi" (Question Mark), bạn cần quyết định gì?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="a">
+                        <span>A. Luôn luôn đầu tư mạnh vào tất cả Dấu Hỏi</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="b">
+                        <span>B. Luôn luôn từ bỏ vì rủi ro cao</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="c">
+                        <span>C. Đánh giá tiềm năng, sau đó quyết định: Đầu tư mạnh (all-in) HOẶC từ bỏ sớm</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="d">
+                        <span>D. Đầu tư một chút rồi xem sao</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q5"></div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Câu 6: Tại sao mở rộng bánh mì sang thị trường người Anh có thể trở thành "Ngôi Sao"?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="a">
+                        <span>A. Vì người Anh rất giàu</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="b">
+                        <span>B. Vì thị trường ẩm thực Á Đông đang tăng trưởng (cao) và có tiềm năng chiếm thị phần lớn (cao)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="c">
+                        <span>C. Vì không có cạnh tranh</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="d">
+                        <span>D. Vì bánh mì Việt Nam rẻ hơn bánh mì Anh</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q6"></div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Câu 7: Theo phân tích, Bonucakes NÊN phân bổ thời gian nhiều nhất vào hoạt động nào?</h3>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="a">
+                        <span>A. Workshop tự phát triển (20%)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="b">
+                        <span>B. Duy trì bánh mì cho người Việt (50%)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="c">
+                        <span>C. Mở rộng sang thị trường người Anh (45%)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="d">
+                        <span>D. Chia đều cho tất cả (25% mỗi hoạt động)</span>
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q7"></div>
+            </div>
+
+            <button onclick="checkAllAnswers()" class="submit-btn">Kiểm Tra Đáp Án</button>
+            <div id="quiz-result"></div>
+        </div>
+
+        <style>
+            .quiz-question {
+                background: white;
+                padding: 25px;
+                margin: 25px 0;
+                border-left: 4px solid #95a5a6;
+                border-radius: 5px;
+            }
+
+            .quiz-question h3 {
+                color: #2c3e50;
+                margin-top: 0;
+                font-size: 1.1em;
+            }
+
+            .quiz-options {
+                margin: 15px 0;
+            }
+
+            .quiz-option {
+                display: block;
+                padding: 12px;
+                margin: 8px 0;
+                background: #f8f9fa;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .quiz-option:hover {
+                background: #e9ecef;
+            }
+
+            .quiz-option input[type="radio"] {
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .quiz-feedback {
+                margin-top: 15px;
+                padding: 15px;
+                border-radius: 5px;
+                display: none;
+            }
+
+            .quiz-feedback.correct {
+                background: #d4edda;
+                border-left: 4px solid #28a745;
+                color: #155724;
+                display: block;
+            }
+
+            .quiz-feedback.incorrect {
+                background: #f8d7da;
+                border-left: 4px solid #dc3545;
+                color: #721c24;
+                display: block;
+            }
+
+            .submit-btn {
+                background: #3498db;
+                color: white;
+                border: none;
+                padding: 15px 40px;
+                font-size: 1.1em;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 30px 0;
+                transition: background 0.3s;
+            }
+
+            .submit-btn:hover {
+                background: #2980b9;
+            }
+
+            #quiz-result {
+                margin: 30px 0;
+                padding: 25px;
+                border-radius: 5px;
+                font-size: 1.2em;
+                text-align: center;
+                display: none;
+            }
+
+            #quiz-result.show {
+                display: block;
+            }
+
+            #quiz-result.excellent {
+                background: #d4edda;
+                color: #155724;
+                border: 2px solid #28a745;
+            }
+
+            #quiz-result.good {
+                background: #d1ecf1;
+                color: #0c5460;
+                border: 2px solid #17a2b8;
+            }
+
+            #quiz-result.needswork {
+                background: #fff3cd;
+                color: #856404;
+                border: 2px solid #ffc107;
+            }
+        </style>
+
+        <script>
+            const answers = {
+                q1: 'c',
+                q2: 'b',
+                q3: 'c',
+                q4: 'b',
+                q5: 'c',
+                q6: 'b',
+                q7: 'c'
+            };
+
+            const explanations = {
+                q1: {
+                    correct: '🎉 Đúng rồi! "Con Chó" có thị phần thấp và thị trường không tăng trưởng, nên cần loại bỏ hoặc giảm thiểu để tập trung nguồn lực vào cơ hội tốt hơn.',
+                    incorrect: '❌ Chưa đúng. "Con Chó" (Dog) là loại có thị phần thấp và tăng trưởng thấp - không còn tiềm năng, nên cần loại bỏ hoặc giảm thiểu.'
+                },
+                q2: {
+                    correct: '🎉 Chính xác! Bánh mì cho người Việt là "Bò Sữa" vì đã có thị phần cao trong cộng đồng (khách quen, uy tín), nhưng cộng đồng không mở rộng nên tăng trưởng thấp.',
+                    incorrect: '❌ Sai rồi! Dịch vụ này là "Bò Sữa" vì có thị phần cao (nhiều khách quen) nhưng thị trường không còn tăng trưởng (cộng đồng Việt cố định).'
+                },
+                q3: {
+                    correct: '🎉 Hoàn toàn đúng! "Bò Sữa" cần được duy trì với chi phí tối ưu, và dùng lợi nhuận từ đây để nuôi "Ngôi Sao" và đầu tư vào "Dấu Hỏi" tiềm năng.',
+                    incorrect: '❌ Chưa chính xác. "Bò Sữa" là nguồn tiền quan trọng - cần duy trì, tối ưu chi phí, và dùng lợi nhuận để đầu tư vào các cơ hội tăng trưởng khác.'
+                },
+                q4: {
+                    correct: '🎉 Đúng vậy! Workshop bị xếp vào "Con Chó" vì không phải chuyên môn (thị phần thấp), thị trường nhỏ (cộng đồng Việt hạn chế), và không sinh lời.',
+                    incorrect: '❌ Chưa đúng! Lý do chính là: không phải lĩnh vực chuyên môn của Bonucakes (thị phần thấp), thị trường nhỏ, và tốn thời gian mà không sinh lời.'
+                },
+                q5: {
+                    correct: '🎉 Chính xác 100%! Với "Dấu Hỏi", cần đánh giá kỹ, rồi đưa ra quyết định rõ ràng: HOẶC đầu tư mạnh để biến thành Star, HOẶC từ bỏ sớm. Không nên "đầu tư vừa vừa".',
+                    incorrect: '❌ Sai rồi! "Dấu Hỏi" cần quyết định rõ ràng: đánh giá tiềm năng → nếu tốt thì đầu tư mạnh (all-in), nếu không thì từ bỏ sớm. Đừng lãng phí tiền vào "đầu tư vừa vừa".'
+                },
+                q6: {
+                    correct: '🎉 Xuất sắc! Đây có thể là "Ngôi Sao" vì: thị trường ẩm thực Á Đông đang TĂNG TRƯỞNG (cao), và có tiềm năng CHIẾM THỊ PHẦN lớn (cao) nếu làm tốt.',
+                    incorrect: '❌ Chưa đúng. Lý do chính là: thị trường ẩm thực Á Đông trong cộng đồng Anh đang TĂNG TRƯỞNG nhanh, và Bonucakes có cơ hội CHIẾM THỊ PHẦN cao nếu thực hiện tốt.'
+                },
+                q7: {
+                    correct: '🎉 Hoàn toàn chính xác! Nên tập trung 45% thời gian vào mở rộng sang thị trường Anh vì đây là cơ hội tăng trưởng lớn nhất (tiềm năng Star).',
+                    incorrect: '❌ Sai rồi! Theo phân tích, nên dành 45% thời gian cho việc mở rộng sang thị trường Anh vì đây là cơ hội tăng trưởng lớn nhất (tiềm năng Star).'
+                }
+            };
+
+            function checkAllAnswers() {
+                let score = 0;
+                const total = Object.keys(answers).length;
+
+                for (let q in answers) {
+                    const selected = document.querySelector(`input[name="${q}"]:checked`);
+                    const feedback = document.getElementById(`feedback-${q}`);
+                    const question = feedback.closest('.quiz-question');
+
+                    if (selected) {
+                        if (selected.value === answers[q]) {
+                            score++;
+                            feedback.className = 'quiz-feedback correct';
+                            feedback.innerHTML = explanations[q].correct;
+                            question.style.borderLeftColor = '#28a745';
+                        } else {
+                            feedback.className = 'quiz-feedback incorrect';
+                            feedback.innerHTML = explanations[q].incorrect;
+                            question.style.borderLeftColor = '#dc3545';
+                        }
+                    } else {
+                        feedback.className = 'quiz-feedback incorrect';
+                        feedback.innerHTML = '⚠️ Bạn chưa chọn đáp án cho câu này.';
+                        feedback.style.display = 'block';
+                        question.style.borderLeftColor = '#ffc107';
+                    }
+                }
+
+                // Show result
+                const resultDiv = document.getElementById('quiz-result');
+                resultDiv.className = 'show';
+
+                const percentage = (score / total) * 100;
+
+                if (percentage === 100) {
+                    resultDiv.className = 'show excellent';
+                    resultDiv.innerHTML = `🎉 <strong>Xuất Sắc!</strong> Bạn trả lời đúng ${score}/${total} câu (${percentage}%)<br>
+                    Bạn đã hiểu rất rõ về Ma trận BCG và cách áp dụng vào Bonucakes!`;
+                } else if (percentage >= 70) {
+                    resultDiv.className = 'show good';
+                    resultDiv.innerHTML = `👍 <strong>Tốt Lắm!</strong> Bạn trả lời đúng ${score}/${total} câu (${percentage}%)<br>
+                    Bạn đã nắm được khá tốt về Ma trận BCG. Đọc lại phần giải thích để hiểu rõ hơn nhé!`;
+                } else {
+                    resultDiv.className = 'show needswork';
+                    resultDiv.innerHTML = `📚 <strong>Cần Ôn Lại:</strong> Bạn trả lời đúng ${score}/${total} câu (${percentage}%)<br>
+                    Đọc lại bài viết để hiểu rõ hơn về Ma trận BCG và cách áp dụng nhé!`;
+                }
+
+                // Scroll to result
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        </script>
+
+        <div style="margin-top: 40px; padding: 20px; background: #ecf0f1; text-align: center; font-size: 0.9em; color: #7f8c8d;">
+            <p>
+                Phân tích được tạo ngày: <strong>04/03/2026</strong><br>
+                Công cụ: Ma trận BCG (Boston Consulting Group Matrix)<br>
+                Mục đích: Chiến lược phát triển kinh doanh Bonucakes
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -148,9 +148,8 @@ function OrderSuccessContent() {
   };
 
   return (
-    <div className="min-h-screen bg-cream">
-      <main className="pt-32 pb-16">
-        <div className="max-w-4xl mx-auto px-6">
+    <main className="pt-32 pb-16">
+      <div className="max-w-4xl mx-auto px-6">
           {/* Success Header */}
           <div className="text-center mb-12">
             <CheckCircle className="h-20 w-20 mx-auto text-green-600 mb-4" />
@@ -343,16 +342,15 @@ function OrderSuccessContent() {
                 {translations.backToHome[currentLang]}
               </Link>
             </div>
-          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 
 export default function OrderSuccessPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-cream pt-32">Loading...</div>}>
+    <Suspense fallback={<div className="pt-32 text-center">Loading...</div>}>
       <OrderSuccessContent />
     </Suspense>
   );

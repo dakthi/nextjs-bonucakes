@@ -23,4 +23,7 @@ export const stripe = {
   get webhooks() {
     return getStripe().webhooks;
   },
+  get refunds() {
+    return getStripe().refunds;
+  },
 };

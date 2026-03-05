@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import FadeInObserver from '@/components/FadeInObserver';
 import { useLanguage } from '@/components/LanguageToggle';
 
@@ -83,9 +81,8 @@ export default function CulinaryConsultationPage() {
   const t = content[currentLang];
 
   return (
-    <div className="min-h-screen bg-cream">
+    <>
       <FadeInObserver />
-      <Navbar />
 
       <main>
         {/* Services Section */}
@@ -482,8 +479,6 @@ export default function CulinaryConsultationPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

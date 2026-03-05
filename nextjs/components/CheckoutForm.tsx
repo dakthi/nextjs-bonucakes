@@ -13,6 +13,8 @@ export interface CheckoutFormData {
   customerEmail: string;
   customerPhone: string;
   deliveryAddress: string;
+  deliveryCity?: string;
+  deliveryPostcode?: string;
   specialNotes?: string;
   paymentMethod: 'bank_transfer' | 'stripe';
 }
@@ -44,11 +46,15 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
     emailPlaceholder: { vi: 'example@email.com', en: 'example@email.com' },
     phone: { vi: 'Số điện thoại', en: 'Phone Number' },
     phonePlaceholder: { vi: '07123 456789', en: '07123 456789' },
-    deliveryAddress: { vi: 'Địa chỉ giao hàng', en: 'Delivery Address' },
+    deliveryAddress: { vi: 'Địa chỉ giao hàng', en: 'Street Address' },
     deliveryAddressPlaceholder: {
-      vi: '221B Baker Street, London NW1 6XE',
-      en: '221B Baker Street, London NW1 6XE',
+      vi: '221B Baker Street',
+      en: '221B Baker Street',
     },
+    deliveryCity: { vi: 'Thành phố', en: 'City' },
+    deliveryCityPlaceholder: { vi: 'London', en: 'London' },
+    deliveryPostcode: { vi: 'Mã bưu chính', en: 'Postcode' },
+    deliveryPostcodePlaceholder: { vi: 'NW1 6XE', en: 'NW1 6XE' },
     specialNotes: { vi: 'Ghi chú đặc biệt', en: 'Special Notes' },
     specialNotesPlaceholder: {
       vi: 'Hướng dẫn giao hàng (ví dụ: bấm chuông, để lại cho hàng xóm)',
@@ -145,7 +151,7 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
             {...register('deliveryAddress', {
               required: translations.required[currentLang],
             })}
-            rows={3}
+            rows={2}
             className={`w-full border ${
               errors.deliveryAddress ? 'border-terracotta' : 'border-espresso/20'
             } px-4 py-3 focus:outline-none focus:border-terracotta`}
@@ -155,6 +161,37 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
           {errors.deliveryAddress && (
             <p className="text-terracotta text-sm mt-1">{errors.deliveryAddress.message}</p>
           )}
+        </div>
+
+        {/* City and Postcode Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* City */}
+          <div>
+            <label className="block text-coffee font-semibold mb-2">
+              {translations.deliveryCity[currentLang]}
+            </label>
+            <input
+              type="text"
+              {...register('deliveryCity')}
+              className="w-full border border-espresso/20 px-4 py-3 focus:outline-none focus:border-terracotta"
+              placeholder={translations.deliveryCityPlaceholder[currentLang]}
+              disabled={isSubmitting}
+            />
+          </div>
+
+          {/* Postcode */}
+          <div>
+            <label className="block text-coffee font-semibold mb-2">
+              {translations.deliveryPostcode[currentLang]}
+            </label>
+            <input
+              type="text"
+              {...register('deliveryPostcode')}
+              className="w-full border border-espresso/20 px-4 py-3 focus:outline-none focus:border-terracotta"
+              placeholder={translations.deliveryPostcodePlaceholder[currentLang]}
+              disabled={isSubmitting}
+            />
+          </div>
         </div>
 
         {/* Payment Method */}

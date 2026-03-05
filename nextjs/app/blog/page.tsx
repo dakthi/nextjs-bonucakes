@@ -2,7 +2,6 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Navbar from '@/components/Navbar';
 import BlogCard, { BlogPost } from '@/components/BlogCard';
 import { useLanguage } from '@/components/LanguageToggle';
 import Link from 'next/link';
@@ -68,8 +67,6 @@ function BlogContent() {
 
   return (
     <>
-      <Navbar />
-
       {/* Header */}
       <header className="bg-warmwhite py-24 md:py-28 border-b border-espresso/10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center">
@@ -160,30 +157,6 @@ function BlogContent() {
           </>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-espresso border-t border-gold/20 py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <span className="text-2xl font-bold text-gold font-serif">
-                Bonu F&B
-              </span>
-            </div>
-            <div className="flex gap-6 text-cream/60 text-sm">
-              <Link href="/" className="hover:text-white transition-colors">
-                {currentLang === 'vi' ? 'Trang chủ' : 'Home'}
-              </Link>
-              <Link href="/blog" className="hover:text-white transition-colors">
-                Blog
-              </Link>
-            </div>
-          </div>
-          <div className="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
-            <p>&copy; 2026 Uyen Nguyen - F&B Business Design</p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }

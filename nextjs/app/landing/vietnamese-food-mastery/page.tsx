@@ -1,8 +1,6 @@
 'use client';
 
 import { useLanguage } from '@/components/LanguageToggle';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -21,9 +19,7 @@ export default function VietnameseFoodMasteryPage() {
   }, []);
 
   return (
-    <div className="bg-cream">
-      <Navbar />
-
+    <>
       <header className="pt-24 md:pt-28 pb-10 bg-warmwhite border-b border-espresso/10">
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-terracotta uppercase tracking-widest text-sm mb-3 font-medium">
@@ -402,8 +398,6 @@ export default function VietnameseFoodMasteryPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

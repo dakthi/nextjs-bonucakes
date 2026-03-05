@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { getStripe } from '@/lib/stripe';
 
 export async function PATCH(
   request: NextRequest,
@@ -40,7 +41,36 @@ export async function PATCH(
 
     if (status !== undefined) updateData.status = status;
     if (paymentStatus !== undefined) {
-      updateData.paymentStatus = paymentStatus;
+      // If refunding and order was paid via Stripe, process actual Stripe refund
+      if (paymentStatus === 'refunded' && currentOrder.stripePaymentIntentId && currentOrder.paymentMethod === 'stripe') {
+        try {
+          const stripe = getStripe();
+          console.log(`[Refund] Processing Stripe refund for PaymentIntent: ${currentOrder.stripePaymentIntentId}`);
+
+          const refund = await stripe.refunds.create({
+            payment_intent: currentOrder.stripePaymentIntentId,
+            reason: 'requested_by_customer',
+          });
+
+          console.log(`[Refund] Stripe refund successful: ${refund.id}, status: ${refund.status}`);
+
+          // Update payment status to refunded
+          updateData.paymentStatus = 'refunded';
+        } catch (stripeError: any) {
+          console.error('[Refund] Stripe refund failed:', stripeError);
+          return NextResponse.json(
+            {
+              error: 'Failed to process Stripe refund',
+              details: stripeError.message
+            },
+            { status: 400 }
+          );
+        }
+      } else {
+        // For non-Stripe payments (bank transfer), just update the status
+        updateData.paymentStatus = paymentStatus;
+      }
+
       // If marking as paid, set paidAt timestamp
       if (paymentStatus === 'paid' && currentOrder.paymentStatus !== 'paid') {
         updateData.paidAt = new Date();
