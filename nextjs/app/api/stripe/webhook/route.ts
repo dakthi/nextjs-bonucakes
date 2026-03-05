@@ -2,6 +2,35 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { stripe } from '@/lib/stripe';
 import Stripe from 'stripe';
+import { Resend } from 'resend';
+import {
+  generateCustomerEmail,
+  generateAdminEmail,
+  type OrderEmailData,
+  type OrderItem as EmailOrderItem,
+  type BankDetails,
+} from '@/lib/email-templates/order-emails';
+
+// Email configuration
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'Bonu F&B <noreply@chartedconsultants.com>';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'bonucakes6@gmail.com';
+
+// Bank details (not used for Stripe payments, but kept for consistency)
+const BANK_DETAILS: BankDetails = {
+  bankName: 'HSBC',
+  accountName: 'N M U NGUYEN',
+  sortCode: '40-20-16',
+  accountNumber: '22101505',
+};
+
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not configured');
+    return null;
+  }
+  return new Resend(apiKey);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -90,8 +119,66 @@ export async function POST(request: NextRequest) {
 
           console.log(`Order ${order.id} confirmed after payment`);
 
-          // TODO: Send confirmation email here if needed
-          // You can use your existing email sending logic from the order API
+          // Send confirmation emails now that payment is confirmed
+          try {
+            const resend = getResendClient();
+            if (resend) {
+              // Prepare email data
+              const emailData: OrderEmailData = {
+                orderCode: order.orderNumber,
+                orderId: order.id,
+                customerName: order.customerName,
+                customerEmail: order.customerEmail,
+                customerPhone: order.customerPhone || '',
+                deliveryAddress: typeof order.shippingAddress === 'string' ? order.shippingAddress : JSON.stringify(order.shippingAddress || ''),
+                paymentMethod: 'stripe',
+                items: order.items.map(item => ({
+                  productId: item.productId || 0,
+                  productName: item.productName,
+                  quantity: item.quantity,
+                  unitPrice: Number(item.price),
+                  unit: '',
+                })),
+                pricing: {
+                  currency: order.currency,
+                  subtotal: Number(order.subtotal),
+                  shippingFee: Number(order.shippingCost),
+                  total: Number(order.total),
+                  shippingLabel: order.shippingMethod || 'UK Mainland',
+                },
+              };
+
+              const submissionDate = new Date().toLocaleDateString('vi-VN', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+              });
+
+              // Send admin notification
+              await resend.emails.send({
+                from: FROM_EMAIL,
+                to: [ADMIN_EMAIL],
+                replyTo: order.customerEmail,
+                subject: `[Đơn hàng mới #${order.orderNumber}] ${order.items.length > 1 ? `${order.items.length} sản phẩm` : order.items[0]?.productName || 'Order'}`,
+                html: generateAdminEmail(emailData, submissionDate),
+              });
+
+              console.log(`[Webhook] Admin notification sent for order ${order.orderNumber}`);
+
+              // Send customer confirmation
+              await resend.emails.send({
+                from: FROM_EMAIL,
+                to: [order.customerEmail, ADMIN_EMAIL],
+                subject: `Xác nhận đơn hàng #${order.orderNumber} - Bonu Cakes`,
+                html: generateCustomerEmail(emailData),
+              });
+
+              console.log(`[Webhook] Customer confirmation sent for order ${order.orderNumber}`);
+            }
+          } catch (emailError) {
+            console.error('[Webhook] Error sending emails:', emailError);
+            // Don't fail the webhook if email fails
+          }
         } else {
           console.warn(
             `No Order found for PaymentIntent ${paymentIntent.id}`

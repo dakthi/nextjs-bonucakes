@@ -289,35 +289,12 @@ export async function POST(request: NextRequest) {
       year: 'numeric',
     });
 
-    // Send emails via Resend
-    const resend = getResendClient();
+    // NOTE: Emails are sent ONLY after payment confirmation (via webhook)
+    // No emails sent here to avoid sending before payment is confirmed
+    console.log(`[bonucakes] Order ${orderCode} created, waiting for payment confirmation`);
 
-    try {
-      // Send admin notification
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: [ADMIN_EMAIL],
-        replyTo: customerEmail,
-        subject: `[Đơn hàng mới #${orderCode}] ${items.length > 1 ? `${items.length} sản phẩm` : items[0].productName}`,
-        html: generateAdminEmail(emailData, submissionDate),
-      });
-
-      console.log(`[bonucakes] Admin notification sent for order ${orderCode}`);
-
-      // Send customer confirmation (to customer and admin)
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: [customerEmail, ADMIN_EMAIL],
-        subject: `Xác nhận đơn hàng #${orderCode} - Bonu Cakes`,
-        html: generateCustomerEmail(emailData, BANK_DETAILS),
-      });
-
-      console.log(`[bonucakes] Customer confirmation sent for order ${orderCode}`);
-    } catch (emailError) {
-      console.error('Error sending emails:', emailError);
-      // Don't fail the order creation if email fails
-      // The order is already saved in the database
-    }
+    // TODO: If needed, we can send admin notification here, but NOT customer confirmation
+    // Customer confirmation email should only be sent after payment succeeds
 
     // Update or create customer record
     try {

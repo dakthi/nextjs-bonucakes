@@ -167,12 +167,12 @@ export function generateCustomerEmail(data: OrderEmailData, bankDetails?: BankDe
         <div class="container">
           <div class="header">
             <h1 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 2em; color: #D4A853;">Bonu F&B</h1>
-            <p style="margin: 10px 0 0 0; color: #FDF8F3;">Xác nhận đơn hàng</p>
+            <p style="margin: 10px 0 0 0; color: #FDF8F3;">${paymentMethod === 'stripe' ? 'Xác nhận đơn hàng' : 'Đơn hàng đã nhận'}</p>
           </div>
           <div class="content">
             <p style="font-size: 1.1em;">Xin chào ${customerName},</p>
 
-            <p>Cảm ơn bạn đã đặt hàng tại Bonu Cakes!</p>
+            <p>Cảm ơn bạn đã đặt hàng tại Bonu Cakes! ${paymentMethod === 'stripe' ? 'Đơn hàng của bạn đã được xác nhận.' : 'Chúng tôi đã nhận được đơn hàng và đang chờ thanh toán.'}</p>
 
             <div style="background: #FFFBF5; padding: 15px; border-left: 4px solid #C4704A; margin: 20px 0; border-radius: 4px;">
               <p style="margin: 0 0 5px 0; color: #C4704A; font-weight: bold;">MÃ ĐƠN HÀNG</p>
@@ -205,7 +205,10 @@ export function generateCustomerEmail(data: OrderEmailData, bankDetails?: BankDe
                 <p style="margin: 0 0 8px 0;"><strong>Số tài khoản:</strong> ${bankDetails.accountNumber}</p>
                 <p style="margin: 0; padding-top: 10px; border-top: 1px solid #C4704A;"><strong>Nội dung chuyển khoản:</strong> <span style="color: #C4704A; font-size: 1.1em;">#${orderCode}</span></p>
               </div>
-              <p style="color: #666; font-size: 0.9em;">Chúng tôi sẽ xác nhận đơn hàng sau khi nhận được thanh toán.</p>
+              <div class="warning">
+                <p style="margin: 0; color: #F57C00; font-weight: bold;">⚠️ ĐƠN HÀNG ĐANG CHỜ THANH TOÁN</p>
+                <p style="margin: 8px 0 0 0; color: #4A3728;">Đơn hàng sẽ được xác nhận sau khi chúng tôi nhận được thanh toán.</p>
+              </div>
             ` : ''}
 
             <div class="warning">
