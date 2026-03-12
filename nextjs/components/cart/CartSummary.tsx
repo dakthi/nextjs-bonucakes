@@ -46,13 +46,13 @@ export default function CartSummary({
   }
 
   return (
-    <div className={`rounded-lg border border-gray-200 bg-white p-6 ${className}`}>
+    <div className={`rounded-lg border border-primary/20 bg-white p-6 ${className}`}>
       {/* Promotions */}
       {showPromotions && promotions.length > 0 && (
-        <div className="mb-4 rounded-md bg-green-50 p-3">
-          <p className="mb-2 text-sm font-semibold text-green-800">{t.promotion}</p>
+        <div className="mb-4 rounded-md bg-light p-3">
+          <p className="mb-2 text-sm font-semibold text-primary">{t.promotion}</p>
           {promotions.map((promo) => (
-            <p key={promo.productId} className="text-sm text-green-700">
+            <p key={promo.productId} className="text-sm text-muted">
               {locale === 'en'
                 ? `${promo.productName.en}: +${promo.freeItems} free`
                 : `${promo.productName.vi}: +${promo.freeItems} miễn phí`}
@@ -63,20 +63,20 @@ export default function CartSummary({
 
       {/* Totals */}
       <div className="space-y-3">
-        <div className="flex justify-between text-gray-700">
+        <div className="flex justify-between text-muted">
           <span>
             {t.subtotal} ({totals.itemCount} {t.items})
           </span>
           <span>{formatPrice(totals.subtotal)}</span>
         </div>
 
-        <div className="flex justify-between text-gray-700">
+        <div className="flex justify-between text-muted">
           <span>{t.shipping}</span>
           <span>{formatPrice(totals.shipping)}</span>
         </div>
 
-        <div className="border-t border-gray-200 pt-3">
-          <div className="flex justify-between text-lg font-bold text-gray-900">
+        <div className="border-t border-primary/20 pt-3">
+          <div className="flex justify-between text-lg font-bold text-primary">
             <span>{t.total}</span>
             <span>{formatPrice(totals.total)}</span>
           </div>

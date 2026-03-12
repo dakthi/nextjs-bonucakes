@@ -134,7 +134,7 @@ export default function NewBlogPostPage() {
                     value={formData.titleVi}
                     onChange={handleChange}
                     required
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
 
@@ -148,7 +148,7 @@ export default function NewBlogPostPage() {
                     value={formData.titleEn}
                     onChange={handleChange}
                     required
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function NewBlogPostPage() {
                   onChange={handleChange}
                   required
                   pattern="[a-z0-9-]+"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                 />
                 <p className="mt-1 text-sm text-gray-500">
                   URL-friendly version (lowercase, hyphens only)
@@ -181,7 +181,7 @@ export default function NewBlogPostPage() {
                     value={formData.excerptVi}
                     onChange={handleChange}
                     rows={3}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
 
@@ -194,7 +194,7 @@ export default function NewBlogPostPage() {
                     value={formData.excerptEn}
                     onChange={handleChange}
                     rows={3}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function NewBlogPostPage() {
                   onChange={handleChange}
                   required
                   rows={12}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 font-mono text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121] font-mono text-sm"
                   placeholder="Markdown or HTML content..."
                 />
               </div>
@@ -229,7 +229,7 @@ export default function NewBlogPostPage() {
                   onChange={handleChange}
                   required
                   rows={12}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500 font-mono text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121] font-mono text-sm"
                   placeholder="Markdown or HTML content..."
                 />
               </div>
@@ -248,7 +248,7 @@ export default function NewBlogPostPage() {
                   name="image"
                   value={formData.image}
                   onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   placeholder="https://..."
                 />
               </div>
@@ -263,7 +263,7 @@ export default function NewBlogPostPage() {
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                     placeholder="e.g., business, recipes"
                   />
                 </div>
@@ -277,7 +277,7 @@ export default function NewBlogPostPage() {
                     name="tags"
                     value={formData.tags}
                     onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                     placeholder="Comma-separated: tag1, tag2, tag3"
                   />
                 </div>
@@ -293,7 +293,7 @@ export default function NewBlogPostPage() {
                     name="author"
                     value={formData.author}
                     onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
 
@@ -306,7 +306,7 @@ export default function NewBlogPostPage() {
                     name="authorImage"
                     value={formData.authorImage}
                     onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
 
@@ -319,7 +319,7 @@ export default function NewBlogPostPage() {
                     name="authorRole"
                     value={formData.authorRole}
                     onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                   />
                 </div>
               </div>
@@ -338,7 +338,7 @@ export default function NewBlogPostPage() {
                   name="metaTitle"
                   value={formData.metaTitle}
                   onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                 />
               </div>
 
@@ -351,7 +351,7 @@ export default function NewBlogPostPage() {
                   value={formData.metaDescription}
                   onChange={handleChange}
                   rows={2}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#083121] focus:border-[#083121]"
                 />
               </div>
             </div>
@@ -367,7 +367,7 @@ export default function NewBlogPostPage() {
                     name="featured"
                     checked={formData.featured}
                     onChange={handleChange}
-                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-[#083121] focus:ring-[#083121] border-gray-300 rounded"
                   />
                   <span className="ml-2 text-sm text-gray-700">Featured Post</span>
                 </label>
@@ -378,7 +378,7 @@ export default function NewBlogPostPage() {
                     name="published"
                     checked={formData.published}
                     onChange={handleChange}
-                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-[#083121] focus:ring-[#083121] border-gray-300 rounded"
                   />
                   <span className="ml-2 text-sm text-gray-700">Publish Now</span>
                 </label>
@@ -389,14 +389,14 @@ export default function NewBlogPostPage() {
             <div className="flex justify-end gap-3">
               <Link
                 href="/admin/blog"
-                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#083121]"
               >
                 Cancel
               </Link>
               <button
                 type="submit"
                 disabled={saving}
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50"
+                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#083121] disabled:opacity-50"
               >
                 <Save className="h-4 w-4 mr-2" />
                 {saving ? "Creating..." : "Create Post"}

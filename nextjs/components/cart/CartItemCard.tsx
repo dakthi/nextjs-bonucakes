@@ -50,10 +50,10 @@ export default function CartItemCard({
 
   return (
     <div
-      className={`flex gap-4 rounded-lg border border-gray-200 bg-white p-4 ${className}`}
+      className={`flex gap-4 rounded-lg border border-primary/20 bg-white p-4 ${className}`}
     >
       {/* Product Image */}
-      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
+      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md bg-light">
         {item.image ? (
           <Image
             src={item.image.url}
@@ -62,7 +62,7 @@ export default function CartItemCard({
             className="object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-gray-400">
+          <div className="flex h-full w-full items-center justify-center text-muted">
             <span className="text-xs">No image</span>
           </div>
         )}
@@ -74,11 +74,11 @@ export default function CartItemCard({
           <div className="flex-1">
             <Link
               href={`/products/${item.productSlug}`}
-              className="font-semibold text-gray-900 hover:text-blue-600"
+              className="font-semibold text-primary hover:text-secondary"
             >
               {productName}
             </Link>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-muted">
               {formatPrice(item.unitPrice)} / {locale === 'vi' ? item.unitVi : item.unitEn}
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function CartItemCard({
           {/* Remove Button */}
           <button
             onClick={handleRemove}
-            className="text-gray-400 hover:text-red-600"
+            className="text-muted hover:text-secondary"
             aria-label="Remove item"
           >
             <Trash2 className="h-5 w-5" />
@@ -100,7 +100,7 @@ export default function CartItemCard({
             <button
               onClick={() => handleQuantityChange(item.quantity - 1)}
               disabled={isUpdating || item.quantity <= 1}
-              className="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-8 w-8 items-center justify-center rounded-md border border-primary/20 hover:bg-light disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Decrease quantity"
             >
               <Minus className="h-4 w-4" />
@@ -118,13 +118,13 @@ export default function CartItemCard({
               min="1"
               max="9999"
               disabled={isUpdating}
-              className="h-8 w-16 rounded-md border border-gray-300 text-center disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-8 w-16 rounded-md border border-primary/20 text-center disabled:cursor-not-allowed disabled:opacity-50"
             />
 
             <button
               onClick={() => handleQuantityChange(item.quantity + 1)}
               disabled={isUpdating || item.quantity >= 9999}
-              className="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-8 w-8 items-center justify-center rounded-md border border-primary/20 hover:bg-light disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Increase quantity"
             >
               <Plus className="h-4 w-4" />
@@ -133,7 +133,7 @@ export default function CartItemCard({
 
           {/* Item Total */}
           <div className="text-right">
-            <p className="text-lg font-semibold text-gray-900">
+            <p className="text-lg font-semibold text-primary">
               {formatPrice(itemTotal)}
             </p>
           </div>

@@ -39,13 +39,13 @@ export default function StatsSection() {
   const currentLang = useLanguage();
 
   return (
-    <section className="bg-warmwhite py-12 border-b border-espresso/10 fade-in">
+    <section className="bg-light py-12 border-b border-primary/10 fade-in">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="fade-in">
-              <p className="text-3xl md:text-4xl font-bold text-terracotta">{stat.value}</p>
-              <p className="text-coffee text-sm">{stat.label[currentLang]}</p>
+              <p className="text-3xl md:text-4xl font-bold text-secondary">{stat.value}</p>
+              <p className="text-muted text-sm">{stat.label[currentLang]}</p>
             </div>
           ))}
         </div>

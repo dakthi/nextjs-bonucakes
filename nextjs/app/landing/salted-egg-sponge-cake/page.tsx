@@ -21,29 +21,29 @@ export default function SaltedEggSpongeCakePage() {
   return (
     <>
       {/* Hero */}
-      <header className="pt-24 md:pt-28 pb-10 bg-warmwhite border-b border-espresso/10">
+      <header className="pt-24 md:pt-28 pb-10 bg-[#f8faf9] border-b border-[#083121]/10">
         <div className="max-w-5xl mx-auto px-6">
-          <p className="text-terracotta uppercase tracking-widest text-sm mb-3 font-medium">
+          <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-3 font-medium">
             Signature • {currentLang === 'vi' ? 'Trọn gói' : 'Full package'}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-espresso mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Bông lan trứng muối – Signature Combo'
               : 'Salted Egg Sponge Cake – Signature Combo'}
           </h1>
-          <p className="text-lg text-coffee max-w-3xl">
+          <p className="text-lg text-[#4a5c52] max-w-3xl">
             {currentLang === 'vi'
               ? 'Cốt bánh mềm mịn tan trong miệng, để qua đêm vẫn ngon, để tủ 1 tuần vẫn ổn (không chất bảo quản). Trứng muối nướng bùi thơm. Chà bông chuẩn. 4 loại sốt đặc biệt. Học xong bán được ngay.'
               : 'Soft sponge melts in mouth, stays delicious overnight, lasts 1 week in fridge (no preservatives). Roasted salted egg with rich aroma. Premium pork floss. 4 special sauces. Ready to sell after learning.'}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-coffee/80">
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[#4a5c52]/80">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Công thức ổn định' : 'Stable formula'}
             </span>
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Ăn lạnh vẫn ngon' : 'Delicious when cold'}
             </span>
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Không chất bảo quản' : 'No preservatives'}
             </span>
           </div>
@@ -53,11 +53,11 @@ export default function SaltedEggSpongeCakePage() {
       <main className="max-w-5xl mx-auto px-6 py-12">
         {/* What you learn */}
         <section className="space-y-8 mb-10">
-          <div className="bg-white border border-espresso/10 p-6">
-            <h2 className="text-2xl font-bold text-espresso mb-4">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h2 className="text-2xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi' ? 'Bạn sẽ học' : 'What you will learn'}
             </h2>
-            <ul className="space-y-3 text-coffee">
+            <ul className="space-y-3 text-[#4a5c52]">
               {currentLang === 'vi' ? (
                 <>
                   <li>• Cốt bánh: kỹ thuật đánh trứng, phối bột, nướng chuẩn để đạt cấu trúc mềm mịn, đứng form.</li>
@@ -79,11 +79,11 @@ export default function SaltedEggSpongeCakePage() {
               )}
             </ul>
           </div>
-          <div className="bg-white border border-espresso/10 p-6">
-            <h2 className="text-2xl font-bold text-espresso mb-4">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h2 className="text-2xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi' ? 'Hình thức học' : 'Learning format'}
             </h2>
-            <ul className="space-y-3 text-coffee">
+            <ul className="space-y-3 text-[#4a5c52]">
               {currentLang === 'vi' ? (
                 <>
                   <li>• Remote: gửi ảnh/nguyên liệu địa phương, nhận video hướng dẫn chi tiết, hỗ trợ tới khi ra thành phẩm.</li>
@@ -98,7 +98,7 @@ export default function SaltedEggSpongeCakePage() {
                 </>
               )}
             </ul>
-            <p className="text-coffee/70 mt-3 text-sm">
+            <p className="text-[#4a5c52]/70 mt-3 text-sm">
               {currentLang === 'vi'
                 ? 'Chi phí tùy theo mức tuỳ chỉnh và địa điểm (on‑site tính thêm di chuyển/lưu trú).'
                 : 'Cost depends on customization level and location (on‑site includes travel/accommodation).'}
@@ -108,99 +108,99 @@ export default function SaltedEggSpongeCakePage() {
 
         {/* Proof & outcomes */}
         <section className="grid md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-espresso text-warmwhite p-6">
-            <p className="text-3xl font-bold text-gold mb-1">10+</p>
-            <p className="text-cream/80 text-sm">
+          <div className="bg-[#083121] text-[#f8faf9] p-6">
+            <p className="text-3xl font-bold text-[#fcc56c] mb-1">10+</p>
+            <p className="text-[#f8faf9]/80 text-sm">
               {currentLang === 'vi' ? 'Năm kinh nghiệm & triển khai' : 'Years of experience & implementation'}
             </p>
           </div>
-          <div className="bg-warmwhite border border-espresso/10 p-6">
-            <p className="text-espresso font-bold mb-1">
+          <div className="bg-[#f8faf9] border border-[#083121]/10 p-6">
+            <p className="text-[#083121] font-bold mb-1">
               {currentLang === 'vi' ? 'Ổn định chất lượng' : 'Stable quality'}
             </p>
-            <p className="text-coffee/80 text-sm">
+            <p className="text-[#4a5c52]/80 text-sm">
               {currentLang === 'vi' ? 'Ăn lạnh vẫn ngon, giao hàng an tâm' : 'Delicious when cold, reliable delivery'}
             </p>
           </div>
-          <div className="bg-warmwhite border border-espresso/10 p-6">
-            <p className="text-espresso font-bold mb-1">
+          <div className="bg-[#f8faf9] border border-[#083121]/10 p-6">
+            <p className="text-[#083121] font-bold mb-1">
               {currentLang === 'vi' ? 'Sẵn sàng bán' : 'Ready to sell'}
             </p>
-            <p className="text-coffee/80 text-sm">
+            <p className="text-[#4a5c52]/80 text-sm">
               {currentLang === 'vi' ? 'Quy trình chuẩn hóa để ra doanh thu nhanh' : 'Standardized process for quick revenue'}
             </p>
           </div>
         </section>
 
         {/* Syllabus */}
-        <section className="bg-white border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-white border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Syllabus chi tiết' : 'Detailed syllabus'}
           </h2>
           {/* Mobile stacked */}
           <div className="md:hidden space-y-3">
             {currentLang === 'vi' ? (
               <>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Bước 1:</span> Chuẩn bị nguyên liệu & dụng cụ, tiêu chuẩn kiểm tra.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Bước 2:</span> Kỹ thuật cốt bánh: demo + thực hành + sai thường gặp.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Bước 3:</span> Trứng muối nướng & xử lý mùi, độ bùi, độ ẩm.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Bước 4:</span> Chà bông & 4 sốt đặc biệt: công thức + bảo quản.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Bước 5:</span> Hoàn thiện thành phẩm, đóng gói & bảo quản.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Bước 6:</span> Quy trình vận hành nhỏ gọn để bán online/offline.
                   </p>
                 </div>
               </>
             ) : (
               <>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Step 1:</span> Prepare ingredients & tools, quality standards.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Step 2:</span> Sponge technique: demo + practice + common mistakes.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Step 3:</span> Roasted salted egg & odor treatment, richness, moisture.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Step 4:</span> Pork floss & 4 special sauces: formula + storage.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Step 5:</span> Finishing product, packaging & storage.
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Step 6:</span> Compact operation process for online/offline sales.
                   </p>
                 </div>
@@ -211,68 +211,68 @@ export default function SaltedEggSpongeCakePage() {
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="text-left bg-cream">
-                  <th className="p-3 border border-espresso/10 w-24">
+                <tr className="text-left bg-[#f8faf9]">
+                  <th className="p-3 border border-[#083121]/10 w-24">
                     {currentLang === 'vi' ? 'Bước' : 'Step'}
                   </th>
-                  <th className="p-3 border border-espresso/10">
+                  <th className="p-3 border border-[#083121]/10">
                     {currentLang === 'vi' ? 'Nội dung' : 'Content'}
                   </th>
                 </tr>
               </thead>
-              <tbody className="text-coffee">
+              <tbody className="text-[#4a5c52]">
                 {currentLang === 'vi' ? (
                   <>
                     <tr>
-                      <td className="p-3 border border-espresso/10">1</td>
-                      <td className="p-3 border border-espresso/10">Chuẩn bị nguyên liệu & dụng cụ, tiêu chuẩn kiểm tra.</td>
+                      <td className="p-3 border border-[#083121]/10">1</td>
+                      <td className="p-3 border border-[#083121]/10">Chuẩn bị nguyên liệu & dụng cụ, tiêu chuẩn kiểm tra.</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">2</td>
-                      <td className="p-3 border border-espresso/10">Kỹ thuật cốt bánh: demo + thực hành + sai thường gặp.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 border border-espresso/10">3</td>
-                      <td className="p-3 border border-espresso/10">Trứng muối nướng & xử lý mùi, độ bùi, độ ẩm.</td>
-                    </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">4</td>
-                      <td className="p-3 border border-espresso/10">Chà bông & 4 sốt đặc biệt: công thức + bảo quản.</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">2</td>
+                      <td className="p-3 border border-[#083121]/10">Kỹ thuật cốt bánh: demo + thực hành + sai thường gặp.</td>
                     </tr>
                     <tr>
-                      <td className="p-3 border border-espresso/10">5</td>
-                      <td className="p-3 border border-espresso/10">Hoàn thiện thành phẩm, đóng gói & bảo quản.</td>
+                      <td className="p-3 border border-[#083121]/10">3</td>
+                      <td className="p-3 border border-[#083121]/10">Trứng muối nướng & xử lý mùi, độ bùi, độ ẩm.</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">6</td>
-                      <td className="p-3 border border-espresso/10">Quy trình vận hành nhỏ gọn để bán online/offline.</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">4</td>
+                      <td className="p-3 border border-[#083121]/10">Chà bông & 4 sốt đặc biệt: công thức + bảo quản.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 border border-[#083121]/10">5</td>
+                      <td className="p-3 border border-[#083121]/10">Hoàn thiện thành phẩm, đóng gói & bảo quản.</td>
+                    </tr>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">6</td>
+                      <td className="p-3 border border-[#083121]/10">Quy trình vận hành nhỏ gọn để bán online/offline.</td>
                     </tr>
                   </>
                 ) : (
                   <>
                     <tr>
-                      <td className="p-3 border border-espresso/10">1</td>
-                      <td className="p-3 border border-espresso/10">Prepare ingredients & tools, quality standards.</td>
+                      <td className="p-3 border border-[#083121]/10">1</td>
+                      <td className="p-3 border border-[#083121]/10">Prepare ingredients & tools, quality standards.</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">2</td>
-                      <td className="p-3 border border-espresso/10">Sponge technique: demo + practice + common mistakes.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 border border-espresso/10">3</td>
-                      <td className="p-3 border border-espresso/10">Roasted salted egg & odor treatment, richness, moisture.</td>
-                    </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">4</td>
-                      <td className="p-3 border border-espresso/10">Pork floss & 4 special sauces: formula + storage.</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">2</td>
+                      <td className="p-3 border border-[#083121]/10">Sponge technique: demo + practice + common mistakes.</td>
                     </tr>
                     <tr>
-                      <td className="p-3 border border-espresso/10">5</td>
-                      <td className="p-3 border border-espresso/10">Finishing product, packaging & storage.</td>
+                      <td className="p-3 border border-[#083121]/10">3</td>
+                      <td className="p-3 border border-[#083121]/10">Roasted salted egg & odor treatment, richness, moisture.</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">6</td>
-                      <td className="p-3 border border-espresso/10">Compact operation process for online/offline sales.</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">4</td>
+                      <td className="p-3 border border-[#083121]/10">Pork floss & 4 special sauces: formula + storage.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 border border-[#083121]/10">5</td>
+                      <td className="p-3 border border-[#083121]/10">Finishing product, packaging & storage.</td>
+                    </tr>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">6</td>
+                      <td className="p-3 border border-[#083121]/10">Compact operation process for online/offline sales.</td>
                     </tr>
                   </>
                 )}
@@ -282,16 +282,16 @@ export default function SaltedEggSpongeCakePage() {
         </section>
 
         {/* Founder note / narrative */}
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Vì sao combo này hiệu quả?' : 'Why is this combo effective?'}
           </h2>
-          <p className="text-coffee mb-3">
+          <p className="text-[#4a5c52] mb-3">
             {currentLang === 'vi'
               ? 'Bo đã bán bánh online nhiều năm trước khi mở tiệm đầu tiên ở London. Những lần giao xa, bảo quản qua đêm hay để tủ lạnh đều buộc công thức phải ổn định, ăn lạnh vẫn ngon. Bộ công thức này được mài dũa từ bối cảnh thật như vậy – nên khi bạn triển khai bán, tỉ lệ ổn định rất cao.'
               : 'Bo sold cakes online for many years before opening the first shop in London. Long-distance delivery, overnight storage, and refrigeration all required a stable formula that tastes good when cold. This recipe set was refined from such real contexts – so when you implement sales, the success rate is very high.'}
           </p>
-          <p className="text-coffee">
+          <p className="text-[#4a5c52]">
             {currentLang === 'vi'
               ? 'Mục tiêu không chỉ là làm được một chiếc bánh ngon, mà là làm được đều để biến kiến thức thành dòng tiền bền vững.'
               : 'The goal is not just to make one delicious cake, but to make it consistently to turn knowledge into sustainable cash flow.'}
@@ -300,11 +300,11 @@ export default function SaltedEggSpongeCakePage() {
 
         {/* Outcomes */}
         <section className="grid md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white border border-espresso/10 p-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Kết quả mong đợi (2–4 tuần)' : 'Expected results (2–4 weeks)'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Ra thành phẩm đạt chuẩn cảm quan</li>
@@ -320,11 +320,11 @@ export default function SaltedEggSpongeCakePage() {
               )}
             </ul>
           </div>
-          <div className="bg-white border border-espresso/10 p-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Khi scale up' : 'When scaling up'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Batch lớn giữ form – giữ ẩm ổn định</li>
@@ -340,11 +340,11 @@ export default function SaltedEggSpongeCakePage() {
               )}
             </ul>
           </div>
-          <div className="bg-white border border-espresso/10 p-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Case ngắn' : 'Case studies'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Na Uy: tối ưu lò gia dụng → form đứng hơn</li>
@@ -363,25 +363,25 @@ export default function SaltedEggSpongeCakePage() {
         </section>
 
         {/* Mini FAQ */}
-        <section className="bg-white border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-white border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'FAQ ngắn' : 'Quick FAQ'}
           </h2>
           <details className="mb-3">
-            <summary className="font-semibold text-espresso cursor-pointer">
+            <summary className="font-semibold text-[#083121] cursor-pointer">
               {currentLang === 'vi' ? 'Dùng lò gia dụng có được không?' : 'Can I use a home oven?'}
             </summary>
-            <p className="text-coffee mt-2">
+            <p className="text-[#4a5c52] mt-2">
               {currentLang === 'vi'
                 ? 'Được. Bo sẽ hiệu chỉnh profile nhiệt cho lò của bạn.'
                 : 'Yes. Bo will adjust the heat profile for your oven.'}
             </p>
           </details>
           <details className="mb-3">
-            <summary className="font-semibold text-espresso cursor-pointer">
+            <summary className="font-semibold text-[#083121] cursor-pointer">
               {currentLang === 'vi' ? 'Ăn lạnh có bị khô?' : 'Does it dry out when cold?'}
             </summary>
-            <p className="text-coffee mt-2">
+            <p className="text-[#4a5c52] mt-2">
               {currentLang === 'vi'
                 ? 'Công thức này tối ưu độ ẩm – ăn lạnh vẫn mềm, không bở.'
                 : 'This formula optimizes moisture – stays soft when cold, not mushy.'}
@@ -390,18 +390,18 @@ export default function SaltedEggSpongeCakePage() {
         </section>
 
         {/* Beyond recipes: F&B mindset */}
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Không chỉ là công thức: tư duy vận hành F&B'
               : 'Beyond recipes: F&B operations mindset'}
           </h2>
-          <p className="text-coffee mb-3">
+          <p className="text-[#4a5c52] mb-3">
             {currentLang === 'vi'
               ? 'Khi bạn học với Bo, bạn không chỉ nhận công thức. Bạn còn được hướng dẫn tư duy làm nghề F&B để triển khai bền vững – dù là bán online hay vận hành nhà hàng.'
               : "When you learn with Bo, you don't just get recipes. You also get F&B professional mindset guidance for sustainable implementation – whether selling online or operating a restaurant."}
           </p>
-          <ul className="list-disc pl-5 text-coffee space-y-1">
+          <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
             {currentLang === 'vi' ? (
               <>
                 <li>Hiểu khách hàng của bạn, xây tệp khách trung thành</li>
@@ -423,11 +423,11 @@ export default function SaltedEggSpongeCakePage() {
         </section>
 
         {/* Questions to scope */}
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Câu hỏi để chốt lộ trình' : 'Questions to determine roadmap'}
           </h2>
-          <ul className="list-disc pl-6 text-coffee space-y-2">
+          <ul className="list-disc pl-6 text-[#4a5c52] space-y-2">
             {currentLang === 'vi' ? (
               <>
                 <li>Mục tiêu 3–6 tháng (doanh thu/sản phẩm/hệ thống)?</li>
@@ -447,7 +447,7 @@ export default function SaltedEggSpongeCakePage() {
         </section>
 
         {/* CTA */}
-        <section id="cta" className="bg-espresso text-warmwhite p-6 md:p-8">
+        <section id="cta" className="bg-[#083121] text-[#f8faf9] p-6 md:p-8">
           <div className="md:flex md:items-center md:justify-between gap-6">
             <div className="mb-4 md:mb-0">
               <h2 className="text-2xl font-bold mb-2">
@@ -455,7 +455,7 @@ export default function SaltedEggSpongeCakePage() {
                   ? 'Đăng ký học Bông lan trứng muối'
                   : 'Register for Salted Egg Sponge Cake'}
               </h2>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? 'Nhắn để nhận lịch sớm nhất và lộ trình phù hợp nguyên liệu nơi bạn sống.'
                   : 'Message to receive earliest schedule and roadmap suitable for your local ingredients.'}
@@ -464,13 +464,13 @@ export default function SaltedEggSpongeCakePage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/culinary-consultation#contact"
-                className="inline-flex items-center justify-center gap-3 bg-gold text-espresso px-6 py-3 font-semibold hover:bg-gold/90 transition-colors"
+                className="inline-flex items-center justify-center gap-3 bg-[#fcc56c] text-[#083121] px-6 py-3 font-semibold hover:bg-[#fcc56c]/90 transition-colors"
               >
                 {currentLang === 'vi' ? 'Liên hệ tư vấn' : 'Contact for consultation'}
               </Link>
               <Link
                 href="/workshop-register?course=salted-egg-sponge-cake"
-                className="inline-flex items-center justify-center gap-3 border-2 border-warmwhite text-warmwhite px-6 py-3 font-semibold hover:bg-warmwhite/10 transition-colors"
+                className="inline-flex items-center justify-center gap-3 border-2 border-[#f8faf9] text-[#f8faf9] px-6 py-3 font-semibold hover:bg-[#f8faf9]/10 transition-colors"
               >
                 {currentLang === 'vi' ? 'Đăng ký nhanh' : 'Quick register'}
               </Link>

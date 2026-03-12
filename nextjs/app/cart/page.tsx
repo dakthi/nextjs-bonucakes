@@ -36,29 +36,29 @@ export default function CartPage() {
   return (
     <>
       {/* Hero Section */}
-      <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
+      <header className="relative bg-light pt-32 pb-16 border-b border-primary/10">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-espresso mb-4 font-serif">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-serif">
             {translations.title[currentLang]}
           </h1>
-          <p className="text-lg text-coffee">{translations.subtitle[currentLang]}</p>
+          <p className="text-lg text-muted">{translations.subtitle[currentLang]}</p>
         </div>
       </header>
 
       {/* Cart Content */}
-      <section className="py-16 bg-cream">
+      <section className="py-16 bg-light">
         <div className="max-w-6xl mx-auto px-6">
           {/* Empty Cart Message */}
           {isEmpty && (
             <div className="text-center py-12">
-              <ShoppingCart className="h-24 w-24 mx-auto text-coffee/30 mb-4" strokeWidth={1} />
-              <h2 className="text-2xl font-bold text-espresso mb-2 font-serif">
+              <ShoppingCart className="h-24 w-24 mx-auto text-muted/30 mb-4" strokeWidth={1} />
+              <h2 className="text-2xl font-bold text-primary mb-2 font-serif">
                 {translations.emptyTitle[currentLang]}
               </h2>
-              <p className="text-coffee mb-6">{translations.emptyMessage[currentLang]}</p>
+              <p className="text-muted mb-6">{translations.emptyMessage[currentLang]}</p>
               <Link
                 href="/products"
-                className="inline-block bg-terracotta text-white px-8 py-3 font-semibold hover:bg-terracotta/90 transition-colors"
+                className="inline-block bg-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors"
               >
                 {translations.continueShopping[currentLang]}
               </Link>

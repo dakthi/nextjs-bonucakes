@@ -81,7 +81,7 @@ export function PaymentForm({
       <button
         type="submit"
         disabled={!stripe || isProcessing}
-        className="w-full bg-terracotta text-white px-6 py-4 font-semibold hover:bg-terracotta/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-primary text-white px-6 py-4 font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isProcessing
           ? translations.processing[currentLang]

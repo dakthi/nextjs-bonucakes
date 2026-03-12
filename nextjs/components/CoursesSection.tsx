@@ -81,26 +81,26 @@ export default function CoursesSection() {
   const currentLang = useLanguage();
 
   return (
-    <section id="courses" className="py-16 md:py-24 bg-warmwhite fade-in">
+    <section id="courses" className="py-16 md:py-24 bg-light fade-in">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
           <p
-            className="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium"
+            className="text-secondary uppercase tracking-widest text-sm mb-4 font-medium"
             data-vi="Dịch vụ & Khóa học"
             data-en="Services & Courses"
           >
             {currentLang === 'vi' ? 'Dịch vụ & Khóa học' : 'Services & Courses'}
           </p>
           <h2
-            className="text-3xl md:text-4xl font-bold text-espresso mb-4"
+            className="text-3xl md:text-4xl font-bold text-primary mb-4"
             data-vi="Dịch vụ tư vấn & Đào tạo F&B"
             data-en="F&B Consulting & Training Services"
           >
             {currentLang === 'vi' ? 'Dịch vụ tư vấn & Đào tạo F&B' : 'F&B Consulting & Training Services'}
           </h2>
           <p
-            className="text-coffee max-w-2xl mx-auto"
+            className="text-muted max-w-2xl mx-auto"
             data-vi="Tư vấn công thức ẩm thực độc quyền 1-1. Cam kết thành công ngay lần đầu hoặc hoàn tiền."
             data-en="Premium 1-1 culinary recipe consultation. Success on first try or money back guarantee."
           >
@@ -126,24 +126,24 @@ export default function CoursesSection() {
               return (
                 <div
                   key={course.slug}
-                  className="bg-cream border border-espresso/10 p-6 hover-lift flex flex-col"
+                  className="bg-light border border-primary/10 p-6 hover-lift flex flex-col"
                 >
                   <div>
-                    <div className="flex gap-3 mb-3 text-xs text-coffee">
+                    <div className="flex gap-3 mb-3 text-xs text-muted">
                       <span>{course.level[currentLang]}</span>
                       <span>·</span>
                       <span>{course.duration[currentLang]}</span>
                     </div>
-                    <h3 className="text-lg font-bold text-espresso mb-2">
+                    <h3 className="text-lg font-bold text-primary mb-2">
                       {course.title[currentLang]}
                     </h3>
-                    <p className="text-coffee text-sm">{course.description[currentLang]}</p>
+                    <p className="text-muted text-sm">{course.description[currentLang]}</p>
                   </div>
-                  <div className="mt-4 flex justify-between items-center pt-4 border-t border-espresso/10">
-                    <span className="text-espresso font-semibold">{course.price}</span>
+                  <div className="mt-4 flex justify-between items-center pt-4 border-t border-primary/10">
+                    <span className="text-primary font-semibold">{course.price}</span>
                     <Link
                       href={getLinkPath(course.slug)}
-                      className="text-sm text-coffee hover:text-terracotta transition-colors"
+                      className="text-sm text-muted hover:text-secondary transition-colors"
                       data-vi="Chi tiết"
                       data-en="Details"
                     >
@@ -159,17 +159,17 @@ export default function CoursesSection() {
           <div className="overflow-x-auto hidden md:block">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="text-left bg-cream">
-                  <th className="p-3 border border-espresso/10 w-64">
+                <tr className="text-left bg-light">
+                  <th className="p-3 border border-primary/10 w-64">
                     {currentLang === 'vi' ? 'Dịch vụ/Khóa học' : 'Service/Course'}
                   </th>
-                  <th className="p-3 border border-espresso/10">
+                  <th className="p-3 border border-primary/10">
                     {currentLang === 'vi' ? 'Mô tả' : 'Description'}
                   </th>
-                  <th className="p-3 border border-espresso/10 w-32"></th>
+                  <th className="p-3 border border-primary/10 w-32"></th>
                 </tr>
               </thead>
-              <tbody className="text-coffee">
+              <tbody className="text-muted">
                 {courses.map((course, index) => {
                   const getLinkPath = (slug: string) => {
                     if (slug === 'salted-egg-sponge-cake') return '/landing/salted-egg-sponge-cake';
@@ -180,17 +180,17 @@ export default function CoursesSection() {
                   };
 
                   return (
-                    <tr key={course.slug} className={index % 2 ? 'bg-warmwhite/50' : ''}>
-                      <td className="p-3 border border-espresso/10 font-semibold text-espresso align-top">
+                    <tr key={course.slug} className={index % 2 ? 'bg-light/50' : ''}>
+                      <td className="p-3 border border-primary/10 font-semibold text-primary align-top">
                         {course.title[currentLang]}
                       </td>
-                      <td className="p-3 border border-espresso/10 text-sm leading-relaxed align-top">
+                      <td className="p-3 border border-primary/10 text-sm leading-relaxed align-top">
                         {course.description[currentLang]}
                       </td>
-                      <td className="p-3 border border-espresso/10 align-top">
+                      <td className="p-3 border border-primary/10 align-top">
                         <Link
                           href={getLinkPath(course.slug)}
-                          className="text-sm text-terracotta hover:underline"
+                          className="text-sm text-secondary hover:underline"
                           data-vi="Chi tiết"
                           data-en="Details"
                         >
@@ -209,7 +209,7 @@ export default function CoursesSection() {
         <div className="text-center mt-12">
           <Link
             href="#contact"
-            className="inline-block bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors"
+            className="inline-block bg-primary text-white px-8 py-4 font-semibold hover:bg-primary/90 transition-colors"
             data-vi="Đăng ký tư vấn khóa học"
             data-en="Register for course consultation"
           >

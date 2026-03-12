@@ -44,13 +44,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm transition-shadow duration-300 ${
         scrolled ? 'shadow-[0_8px_24px_rgba(0,0,0,0.25)]' : ''
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-3xl font-bold text-gold font-serif">
-          Bonu F&B
+        <Link href="/" className="text-3xl font-bold text-secondary font-serif">
+          Bonucakes
         </Link>
 
         <div className="flex items-center gap-6">
@@ -59,7 +59,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-cream/80 hover:text-white transition-colors hidden md:block"
+              className="text-white/80 hover:text-secondary transition-colors hidden md:block"
             >
               {item.label[currentLang]}
             </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
           {/* Cart Icon */}
           <Link
             href="/cart"
-            className="relative text-cream/80 hover:text-white transition-colors"
+            className="relative text-white/80 hover:text-secondary transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ export default function Navbar() {
               />
             </svg>
             {mounted && cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-terracotta text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-secondary text-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {cartCount}
               </span>
             )}

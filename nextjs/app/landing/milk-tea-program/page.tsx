@@ -20,29 +20,29 @@ export default function MilkTeaProgramPage() {
 
   return (
     <>
-      <header className="pt-24 md:pt-28 pb-10 bg-warmwhite border-b border-espresso/10">
+      <header className="pt-24 md:pt-28 pb-10 bg-[#f8faf9] border-b border-[#083121]/10">
         <div className="max-w-5xl mx-auto px-6">
-          <p className="text-terracotta uppercase tracking-widest text-sm mb-3 font-medium">
+          <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-3 font-medium">
             Signature • {currentLang === 'vi' ? 'Theo nhu cầu' : 'Customized'}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-espresso mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Chương trình Trà sữa độc quyền'
               : 'Milk Tea Signature Program'}
           </h1>
-          <p className="text-lg text-coffee max-w-3xl">
+          <p className="text-lg text-[#4a5c52] max-w-3xl">
             {currentLang === 'vi'
               ? 'Thiết kế menu trà sữa độc bản cho quán bạn: nền công thức vững, syrup/topping chuẩn, mix‑flavor tạo vị riêng. Kinh nghiệm thực chiến từ Trung Quốc (Thượng Hải), Đài Loan và chuỗi Nhật.'
               : 'Design unique milk tea menu for your shop: solid base formulas, proper syrups/toppings, signature flavor mixing. Hands-on experience from China (Shanghai), Taiwan and Japanese chains.'}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-coffee/80">
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[#4a5c52]/80">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Vị riêng của quán' : 'Shop signature flavor'}
             </span>
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Ổn định – chuẩn hóa' : 'Stable – standardized'}
             </span>
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Phù hợp nguyên liệu địa phương' : 'Suitable for local ingredients'}
             </span>
           </div>
@@ -51,11 +51,11 @@ export default function MilkTeaProgramPage() {
 
       <main className="max-w-5xl mx-auto px-6 py-12">
         <section className="grid md:grid-cols-2 gap-8 mb-10">
-          <div className="bg-white border border-espresso/10 p-6">
-            <h2 className="text-2xl font-bold text-espresso mb-4">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h2 className="text-2xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi' ? 'Bạn sẽ nhận được' : 'What you will receive'}
             </h2>
-            <ul className="space-y-3 text-coffee">
+            <ul className="space-y-3 text-[#4a5c52]">
               {currentLang === 'vi' ? (
                 <>
                   <li>• Base công thức: trà, sữa, tỷ lệ chiết xuất – nền tảng ổn định.</li>
@@ -75,11 +75,11 @@ export default function MilkTeaProgramPage() {
               )}
             </ul>
           </div>
-          <div className="bg-white border border-espresso/10 p-6">
-            <h2 className="text-2xl font-bold text-espresso mb-4">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h2 className="text-2xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi' ? 'Kinh nghiệm triển khai' : 'Implementation experience'}
             </h2>
-            <ul className="space-y-3 text-coffee">
+            <ul className="space-y-3 text-[#4a5c52]">
               {currentLang === 'vi' ? (
                 <>
                   <li>• Đã học/đi làm ở Trung Quốc (Thượng Hải), Đài Loan, chuỗi Nhật.</li>
@@ -94,7 +94,7 @@ export default function MilkTeaProgramPage() {
                 </>
               )}
             </ul>
-            <p className="text-coffee/70 mt-3 text-sm">
+            <p className="text-[#4a5c52]/70 mt-3 text-sm">
               {currentLang === 'vi'
                 ? 'Chi phí theo độ tùy chỉnh & địa điểm (on‑site tính thêm di chuyển/lưu trú).'
                 : 'Cost by customization level & location (on‑site includes travel/accommodation).'}
@@ -102,11 +102,11 @@ export default function MilkTeaProgramPage() {
           </div>
         </section>
 
-        <section className="bg-white border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-white border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Quy trình làm việc' : 'Work process'}
           </h2>
-          <ol className="list-decimal pl-6 text-coffee space-y-2">
+          <ol className="list-decimal pl-6 text-[#4a5c52] space-y-2">
             {currentLang === 'vi' ? (
               <>
                 <li>Khảo sát nguyên liệu địa phương (ảnh/website cửa hàng).</li>
@@ -126,18 +126,18 @@ export default function MilkTeaProgramPage() {
         </section>
 
         {/* Narrative: khác biệt của chương trình */}
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Tạo vị riêng – không "đụng hàng"'
               : 'Create unique flavor – not "duplicate"'}
           </h2>
-          <p className="text-coffee mb-3">
+          <p className="text-[#4a5c52] mb-3">
             {currentLang === 'vi'
               ? 'Bo từng học và làm việc tại Trung Quốc (Thượng Hải), Đài Loan, và chuỗi Nhật. Điểm mấu chốt không phải sao chép menu, mà là thiết kế nền công thức vững + hệ topping/syrup sạch, rồi mix‑flavor ra vị riêng cho quán bạn.'
               : 'Bo studied and worked in China (Shanghai), Taiwan, and Japanese chains. The key is not copying menus, but designing solid base formulas + clean topping/syrup systems, then mixing flavors for your shop\'s unique taste.'}
           </p>
-          <p className="text-coffee">
+          <p className="text-[#4a5c52]">
             {currentLang === 'vi'
               ? 'Kết quả là bạn có menu "ký tên", dễ chuẩn hóa và có khả năng scale.'
               : 'Result is you have a "signature" menu, easy to standardize and scalable.'}
@@ -150,36 +150,36 @@ export default function MilkTeaProgramPage() {
           <div className="md:hidden space-y-3 mb-6">
             {currentLang === 'vi' ? (
               <>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Base/Syrup/Topping:</span> Nền ổn định, không tách lớp
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Signature:</span> 3–5 vị riêng
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">KPIs:</span> Thời gian pha, cost/ly, tỉ lệ lặp lại
                   </p>
                 </div>
               </>
             ) : (
               <>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Base/Syrup/Topping:</span> Stable base, no separation
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Signature:</span> 3–5 unique flavors
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">KPIs:</span> Brewing time, cost/cup, repeat rate
                   </p>
                 </div>
@@ -190,55 +190,55 @@ export default function MilkTeaProgramPage() {
           <div className="hidden md:block overflow-x-auto mb-6">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="text-left bg-cream">
-                  <th className="p-3 border border-espresso/10 w-64">
+                <tr className="text-left bg-[#f8faf9]">
+                  <th className="p-3 border border-[#083121]/10 w-64">
                     {currentLang === 'vi' ? 'Hạng mục' : 'Category'}
                   </th>
-                  <th className="p-3 border border-espresso/10">
+                  <th className="p-3 border border-[#083121]/10">
                     {currentLang === 'vi' ? 'Chi tiết' : 'Details'}
                   </th>
                 </tr>
               </thead>
-              <tbody className="text-coffee">
+              <tbody className="text-[#4a5c52]">
                 {currentLang === 'vi' ? (
                   <>
                     <tr>
-                      <td className="p-3 border border-espresso/10">Base/Syrup/Topping</td>
-                      <td className="p-3 border border-espresso/10">Nền ổn định, không tách lớp, chuẩn hóa dễ</td>
+                      <td className="p-3 border border-[#083121]/10">Base/Syrup/Topping</td>
+                      <td className="p-3 border border-[#083121]/10">Nền ổn định, không tách lớp, chuẩn hóa dễ</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">Signature flavors</td>
-                      <td className="p-3 border border-espresso/10">3–5 hương vị riêng do quán "ký tên"</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">Signature flavors</td>
+                      <td className="p-3 border border-[#083121]/10">3–5 hương vị riêng do quán "ký tên"</td>
                     </tr>
                     <tr>
-                      <td className="p-3 border border-espresso/10">KPIs</td>
-                      <td className="p-3 border border-espresso/10">Thời gian pha/ly, cost/ly, tỉ lệ lặp lại</td>
+                      <td className="p-3 border border-[#083121]/10">KPIs</td>
+                      <td className="p-3 border border-[#083121]/10">Thời gian pha/ly, cost/ly, tỉ lệ lặp lại</td>
                     </tr>
                   </>
                 ) : (
                   <>
                     <tr>
-                      <td className="p-3 border border-espresso/10">Base/Syrup/Topping</td>
-                      <td className="p-3 border border-espresso/10">Stable base, no separation, easy standardization</td>
+                      <td className="p-3 border border-[#083121]/10">Base/Syrup/Topping</td>
+                      <td className="p-3 border border-[#083121]/10">Stable base, no separation, easy standardization</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">Signature flavors</td>
-                      <td className="p-3 border border-espresso/10">3–5 unique flavors "signed" by shop</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">Signature flavors</td>
+                      <td className="p-3 border border-[#083121]/10">3–5 unique flavors "signed" by shop</td>
                     </tr>
                     <tr>
-                      <td className="p-3 border border-espresso/10">KPIs</td>
-                      <td className="p-3 border border-espresso/10">Brewing time/cup, cost/cup, repeat rate</td>
+                      <td className="p-3 border border-[#083121]/10">KPIs</td>
+                      <td className="p-3 border border-[#083121]/10">Brewing time/cup, cost/cup, repeat rate</td>
                     </tr>
                   </>
                 )}
               </tbody>
             </table>
           </div>
-          <div className="bg-white border border-espresso/10 p-6 mb-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-white border border-[#083121]/10 p-6 mb-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Bạn sẽ có' : 'You will have'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Base công thức ổn định</li>
@@ -254,11 +254,11 @@ export default function MilkTeaProgramPage() {
               )}
             </ul>
           </div>
-          <div className="bg-white border border-espresso/10 p-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Ví dụ mix‑flavor' : 'Mix‑flavor examples'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Milk tea x salted egg foam (phiên bản sạch)</li>
@@ -277,18 +277,18 @@ export default function MilkTeaProgramPage() {
         </section>
 
         {/* Beyond recipes: F&B mindset */}
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Không chỉ là công thức: tư duy vận hành F&B'
               : 'Beyond recipes: F&B operations mindset'}
           </h2>
-          <p className="text-coffee mb-3">
+          <p className="text-[#4a5c52] mb-3">
             {currentLang === 'vi'
               ? 'Menu tốt cần tư duy vận hành tốt để sống khỏe lâu dài.'
               : 'Good menu needs good operational mindset to thrive long-term.'}
           </p>
-          <ul className="list-disc pl-5 text-coffee space-y-1">
+          <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
             {currentLang === 'vi' ? (
               <>
                 <li>Khách hàng & tệp signature của quán</li>
@@ -309,7 +309,7 @@ export default function MilkTeaProgramPage() {
           </ul>
         </section>
 
-        <section className="bg-espresso text-warmwhite p-6 md:p-8">
+        <section className="bg-[#083121] text-[#f8faf9] p-6 md:p-8">
           <div className="md:flex md:items-center md:justify-between gap-6">
             <div className="mb-4 md:mb-0">
               <h2 className="text-2xl font-bold mb-2">
@@ -317,7 +317,7 @@ export default function MilkTeaProgramPage() {
                   ? 'Đăng ký chương trình Trà sữa độc quyền'
                   : 'Register for Milk Tea Signature Program'}
               </h2>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? 'Nhắn để nhận lộ trình & lịch học phù hợp với quán của bạn.'
                   : 'Message to receive roadmap & schedule suitable for your shop.'}
@@ -326,13 +326,13 @@ export default function MilkTeaProgramPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/culinary-consultation#contact"
-                className="inline-flex items-center justify-center gap-3 bg-gold text-espresso px-6 py-3 font-semibold hover:bg-gold/90 transition-colors"
+                className="inline-flex items-center justify-center gap-3 bg-[#fcc56c] text-[#083121] px-6 py-3 font-semibold hover:bg-[#fcc56c]/90 transition-colors"
               >
                 {currentLang === 'vi' ? 'Liên hệ tư vấn' : 'Contact for consultation'}
               </Link>
               <Link
                 href="/workshop-register?course=milk-tea-program"
-                className="inline-flex items-center justify-center gap-3 border-2 border-warmwhite text-warmwhite px-6 py-3 font-semibold hover:bg-warmwhite/10 transition-colors"
+                className="inline-flex items-center justify-center gap-3 border-2 border-[#f8faf9] text-[#f8faf9] px-6 py-3 font-semibold hover:bg-[#f8faf9]/10 transition-colors"
               >
                 {currentLang === 'vi' ? 'Đăng ký nhanh' : 'Quick register'}
               </Link>

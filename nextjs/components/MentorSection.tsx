@@ -43,28 +43,28 @@ export default function MentorSection() {
   const currentLang = useLanguage();
 
   return (
-    <section className="py-16 md:py-24 bg-cream">
+    <section className="py-16 md:py-24 bg-light">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="order-2 md:order-1">
-            <p className="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">
+            <p className="text-secondary uppercase tracking-widest text-sm mb-4 font-medium">
               {mentorContent.tagline[currentLang]}
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-espresso mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
               <span
                 dangerouslySetInnerHTML={{
                   __html: mentorContent.greeting[currentLang],
                 }}
               />{' '}
-              <span className="text-terracotta">{mentorContent.name}</span>
+              <span className="text-secondary">{mentorContent.name}</span>
             </h2>
             <p
-              className="text-coffee mb-4"
+              className="text-muted mb-4"
               dangerouslySetInnerHTML={{ __html: mentorContent.bio1[currentLang] }}
             />
             <p
-              className="text-coffee"
+              className="text-muted"
               dangerouslySetInnerHTML={{ __html: mentorContent.bio2[currentLang] }}
             />
 
@@ -73,7 +73,7 @@ export default function MentorSection() {
               {badges.map((badge, index) => (
                 <span
                   key={index}
-                  className="bg-espresso text-cream px-4 py-2 text-sm"
+                  className="bg-primary text-light px-4 py-2 text-sm"
                 >
                   {badge}
                 </span>
@@ -84,7 +84,7 @@ export default function MentorSection() {
             <div className="mt-6">
               <Link
                 href="/story"
-                className="inline-block bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors"
+                className="inline-block bg-secondary text-primary px-6 py-3 font-semibold hover:bg-secondary/90 transition-colors"
               >
                 {mentorContent.ctaButton[currentLang]}
               </Link>
@@ -98,7 +98,7 @@ export default function MentorSection() {
                 src="https://thielts.chartedconsultants.com/bonu/profile.webp"
                 alt="Uyen Nguyen"
                 fill
-                className="rounded-full border-4 border-gold/30 shadow-2xl object-cover"
+                className="rounded-full border-4 border-secondary/30 shadow-2xl object-cover"
                 sizes="(max-width: 768px) 256px, 320px"
                 priority
               />

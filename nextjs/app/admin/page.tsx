@@ -117,7 +117,7 @@ export default function AdminDashboard() {
               <div className="p-5">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <Package className="h-6 w-6 text-amber-600" />
+                    <Package className="h-6 w-6 text-[#083121]" />
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
@@ -130,7 +130,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <div className="bg-gray-50 px-5 py-3">
-                <Link href="/admin/products" className="text-sm text-amber-600 hover:text-amber-900">
+                <Link href="/admin/products" className="text-sm text-[#083121] hover:text-[#4a5c52]">
                   View all →
                 </Link>
               </div>
@@ -251,7 +251,7 @@ export default function AdminDashboard() {
                   <div className="mt-6 pt-4 border-t">
                     <Link
                       href="/admin/orders"
-                      className="text-sm text-amber-600 hover:text-amber-900 font-medium"
+                      className="text-sm text-[#083121] hover:text-[#4a5c52] font-medium"
                     >
                       View all orders →
                     </Link>
@@ -277,7 +277,7 @@ export default function AdminDashboard() {
                         <div className="flex-1">
                           <Link
                             href={`/admin/blog/${post.id}`}
-                            className="text-sm font-medium text-gray-900 hover:text-amber-600"
+                            className="text-sm font-medium text-gray-900 hover:text-[#083121]"
                           >
                             {post.titleEn || post.titleVi}
                           </Link>
@@ -308,7 +308,7 @@ export default function AdminDashboard() {
                   <div className="mt-6 pt-4 border-t">
                     <Link
                       href="/admin/blog"
-                      className="text-sm text-amber-600 hover:text-amber-900 font-medium"
+                      className="text-sm text-[#083121] hover:text-[#4a5c52] font-medium"
                     >
                       View all posts →
                     </Link>
@@ -324,42 +324,42 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <Link
                 href="/admin/products/new"
-                className="block p-4 border border-gray-200 rounded-lg hover:border-amber-500 hover:shadow transition"
+                className="block p-4 border border-gray-200 rounded-lg hover:border-[#083121] hover:shadow transition"
               >
                 <h3 className="text-sm font-medium text-gray-900">Add Product</h3>
                 <p className="mt-1 text-sm text-gray-500">Create a new product listing</p>
               </Link>
               <Link
                 href="/admin/blog/new"
-                className="block p-4 border border-gray-200 rounded-lg hover:border-amber-500 hover:shadow transition"
+                className="block p-4 border border-gray-200 rounded-lg hover:border-[#083121] hover:shadow transition"
               >
                 <h3 className="text-sm font-medium text-gray-900">Write Post</h3>
                 <p className="mt-1 text-sm text-gray-500">Create new blog content</p>
               </Link>
               <Link
                 href="/admin/orders"
-                className="block p-4 border border-gray-200 rounded-lg hover:border-amber-500 hover:shadow transition"
+                className="block p-4 border border-gray-200 rounded-lg hover:border-[#083121] hover:shadow transition"
               >
                 <h3 className="text-sm font-medium text-gray-900">View Orders</h3>
                 <p className="mt-1 text-sm text-gray-500">Manage customer orders</p>
               </Link>
               <Link
                 href="/admin/products"
-                className="block p-4 border border-gray-200 rounded-lg hover:border-amber-500 hover:shadow transition"
+                className="block p-4 border border-gray-200 rounded-lg hover:border-[#083121] hover:shadow transition"
               >
                 <h3 className="text-sm font-medium text-gray-900">Products</h3>
                 <p className="mt-1 text-sm text-gray-500">Manage product catalog</p>
               </Link>
               <Link
                 href="/admin/blog"
-                className="block p-4 border border-gray-200 rounded-lg hover:border-amber-500 hover:shadow transition"
+                className="block p-4 border border-gray-200 rounded-lg hover:border-[#083121] hover:shadow transition"
               >
                 <h3 className="text-sm font-medium text-gray-900">Blog</h3>
                 <p className="mt-1 text-sm text-gray-500">Manage blog posts</p>
               </Link>
               <Link
                 href="/admin/media"
-                className="block p-4 border border-gray-200 rounded-lg hover:border-amber-500 hover:shadow transition"
+                className="block p-4 border border-gray-200 rounded-lg hover:border-[#083121] hover:shadow transition"
               >
                 <h3 className="text-sm font-medium text-gray-900">Media Library</h3>
                 <p className="mt-1 text-sm text-gray-500">Upload and manage media</p>

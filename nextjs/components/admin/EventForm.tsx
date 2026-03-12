@@ -95,7 +95,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
 
       <div className="bg-white shadow rounded-lg p-6 space-y-6">
         <div>
-          <h2 className="text-lg font-medium text-gray-900 mb-4">
+          <h2 className="text-lg font-medium text-[#083121] mb-4">
             Basic Information
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -109,7 +109,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.titleEn}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -122,7 +122,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.titleVi}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.slug}
                 onChange={handleChange}
                 required
-                className="flex-1 rounded-l-md border-gray-300 focus:border-amber-500 focus:ring-amber-500"
+                className="flex-1 rounded-l-md border-gray-300 focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
               <button
                 type="button"
@@ -161,7 +161,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -174,7 +174,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
 
       <div className="bg-white shadow rounded-lg p-6 space-y-6">
         <div>
-          <h2 className="text-lg font-medium text-gray-900 mb-4">
+          <h2 className="text-lg font-medium text-[#083121] mb-4">
             Event Details
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -197,7 +197,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.eventDate}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -210,7 +210,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.eventTime}
                 onChange={handleChange}
                 placeholder="e.g., 10:00 AM - 12:00 PM"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -223,7 +223,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.category}
                 onChange={handleChange}
                 placeholder="e.g., Workshop, Tasting"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
           </div>
@@ -238,7 +238,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 name="locationEn"
                 value={formData.locationEn}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -250,7 +250,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 name="locationVi"
                 value={formData.locationVi}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.addressEn}
                 onChange={handleChange}
                 rows={2}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -277,7 +277,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.addressVi}
                 onChange={handleChange}
                 rows={2}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
           </div>
@@ -293,7 +293,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 value={formData.maxAttendees}
                 onChange={handleChange}
                 min="0"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -308,7 +308,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 min="0"
                 step="0.01"
                 placeholder="Leave empty for free"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
             <div>
@@ -320,7 +320,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
               />
             </div>
           </div>
@@ -335,14 +335,14 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
               value={formData.registrationUrl}
               onChange={handleChange}
               placeholder="https://..."
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c]"
             />
           </div>
         </div>
       </div>
 
       <div className="bg-white shadow rounded-lg p-6 space-y-4">
-        <h2 className="text-lg font-medium text-gray-900">Options</h2>
+        <h2 className="text-lg font-medium text-[#083121]">Options</h2>
         <div className="flex items-center gap-6">
           <label className="flex items-center">
             <input
@@ -350,7 +350,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
               name="featured"
               checked={formData.featured}
               onChange={handleChange}
-              className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
+              className="rounded border-gray-300 text-[#fcc56c] focus:ring-[#fcc56c]"
             />
             <span className="ml-2 text-sm text-gray-700">Featured Event</span>
           </label>
@@ -360,7 +360,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
               name="published"
               checked={formData.published}
               onChange={handleChange}
-              className="rounded border-gray-300 text-amber-600 focus:ring-amber-500"
+              className="rounded border-gray-300 text-[#fcc56c] focus:ring-[#fcc56c]"
             />
             <span className="ml-2 text-sm text-gray-700">Published</span>
           </label>
@@ -378,7 +378,7 @@ export default function EventForm({ event, isEdit = false }: EventFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400"
+          className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52] disabled:bg-gray-400"
         >
           {loading ? "Saving..." : isEdit ? "Update Event" : "Create Event"}
         </button>

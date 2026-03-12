@@ -63,12 +63,12 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-espresso text-warmwhite fade-in">
+    <section className="py-16 md:py-24 bg-primary text-light fade-in">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
           <p
-            className="text-gold uppercase tracking-widest text-sm mb-4 font-medium"
+            className="text-secondary uppercase tracking-widest text-sm mb-4 font-medium"
             data-vi="Sản phẩm"
             data-en="Products"
           >
@@ -82,7 +82,7 @@ export default function FeaturedProducts() {
             Bếp Bà Bo
           </h2>
           <p
-            className="text-lg text-cream/80 max-w-2xl mx-auto"
+            className="text-lg text-light/80 max-w-2xl mx-auto"
             data-vi="Đồ ăn Việt Nam tự làm với công thức truyền thống. Chất lượng tươi ngon, đóng gói cẩn thận, giao hàng nhanh chóng."
             data-en="Homemade Vietnamese food with traditional recipes. Fresh quality, carefully packaged, fast delivery."
           >
@@ -97,7 +97,7 @@ export default function FeaturedProducts() {
             className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-4 md:grid md:grid-cols-3 lg:grid-cols-4 md:overflow-visible md:snap-none"
           >
             {loading ? (
-              <div className="col-span-full text-center text-cream/60">Loading products...</div>
+              <div className="col-span-full text-center text-light/60">Loading products...</div>
             ) : products.length > 0 ? (
               products.map((product) => {
                 const image = (product.images && product.images[0]) || '/placeholder-product.webp';
@@ -108,10 +108,10 @@ export default function FeaturedProducts() {
                 return (
                   <article
                     key={product.slug}
-                    className="snap-start flex-none w-72 md:w-auto bg-white text-espresso border border-espresso/10 hover-lift"
+                    className="snap-start flex-none w-72 md:w-auto bg-white text-primary border border-primary/10 hover-lift"
                   >
                     <Link href={`/banh-mi/product?slug=${product.slug}`} className="block">
-                      <div className="relative w-full h-44 bg-cream">
+                      <div className="relative w-full h-44 bg-light">
                         <Image
                           src={image}
                           alt={name}
@@ -129,19 +129,19 @@ export default function FeaturedProducts() {
                       <h3 className="font-bold text-lg line-clamp-2 mb-1">
                         <Link
                           href={`/banh-mi/product?slug=${product.slug}`}
-                          className="hover:text-terracotta transition-colors"
+                          className="hover:text-secondary transition-colors"
                         >
                           {name}
                         </Link>
                       </h3>
-                      <p className="text-coffee/80 text-sm line-clamp-2 mb-3">
+                      <p className="text-muted/80 text-sm line-clamp-2 mb-3">
                         {desc}
                       </p>
                       <div className="mt-auto flex items-center justify-between">
-                        <span className="font-semibold text-terracotta">{priceText}</span>
+                        <span className="font-semibold text-secondary">{priceText}</span>
                         <Link
                           href={`/banh-mi/product?slug=${product.slug}`}
-                          className="text-sm text-terracotta hover:underline"
+                          className="text-sm text-secondary hover:underline"
                           data-vi="Chi tiết"
                           data-en="View details"
                         >
@@ -153,7 +153,7 @@ export default function FeaturedProducts() {
                 );
               })
             ) : (
-              <div className="col-span-full text-center text-cream/60">No featured products available</div>
+              <div className="col-span-full text-center text-light/60">No featured products available</div>
             )}
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function FeaturedProducts() {
         <div className="flex justify-center mt-8">
           <Link
             href="/products"
-            className="bg-gold text-espresso px-8 py-4 font-semibold hover:bg-gold/90 transition-colors inline-block"
+            className="bg-secondary text-primary px-8 py-4 font-semibold hover:bg-secondary/90 transition-colors inline-block"
             data-vi="Toàn bộ sản phẩm"
             data-en="All Products"
           >

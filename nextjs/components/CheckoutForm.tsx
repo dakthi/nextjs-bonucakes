@@ -69,16 +69,16 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
   };
 
   return (
-    <div className="bg-white border border-espresso/10 p-6">
-      <h2 className="text-2xl font-bold text-espresso mb-6">
+    <div className="bg-white border border-primary/10 p-6">
+      <h2 className="text-2xl font-bold text-primary mb-6">
         {translations.title[currentLang]}
       </h2>
 
       <form id={formId} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Full Name */}
         <div>
-          <label className="block text-coffee font-semibold mb-2">
-            {translations.fullName[currentLang]} <span className="text-terracotta">*</span>
+          <label className="block text-muted font-semibold mb-2">
+            {translations.fullName[currentLang]} <span className="text-secondary">*</span>
           </label>
           <input
             type="text"
@@ -86,20 +86,20 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
               required: translations.required[currentLang],
             })}
             className={`w-full border ${
-              errors.customerName ? 'border-terracotta' : 'border-espresso/20'
-            } px-4 py-3 focus:outline-none focus:border-terracotta`}
+              errors.customerName ? 'border-secondary' : 'border-primary/20'
+            } px-4 py-3 focus:outline-none focus:border-secondary`}
             placeholder={translations.fullNamePlaceholder[currentLang]}
             disabled={isSubmitting}
           />
           {errors.customerName && (
-            <p className="text-terracotta text-sm mt-1">{errors.customerName.message}</p>
+            <p className="text-secondary text-sm mt-1">{errors.customerName.message}</p>
           )}
         </div>
 
         {/* Email */}
         <div>
-          <label className="block text-coffee font-semibold mb-2">
-            {translations.email[currentLang]} <span className="text-terracotta">*</span>
+          <label className="block text-muted font-semibold mb-2">
+            {translations.email[currentLang]} <span className="text-secondary">*</span>
           </label>
           <input
             type="email"
@@ -111,20 +111,20 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
               },
             })}
             className={`w-full border ${
-              errors.customerEmail ? 'border-terracotta' : 'border-espresso/20'
-            } px-4 py-3 focus:outline-none focus:border-terracotta`}
+              errors.customerEmail ? 'border-secondary' : 'border-primary/20'
+            } px-4 py-3 focus:outline-none focus:border-secondary`}
             placeholder={translations.emailPlaceholder[currentLang]}
             disabled={isSubmitting}
           />
           {errors.customerEmail && (
-            <p className="text-terracotta text-sm mt-1">{errors.customerEmail.message}</p>
+            <p className="text-secondary text-sm mt-1">{errors.customerEmail.message}</p>
           )}
         </div>
 
         {/* Phone */}
         <div>
-          <label className="block text-coffee font-semibold mb-2">
-            {translations.phone[currentLang]} <span className="text-terracotta">*</span>
+          <label className="block text-muted font-semibold mb-2">
+            {translations.phone[currentLang]} <span className="text-secondary">*</span>
           </label>
           <input
             type="tel"
@@ -132,20 +132,20 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
               required: translations.required[currentLang],
             })}
             className={`w-full border ${
-              errors.customerPhone ? 'border-terracotta' : 'border-espresso/20'
-            } px-4 py-3 focus:outline-none focus:border-terracotta`}
+              errors.customerPhone ? 'border-secondary' : 'border-primary/20'
+            } px-4 py-3 focus:outline-none focus:border-secondary`}
             placeholder={translations.phonePlaceholder[currentLang]}
             disabled={isSubmitting}
           />
           {errors.customerPhone && (
-            <p className="text-terracotta text-sm mt-1">{errors.customerPhone.message}</p>
+            <p className="text-secondary text-sm mt-1">{errors.customerPhone.message}</p>
           )}
         </div>
 
         {/* Delivery Address */}
         <div>
-          <label className="block text-coffee font-semibold mb-2">
-            {translations.deliveryAddress[currentLang]} <span className="text-terracotta">*</span>
+          <label className="block text-muted font-semibold mb-2">
+            {translations.deliveryAddress[currentLang]} <span className="text-secondary">*</span>
           </label>
           <textarea
             {...register('deliveryAddress', {
@@ -153,13 +153,13 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
             })}
             rows={2}
             className={`w-full border ${
-              errors.deliveryAddress ? 'border-terracotta' : 'border-espresso/20'
-            } px-4 py-3 focus:outline-none focus:border-terracotta`}
+              errors.deliveryAddress ? 'border-secondary' : 'border-primary/20'
+            } px-4 py-3 focus:outline-none focus:border-secondary`}
             placeholder={translations.deliveryAddressPlaceholder[currentLang]}
             disabled={isSubmitting}
           />
           {errors.deliveryAddress && (
-            <p className="text-terracotta text-sm mt-1">{errors.deliveryAddress.message}</p>
+            <p className="text-secondary text-sm mt-1">{errors.deliveryAddress.message}</p>
           )}
         </div>
 
@@ -167,13 +167,13 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* City */}
           <div>
-            <label className="block text-coffee font-semibold mb-2">
+            <label className="block text-muted font-semibold mb-2">
               {translations.deliveryCity[currentLang]}
             </label>
             <input
               type="text"
               {...register('deliveryCity')}
-              className="w-full border border-espresso/20 px-4 py-3 focus:outline-none focus:border-terracotta"
+              className="w-full border border-primary/20 px-4 py-3 focus:outline-none focus:border-secondary"
               placeholder={translations.deliveryCityPlaceholder[currentLang]}
               disabled={isSubmitting}
             />
@@ -181,13 +181,13 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
 
           {/* Postcode */}
           <div>
-            <label className="block text-coffee font-semibold mb-2">
+            <label className="block text-muted font-semibold mb-2">
               {translations.deliveryPostcode[currentLang]}
             </label>
             <input
               type="text"
               {...register('deliveryPostcode')}
-              className="w-full border border-espresso/20 px-4 py-3 focus:outline-none focus:border-terracotta"
+              className="w-full border border-primary/20 px-4 py-3 focus:outline-none focus:border-secondary"
               placeholder={translations.deliveryPostcodePlaceholder[currentLang]}
               disabled={isSubmitting}
             />
@@ -196,11 +196,11 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
 
         {/* Payment Method */}
         <div>
-          <label className="block text-coffee font-semibold mb-2">
-            {translations.paymentMethod[currentLang]} <span className="text-terracotta">*</span>
+          <label className="block text-muted font-semibold mb-2">
+            {translations.paymentMethod[currentLang]} <span className="text-secondary">*</span>
           </label>
           <div className="space-y-3">
-            <label className="flex items-center p-4 border border-espresso/20 cursor-pointer hover:bg-cream transition-colors">
+            <label className="flex items-center p-4 border border-primary/20 cursor-pointer hover:bg-light transition-colors">
               <input
                 type="radio"
                 value="stripe"
@@ -208,9 +208,9 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
                 className="mr-3"
                 disabled={isSubmitting}
               />
-              <span className="text-espresso">{translations.stripe[currentLang]}</span>
+              <span className="text-primary">{translations.stripe[currentLang]}</span>
             </label>
-            <label className="flex items-center p-4 border border-espresso/20 cursor-pointer hover:bg-cream transition-colors">
+            <label className="flex items-center p-4 border border-primary/20 cursor-pointer hover:bg-light transition-colors">
               <input
                 type="radio"
                 value="bank_transfer"
@@ -218,20 +218,20 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
                 className="mr-3"
                 disabled={isSubmitting}
               />
-              <span className="text-espresso">{translations.bankTransfer[currentLang]}</span>
+              <span className="text-primary">{translations.bankTransfer[currentLang]}</span>
             </label>
           </div>
         </div>
 
         {/* Special Notes */}
         <div>
-          <label className="block text-coffee font-semibold mb-2">
+          <label className="block text-muted font-semibold mb-2">
             {translations.specialNotes[currentLang]}
           </label>
           <textarea
             {...register('specialNotes')}
             rows={3}
-            className="w-full border border-espresso/20 px-4 py-3 focus:outline-none focus:border-terracotta"
+            className="w-full border border-primary/20 px-4 py-3 focus:outline-none focus:border-secondary"
             placeholder={translations.specialNotesPlaceholder[currentLang]}
             disabled={isSubmitting}
           />
@@ -239,7 +239,7 @@ export default function CheckoutForm({ onSubmit, isSubmitting, formId = 'checkou
 
         {/* Loading Message */}
         {isSubmitting && (
-          <div className="bg-gold/10 border border-gold text-espresso px-4 py-3 rounded">
+          <div className="bg-secondary/10 border border-secondary text-primary px-4 py-3 rounded">
             <p className="font-semibold">{translations.processing[currentLang]}</p>
           </div>
         )}

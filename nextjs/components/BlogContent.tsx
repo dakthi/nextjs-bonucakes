@@ -47,16 +47,16 @@ export default function BlogContent({ post }: BlogContentProps) {
 
       // Headings
       if (trimmed.startsWith('## ')) {
-        return `<h2 key="${index}" class="text-2xl font-bold font-serif text-espresso mt-8 mb-4">${trimmed.slice(3)}</h2>`;
+        return `<h2 key="${index}" class="text-2xl font-bold font-serif text-[#083121] mt-8 mb-4">${trimmed.slice(3)}</h2>`;
       }
       if (trimmed.startsWith('# ')) {
-        return `<h1 key="${index}" class="text-3xl font-bold font-serif text-espresso mt-8 mb-4">${trimmed.slice(2)}</h1>`;
+        return `<h1 key="${index}" class="text-3xl font-bold font-serif text-[#083121] mt-8 mb-4">${trimmed.slice(2)}</h1>`;
       }
 
       // Blockquote
       if (trimmed.startsWith('> ')) {
         const quoteText = trimmed.split('\n').map(line => line.replace(/^> /, '')).join(' ');
-        return `<blockquote key="${index}" class="border-l-4 border-terracotta pl-4 my-6 italic text-coffee">${quoteText}</blockquote>`;
+        return `<blockquote key="${index}" class="border-l-4 border-[#fcc56c] pl-4 my-6 italic text-[#4a5c52]">${quoteText}</blockquote>`;
       }
 
       // Unordered list
@@ -82,7 +82,7 @@ export default function BlogContent({ post }: BlogContentProps) {
       let processed = trimmed
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-terracotta hover:underline">$1</a>');
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[#fcc56c] hover:underline">$1</a>');
 
       return `<p key="${index}" class="mb-6 leading-relaxed">${processed}</p>`;
     }).join('');
@@ -102,21 +102,21 @@ export default function BlogContent({ post }: BlogContentProps) {
     <article className="max-w-4xl mx-auto px-6 pt-24 md:pt-28 pb-12">
       <Link
         href="/blog"
-        className="text-terracotta hover:underline mb-6 inline-block"
+        className="text-[#fcc56c] hover:underline mb-6 inline-block"
       >
         ← {currentLang === 'vi' ? 'Quay lại Blog' : 'Back to Blog'}
       </Link>
 
       <header className="mb-8">
-        <time className="text-coffee/60 text-sm">{formatDate(post.date)}</time>
-        <h1 className="text-3xl md:text-4xl font-bold font-serif text-espresso mt-2 mb-4">
+        <time className="text-[#4a5c52]/60 text-sm">{formatDate(post.date)}</time>
+        <h1 className="text-3xl md:text-4xl font-bold font-serif text-[#083121] mt-2 mb-4">
           {title}
         </h1>
         {excerpt && (
-          <p className="text-xl text-coffee leading-relaxed">{excerpt}</p>
+          <p className="text-xl text-[#4a5c52] leading-relaxed">{excerpt}</p>
         )}
         {post.author && (
-          <div className="mt-4 text-sm text-coffee/70">
+          <div className="mt-4 text-sm text-[#4a5c52]/70">
             {currentLang === 'vi' ? 'Bởi' : 'By'} <span className="font-medium">{post.author}</span>
           </div>
         )}
@@ -130,15 +130,15 @@ export default function BlogContent({ post }: BlogContentProps) {
 
       <div
         ref={contentRef}
-        className="prose prose-lg max-w-none text-coffee"
+        className="prose prose-lg max-w-none text-[#4a5c52]"
         style={{
           fontFamily: 'Inter, sans-serif'
         }}
       />
 
       {/* Share buttons */}
-      <div className="mt-12 pt-8 border-t border-espresso/10">
-        <h3 className="text-lg font-bold font-serif text-espresso mb-4">
+      <div className="mt-12 pt-8 border-t border-[#083121]/10">
+        <h3 className="text-lg font-bold font-serif text-[#083121] mb-4">
           {currentLang === 'vi' ? 'Chia sẻ bài viết' : 'Share this post'}
         </h3>
         <div className="flex gap-4">
@@ -146,7 +146,7 @@ export default function BlogContent({ post }: BlogContentProps) {
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-espresso text-white rounded-lg hover:bg-terracotta transition-colors"
+            className="px-4 py-2 bg-[#083121] text-white rounded-lg hover:bg-[#fcc56c] hover:text-[#083121] transition-colors"
           >
             Facebook
           </a>
@@ -154,7 +154,7 @@ export default function BlogContent({ post }: BlogContentProps) {
             href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-espresso text-white rounded-lg hover:bg-terracotta transition-colors"
+            className="px-4 py-2 bg-[#083121] text-white rounded-lg hover:bg-[#fcc56c] hover:text-[#083121] transition-colors"
           >
             Twitter
           </a>
@@ -162,7 +162,7 @@ export default function BlogContent({ post }: BlogContentProps) {
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-espresso text-white rounded-lg hover:bg-terracotta transition-colors"
+            className="px-4 py-2 bg-[#083121] text-white rounded-lg hover:bg-[#fcc56c] hover:text-[#083121] transition-colors"
           >
             LinkedIn
           </a>

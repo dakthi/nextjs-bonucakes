@@ -149,17 +149,17 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-cream">
+      <div className="min-h-screen bg-light">
         <Navbar />
         <div className="pt-32 pb-16">
           <div className="max-w-6xl mx-auto px-6">
             <div className="animate-pulse">
               <div className="grid md:grid-cols-2 gap-12">
-                <div className="aspect-square bg-warmwhite rounded-lg"></div>
+                <div className="aspect-square bg-light rounded-lg"></div>
                 <div className="space-y-4">
-                  <div className="h-8 bg-warmwhite rounded w-3/4"></div>
-                  <div className="h-4 bg-warmwhite rounded w-1/2"></div>
-                  <div className="h-32 bg-warmwhite rounded"></div>
+                  <div className="h-8 bg-light rounded w-3/4"></div>
+                  <div className="h-4 bg-light rounded w-1/2"></div>
+                  <div className="h-32 bg-light rounded"></div>
                 </div>
               </div>
             </div>
@@ -171,21 +171,21 @@ export default function ProductDetailPage() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen bg-cream">
+      <div className="min-h-screen bg-light">
         <Navbar />
         <div className="pt-32 pb-16">
           <div className="max-w-6xl mx-auto px-6 text-center">
-            <h1 className="text-3xl font-bold text-espresso mb-4">
+            <h1 className="text-3xl font-bold text-primary mb-4">
               {currentLang === 'vi' ? 'Không tìm thấy sản phẩm' : 'Product Not Found'}
             </h1>
-            <p className="text-coffee mb-8">
+            <p className="text-muted mb-8">
               {currentLang === 'vi'
                 ? 'Sản phẩm bạn đang tìm không tồn tại hoặc đã bị xóa.'
                 : 'The product you are looking for does not exist or has been removed.'}
             </p>
             <button
               onClick={() => router.push('/products')}
-              className="bg-terracotta text-white px-6 py-3 rounded-lg hover:bg-terracotta/90 transition-colors"
+              className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
             >
               {currentLang === 'vi' ? 'Quay lại trang sản phẩm' : 'Back to Products'}
             </button>
@@ -208,7 +208,7 @@ export default function ProductDetailPage() {
     : product.price;
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-light">
       <Navbar />
 
       {/* Product Detail Section */}
@@ -217,7 +217,7 @@ export default function ProductDetailPage() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Product Images */}
             <div className="space-y-4">
-              <div className="aspect-square bg-warmwhite rounded-lg overflow-hidden">
+              <div className="aspect-square bg-light rounded-lg overflow-hidden">
                 <img
                   src={currentImage}
                   alt={product.imageAlt || name}
@@ -231,7 +231,7 @@ export default function ProductDetailPage() {
                       key={idx}
                       onClick={() => setSelectedImage(idx)}
                       className={`aspect-square rounded-lg overflow-hidden border-2 transition-colors ${
-                        selectedImage === idx ? 'border-terracotta' : 'border-transparent'
+                        selectedImage === idx ? 'border-secondary' : 'border-transparent'
                       }`}
                     >
                       <img src={img} alt={`${name} ${idx + 1}`} className="w-full h-full object-cover" />
@@ -244,9 +244,9 @@ export default function ProductDetailPage() {
             {/* Product Info */}
             <div className="space-y-6">
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-espresso mb-2 font-serif">{name}</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2 font-serif">{name}</h1>
                 {product.sku && (
-                  <p className="text-sm text-coffee/60">
+                  <p className="text-sm text-muted/60">
                     {currentLang === 'vi' ? 'Mã SP' : 'SKU'}: {product.sku}
                   </p>
                 )}
@@ -254,9 +254,9 @@ export default function ProductDetailPage() {
 
               {/* Price */}
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-bold text-terracotta">£{priceToDisplay}</span>
+                <span className="text-3xl font-bold text-secondary">£{priceToDisplay}</span>
                 {product.compareAtPrice && (
-                  <span className="text-xl text-coffee/50 line-through">£{product.compareAtPrice}</span>
+                  <span className="text-xl text-muted/50 line-through">£{product.compareAtPrice}</span>
                 )}
               </div>
 
@@ -269,13 +269,13 @@ export default function ProductDetailPage() {
                         key={i}
                         className={`w-5 h-5 ${
                           i < Math.floor(product.reviewStats.averageRating)
-                            ? 'fill-gold text-gold'
-                            : 'text-coffee/20'
+                            ? 'fill-secondary text-secondary'
+                            : 'text-muted/20'
                         }`}
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-coffee">
+                  <span className="text-sm text-muted">
                     {product.reviewStats.averageRating.toFixed(1)} ({product.reviewStats.totalReviews}{' '}
                     {currentLang === 'vi' ? 'đánh giá' : 'reviews'})
                   </span>
@@ -302,12 +302,12 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Short Description */}
-              {shortDescription && <p className="text-coffee leading-relaxed">{shortDescription}</p>}
+              {shortDescription && <p className="text-muted leading-relaxed">{shortDescription}</p>}
 
               {/* Variants */}
               {product.productVariants.length > 0 && (
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-espresso">
+                  <label className="block text-sm font-medium text-primary">
                     {currentLang === 'vi' ? 'Chọn loại' : 'Select Variant'}
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -318,15 +318,15 @@ export default function ProductDetailPage() {
                         disabled={!variant.available}
                         className={`p-3 rounded-lg border-2 transition-colors ${
                           selectedVariant === variant.id
-                            ? 'border-terracotta bg-terracotta/5'
-                            : 'border-warmwhite hover:border-terracotta/50'
+                            ? 'border-secondary bg-secondary/5'
+                            : 'border-light hover:border-secondary/50'
                         } ${!variant.available ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         <div className="text-left">
-                          <p className="font-medium text-espresso">
+                          <p className="font-medium text-primary">
                             {currentLang === 'vi' ? variant.nameVi : variant.nameEn}
                           </p>
-                          <p className="text-sm text-terracotta">£{variant.price}</p>
+                          <p className="text-sm text-secondary">£{variant.price}</p>
                         </div>
                       </button>
                     ))}
@@ -337,20 +337,20 @@ export default function ProductDetailPage() {
               {/* Quantity */}
               {product.available && (
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-espresso">
+                  <label className="block text-sm font-medium text-primary">
                     {currentLang === 'vi' ? 'Số lượng' : 'Quantity'}
                   </label>
                   <div className="flex items-center gap-4">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="w-10 h-10 rounded-lg bg-warmwhite hover:bg-terracotta/10 transition-colors flex items-center justify-center"
+                      className="w-10 h-10 rounded-lg bg-light hover:bg-secondary/10 transition-colors flex items-center justify-center"
                     >
                       -
                     </button>
-                    <span className="text-xl font-medium text-espresso w-12 text-center">{quantity}</span>
+                    <span className="text-xl font-medium text-primary w-12 text-center">{quantity}</span>
                     <button
                       onClick={() => setQuantity(quantity + 1)}
-                      className="w-10 h-10 rounded-lg bg-warmwhite hover:bg-terracotta/10 transition-colors flex items-center justify-center"
+                      className="w-10 h-10 rounded-lg bg-light hover:bg-secondary/10 transition-colors flex items-center justify-center"
                     >
                       +
                     </button>
@@ -362,7 +362,7 @@ export default function ProductDetailPage() {
               {product.available && (
                 <button
                   onClick={handleAddToCart}
-                  className="w-full bg-terracotta text-white py-4 rounded-lg font-medium hover:bg-terracotta/90 transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-primary text-white py-4 rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   {currentLang === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart'}
@@ -375,7 +375,7 @@ export default function ProductDetailPage() {
                   {product.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-warmwhite text-coffee text-sm rounded-full"
+                      className="px-3 py-1 bg-light text-muted text-sm rounded-full"
                     >
                       {tag}
                     </span>
@@ -386,14 +386,14 @@ export default function ProductDetailPage() {
           </div>
 
           {/* Product Details Tabs */}
-          <div className="mt-16 border-t border-espresso/10 pt-12">
+          <div className="mt-16 border-t border-primary/10 pt-12">
             <div className="space-y-8">
               {/* Description */}
               <div>
-                <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+                <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
                   {currentLang === 'vi' ? 'Mô tả sản phẩm' : 'Product Description'}
                 </h2>
-                <div className="prose prose-lg max-w-none text-coffee">
+                <div className="prose prose-lg max-w-none text-muted">
                   <p className="whitespace-pre-line">{description}</p>
                 </div>
               </div>
@@ -401,36 +401,36 @@ export default function ProductDetailPage() {
               {/* Ingredients */}
               {ingredients && (
                 <div>
-                  <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+                  <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
                     {currentLang === 'vi' ? 'Thành phần' : 'Ingredients'}
                   </h2>
-                  <p className="text-coffee whitespace-pre-line">{ingredients}</p>
+                  <p className="text-muted whitespace-pre-line">{ingredients}</p>
                 </div>
               )}
 
               {/* How to Use */}
               {howToUse && (
                 <div>
-                  <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+                  <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
                     {currentLang === 'vi' ? 'Cách sử dụng' : 'How to Use'}
                   </h2>
-                  <p className="text-coffee whitespace-pre-line">{howToUse}</p>
+                  <p className="text-muted whitespace-pre-line">{howToUse}</p>
                 </div>
               )}
 
               {/* Additional Info */}
               {(product.allergens.length > 0 || product.weight || product.calories) && (
                 <div>
-                  <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+                  <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
                     {currentLang === 'vi' ? 'Thông tin bổ sung' : 'Additional Information'}
                   </h2>
                   <div className="grid md:grid-cols-2 gap-4">
                     {product.weight && (
                       <div>
-                        <span className="font-medium text-espresso">
+                        <span className="font-medium text-primary">
                           {currentLang === 'vi' ? 'Trọng lượng' : 'Weight'}:
                         </span>{' '}
-                        <span className="text-coffee">
+                        <span className="text-muted">
                           {product.weight}
                           {product.weightUnit}
                         </span>
@@ -438,18 +438,18 @@ export default function ProductDetailPage() {
                     )}
                     {product.calories && (
                       <div>
-                        <span className="font-medium text-espresso">
+                        <span className="font-medium text-primary">
                           {currentLang === 'vi' ? 'Calo' : 'Calories'}:
                         </span>{' '}
-                        <span className="text-coffee">{product.calories}</span>
+                        <span className="text-muted">{product.calories}</span>
                       </div>
                     )}
                     {product.allergens.length > 0 && (
                       <div className="md:col-span-2">
-                        <span className="font-medium text-espresso">
+                        <span className="font-medium text-primary">
                           {currentLang === 'vi' ? 'Dị ứng' : 'Allergens'}:
                         </span>{' '}
-                        <span className="text-coffee">{product.allergens.join(', ')}</span>
+                        <span className="text-muted">{product.allergens.join(', ')}</span>
                       </div>
                     )}
                   </div>
@@ -460,8 +460,8 @@ export default function ProductDetailPage() {
 
           {/* Complementary Products */}
           {product.complementaryProducts.length > 0 && (
-            <div className="mt-16 border-t border-espresso/10 pt-12">
-              <h2 className="text-2xl font-bold text-espresso mb-8 font-serif">
+            <div className="mt-16 border-t border-primary/10 pt-12">
+              <h2 className="text-2xl font-bold text-primary mb-8 font-serif">
                 {currentLang === 'vi' ? 'Sản phẩm liên quan' : 'You May Also Like'}
               </h2>
               <div className="grid md:grid-cols-4 gap-6">
@@ -469,7 +469,7 @@ export default function ProductDetailPage() {
                   <a
                     key={related.id}
                     href={`/products/${related.slug}`}
-                    className="group bg-warmwhite rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                    className="group bg-light rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
                   >
                     {related.imageSrc && (
                       <div className="aspect-square overflow-hidden">
@@ -481,10 +481,10 @@ export default function ProductDetailPage() {
                       </div>
                     )}
                     <div className="p-4">
-                      <h3 className="font-medium text-espresso mb-2">
+                      <h3 className="font-medium text-primary mb-2">
                         {currentLang === 'vi' ? related.nameVi : related.nameEn}
                       </h3>
-                      <p className="text-terracotta font-bold">£{related.price}</p>
+                      <p className="text-secondary font-bold">£{related.price}</p>
                     </div>
                   </a>
                 ))}
@@ -495,13 +495,13 @@ export default function ProductDetailPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-espresso border-t border-gold/20 py-12">
+      <footer className="bg-primary border-t border-secondary/20 py-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <a href="/" className="text-2xl font-bold text-gold font-serif">
+            <a href="/" className="text-2xl font-bold text-secondary font-serif">
               Bonu F&B
             </a>
-            <div className="flex gap-6 text-cream/60 text-sm">
+            <div className="flex gap-6 text-light/60 text-sm">
               <a href="/story" className="hover:text-white transition-colors">
                 {currentLang === 'vi' ? 'Câu chuyện' : 'Story'}
               </a>
@@ -519,7 +519,7 @@ export default function ProductDetailPage() {
               </a>
             </div>
           </div>
-          <div className="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
+          <div className="border-t border-light/10 mt-8 pt-8 text-center text-light/40 text-sm">
             <p>&copy; 2026 Uyen Nguyen - F&B Business Design</p>
           </div>
         </div>

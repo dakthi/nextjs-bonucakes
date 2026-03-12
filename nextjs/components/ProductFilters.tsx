@@ -35,11 +35,11 @@ export default function ProductFilters({
   ];
 
   return (
-    <div className="bg-warmwhite border border-espresso/10 p-6 mb-8">
+    <div className="bg-light border border-primary/10 p-6 mb-8">
       <div className="grid md:grid-cols-2 gap-6">
         {/* Availability Filter */}
         <div>
-          <label className="block text-espresso font-semibold mb-3">
+          <label className="block text-primary font-semibold mb-3">
             {currentLang === 'vi' ? 'Tình trạng' : 'Availability'}
           </label>
           <div className="flex flex-wrap gap-2">
@@ -49,8 +49,8 @@ export default function ProductFilters({
                 onClick={() => onAvailabilityChange(option.value)}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
                   availabilityFilter === option.value
-                    ? 'bg-terracotta text-white'
-                    : 'bg-white text-espresso hover:bg-espresso/5 border border-espresso/20'
+                    ? 'bg-primary text-white'
+                    : 'bg-white text-primary hover:bg-primary/5 border border-primary/20'
                 }`}
               >
                 {option.label[currentLang]}
@@ -61,7 +61,7 @@ export default function ProductFilters({
 
         {/* Category Filter */}
         <div>
-          <label className="block text-espresso font-semibold mb-3">
+          <label className="block text-primary font-semibold mb-3">
             {currentLang === 'vi' ? 'Danh mục' : 'Category'}
           </label>
           <div className="flex flex-wrap gap-2">
@@ -71,8 +71,8 @@ export default function ProductFilters({
                 onClick={() => onCategoryChange(option.value)}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
                   categoryFilter === option.value
-                    ? 'bg-terracotta text-white'
-                    : 'bg-white text-espresso hover:bg-espresso/5 border border-espresso/20'
+                    ? 'bg-primary text-white'
+                    : 'bg-white text-primary hover:bg-primary/5 border border-primary/20'
                 }`}
               >
                 {option.label[currentLang]}

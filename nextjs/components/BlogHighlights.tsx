@@ -49,14 +49,14 @@ export default function BlogHighlights() {
   }, []);
 
   return (
-    <section className="py-16 md:py-24 bg-espresso fade-in">
+    <section className="py-16 md:py-24 bg-[#083121] fade-in">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-gold uppercase tracking-widest text-sm mb-4 font-medium" data-en="From the Blog" data-vi="Từ Blog">
+          <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-4 font-medium" data-en="From the Blog" data-vi="Từ Blog">
             {currentLang === 'vi' ? 'Từ Blog' : 'From the Blog'}
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-warmwhite mb-4" data-en="Latest Articles" data-vi="Bài viết mới nhất">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#f8faf9] mb-4" data-en="Latest Articles" data-vi="Bài viết mới nhất">
             {currentLang === 'vi' ? 'Bài viết mới nhất' : 'Latest Articles'}
           </h2>
         </div>
@@ -64,14 +64,14 @@ export default function BlogHighlights() {
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {loading ? (
-            <div className="col-span-3 text-center text-cream/60">Đang tải...</div>
+            <div className="col-span-3 text-center text-[#f8faf9]/60">Dang tai...</div>
           ) : posts.length === 0 ? (
-            <div className="col-span-3 text-center text-cream/60">Chưa có bài viết nào.</div>
+            <div className="col-span-3 text-center text-[#f8faf9]/60">Chua co bai viet nao.</div>
           ) : (
             posts.map((post) => (
               <article
                 key={post.slug}
-                className="bg-cream/10 rounded-lg overflow-hidden hover:bg-cream/20 transition-colors hover-lift"
+                className="bg-[#f8faf9]/10 rounded-lg overflow-hidden hover:bg-[#f8faf9]/20 transition-colors hover-lift"
               >
                 {post.image ? (
                   <Link href={`/blog/${post.slug}`}>
@@ -82,21 +82,21 @@ export default function BlogHighlights() {
                     />
                   </Link>
                 ) : (
-                  <div className="w-full h-40 bg-gradient-to-br from-terracotta/30 to-gold/30"></div>
+                  <div className="w-full h-40 bg-gradient-to-br from-[#083121]/30 to-[#fcc56c]/30"></div>
                 )}
                 <div className="p-5">
-                  <time className="text-sm text-cream/50">
+                  <time className="text-sm text-[#f8faf9]/50">
                     {formatDate(post.date)}
                   </time>
-                  <h3 className="text-lg font-bold text-warmwhite mt-1 mb-2">
+                  <h3 className="text-lg font-bold text-[#f8faf9] mt-1 mb-2">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="hover:text-gold transition-colors"
+                      className="hover:text-[#fcc56c] transition-colors"
                     >
                       {post.title}
                     </Link>
                   </h3>
-                  <p className="text-cream/70 text-sm line-clamp-2">{post.excerpt}</p>
+                  <p className="text-[#f8faf9]/70 text-sm line-clamp-2">{post.excerpt}</p>
                 </div>
               </article>
             ))
@@ -107,7 +107,7 @@ export default function BlogHighlights() {
         <div className="text-center mt-10">
           <Link
             href="/blog"
-            className="inline-block border border-gold/50 text-gold px-8 py-3 font-semibold hover:bg-gold/10 transition-colors"
+            className="inline-block border border-[#fcc56c]/50 text-[#fcc56c] px-8 py-3 font-semibold hover:bg-[#fcc56c]/10 transition-colors"
             data-en="View all articles"
             data-vi="Xem tất cả bài viết"
           >

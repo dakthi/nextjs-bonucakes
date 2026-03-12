@@ -154,7 +154,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-8">
       {/* Basic Information Section */}
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-6">Basic Information</h2>
+        <h2 className="text-lg font-medium text-[#083121] mb-6">Basic Information</h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Vietnamese Name */}
@@ -165,7 +165,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <input
               {...register('nameVi', { required: 'Vietnamese name is required' })}
               type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
             {errors.nameVi && <p className="mt-1 text-sm text-red-600">{errors.nameVi.message}</p>}
           </div>
@@ -178,7 +178,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <input
               {...register('nameEn', { required: 'English name is required' })}
               type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
             {errors.nameEn && <p className="mt-1 text-sm text-red-600">{errors.nameEn.message}</p>}
           </div>
@@ -197,7 +197,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
                 }
               })}
               type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm font-mono text-xs"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm font-mono text-xs"
               placeholder="banh-mi-dac-biet"
             />
             {errors.slug && <p className="mt-1 text-sm text-red-600">{errors.slug.message}</p>}
@@ -221,7 +221,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <input
               {...register('sku')}
               type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -232,7 +232,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             </label>
             <select
               {...register('category', { required: 'Category is required' })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             >
               <option value="food">Food Products</option>
               <option value="beverage">Beverages</option>
@@ -253,7 +253,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('tags')}
               type="text"
               placeholder="organic, vegan, gluten-free"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
         </div>
@@ -267,7 +267,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('descriptionVi', { required: 'Vietnamese description is required' })}
               rows={4}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
             {errors.descriptionVi && <p className="mt-1 text-sm text-red-600">{errors.descriptionVi.message}</p>}
           </div>
@@ -279,7 +279,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('descriptionEn', { required: 'English description is required' })}
               rows={4}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
             {errors.descriptionEn && <p className="mt-1 text-sm text-red-600">{errors.descriptionEn.message}</p>}
           </div>
@@ -292,7 +292,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               <textarea
                 {...register('shortDescriptionVi')}
                 rows={2}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
               />
             </div>
 
@@ -303,7 +303,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               <textarea
                 {...register('shortDescriptionEn')}
                 rows={2}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
               />
             </div>
           </div>
@@ -312,7 +312,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
 
       {/* Pricing & Inventory */}
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-6">Pricing & Inventory</h2>
+        <h2 className="text-lg font-medium text-[#083121] mb-6">Pricing & Inventory</h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div>
@@ -324,7 +324,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               type="number"
               step="0.01"
               min="0"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
             {errors.price && <p className="mt-1 text-sm text-red-600">{errors.price.message}</p>}
           </div>
@@ -338,7 +338,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               type="number"
               step="0.01"
               min="0"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -351,7 +351,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               type="number"
               step="0.01"
               min="0"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -363,7 +363,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('stock')}
               type="number"
               min="0"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -373,7 +373,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             </label>
             <select
               {...register('stockStatus')}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             >
               <option value="in_stock">In Stock</option>
               <option value="low_stock">Low Stock</option>
@@ -385,9 +385,9 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <input
               {...register('trackInventory')}
               type="checkbox"
-              className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+              className="h-4 w-4 text-[#fcc56c] focus:ring-[#fcc56c] border-gray-300 rounded"
             />
-            <label className="ml-2 block text-sm text-gray-900">
+            <label className="ml-2 block text-sm text-[#083121]">
               Track Inventory
             </label>
           </div>
@@ -396,7 +396,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
 
       {/* Product Details */}
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-6">Product Details</h2>
+        <h2 className="text-lg font-medium text-[#083121] mb-6">Product Details</h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="grid grid-cols-2 gap-4">
@@ -409,7 +409,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
                 type="number"
                 step="0.01"
                 min="0"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
               />
             </div>
             <div>
@@ -418,7 +418,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               </label>
               <select
                 {...register('weightUnit')}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
               >
                 <option value="g">Grams (g)</option>
                 <option value="kg">Kilograms (kg)</option>
@@ -436,7 +436,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('servingSize')}
               type="text"
               placeholder="e.g., 1 piece, 100g"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -448,7 +448,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('servingsPerContainer')}
               type="number"
               min="0"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -460,7 +460,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('calories')}
               type="number"
               min="0"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -472,7 +472,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('allergens')}
               type="text"
               placeholder="milk, eggs, nuts"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -484,7 +484,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('shelfLife')}
               type="text"
               placeholder="e.g., 30 days"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
         </div>
@@ -497,7 +497,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             {...register('storageInstructions')}
             rows={2}
             placeholder="Store in a cool, dry place"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
           />
         </div>
 
@@ -509,7 +509,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('ingredientsVi')}
               rows={3}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -520,7 +520,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('ingredientsEn')}
               rows={3}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -531,7 +531,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('howToUseVi')}
               rows={3}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -542,7 +542,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('howToUseEn')}
               rows={3}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
         </div>
@@ -550,7 +550,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
 
       {/* Images */}
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-6">Product Images</h2>
+        <h2 className="text-lg font-medium text-[#083121] mb-6">Product Images</h2>
 
         <div className="space-y-4">
           <div>
@@ -561,7 +561,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('imageSrc')}
               type="text"
               placeholder="https://example.com/image.jpg"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -573,7 +573,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('imageAlt')}
               type="text"
               placeholder="Description for accessibility"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -585,7 +585,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('images')}
               rows={4}
               placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
         </div>
@@ -593,16 +593,16 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
 
       {/* Status & Settings */}
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-6">Status & Settings</h2>
+        <h2 className="text-lg font-medium text-[#083121] mb-6">Status & Settings</h2>
 
         <div className="space-y-4">
           <div className="flex items-center">
             <input
               {...register('available')}
               type="checkbox"
-              className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+              className="h-4 w-4 text-[#fcc56c] focus:ring-[#fcc56c] border-gray-300 rounded"
             />
-            <label className="ml-2 block text-sm text-gray-900">
+            <label className="ml-2 block text-sm text-[#083121]">
               Product Available (visible to customers)
             </label>
           </div>
@@ -611,9 +611,9 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <input
               {...register('featured')}
               type="checkbox"
-              className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+              className="h-4 w-4 text-[#fcc56c] focus:ring-[#fcc56c] border-gray-300 rounded"
             />
-            <label className="ml-2 block text-sm text-gray-900">
+            <label className="ml-2 block text-sm text-[#083121]">
               Featured Product
             </label>
           </div>
@@ -626,7 +626,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
               {...register('complementaryProducts')}
               type="text"
               placeholder="e.g., 1,5,12"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
             <p className="mt-1 text-xs text-gray-500">
               These products will appear in the "You May Also Like" section
@@ -637,7 +637,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
 
       {/* SEO */}
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-6">SEO</h2>
+        <h2 className="text-lg font-medium text-[#083121] mb-6">SEO</h2>
 
         <div className="space-y-4">
           <div>
@@ -647,7 +647,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <input
               {...register('metaTitle')}
               type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
 
@@ -658,7 +658,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
             <textarea
               {...register('metaDescription')}
               rows={3}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#fcc56c] focus:ring-[#fcc56c] sm:text-sm"
             />
           </div>
         </div>
@@ -669,7 +669,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
         <button
           type="button"
           onClick={() => router.back()}
-          className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+          className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fcc56c]"
         >
           <X className="h-4 w-4 mr-2" />
           Cancel
@@ -677,7 +677,7 @@ export default function ProductForm({ initialData, productId, onSubmit, isLoadin
         <button
           type="submit"
           disabled={isLoading}
-          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50"
+          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fcc56c] disabled:opacity-50"
         >
           <Save className="h-4 w-4 mr-2" />
           {isLoading ? 'Saving...' : (productId ? 'Save Changes' : 'Create Product')}

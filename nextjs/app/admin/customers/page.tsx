@@ -266,7 +266,7 @@ export default function CustomersPage() {
               {selectedCustomers.length > 0 && (
                 <button
                   onClick={() => setShowEmailModal(true)}
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700"
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52]"
                 >
                   <Mail className="h-4 w-4 mr-2" />
                   Email Selected ({selectedCustomers.length})
@@ -285,7 +285,7 @@ export default function CustomersPage() {
                   placeholder="Search by name or email..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                  className="pl-10 w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                 />
               </div>
             </div>
@@ -309,7 +309,7 @@ export default function CustomersPage() {
                           type="checkbox"
                           checked={selectedCustomers.length === filteredCustomers.length}
                           onChange={toggleSelectAll}
-                          className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                          className="h-4 w-4 text-[#083121] focus:ring-[#083121] border-gray-300 rounded"
                         />
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -346,7 +346,7 @@ export default function CustomersPage() {
                             type="checkbox"
                             checked={selectedCustomers.includes(customer.id)}
                             onChange={() => toggleSelectCustomer(customer.id)}
-                            className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                            className="h-4 w-4 text-[#083121] focus:ring-[#083121] border-gray-300 rounded"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -433,7 +433,7 @@ export default function CustomersPage() {
                           setEmailTemplate(value)
                         }
                       }}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     >
                       <optgroup label="Saved Templates">
                         {emailTemplates.map(template => (
@@ -460,7 +460,7 @@ export default function CustomersPage() {
                       value={emailSubject}
                       onChange={(e) => setEmailSubject(e.target.value)}
                       placeholder="Email subject..."
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
 
@@ -473,7 +473,7 @@ export default function CustomersPage() {
                       onChange={(e) => setEmailContent(e.target.value)}
                       placeholder="Email content..."
                       rows={10}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500 font-mono text-sm"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121] font-mono text-sm"
                     />
                     <p className="mt-1 text-xs text-gray-500">
                       You can use HTML tags. Use {"{name}"} to personalize with customer name.
@@ -491,7 +491,7 @@ export default function CustomersPage() {
                   <button
                     onClick={sendBulkEmail}
                     disabled={sending}
-                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-50"
+                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52] disabled:opacity-50"
                   >
                     {sending ? "Sending..." : "Send Emails"}
                   </button>
@@ -520,7 +520,7 @@ export default function CustomersPage() {
                       value={newCustomer.name}
                       onChange={(e) => setNewCustomer({...newCustomer, name: e.target.value})}
                       placeholder="Customer name"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
 
@@ -533,7 +533,7 @@ export default function CustomersPage() {
                       value={newCustomer.email}
                       onChange={(e) => setNewCustomer({...newCustomer, email: e.target.value})}
                       placeholder="customer@example.com"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
 
@@ -546,7 +546,7 @@ export default function CustomersPage() {
                       value={newCustomer.phone}
                       onChange={(e) => setNewCustomer({...newCustomer, phone: e.target.value})}
                       placeholder="+44 7XXX XXXXXX"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
 
@@ -556,7 +556,7 @@ export default function CustomersPage() {
                         type="checkbox"
                         checked={newCustomer.marketingConsent}
                         onChange={(e) => setNewCustomer({...newCustomer, marketingConsent: e.target.checked})}
-                        className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                        className="h-4 w-4 text-[#083121] focus:ring-[#083121] border-gray-300 rounded"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700">
                         Marketing consent (customer has opted in to receive marketing emails)
@@ -571,7 +571,7 @@ export default function CustomersPage() {
                     <select
                       value={newCustomer.segment}
                       onChange={(e) => setNewCustomer({...newCustomer, segment: e.target.value})}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     >
                       <option value="">None</option>
                       <option value="vip">VIP</option>
@@ -589,7 +589,7 @@ export default function CustomersPage() {
                       onChange={(e) => setNewCustomer({...newCustomer, notes: e.target.value})}
                       placeholder="Internal notes about this customer..."
                       rows={3}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
                 </div>

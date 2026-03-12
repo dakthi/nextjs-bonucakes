@@ -68,12 +68,12 @@ function BlogContent() {
   return (
     <>
       {/* Header */}
-      <header className="bg-warmwhite py-24 md:py-28 border-b border-espresso/10">
+      <header className="bg-[#f8faf9] py-24 md:py-28 border-b border-[#083121]/10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center">
-          <h1 className="text-4xl font-bold font-serif text-espresso mb-4">
+          <h1 className="text-4xl font-bold font-serif text-[#083121] mb-4">
             Blog
           </h1>
-          <p className="text-coffee max-w-2xl">
+          <p className="text-[#4a5c52] max-w-2xl">
             {currentLang === 'vi'
               ? 'Chia sẻ kinh nghiệm, góc nhìn và hành trình trong ngành F&B'
               : 'Sharing experiences, insights and journey in F&B industry'}
@@ -83,27 +83,27 @@ function BlogContent() {
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         {loading ? (
-          <div className="text-center py-12 text-coffee">
+          <div className="text-center py-12 text-[#4a5c52]">
             {currentLang === 'vi' ? 'Đang tải...' : 'Loading...'}
           </div>
         ) : error ? (
           <div className="text-center py-12">
-            <div className="text-terracotta mb-4 text-lg">{error}</div>
-            <p className="text-coffee">
+            <div className="text-[#fcc56c] mb-4 text-lg">{error}</div>
+            <p className="text-[#4a5c52]">
               {currentLang === 'vi'
                 ? 'Vui lòng thử lại sau hoặc liên hệ với chúng tôi.'
                 : 'Please try again later or contact us.'}
             </p>
           </div>
         ) : posts.length === 0 ? (
-          <div className="text-center py-12 text-coffee">
+          <div className="text-center py-12 text-[#4a5c52]">
             {currentLang === 'vi' ? 'Chưa có bài viết nào.' : 'No posts yet.'}
           </div>
         ) : (
           <>
             {/* Featured Post */}
             {featuredPost && (
-              <div className="mb-12 pb-12 border-b-2 border-espresso/20">
+              <div className="mb-12 pb-12 border-b-2 border-[#083121]/20">
                 <BlogCard post={featuredPost} featured />
               </div>
             )}
@@ -121,7 +121,7 @@ function BlogContent() {
                 {currentPage > 1 && (
                   <Link
                     href={`/blog?page=${currentPage - 1}`}
-                    className="px-4 py-2 rounded-lg bg-white text-coffee border border-coffee/20 hover:bg-terracotta hover:text-white transition-colors"
+                    className="px-4 py-2 rounded-lg bg-white text-[#4a5c52] border border-[#4a5c52]/20 hover:bg-[#083121] hover:text-white transition-colors"
                   >
                     {currentLang === 'vi' ? '← Trước' : '← Previous'}
                   </Link>
@@ -135,8 +135,8 @@ function BlogContent() {
                       href={`/blog?page=${page}`}
                       className={`px-4 py-2 rounded-lg transition-colors ${
                         page === currentPage
-                          ? 'bg-terracotta text-white font-medium'
-                          : 'bg-white text-coffee border border-coffee/20 hover:bg-terracotta hover:text-white'
+                          ? 'bg-[#083121] text-white font-medium'
+                          : 'bg-white text-[#4a5c52] border border-[#4a5c52]/20 hover:bg-[#083121] hover:text-white'
                       }`}
                     >
                       {page}
@@ -147,7 +147,7 @@ function BlogContent() {
                 {currentPage < totalPages && (
                   <Link
                     href={`/blog?page=${currentPage + 1}`}
-                    className="px-4 py-2 rounded-lg bg-white text-coffee border border-coffee/20 hover:bg-terracotta hover:text-white transition-colors"
+                    className="px-4 py-2 rounded-lg bg-white text-[#4a5c52] border border-[#4a5c52]/20 hover:bg-[#083121] hover:text-white transition-colors"
                   >
                     {currentLang === 'vi' ? 'Tiếp →' : 'Next →'}
                   </Link>
@@ -165,8 +165,8 @@ function BlogContent() {
 export default function BlogPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="text-espresso">Loading...</div>
+      <div className="min-h-screen bg-[#f8faf9] flex items-center justify-center">
+        <div className="text-[#083121]">Loading...</div>
       </div>
     }>
       <BlogContent />

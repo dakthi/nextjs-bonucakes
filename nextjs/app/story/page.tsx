@@ -67,21 +67,21 @@ export default function StoryPage() {
       <FadeInObserver />
 
       {/* Hero */}
-      <header className="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 bg-espresso">
+      <header className="relative text-[#f8faf9] pt-24 pb-16 md:pt-32 md:pb-24 bg-[#083121]">
         <div className="max-w-6xl mx-auto px-6 text-left">
-          <p className="text-gold uppercase tracking-widest text-sm mb-4 font-medium">The Journey</p>
+          <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-4 font-medium">The Journey</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight max-w-3xl">
             {currentLang === 'vi' ? (
               <>
-                Hành trình 10+ năm<br />xây dựng <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-warmwhite transition-colors">Memoire Saigon</a>
+                Hành trình 10+ năm<br />xây dựng <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-[#fcc56c] hover:text-[#f8faf9] transition-colors">Memoire Saigon</a>
               </>
             ) : (
               <>
-                10+ Years Journey<br />Building <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-warmwhite transition-colors">Memoire Saigon</a>
+                10+ Years Journey<br />Building <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-[#fcc56c] hover:text-[#f8faf9] transition-colors">Memoire Saigon</a>
               </>
             )}
           </h1>
-          <p className="text-xl text-cream/80 mb-8 max-w-2xl">
+          <p className="text-xl text-[#f8faf9]/80 mb-8 max-w-2xl">
             {currentLang === 'vi'
               ? 'Từ bán bánh online, qua London, Manchester, đến Wales. Mỗi thất bại là một bài học. Mỗi thành công là một bước tiến.'
               : 'From selling cakes online, through London, Manchester, to Wales. Every failure is a lesson. Every success is a step forward.'}
@@ -90,44 +90,44 @@ export default function StoryPage() {
       </header>
 
       {/* Opening Quote */}
-      <section className="py-16 bg-warmwhite">
+      <section className="py-16 bg-[#f8faf9]">
         <div className="max-w-6xl mx-auto px-6">
           <blockquote className="text-center">
-            <p className="text-2xl md:text-3xl font-serif text-espresso italic mb-4">
+            <p className="text-2xl md:text-3xl font-serif text-[#083121] italic mb-4">
               {currentLang === 'vi'
                 ? '"Để có Memoire Saigon hôm nay, đã phải trải qua hơn 10 năm khởi nghiệp."'
                 : '"To have Memoire Saigon today, it took over 10 years of entrepreneurship."'}
             </p>
-            <cite className="text-coffee text-lg not-italic">— Uyên Nguyễn</cite>
+            <cite className="text-[#4a5c52] text-lg not-italic">— Uyên Nguyễn</cite>
           </blockquote>
         </div>
       </section>
 
       {/* Bonu Intro */}
-      <section className="py-16 bg-warmwhite">
+      <section className="py-16 bg-[#f8faf9]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="bg-white p-4 sm:p-6 md:p-8 shadow-sm article-text">
             {currentLang === 'vi' ? (
               <>
-                <h2 className="text-2xl md:text-3xl font-bold text-espresso mb-4">Xin chào các bạn, các khách hàng thân thương</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#083121] mb-4">Xin chào các bạn, các khách hàng thân thương</h2>
                 <p>Nếu bạn vừa ghé vào trang này lần đầu, hoặc đã theo dõi BONU một thời gian nhưng chưa thực sự biết BONU đang làm gì, thì đây là bài viết dành cho bạn.</p>
                 <p>Cảm ơn tất cả vì đã, đang và sẽ theo dõi, và yêu thích những gì mà BONU chia sẻ từ trang cá nhân này.</p>
                 <p>Năm nay với ý định mở rộng mối quan hệ, kết nối thêm nhiều bạn bè cùng tần số, đồng môn cùng học hỏi nên BONU quyết định chia sẻ đôi điều về bản thân để chúng ta làm quen với nhau, hoặc hiểu rõ hơn về nhau, thậm chí là trở thành người đồng hành cùng nhau trên con đường sự nghiệp cũng như trên hành trình phát triển bản thân.</p>
               </>
             ) : (
               <>
-                <h2 className="text-2xl md:text-3xl font-bold text-espresso mb-4">Hello friends and dear customers</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#083121] mb-4">Hello friends and dear customers</h2>
                 <p>If this is your first time here, or you've followed BONU for a while but aren't quite sure what BONU actually does, this section is for you.</p>
                 <p>Thank you for following, supporting, and enjoying what BONU shares here.</p>
                 <p>This year, with the intention to expand connections with like‑minded friends and peers, BONU is sharing more about myself—so we can get to know each other better and perhaps even become companions on our career and personal‑growth journeys.</p>
               </>
             )}
 
-            <hr className="my-8 border-espresso/10" />
+            <hr className="my-8 border-[#083121]/10" />
 
             {currentLang === 'vi' ? (
               <>
-                <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">VÀI THÔNG TIN CÁ NHÂN VỀ BONU</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-[#fcc56c] mb-4">VÀI THÔNG TIN CÁ NHÂN VỀ BONU</h3>
                 <p>Mọi người thường gọi mình là Bo hoặc Bonu (nickname từ nhỏ đến giờ). Tên thật là Minh Uyên, lớn lên ở Sài Gòn từ năm 1988 và đã chuyển sang Anh sống 20 năm nay. Uyên thuộc nhóm người đa năng Multipotentialite, thỉnh thoảng hướng nội và thường xuyên hướng ngoại.</p>
                 <p>Lúc vui vui ham chơi thì về ngoại, nhoi nhoi quá thì lại về nội tịnh tâm. Uyên yêu thích sự tự do, thử thách, mạo hiểm và trải nghiệm nên hay bay nhảy khắp nơi. Không thích làm một việc, không thích ở yên một chỗ và đặc biệt là không bao giờ giới hạn bản thân trong vùng an toàn.</p>
                 <p><strong>Điểm mạnh cá nhân:</strong> leadership và giàu lòng trắc ẩn.</p>
@@ -135,7 +135,7 @@ export default function StoryPage() {
               </>
             ) : (
               <>
-                <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">A FEW THINGS ABOUT BONU</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-[#fcc56c] mb-4">A FEW THINGS ABOUT BONU</h3>
                 <p>People usually call me Bo or Bonu (a childhood nickname). My full name is Minh Uyên, born and raised in Saigon (1988), and I've lived in the UK for 20 years. I'm a multipotentialite—sometimes introverted, often extroverted.</p>
                 <p>I love freedom, challenges, adventure and learning through experience. I rarely sit still, don't like doing only one thing, and I don't limit myself to a comfort zone.</p>
                 <p><strong>Personal strengths:</strong> leadership and compassion.</p>
@@ -171,9 +171,9 @@ export default function StoryPage() {
               </>
             )}
 
-            <hr className="my-8 border-espresso/10" />
+            <hr className="my-8 border-[#083121]/10" />
 
-            <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">BUSINESS/CHUYÊN MÔN BO ĐANG THEO ĐUỔI</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-[#fcc56c] mb-4">BUSINESS/CHUYÊN MÔN BO ĐANG THEO ĐUỔI</h3>
             <p><strong>Hiện tại BONU đang làm gì?</strong></p>
             <p>Uyên tập trung vào vai trò Business Mentor cho người Việt muốn khởi nghiệp và phát triển trong ngành F&B, đặc biệt là những bạn:</p>
             <ul className="list-disc pl-6">
@@ -236,9 +236,9 @@ export default function StoryPage() {
               <li>Uyên có 13 năm kinh nghiệm trong việc nuôi dạy và đồng hành cùng con, vì Uyên có tận 3 nhóc</li>
             </ul>
 
-            <hr className="my-8 border-espresso/10" />
+            <hr className="my-8 border-[#083121]/10" />
 
-            <h3 className="text-xl md:text-2xl font-bold text-terracotta mb-4">VÀI TRIẾT LÝ MÀ UYÊN THEO ĐUỔI</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-[#fcc56c] mb-4">VÀI TRIẾT LÝ MÀ UYÊN THEO ĐUỔI</h3>
             <p><strong>Trong việc làm ngành F&B nói chung:</strong><br />
             "Ẩm thực Việt Nam không chỉ là món ăn, còn là cầu nối văn hóa, là phương tiện để bảo tồn ký ức, kết nối văn hóa, phát triển con người, và tạo ra sự thay đổi tích cực trong cộng đồng - tất cả được thực hiện với ý thức cao về chiến lược kinh doanh và phát triển bản thân." Thành công đến từ việc không ngừng học hỏi mỗi ngày, nâng cấp bản thân kết hợp đam mê với chiến lược để tạo ra giá trị.</p>
             <p><strong>Trong phát triển con người:</strong><br />
@@ -265,16 +265,16 @@ export default function StoryPage() {
       </section>
 
       {/* Article */}
-      <section className="py-16 md:py-24 bg-warmwhite">
+      <section className="py-16 md:py-24 bg-[#f8faf9]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-terracotta uppercase tracking-widest text-sm mb-2 font-medium">The Full Story</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-espresso mb-4">
+            <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-2 font-medium">The Full Story</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi'
                 ? 'Mười năm, ba thành phố, vô số bài học'
                 : 'Ten years, three cities, countless lessons'}
             </h2>
-            <p className="text-coffee/60 italic">
+            <p className="text-[#4a5c52]/60 italic">
               {currentLang === 'vi'
                 ? 'Một hành trình từ bán bánh online đến nhà hàng ở Wales'
                 : 'A journey from selling cakes online to a restaurant in Wales'}
@@ -298,9 +298,9 @@ export default function StoryPage() {
 
             <p>Bo quá chủ quan. Bo nghĩ kinh nghiệm 8 năm bán online đủ để vận hành một tiệm. Nhưng thực tế đã dạy Bo một bài học đắt giá: <em>online và offline là hai mô hình hoàn toàn khác nhau</em>. Offline business đòi hỏi business skills nhiều hơn, không chỉ là làm sản phẩm ngon. Nó cần chiến lược về vị trí, về giá cả, về cạnh tranh, về cash flow. Những thứ mà Bo chưa từng thật sự phải đối mặt khi bán online.</p>
 
-            <div className="bg-cream/30 p-6 my-8 border-l-4 border-terracotta">
-              <p className="text-sm uppercase tracking-wider text-terracotta font-semibold mb-2">Thời kỳ COVID và sau đó</p>
-              <p className="text-coffee">Sau khi đóng cửa Bonu Cakes and Tea ở London, đặc biệt qua giai đoạn COVID, Bo dừng lại để suy nghĩ. Bo nhận ra ba điều then chốt: <strong>Sản phẩm ngon không bằng kinh doanh thành công</strong>. Bo cần học business skills thật sự - từ vị trí, marketing, quản lý nhân sự, đến tài chính. Và cuối cùng, <strong>đam mê không đủ</strong> - cần có chiến lược và hệ thống.</p>
+            <div className="bg-[#f8faf9]/30 p-6 my-8 border-l-4 border-[#fcc56c]">
+              <p className="text-sm uppercase tracking-wider text-[#fcc56c] font-semibold mb-2">Thời kỳ COVID và sau đó</p>
+              <p className="text-[#4a5c52]">Sau khi đóng cửa Bonu Cakes and Tea ở London, đặc biệt qua giai đoạn COVID, Bo dừng lại để suy nghĩ. Bo nhận ra ba điều then chốt: <strong>Sản phẩm ngon không bằng kinh doanh thành công</strong>. Bo cần học business skills thật sự - từ vị trí, marketing, quản lý nhân sự, đến tài chính. Và cuối cùng, <strong>đam mê không đủ</strong> - cần có chiến lược và hệ thống.</p>
             </div>
 
             <p className="year-marker">2024</p>
@@ -309,35 +309,35 @@ export default function StoryPage() {
 
             <p>Wow Banh Mi không chỉ bán bánh mì. Bonu F&B có phở, cà phê Việt Nam, và các món ăn truyền thống khác. Nhưng điều quan trọng hơn là cách Bonu F&B xây dựng business. Bonu F&B có hệ thống. Bonu F&B có chiến lược. Bonu F&B hiểu rõ thị trường địa phương.</p>
 
-            <p>Và kết quả đã chứng minh mọi thứ. Wow Banh Mi được bình chọn là <strong><a href="https://www.manchestersfinest.com/articles/vietnamese-sandwiches-done-right-and-a-very-very-good-bowl-of-pho-on-oldham-road/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-terracotta hover:underline transition-colors">Best Bánh Mì in Manchester</a></strong>. Business đang phát triển tốt. Mô hình bền vững. Đội ngũ vững mạnh. Lần này, Bonu F&B đã làm đúng.</p>
+            <p>Và kết quả đã chứng minh mọi thứ. Wow Banh Mi được bình chọn là <strong><a href="https://www.manchestersfinest.com/articles/vietnamese-sandwiches-done-right-and-a-very-very-good-bowl-of-pho-on-oldham-road/" target="_blank" rel="noopener noreferrer" className="text-[#fcc56c] hover:text-[#083121] hover:underline transition-colors">Best Bánh Mì in Manchester</a></strong>. Business đang phát triển tốt. Mô hình bền vững. Đội ngũ vững mạnh. Lần này, Bonu F&B đã làm đúng.</p>
 
             {/* Wales: Memoire Saigon */}
-            <div className="relative pl-8 md:pl-16 border-l-4 border-gold">
-              <div className="absolute -left-2 top-0 timeline-dot bg-gold rounded-full shadow-lg"></div>
-              <div className="bg-espresso text-warmwhite px-4 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8 shadow-lg">
-                <span className="text-gold font-bold text-sm uppercase tracking-wider">2025 - Saundersfoot, Wales</span>
+            <div className="relative pl-8 md:pl-16 border-l-4 border-[#fcc56c]">
+              <div className="absolute -left-2 top-0 timeline-dot bg-[#fcc56c] rounded-full shadow-lg"></div>
+              <div className="bg-[#083121] text-[#f8faf9] px-4 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8 shadow-lg">
+                <span className="text-[#fcc56c] font-bold text-sm uppercase tracking-wider">2025 - Saundersfoot, Wales</span>
                 <h3 className="text-2xl font-bold mt-2 mb-4">
-                  <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-warmwhite hover:text-gold transition-colors">Memoire Saigon</a> - Hành trình mới
+                  <a href="https://memoiresaigon.co.uk/" target="_blank" rel="noopener noreferrer" className="text-[#f8faf9] hover:text-[#fcc56c] transition-colors">Memoire Saigon</a> - Hành trình mới
                 </h3>
-                <p className="text-cream/90 mb-4">Sau khi không còn muốn sống ở thành phố lớn, Bo tìm đến Saundersfoot, Wales - nơi yên bình, riêng tư hơn. Đây là lúc Bo tạo ra Memoire Saigon.</p>
-                <p className="text-cream/90 mb-4">Không phải là bắt đầu lại từ đầu. Memoire Saigon là kết tinh của 10 năm kinh nghiệm (2015-2025), thất bại, học hỏi, và thành công.</p>
+                <p className="text-[#f8faf9]/90 mb-4">Sau khi không còn muốn sống ở thành phố lớn, Bo tìm đến Saundersfoot, Wales - nơi yên bình, riêng tư hơn. Đây là lúc Bo tạo ra Memoire Saigon.</p>
+                <p className="text-[#f8faf9]/90 mb-4">Không phải là bắt đầu lại từ đầu. Memoire Saigon là kết tinh của 10 năm kinh nghiệm (2015-2025), thất bại, học hỏi, và thành công.</p>
                 <div className="grid md:grid-cols-3 gap-3 md:gap-4 mb-6">
-                  <div className="text-center p-4 bg-cream/10 rounded">
-                    <p className="text-3xl font-bold text-gold mb-1">10+</p>
-                    <p className="text-cream/70 text-sm">Năm kinh nghiệm</p>
+                  <div className="text-center p-4 bg-[#f8faf9]/10 rounded">
+                    <p className="text-3xl font-bold text-[#fcc56c] mb-1">10+</p>
+                    <p className="text-[#f8faf9]/70 text-sm">Năm kinh nghiệm</p>
                   </div>
-                  <div className="text-center p-4 bg-cream/10 rounded">
-                    <p className="text-3xl font-bold text-gold mb-1">3</p>
-                    <p className="text-cream/70 text-sm">Thành phố</p>
+                  <div className="text-center p-4 bg-[#f8faf9]/10 rounded">
+                    <p className="text-3xl font-bold text-[#fcc56c] mb-1">3</p>
+                    <p className="text-[#f8faf9]/70 text-sm">Thành phố</p>
                   </div>
-                  <div className="text-center p-4 bg-cream/10 rounded">
-                    <p className="text-3xl font-bold text-gold mb-1">∞</p>
-                    <p className="text-cream/70 text-sm">Bài học</p>
+                  <div className="text-center p-4 bg-[#f8faf9]/10 rounded">
+                    <p className="text-3xl font-bold text-[#fcc56c] mb-1">∞</p>
+                    <p className="text-[#f8faf9]/70 text-sm">Bài học</p>
                   </div>
                 </div>
-                <div className="bg-warmwhite/10 p-4 rounded border-l-4 border-gold">
-                  <p className="text-cream/90 font-semibold mb-2">Memoire Saigon hôm nay</p>
-                  <p className="text-cream/70 text-sm">Không chỉ là một nhà hàng. Đây là nơi Bo áp dụng tất cả những gì đã học được: chất lượng sản phẩm, business skills, hệ thống vận hành, và quan trọng nhất - sự cân bằng trong cuộc sống.</p>
+                <div className="bg-[#f8faf9]/10 p-4 rounded border-l-4 border-[#fcc56c]">
+                  <p className="text-[#f8faf9]/90 font-semibold mb-2">Memoire Saigon hôm nay</p>
+                  <p className="text-[#f8faf9]/70 text-sm">Không chỉ là một nhà hàng. Đây là nơi Bo áp dụng tất cả những gì đã học được: chất lượng sản phẩm, business skills, hệ thống vận hành, và quan trọng nhất - sự cân bằng trong cuộc sống.</p>
                 </div>
               </div>
             </div>
@@ -346,66 +346,66 @@ export default function StoryPage() {
       </section>
 
       {/* Key Lessons */}
-      <section className="py-16 md:py-24 bg-espresso text-warmwhite">
+      <section className="py-16 md:py-24 bg-[#083121] text-[#f8faf9]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {currentLang === 'vi' ? 'Những bài học quan trọng' : 'Key Lessons'}
             </h2>
-            <p className="text-cream/70">
+            <p className="text-[#f8faf9]/70">
               {currentLang === 'vi' ? 'Từ 10+ năm trên hành trình F&B' : 'From 10+ years in F&B journey'}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-cream/10 p-6 rounded">
-              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+            <div className="bg-[#f8faf9]/10 p-6 rounded">
+              <div className="w-12 h-12 bg-[#fcc56c] rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">1</span>
               </div>
               <h3 className="text-xl font-bold mb-3">
                 {currentLang === 'vi' ? 'Thất bại là bài học quý nhất' : 'Failure is the most valuable lesson'}
               </h3>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? 'Đóng cửa Bonu ở London là thất bại lớn nhất. Nhưng cũng là bài học giá trị nhất - dạy Bo về business skills, không chỉ product skills.'
                   : 'Closing Bonu in London was the biggest failure. But also the most valuable lesson - teaching Bo about business skills, not just product skills.'}
               </p>
             </div>
 
-            <div className="bg-cream/10 p-6 rounded">
-              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+            <div className="bg-[#f8faf9]/10 p-6 rounded">
+              <div className="w-12 h-12 bg-[#fcc56c] rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">2</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Online ≠ Offline</h3>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? '8 năm bán online không tự động chuyển thành thành công offline. Hai mô hình cần skillsets hoàn toàn khác nhau.'
                   : '8 years of online sales don\'t automatically translate to offline success. Two models require completely different skillsets.'}
               </p>
             </div>
 
-            <div className="bg-cream/10 p-6 rounded">
-              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+            <div className="bg-[#f8faf9]/10 p-6 rounded">
+              <div className="w-12 h-12 bg-[#fcc56c] rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">3</span>
               </div>
               <h3 className="text-xl font-bold mb-3">
                 {currentLang === 'vi' ? 'Chất lượng + Business Skills' : 'Quality + Business Skills'}
               </h3>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? 'Sản phẩm ngon là nền tảng, nhưng không đủ. Cần kết hợp với business strategy, marketing, và hệ thống vận hành.'
                   : 'Good product is the foundation, but not enough. Need to combine with business strategy, marketing, and operational systems.'}
               </p>
             </div>
 
-            <div className="bg-cream/10 p-6 rounded">
-              <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-4">
+            <div className="bg-[#f8faf9]/10 p-6 rounded">
+              <div className="w-12 h-12 bg-[#fcc56c] rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">4</span>
               </div>
               <h3 className="text-xl font-bold mb-3">
                 {currentLang === 'vi' ? 'Tìm cân bằng riêng' : 'Finding your own balance'}
               </h3>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? 'Từ London đến Manchester, rồi Wales - hành trình tìm kiếm không chỉ là thành công kinh doanh mà còn là chất lượng cuộc sống.'
                   : 'From London to Manchester, then Wales - the journey seeking not just business success but also quality of life.'}
@@ -416,21 +416,21 @@ export default function StoryPage() {
       </section>
 
       {/* Call to Action */}
-      <section id="contact" className="py-16 md:py-24 bg-warmwhite">
+      <section id="contact" className="py-16 md:py-24 bg-[#f8faf9]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-espresso mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#083121] mb-6">
             {currentLang === 'vi' ? 'Bạn cũng đang trên hành trình F&B?' : 'Are you on your F&B journey too?'}
           </h2>
-          <p className="text-xl text-coffee mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-[#4a5c52] mb-8 max-w-2xl mx-auto">
             {currentLang === 'vi'
               ? 'Hãy để Bo chia sẻ những gì Bo đã học được qua 10+ năm - từ thất bại đến thành công. Có thể câu chuyện của Bo sẽ giúp bạn tránh được những sai lầm Bo đã mắc phải.'
               : 'Let Bo share what Bo has learned over 10+ years - from failure to success. Perhaps Bo\'s story will help you avoid the mistakes Bo made.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/culinary-consultation" className="inline-flex items-center justify-center gap-3 bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-colors">
+            <Link href="/culinary-consultation" className="inline-flex items-center justify-center gap-3 bg-[#083121] text-white px-8 py-4 font-semibold hover:bg-[#083121]/90 transition-colors">
               <span>{currentLang === 'vi' ? 'Tư vấn dịch vụ' : 'Consultation Services'}</span>
             </Link>
-            <a href="https://www.facebook.com/profile.php?id=100009102362568" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 border-2 border-espresso text-espresso px-8 py-4 font-semibold hover:bg-espresso/5 transition-colors">
+            <a href="https://www.facebook.com/profile.php?id=100009102362568" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 border-2 border-[#083121] text-[#083121] px-8 py-4 font-semibold hover:bg-[#083121]/5 transition-colors">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               <span>{currentLang === 'vi' ? 'Kết nối với Uyên' : 'Connect with Uyen'}</span>
             </a>
@@ -451,13 +451,13 @@ export default function StoryPage() {
           margin: 0.1em 0.1em 0 0;
           font-family: 'Playfair Display', serif;
           font-weight: 700;
-          color: #C4704A;
+          color: #fcc56c;
         }
 
         .article-text {
           font-size: 1.125rem;
           line-height: 1.75;
-          color: #4A3728;
+          color: #4a5c52;
         }
 
         .article-text p {
@@ -468,7 +468,7 @@ export default function StoryPage() {
           font-family: 'Playfair Display', serif;
           font-size: 2rem;
           font-weight: 700;
-          color: #C4704A;
+          color: #fcc56c;
           margin: 2rem 0 1rem 0;
         }
 
@@ -476,8 +476,8 @@ export default function StoryPage() {
           font-family: 'Playfair Display', serif;
           font-size: 1.5rem;
           font-style: italic;
-          color: #3D2314;
-          border-left: 4px solid #D4A853;
+          color: #083121;
+          border-left: 4px solid #fcc56c;
           padding-left: 1.5rem;
           margin: 2rem 0;
         }

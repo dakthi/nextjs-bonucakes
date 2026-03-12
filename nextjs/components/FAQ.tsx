@@ -71,15 +71,15 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-cream fade-in">
+    <section className="py-16 md:py-24 bg-light fade-in">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">
+          <p className="text-secondary uppercase tracking-widest text-sm mb-4 font-medium">
             FAQ
           </p>
           <h2
-            className="text-3xl md:text-4xl font-bold text-espresso"
+            className="text-3xl md:text-4xl font-bold text-primary"
             data-vi="Câu hỏi thường gặp"
             data-en="Frequently asked questions"
           >
@@ -92,24 +92,24 @@ export default function FAQ() {
           {faqItems.map((item, index) => (
             <details
               key={index}
-              className="bg-warmwhite border border-espresso/10 group"
+              className="bg-light border border-primary/10 group"
               open={openIndex === index}
               onClick={(e) => {
                 e.preventDefault();
                 toggleFAQ(index);
               }}
             >
-              <summary className="p-5 cursor-pointer flex justify-between items-center font-semibold text-espresso hover:bg-cream/50 transition-colors list-none">
+              <summary className="p-5 cursor-pointer flex justify-between items-center font-semibold text-primary hover:bg-light/50 transition-colors list-none">
                 <span>{item.question[currentLang]}</span>
                 <span
-                  className={`text-terracotta transition-transform ${
+                  className={`text-secondary transition-transform ${
                     openIndex === index ? 'rotate-45' : ''
                   }`}
                 >
                   +
                 </span>
               </summary>
-              <div className="px-5 pb-5 text-coffee">{item.answer[currentLang]}</div>
+              <div className="px-5 pb-5 text-muted">{item.answer[currentLang]}</div>
             </details>
           ))}
         </div>

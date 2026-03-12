@@ -294,15 +294,15 @@ export default function BlogPostPage() {
   return (
     <>
       {loading ? (
-        <div className="max-w-4xl mx-auto px-6 pt-24 md:pt-28 pb-12 text-center text-coffee">
+        <div className="max-w-4xl mx-auto px-6 pt-24 md:pt-28 pb-12 text-center text-[#4a5c52]">
           {currentLang === 'vi' ? 'Đang tải...' : 'Loading...'}
         </div>
       ) : notFound || !post ? (
         <div className="max-w-4xl mx-auto px-6 pt-24 md:pt-28 pb-12 text-center">
-          <h1 className="text-2xl font-bold font-serif text-espresso mb-4">
+          <h1 className="text-2xl font-bold font-serif text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Không tìm thấy bài viết' : 'Post not found'}
           </h1>
-          <Link href="/blog" className="text-terracotta hover:underline">
+          <Link href="/blog" className="text-[#fcc56c] hover:underline">
             ← {currentLang === 'vi' ? 'Quay lại Blog' : 'Back to Blog'}
           </Link>
         </div>
@@ -311,15 +311,15 @@ export default function BlogPostPage() {
       )}
 
       {/* Footer */}
-      <footer className="bg-espresso border-t border-gold/20 py-12">
+      <footer className="bg-[#083121] border-t border-[#fcc56c]/20 py-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <span className="text-2xl font-bold text-gold font-serif">
+              <span className="text-2xl font-bold text-[#fcc56c] font-serif">
                 Bonu F&B
               </span>
             </div>
-            <div className="flex gap-6 text-cream/60 text-sm">
+            <div className="flex gap-6 text-[#f8faf9]/60 text-sm">
               <Link href="/" className="hover:text-white transition-colors">
                 {currentLang === 'vi' ? 'Trang chủ' : 'Home'}
               </Link>
@@ -328,7 +328,7 @@ export default function BlogPostPage() {
               </Link>
             </div>
           </div>
-          <div className="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
+          <div className="border-t border-[#f8faf9]/10 mt-8 pt-8 text-center text-[#f8faf9]/40 text-sm">
             <p>&copy; 2026 Uyen Nguyen - F&B Business Design</p>
           </div>
         </div>

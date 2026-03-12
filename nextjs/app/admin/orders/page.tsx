@@ -283,7 +283,7 @@ export default function AdminOrdersPage() {
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
-                  className="rounded-md border-gray-300 text-sm focus:ring-amber-500 focus:border-amber-500"
+                  className="rounded-md border-gray-300 text-sm focus:ring-[#083121] focus:border-[#083121]"
                 >
                   {statusFilters.map(sf => (
                     <option key={sf.value} value={sf.value}>{sf.label}</option>

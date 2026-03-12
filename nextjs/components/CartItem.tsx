@@ -61,7 +61,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
   };
 
   return (
-    <div className="flex gap-4 bg-white border border-espresso/10 p-4">
+    <div className="flex gap-4 bg-white border border-primary/10 p-4">
       {/* Product Image */}
       {item.image ? (
         <img
@@ -70,19 +70,19 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
           className="w-24 h-24 object-cover"
         />
       ) : (
-        <div className="w-24 h-24 bg-cream flex items-center justify-center text-coffee text-sm">
+        <div className="w-24 h-24 bg-light flex items-center justify-center text-muted text-sm">
           No Image
         </div>
       )}
 
       {/* Product Details */}
       <div className="flex-grow">
-        <h3 className="text-lg font-bold text-espresso mb-1">{itemName}</h3>
-        <p className="text-terracotta font-semibold mb-2">{formatPrice()}</p>
+        <h3 className="text-lg font-bold text-primary mb-1">{itemName}</h3>
+        <p className="text-secondary font-semibold mb-2">{formatPrice()}</p>
 
         {/* Promotion Badge */}
         {freeItems > 0 && (
-          <p className="text-sm text-gold font-semibold mb-2">
+          <p className="text-sm text-secondary font-semibold mb-2">
             {currentLang === 'vi' ? 'Mua 10 tặng 1' : 'Buy 10 get 1 free'} (
             {currentLang === 'vi' ? 'thực tế' : 'actual'}: {actualQuantity})
           </p>
@@ -92,7 +92,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
         <div className="flex items-center gap-3">
           <button
             onClick={handleDecrement}
-            className="w-8 h-8 border border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold transition-colors"
+            className="w-8 h-8 border border-primary/20 hover:bg-primary/10 flex items-center justify-center font-bold transition-colors"
             aria-label="Decrease quantity"
           >
             -
@@ -100,11 +100,11 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
 
           <span className="w-12 text-center font-semibold">{item.quantity}</span>
 
-          {unit && <span className="text-sm text-coffee">({unit})</span>}
+          {unit && <span className="text-sm text-muted">({unit})</span>}
 
           <button
             onClick={handleIncrement}
-            className="w-8 h-8 border border-espresso/20 hover:bg-espresso/10 flex items-center justify-center font-bold transition-colors"
+            className="w-8 h-8 border border-primary/20 hover:bg-primary/10 flex items-center justify-center font-bold transition-colors"
             aria-label="Increase quantity"
           >
             +
@@ -112,7 +112,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
 
           <button
             onClick={handleRemove}
-            className="ml-auto text-terracotta hover:text-terracotta/80 text-sm font-semibold transition-colors"
+            className="ml-auto text-secondary hover:text-secondary/80 text-sm font-semibold transition-colors"
           >
             {currentLang === 'vi' ? 'Xóa' : 'Remove'}
           </button>

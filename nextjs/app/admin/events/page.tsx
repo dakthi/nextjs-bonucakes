@@ -88,7 +88,7 @@ export default function EventsPage() {
             </div>
             <Link
               href="/admin/events/new"
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52]"
             >
               Add Event
             </Link>
@@ -180,7 +180,7 @@ export default function EventsPage() {
                               </span>
                             )}
                             {event.featured && (
-                              <span className="px-2 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">
+                              <span className="px-2 py-1 text-xs font-semibold rounded-full bg-[#fcc56c]/20 text-[#083121]">
                                 Featured
                               </span>
                             )}
@@ -189,7 +189,7 @@ export default function EventsPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <Link
                             href={`/admin/events/${event.id}`}
-                            className="text-amber-600 hover:text-amber-900 mr-4"
+                            className="text-[#083121] hover:text-[#4a5c52] mr-4"
                           >
                             Edit
                           </Link>

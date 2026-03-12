@@ -69,13 +69,13 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen flex flex-col pt-20">
-        <div className="bg-amber-50 py-16">
+        <div className="bg-[#f8faf9] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl font-bold text-[#083121] mb-4">
                 Events & Workshops
               </h1>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-[#4a5c52] max-w-2xl mx-auto">
                 Join us for exciting culinary events, workshops, and tastings
               </p>
             </div>
@@ -88,8 +88,8 @@ export default function EventsPage() {
               onClick={() => setFilter("upcoming")}
               className={`px-6 py-2 rounded-full font-medium transition-colors ${
                 filter === "upcoming"
-                  ? "bg-amber-600 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-[#083121] text-white"
+                  : "bg-[#f8faf9] text-[#4a5c52] hover:bg-[#083121]/10"
               }`}
             >
               Upcoming Events
@@ -98,8 +98,8 @@ export default function EventsPage() {
               onClick={() => setFilter("all")}
               className={`px-6 py-2 rounded-full font-medium transition-colors ${
                 filter === "all"
-                  ? "bg-amber-600 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-[#083121] text-white"
+                  : "bg-[#f8faf9] text-[#4a5c52] hover:bg-[#083121]/10"
               }`}
             >
               All Events
@@ -108,8 +108,8 @@ export default function EventsPage() {
               onClick={() => setFilter("featured")}
               className={`px-6 py-2 rounded-full font-medium transition-colors ${
                 filter === "featured"
-                  ? "bg-amber-600 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-[#083121] text-white"
+                  : "bg-[#f8faf9] text-[#4a5c52] hover:bg-[#083121]/10"
               }`}
             >
               Featured
@@ -117,12 +117,12 @@ export default function EventsPage() {
           </div>
 
           {loading ? (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-[#4a5c52]">
               Loading events...
             </div>
           ) : events.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">
+              <p className="text-[#4a5c52] text-lg">
                 No events found. Check back soon for upcoming workshops and tastings!
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function EventsPage() {
                     }`}
                   >
                     {event.image ? (
-                      <div className="relative h-48 bg-gray-200">
+                      <div className="relative h-48 bg-[#f8faf9]">
                         <img
                           src={event.image}
                           alt={event.titleEn}
@@ -146,25 +146,25 @@ export default function EventsPage() {
                         />
                         {event.featured && (
                           <div className="absolute top-4 right-4">
-                            <span className="px-3 py-1 bg-amber-600 text-white text-xs font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-[#fcc56c] text-[#083121] text-xs font-semibold rounded-full">
                               Featured
                             </span>
                           </div>
                         )}
                         {past && (
                           <div className="absolute top-4 left-4">
-                            <span className="px-3 py-1 bg-gray-600 text-white text-xs font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-[#4a5c52] text-white text-xs font-semibold rounded-full">
                               Past Event
                             </span>
                           </div>
                         )}
                       </div>
                     ) : (
-                      <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center relative">
+                      <div className="h-48 bg-gradient-to-br from-[#f8faf9] to-[#fcc56c]/30 flex items-center justify-center relative">
                         <span className="text-4xl">📅</span>
                         {event.featured && (
                           <div className="absolute top-4 right-4">
-                            <span className="px-3 py-1 bg-amber-600 text-white text-xs font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-[#fcc56c] text-[#083121] text-xs font-semibold rounded-full">
                               Featured
                             </span>
                           </div>
@@ -175,34 +175,34 @@ export default function EventsPage() {
                     <div className="p-6">
                       {event.category && (
                         <div className="mb-2">
-                          <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+                          <span className="inline-block px-2 py-1 bg-[#f8faf9] text-[#4a5c52] text-xs font-semibold rounded">
                             {event.category}
                           </span>
                         </div>
                       )}
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      <h3 className="text-xl font-bold text-[#083121] mb-2">
                         {event.titleEn}
                       </h3>
-                      <p className="text-sm text-gray-600 mb-1">
+                      <p className="text-sm text-[#4a5c52] mb-1">
                         {event.titleVi}
                       </p>
 
                       <div className="mt-4 space-y-2">
-                        <div className="flex items-start text-sm text-gray-600">
+                        <div className="flex items-start text-sm text-[#4a5c52]">
                           <span className="font-semibold mr-2">📅</span>
                           <span>{formatDate(event.eventDate)}</span>
                         </div>
 
                         {event.eventTime && (
-                          <div className="flex items-start text-sm text-gray-600">
+                          <div className="flex items-start text-sm text-[#4a5c52]">
                             <span className="font-semibold mr-2">🕐</span>
                             <span>{event.eventTime}</span>
                           </div>
                         )}
 
                         {event.locationEn && (
-                          <div className="flex items-start text-sm text-gray-600">
+                          <div className="flex items-start text-sm text-[#4a5c52]">
                             <span className="font-semibold mr-2">📍</span>
                             <div>
                               <div>{event.locationEn}</div>
@@ -214,7 +214,7 @@ export default function EventsPage() {
                         )}
 
                         {event.maxAttendees && (
-                          <div className="flex items-start text-sm text-gray-600">
+                          <div className="flex items-start text-sm text-[#4a5c52]">
                             <span className="font-semibold mr-2">👥</span>
                             <span>
                               {event.currentAttendees} / {event.maxAttendees} attendees
@@ -224,13 +224,13 @@ export default function EventsPage() {
 
                         <div className="flex items-start text-sm">
                           <span className="font-semibold mr-2">💰</span>
-                          <span className="font-bold text-gray-900">
+                          <span className="font-bold text-[#083121]">
                             {event.price ? `£${event.price}` : "Free"}
                           </span>
                         </div>
                       </div>
 
-                      <p className="mt-4 text-sm text-gray-600 line-clamp-3">
+                      <p className="mt-4 text-sm text-[#4a5c52] line-clamp-3">
                         {event.descriptionEn}
                       </p>
 
@@ -240,7 +240,7 @@ export default function EventsPage() {
                             href={event.registrationUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full text-center px-4 py-2 bg-amber-600 text-white font-medium rounded-md hover:bg-amber-700 transition-colors"
+                            className="block w-full text-center px-4 py-2 bg-[#083121] text-white font-medium rounded-md hover:bg-[#083121]/90 transition-colors"
                           >
                             Register Now
                           </a>
@@ -249,7 +249,7 @@ export default function EventsPage() {
 
                       {!past && !event.registrationUrl && (
                         <div className="mt-6">
-                          <button className="block w-full text-center px-4 py-2 bg-gray-300 text-gray-600 font-medium rounded-md cursor-not-allowed">
+                          <button className="block w-full text-center px-4 py-2 bg-[#f8faf9] text-[#4a5c52] font-medium rounded-md cursor-not-allowed">
                             Registration Coming Soon
                           </button>
                         </div>

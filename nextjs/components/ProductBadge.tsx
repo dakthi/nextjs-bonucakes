@@ -19,12 +19,12 @@ export default function ProductBadge({ type, text, className = '' }: ProductBadg
       case 'featured':
         return {
           text: currentLang === 'vi' ? 'Nổi bật' : 'Featured',
-          className: 'bg-gold text-espresso',
+          className: 'bg-secondary text-primary',
         };
       case 'promotion':
         return {
           text: text ? text[currentLang] : '',
-          className: 'bg-terracotta text-white',
+          className: 'bg-primary text-white',
         };
       case 'out-of-stock':
         return {

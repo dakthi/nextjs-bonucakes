@@ -78,7 +78,7 @@ export default function CoursesPage() {
             </div>
             <Link
               href="/admin/courses/new"
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52]"
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Course
@@ -156,7 +156,7 @@ export default function CoursesPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <Link
                             href={`/admin/courses/${course.id}`}
-                            className="text-amber-600 hover:text-amber-900 mr-4"
+                            className="text-[#083121] hover:text-[#4a5c52] mr-4"
                           >
                             Edit
                           </Link>

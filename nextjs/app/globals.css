@@ -2,13 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: #083121;
+  --color-secondary: #fcc56c;
+  --color-muted: #4a5c52;
+  --color-light: #f8faf9;
+  --color-white: #ffffff;
+  --color-gold-light-50: #fef3d6;
+  --color-gold-light-70: #fefaed;
+  --color-success: #10B981;
+  --color-disabled: #CBD5E1;
+
+  --font-family: 'Avenir Next', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  --shadow-sm: 0 1px 2px rgba(8, 49, 33, 0.05);
+  --shadow-md: 0 2px 8px rgba(8, 49, 33, 0.08);
+  --shadow-lg: 0 4px 16px rgba(8, 49, 33, 0.12);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply font-sans text-espresso bg-warmwhite;
+    @apply font-sans text-primary bg-light;
   }
 
   h1, h2, h3, h4, h5, h6 {

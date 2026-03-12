@@ -124,31 +124,31 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-light">
       {/* Hero Section */}
-      <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
+      <header className="relative bg-light pt-32 pb-16 border-b border-primary/10">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-espresso mb-4 font-serif">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-serif">
             {translations.title[currentLang]}
           </h1>
-          <p className="text-lg text-coffee">{translations.subtitle[currentLang]}</p>
+          <p className="text-lg text-muted">{translations.subtitle[currentLang]}</p>
         </div>
       </header>
 
       {/* Checkout Content */}
-      <section className="py-16 bg-cream">
+      <section className="py-16 bg-light">
         <div className="max-w-6xl mx-auto px-6">
           {/* Empty Cart Warning */}
           {isEmpty && (
             <div className="text-center py-12">
-              <div className="bg-warmwhite border border-terracotta/30 p-8 rounded max-w-2xl mx-auto">
-                <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+              <div className="bg-light border border-secondary/30 p-8 rounded max-w-2xl mx-auto">
+                <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
                   {translations.emptyTitle[currentLang]}
                 </h2>
-                <p className="text-coffee mb-6">{translations.emptyMessage[currentLang]}</p>
+                <p className="text-muted mb-6">{translations.emptyMessage[currentLang]}</p>
                 <Link
                   href="/products"
-                  className="inline-block bg-terracotta text-white px-8 py-3 font-semibold hover:bg-terracotta/90 transition-colors"
+                  className="inline-block bg-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors"
                 >
                   {translations.viewProducts[currentLang]}
                 </Link>
@@ -169,7 +169,7 @@ export default function CheckoutPage() {
 
                 {/* Error Message */}
                 {error && (
-                  <div className="mt-4 bg-terracotta/10 border border-terracotta text-terracotta px-4 py-3 rounded">
+                  <div className="mt-4 bg-red-50 border border-red-500 text-red-700 px-4 py-3 rounded">
                     <p>{error}</p>
                   </div>
                 )}

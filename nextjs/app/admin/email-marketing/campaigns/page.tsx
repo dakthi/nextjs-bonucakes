@@ -265,7 +265,7 @@ export default function EmailCampaignsPage() {
                       value={campaignName}
                       onChange={(e) => setCampaignName(e.target.value)}
                       placeholder="March 2026 Workshop Reminder"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#fcc56c] focus:border-[#fcc56c]"
                     />
                   </div>
                 </div>
@@ -284,8 +284,8 @@ export default function EmailCampaignsPage() {
                         onClick={() => setSelectedTemplate(template)}
                         className={`p-4 border-2 rounded-lg text-left transition-colors ${
                           selectedTemplate?.id === template.id
-                            ? "border-amber-500 bg-amber-50"
-                            : "border-gray-200 hover:border-amber-300"
+                            ? "border-[#fcc56c] bg-[#fcc56c]/10"
+                            : "border-gray-200 hover:border-[#fcc56c]/60"
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -313,7 +313,7 @@ export default function EmailCampaignsPage() {
                     value={customSubject}
                     onChange={(e) => setCustomSubject(e.target.value)}
                     placeholder="Email subject line"
-                    className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                    className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#fcc56c] focus:border-[#fcc56c]"
                   />
                 </div>
               )}
@@ -338,7 +338,7 @@ export default function EmailCampaignsPage() {
                           onClick={() => toggleTag(tag)}
                           className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                             filters.tags.includes(tag)
-                              ? "bg-amber-100 text-amber-800 border-2 border-amber-500"
+                              ? "bg-[#fcc56c]/20 text-[#083121] border-2 border-[#fcc56c]"
                               : "bg-gray-100 text-gray-700 border-2 border-transparent hover:border-gray-300"
                           }`}
                         >
@@ -356,7 +356,7 @@ export default function EmailCampaignsPage() {
                     <select
                       value={filters.location}
                       onChange={(e) => setFilters({...filters, location: e.target.value})}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#fcc56c] focus:border-[#fcc56c]"
                     >
                       <option value="">All Locations</option>
                       {availableLocations.map((loc) => (
@@ -376,7 +376,7 @@ export default function EmailCampaignsPage() {
                         ...filters,
                         hasOrders: e.target.value === "" ? null : e.target.value === "true"
                       })}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#fcc56c] focus:border-[#fcc56c]"
                     >
                       <option value="">All Customers</option>
                       <option value="true">Has Orders</option>
@@ -390,7 +390,7 @@ export default function EmailCampaignsPage() {
                       type="checkbox"
                       checked={filters.marketingConsent}
                       onChange={(e) => setFilters({...filters, marketingConsent: e.target.checked})}
-                      className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                      className="h-4 w-4 text-[#083121] focus:ring-[#fcc56c] border-gray-300 rounded accent-[#083121]"
                     />
                     <label className="ml-2 text-sm text-gray-700">
                       Only customers who consented to marketing
@@ -414,7 +414,7 @@ export default function EmailCampaignsPage() {
                 {recipientCount > 0 && (
                   <button
                     onClick={() => setShowRecipientList(!showRecipientList)}
-                    className="mt-3 text-sm text-amber-600 hover:text-amber-700 font-medium"
+                    className="mt-3 text-sm text-[#083121] hover:text-[#083121]/80 font-medium"
                   >
                     {showRecipientList ? "Hide" : "Show"} recipient list
                   </button>
@@ -428,7 +428,7 @@ export default function EmailCampaignsPage() {
                     type="checkbox"
                     checked={testMode}
                     onChange={(e) => setTestMode(e.target.checked)}
-                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-[#083121] focus:ring-[#fcc56c] border-gray-300 rounded accent-[#083121]"
                   />
                   <label className="ml-2 text-sm font-medium text-gray-700">
                     Test Mode
@@ -444,7 +444,7 @@ export default function EmailCampaignsPage() {
                       value={testEmail}
                       onChange={(e) => setTestEmail(e.target.value)}
                       placeholder="your@email.com"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#fcc56c] focus:border-[#fcc56c]"
                     />
                     <p className="mt-2 text-xs text-gray-500">
                       Test mode will send only to this email address
@@ -467,7 +467,7 @@ export default function EmailCampaignsPage() {
                 <button
                   onClick={sendCampaign}
                   disabled={!selectedTemplate || !campaignName || (!testMode && recipientCount === 0) || (testMode && !testEmail) || sending}
-                  className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#083121]/90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="h-4 w-4 mr-2" />
                   {sending ? "Sending..." : testMode ? "Send Test Email" : "Send Campaign"}
@@ -476,16 +476,16 @@ export default function EmailCampaignsPage() {
 
               {/* Selected Filters Summary */}
               {(filters.tags.length > 0 || filters.location) && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="text-sm font-medium text-blue-900 mb-2">Active Filters:</h4>
+                <div className="bg-[#fcc56c]/10 border border-[#fcc56c] rounded-lg p-4">
+                  <h4 className="text-sm font-medium text-[#083121] mb-2">Active Filters:</h4>
                   <div className="space-y-1">
                     {filters.tags.length > 0 && (
-                      <p className="text-sm text-blue-700">
+                      <p className="text-sm text-[#083121]/80">
                         Tags: {filters.tags.join(", ")}
                       </p>
                     )}
                     {filters.location && (
-                      <p className="text-sm text-blue-700">
+                      <p className="text-sm text-[#083121]/80">
                         Location: {filters.location}
                       </p>
                     )}
@@ -542,7 +542,7 @@ export default function EmailCampaignsPage() {
                               {customer.tags.slice(0, 3).map((tag) => (
                                 <span
                                   key={tag}
-                                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800"
+                                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#fcc56c]/20 text-[#083121]"
                                 >
                                   {tag}
                                 </span>

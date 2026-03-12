@@ -40,7 +40,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
     return (
       <div className="grid md:grid-cols-2 gap-8 items-center">
         {post.image ? (
-          <div className="bg-white border-2 border-espresso/10 p-3">
+          <div className="bg-white border-2 border-[#083121]/10 p-3">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <Image
                 src={post.image}
@@ -52,31 +52,31 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             </div>
           </div>
         ) : (
-          <div className="bg-gradient-to-br from-terracotta/10 to-gold/10 h-96" />
+          <div className="bg-gradient-to-br from-[#083121]/10 to-[#fcc56c]/10 h-96" />
         )}
         <div>
-          <div className="text-xs uppercase tracking-wider text-terracotta font-bold mb-2">
+          <div className="text-xs uppercase tracking-wider text-[#fcc56c] font-bold mb-2">
             {currentLang === 'vi' ? 'BÀI VIẾT CHÍNH' : 'FEATURED POST'}
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold font-serif text-espresso mb-4 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#083121] mb-4 leading-tight">
             <Link
               href={`/blog/${post.slug}`}
-              className="hover:text-terracotta transition-colors"
+              className="hover:text-[#fcc56c] transition-colors"
             >
               {title}
             </Link>
           </h2>
           {excerpt && (
-            <p className="text-coffee text-lg mb-4 leading-relaxed">
+            <p className="text-[#4a5c52] text-lg mb-4 leading-relaxed">
               {excerpt}
             </p>
           )}
-          <div className="flex items-center gap-4 text-sm text-coffee/70">
+          <div className="flex items-center gap-4 text-sm text-[#4a5c52]/70">
             <time>{formatDate(post.date)}</time>
             <span>•</span>
             <Link
               href={`/blog/${post.slug}`}
-              className="text-terracotta font-medium hover:underline"
+              className="text-[#fcc56c] font-medium hover:underline"
             >
               {currentLang === 'vi' ? 'Đọc tiếp' : 'Read more'}
             </Link>
@@ -87,10 +87,10 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
   }
 
   return (
-    <article className="border-b border-espresso/10 pb-8 hover:border-terracotta/30 transition-colors">
+    <article className="border-b border-[#083121]/10 pb-8 hover:border-[#fcc56c]/30 transition-colors">
       <Link href={`/blog/${post.slug}`} className="block group">
         {post.image && (
-          <div className="mb-4 bg-white border border-espresso/5 p-2">
+          <div className="mb-4 bg-white border border-[#083121]/5 p-2">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <Image
                 src={post.image}
@@ -102,18 +102,18 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             </div>
           </div>
         )}
-        <time className="text-xs text-coffee/60 uppercase tracking-wider">
+        <time className="text-xs text-[#4a5c52]/60 uppercase tracking-wider">
           {formatDate(post.date)}
         </time>
-        <h2 className="text-xl font-bold font-serif text-espresso mt-2 mb-3 leading-tight group-hover:text-terracotta transition-colors">
+        <h2 className="text-xl font-bold font-serif text-[#083121] mt-2 mb-3 leading-tight group-hover:text-[#fcc56c] transition-colors">
           {title}
         </h2>
         {excerpt && (
-          <p className="text-coffee text-sm leading-relaxed line-clamp-3 mb-3">
+          <p className="text-[#4a5c52] text-sm leading-relaxed line-clamp-3 mb-3">
             {excerpt}
           </p>
         )}
-        <span className="text-terracotta text-sm font-medium group-hover:underline">
+        <span className="text-[#fcc56c] text-sm font-medium group-hover:underline">
           {currentLang === 'vi' ? 'Đọc tiếp' : 'Read more'}
         </span>
       </Link>

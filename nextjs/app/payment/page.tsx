@@ -119,38 +119,38 @@ function PaymentContent() {
   };
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-light">
       {/* Hero Section */}
-      <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
+      <header className="relative bg-light pt-32 pb-16 border-b border-primary/10">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-espresso mb-4 font-serif">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-serif">
               {translations.title[currentLang]}
             </h1>
-            <p className="text-lg text-coffee">
+            <p className="text-lg text-muted">
               {translations.subtitle[currentLang]}
             </p>
           </div>
         </header>
 
         {/* Payment Content */}
-        <section className="py-16 bg-cream">
+        <section className="py-16 bg-light">
           <div className="max-w-2xl mx-auto px-6">
             {loading && (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta mx-auto mb-4"></div>
-                <p className="text-coffee">{translations.loading[currentLang]}</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary mx-auto mb-4"></div>
+                <p className="text-muted">{translations.loading[currentLang]}</p>
               </div>
             )}
 
             {error && (
-              <div className="bg-warmwhite border border-terracotta/30 p-8 rounded">
-                <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+              <div className="bg-light border border-secondary/30 p-8 rounded">
+                <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
                   {translations.errorTitle[currentLang]}
                 </h2>
-                <p className="text-coffee mb-6">{error}</p>
+                <p className="text-muted mb-6">{error}</p>
                 <a
                   href="/"
-                  className="inline-block bg-terracotta text-white px-8 py-3 font-semibold hover:bg-terracotta/90 transition-colors"
+                  className="inline-block bg-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors"
                 >
                   {translations.backToHome[currentLang]}
                 </a>
@@ -158,21 +158,21 @@ function PaymentContent() {
             )}
 
             {!loading && !error && clientSecret && stripe && (
-              <div className="bg-white border border-espresso/10 p-8 rounded">
+              <div className="bg-white border border-primary/10 p-8 rounded">
                 {orderCode && (
-                  <div className="mb-6 pb-6 border-b border-espresso/10">
+                  <div className="mb-6 pb-6 border-b border-primary/10">
                     <div className="flex justify-between items-center">
-                      <span className="text-coffee">
+                      <span className="text-muted">
                         {translations.orderNumber[currentLang]}
                       </span>
-                      <span className="font-bold text-espresso text-xl">
+                      <span className="font-bold text-primary text-xl">
                         #{orderCode}
                       </span>
                     </div>
                   </div>
                 )}
 
-                <h2 className="text-2xl font-bold text-espresso mb-6 font-serif">
+                <h2 className="text-2xl font-bold text-primary mb-6 font-serif">
                   {translations.paymentDetails[currentLang]}
                 </h2>
 
@@ -183,9 +183,9 @@ function PaymentContent() {
                     appearance: {
                       theme: 'stripe',
                       variables: {
-                        colorPrimary: '#D4734C',
+                        colorPrimary: '#083121',
                         colorBackground: '#FFFFFF',
-                        colorText: '#3E2723',
+                        colorText: '#083121',
                         colorDanger: '#D32F2F',
                         fontFamily: 'system-ui, sans-serif',
                         borderRadius: '4px',

@@ -43,7 +43,7 @@ export default function Hero() {
   const currentLang = useLanguage();
 
   return (
-    <header className="relative text-warmwhite pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden fade-in">
+    <header className="relative text-white pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden fade-in">
       {/* Video Background */}
       <video
         autoPlay
@@ -56,11 +56,11 @@ export default function Hero() {
       </video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-espresso/50"></div>
+      <div className="absolute inset-0 bg-[#083121]/50"></div>
 
       {/* Content */}
       <div className="relative max-w-6xl mx-auto px-6 text-center">
-        <p className="text-gold uppercase tracking-widest text-sm mb-4 font-medium">
+        <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-4 font-medium">
           {heroContent.tagline[currentLang]}
         </p>
 
@@ -69,24 +69,24 @@ export default function Hero() {
           dangerouslySetInnerHTML={{ __html: heroContent.title[currentLang] }}
         />
 
-        <p className="text-xl text-cream/80 mb-8 max-w-2xl mx-auto">
+        <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
           {heroContent.subtitle[currentLang]}
         </p>
 
-        <p className="text-lg text-cream/70 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
           {heroContent.description[currentLang]}
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="#courses"
-            className="bg-terracotta text-white px-8 py-4 font-semibold hover:bg-terracotta/90 transition-all hover:-translate-y-0.5"
+            className="bg-[#fcc56c] text-[#083121] px-8 py-4 font-semibold hover:bg-[#fcc56c]/90 transition-all hover:-translate-y-0.5"
           >
             {heroContent.ctaPrimary[currentLang]}
           </Link>
           <Link
             href="#contact"
-            className="border border-gold/50 text-gold px-8 py-4 font-semibold hover:bg-gold/10 transition-all hover:-translate-y-0.5"
+            className="border border-[#fcc56c]/50 text-[#fcc56c] px-8 py-4 font-semibold hover:bg-[#fcc56c]/10 transition-all hover:-translate-y-0.5"
           >
             {heroContent.ctaSecondary[currentLang]}
           </Link>

@@ -22,21 +22,21 @@ export default function Footer() {
   const currentLang = useLanguage();
 
   return (
-    <footer className="bg-espresso border-t border-gold/20 py-12">
+    <footer className="bg-[#083121] border-t border-[#fcc56c]/20 py-12">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Brand - Playfair Display */}
           <Link
             href="/"
-            className="text-2xl font-bold text-gold"
+            className="text-2xl font-bold text-[#fcc56c] hover:text-white transition-colors"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Bonu F&B
+            Bonucakes
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex gap-6 text-cream/60 text-sm">
+          <div className="flex gap-6 text-[#fcc56c] text-sm">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
@@ -52,8 +52,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-cream/10 mt-8 pt-8 text-center text-cream/40 text-sm">
-          <p>&copy; 2026 Uyen Nguyen - F&B Business Design</p>
+        <div className="border-t border-white/10 mt-8 pt-8 text-center text-white/60 text-sm">
+          <p>&copy; 2026 Bonucakes</p>
         </div>
       </div>
     </footer>

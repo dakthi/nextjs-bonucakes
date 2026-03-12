@@ -283,17 +283,17 @@ export default function ProductsPage() {
   // This function is no longer needed as ProductCard now handles add to cart via Zustand
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-light">
       {/* Hero Section */}
-      <header className="relative bg-warmwhite pt-32 pb-16 border-b border-espresso/10">
+      <header className="relative bg-light pt-32 pb-16 border-b border-primary/10">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-terracotta uppercase tracking-widest text-sm mb-4 font-medium">
+          <p className="text-secondary uppercase tracking-widest text-sm mb-4 font-medium">
             {currentLang === 'vi' ? 'Sản phẩm của chúng tôi' : 'Our Products'}
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-espresso mb-6 font-serif">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-serif">
             {currentLang === 'vi' ? 'Bếp Bà Bo' : 'Bếp Bà Bo'}
           </h1>
-          <p className="text-xl text-coffee max-w-3xl mx-auto">
+          <p className="text-xl text-muted max-w-3xl mx-auto">
             {currentLang === 'vi'
               ? 'Đồ ăn Việt Nam tự làm với công thức truyền thống. Chất lượng tươi ngon, đóng gói cẩn thận, giao hàng nhanh chóng.'
               : 'Homemade Vietnamese food with traditional recipes. Fresh quality, carefully packaged, fast delivery.'}
@@ -324,7 +324,7 @@ export default function ProductsPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-coffee text-lg">
+              <p className="text-muted text-lg">
                 {currentLang === 'vi' ? 'Chưa có sản phẩm nào.' : 'No products available yet.'}
               </p>
             </div>

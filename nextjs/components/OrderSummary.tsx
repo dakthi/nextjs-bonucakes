@@ -50,12 +50,12 @@ export default function OrderSummary({
   const title = showCheckoutButton ? translations.title : translations.titleCheckout;
 
   return (
-    <div className="bg-white border border-espresso/10 p-6 sticky top-24">
-      <h2 className="text-2xl font-bold text-espresso mb-6">{title[currentLang]}</h2>
+    <div className="bg-white border border-primary/10 p-6 sticky top-24">
+      <h2 className="text-2xl font-bold text-primary mb-6">{title[currentLang]}</h2>
 
       {/* Order Items List (only show in checkout) */}
       {showItems && items.length > 0 && (
-        <div className="space-y-4 mb-6 pb-6 border-b border-espresso/10">
+        <div className="space-y-4 mb-6 pb-6 border-b border-primary/10">
           {items.map((item) => {
             const itemName = currentLang === 'vi' ? item.productName.vi : item.productName.en;
             const unit = currentLang === 'vi' ? item.unitVi : item.unitEn;
@@ -78,17 +78,17 @@ export default function OrderSummary({
             return (
               <div key={item.productId} className="flex justify-between text-sm">
                 <div className="flex-grow">
-                  <p className="font-semibold text-espresso">
+                  <p className="font-semibold text-primary">
                     {item.quantity}x {itemName} {unit && `(${unit})`}
                   </p>
                   {freeItems > 0 && (
-                    <p className="text-xs text-gold">
+                    <p className="text-xs text-secondary">
                       {currentLang === 'vi' ? 'Tặng' : 'Free'}: +{freeItems}
                     </p>
                   )}
                 </div>
                 <div className="text-right">
-                  <p className="font-semibold text-terracotta">{formatPrice()}</p>
+                  <p className="font-semibold text-secondary">{formatPrice()}</p>
                 </div>
               </div>
             );
@@ -98,16 +98,16 @@ export default function OrderSummary({
 
       {/* Totals */}
       <div className="space-y-4 mb-6">
-        <div className="flex justify-between text-coffee">
+        <div className="flex justify-between text-muted">
           <span>{translations.subtotal[currentLang]}</span>
           <span>£{subtotal.toFixed(2)}</span>
         </div>
-        <div className="flex justify-between text-coffee">
+        <div className="flex justify-between text-muted">
           <span>{translations.shipping[currentLang]}</span>
           <span>£{shipping.toFixed(2)}</span>
         </div>
-        <div className="border-t border-espresso/10 pt-4">
-          <div className="flex justify-between text-lg font-bold text-espresso">
+        <div className="border-t border-primary/10 pt-4">
+          <div className="flex justify-between text-lg font-bold text-primary">
             <span>{translations.total[currentLang]}</span>
             <span>£{total.toFixed(2)}</span>
           </div>
@@ -117,11 +117,11 @@ export default function OrderSummary({
       {/* Promotions */}
       {promotions.length > 0 && (
         <div className="mb-6">
-          <div className="bg-gold/10 border border-gold/30 p-4 rounded">
-            <p className="text-sm font-semibold text-espresso mb-2">
+          <div className="bg-secondary/10 border border-secondary/30 p-4 rounded">
+            <p className="text-sm font-semibold text-primary mb-2">
               {translations.promotions[currentLang]}
             </p>
-            <div className="text-sm text-coffee space-y-1">
+            <div className="text-sm text-muted space-y-1">
               {promotions.map((promo) => {
                 const productName =
                   currentLang === 'vi' ? promo.productName.vi : promo.productName.en;
@@ -141,14 +141,14 @@ export default function OrderSummary({
         <>
           <Link
             href="/checkout"
-            className="block w-full text-center bg-terracotta text-white px-6 py-4 font-semibold hover:bg-terracotta/90 transition-colors mb-4"
+            className="block w-full text-center bg-primary text-white px-6 py-4 font-semibold hover:bg-primary/90 transition-colors mb-4"
           >
             {translations.proceedToCheckout[currentLang]}
           </Link>
           {showContinueShopping && (
             <Link
               href="/products"
-              className="block w-full text-center border border-espresso/20 text-espresso px-6 py-3 font-semibold hover:bg-espresso/5 transition-colors"
+              className="block w-full text-center border border-primary/20 text-primary px-6 py-3 font-semibold hover:bg-primary/5 transition-colors"
             >
               {translations.continueShopping[currentLang]}
             </Link>
@@ -164,7 +164,7 @@ export default function OrderSummary({
             form={checkoutFormId}
             onClick={onSubmit}
             disabled={isSubmitting}
-            className="w-full bg-terracotta text-white px-6 py-4 font-semibold hover:bg-terracotta/90 transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary text-white px-6 py-4 font-semibold hover:bg-primary/90 transition-colors mb-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting
               ? currentLang === 'vi'
@@ -174,7 +174,7 @@ export default function OrderSummary({
           </button>
           <Link
             href="/cart"
-            className="block w-full text-center border border-espresso/20 text-espresso px-6 py-3 font-semibold hover:bg-espresso/5 transition-colors"
+            className="block w-full text-center border border-primary/20 text-primary px-6 py-3 font-semibold hover:bg-primary/5 transition-colors"
           >
             {translations.backToCart[currentLang]}
           </Link>

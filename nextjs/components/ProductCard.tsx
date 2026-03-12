@@ -120,10 +120,10 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   };
 
   return (
-    <div className="flex flex-col bg-white border border-espresso/10 overflow-hidden transition-transform duration-200 ease-in-out hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)]">
+    <div className="flex flex-col bg-white border border-primary/10 overflow-hidden transition-transform duration-200 ease-in-out hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)]">
       {/* Product Image */}
       <Link href={`/products/${product.slug}`} className="relative">
-        <div className="relative w-full h-64 bg-cream">
+        <div className="relative w-full h-64 bg-light">
           <Image
             src={imageError ? '/placeholder-product.webp' : image}
             alt={name}
@@ -157,16 +157,16 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
       {/* Product Info */}
       <div className="flex flex-col flex-grow p-6">
         <Link href={`/products/${product.slug}`}>
-          <h3 className="text-2xl font-bold text-espresso mb-2 hover:text-terracotta transition-colors font-serif">
+          <h3 className="text-2xl font-bold text-primary mb-2 hover:text-secondary transition-colors font-serif">
             {name}
           </h3>
         </Link>
 
-        <p className="text-coffee mb-4 flex-grow">
+        <p className="text-muted mb-4 flex-grow">
           {shortDesc}
         </p>
 
-        <div className="text-2xl font-bold text-terracotta mb-4">
+        <div className="text-2xl font-bold text-secondary mb-4">
           {getDisplayPrice()}
         </div>
 
@@ -175,7 +175,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           <button
             onClick={handleAddToCart}
             disabled={isAdding}
-            className="w-full bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-all mb-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full bg-primary text-white px-6 py-3 font-semibold hover:bg-primary/90 transition-all mb-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {justAdded ? (
               <>
@@ -192,7 +192,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         ) : (
           <button
             disabled
-            className="w-full bg-gray-300 text-espresso px-6 py-3 font-semibold opacity-60 cursor-not-allowed mb-2"
+            className="w-full bg-gray-300 text-primary px-6 py-3 font-semibold opacity-60 cursor-not-allowed mb-2"
           >
             {currentLang === 'vi' ? 'Tạm hết hàng' : 'Out of stock'}
           </button>
@@ -201,7 +201,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         {/* View Details Link */}
         <Link
           href={`/products/${product.slug}`}
-          className="block w-full text-center border border-espresso/20 text-espresso px-6 py-3 font-semibold hover:bg-espresso/5 transition-colors"
+          className="block w-full text-center border border-primary/20 text-primary px-6 py-3 font-semibold hover:bg-primary/5 transition-colors"
         >
           {currentLang === 'vi' ? 'Chi tiết' : 'View Details'}
         </Link>

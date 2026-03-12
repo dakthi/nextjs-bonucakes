@@ -30,13 +30,13 @@ export default function LanguageToggle({ className = '' }: LanguageToggleProps) 
   };
 
   return (
-    <div className={`flex bg-espresso border border-gold/30 rounded-full p-1 ${className}`}>
+    <div className={`flex bg-[#083121] border border-[#fcc56c]/30 rounded-full p-1 ${className}`}>
       <button
         onClick={() => handleLanguageChange('en')}
         className={`lang-btn px-3 py-1 rounded-full text-sm transition-all duration-200 ease-in-out ${
           currentLang === 'en'
-            ? 'bg-terracotta text-white'
-            : 'text-cream/80 hover:text-white'
+            ? 'bg-[#fcc56c] text-[#083121]'
+            : 'text-[#f8faf9]/80 hover:text-white'
         }`}
       >
         EN
@@ -45,8 +45,8 @@ export default function LanguageToggle({ className = '' }: LanguageToggleProps) 
         onClick={() => handleLanguageChange('vi')}
         className={`lang-btn px-3 py-1 rounded-full text-sm transition-all duration-200 ease-in-out ${
           currentLang === 'vi'
-            ? 'bg-terracotta text-white'
-            : 'text-cream/80 hover:text-white'
+            ? 'bg-[#fcc56c] text-[#083121]'
+            : 'text-[#f8faf9]/80 hover:text-white'
         }`}
       >
         VI

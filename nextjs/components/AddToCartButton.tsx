@@ -66,11 +66,11 @@ export default function AddToCartButton({
   // Variant styles
   const variantStyles = {
     primary:
-      'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300',
+      'bg-primary text-white hover:bg-primary/90 focus:ring-primary disabled:bg-primary/30',
     secondary:
-      'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 disabled:bg-gray-300',
+      'bg-secondary text-primary hover:bg-secondary/90 focus:ring-secondary disabled:bg-secondary/30',
     outline:
-      'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-blue-500 disabled:border-blue-300 disabled:text-blue-300',
+      'border-2 border-primary text-primary hover:bg-light focus:ring-primary disabled:border-muted disabled:text-muted',
   };
 
   // Size styles

@@ -153,26 +153,26 @@ function OrderSuccessContent() {
           {/* Success Header */}
           <div className="text-center mb-12">
             <CheckCircle className="h-20 w-20 mx-auto text-green-600 mb-4" />
-            <h1 className="text-4xl font-bold text-espresso mb-4 font-serif">
+            <h1 className="text-4xl font-bold text-primary mb-4 font-serif">
               {translations.title[currentLang]}
             </h1>
-            <p className="text-xl text-coffee">{translations.subtitle[currentLang]}</p>
+            <p className="text-xl text-muted">{translations.subtitle[currentLang]}</p>
           </div>
 
           {/* Order Details */}
-          <div className="bg-white border border-espresso/10 p-8 mb-8">
-            <div className="border-b border-espresso/10 pb-4 mb-6">
-              <h2 className="text-2xl font-bold text-espresso mb-2 font-serif">
+          <div className="bg-white border border-primary/10 p-8 mb-8">
+            <div className="border-b border-primary/10 pb-4 mb-6">
+              <h2 className="text-2xl font-bold text-primary mb-2 font-serif">
                 {translations.orderIdLabel[currentLang]}
               </h2>
-              <p className="text-3xl font-bold text-terracotta">{displayCode}</p>
+              <p className="text-3xl font-bold text-secondary">{displayCode}</p>
             </div>
 
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-espresso mb-3">
+              <h3 className="text-lg font-semibold text-primary mb-3">
                 {translations.confirmationSent[currentLang]}
               </h3>
-              <p className="text-coffee">
+              <p className="text-muted">
                 {paymentMethod === 'stripe'
                   ? translations.confirmationTextStripe[currentLang]
                   : translations.confirmationText[currentLang]}
@@ -197,36 +197,36 @@ function OrderSuccessContent() {
 
           {/* Payment Instructions (Bank Transfer) */}
           {paymentMethod === 'bank_transfer' && (
-            <div className="bg-gold/10 border-2 border-gold/50 p-8 mb-8">
-            <h2 className="text-2xl font-bold text-espresso mb-6 font-serif">
+            <div className="bg-secondary/10 border-2 border-secondary/50 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-primary mb-6 font-serif">
               {translations.paymentInstructions[currentLang]}
             </h2>
 
-            <div className="space-y-4 text-coffee">
-              <div className="flex justify-between border-b border-gold/30 pb-3">
+            <div className="space-y-4 text-muted">
+              <div className="flex justify-between border-b border-secondary/30 pb-3">
                 <span className="font-semibold">{translations.bank[currentLang]}</span>
                 <span className="text-right">HSBC</span>
               </div>
-              <div className="flex justify-between border-b border-gold/30 pb-3">
+              <div className="flex justify-between border-b border-secondary/30 pb-3">
                 <span className="font-semibold">{translations.accountName[currentLang]}</span>
                 <span className="text-right">N M U NGUYEN</span>
               </div>
-              <div className="flex justify-between border-b border-gold/30 pb-3">
+              <div className="flex justify-between border-b border-secondary/30 pb-3">
                 <span className="font-semibold">{translations.sortCode[currentLang]}</span>
                 <span className="text-right font-mono">40-20-16</span>
               </div>
-              <div className="flex justify-between border-b border-gold/30 pb-3">
+              <div className="flex justify-between border-b border-secondary/30 pb-3">
                 <span className="font-semibold">{translations.accountNumber[currentLang]}</span>
                 <span className="text-right font-mono">22101505</span>
               </div>
-              <div className="flex justify-between border-b border-gold/30 pb-3">
+              <div className="flex justify-between border-b border-secondary/30 pb-3">
                 <span className="font-semibold">{translations.transferNote[currentLang]}</span>
                 <span className="text-right font-mono font-bold">{displayCode}</span>
               </div>
             </div>
 
-            <div className="mt-6 bg-white p-4 border border-gold/30">
-              <p className="text-sm text-coffee">
+            <div className="mt-6 bg-white p-4 border border-secondary/30">
+              <p className="text-sm text-muted">
                 <strong>{translations.noteLabel[currentLang]}</strong>{' '}
                 {translations.noteText[currentLang]}
               </p>
@@ -235,8 +235,8 @@ function OrderSuccessContent() {
           )}
 
           {/* What Happens Next */}
-          <div className="bg-warmwhite border border-espresso/10 p-8 mb-8">
-            <h2 className="text-2xl font-bold text-espresso mb-6 font-serif">
+          <div className="bg-light border border-primary/10 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-primary mb-6 font-serif">
               {translations.whatHappensNext[currentLang]}
             </h2>
 
@@ -255,14 +255,14 @@ function OrderSuccessContent() {
                   ]
               ).map((step, index) => (
                 <div key={index} className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-terracotta text-white rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-espresso mb-2">
+                    <h3 className="font-semibold text-primary mb-2">
                       {step.title[currentLang]}
                     </h3>
-                    <p className="text-coffee">{step.text[currentLang]}</p>
+                    <p className="text-muted">{step.text[currentLang]}</p>
                   </div>
                 </div>
               ))}
@@ -288,11 +288,11 @@ function OrderSuccessContent() {
           </div>
 
           {/* Storage Instructions */}
-          <div className="bg-warmwhite border border-espresso/10 p-8 mb-8">
-            <h2 className="text-2xl font-bold text-espresso mb-4 font-serif">
+          <div className="bg-light border border-primary/10 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-primary mb-4 font-serif">
               {translations.storageInstructions[currentLang]}
             </h2>
-            <ul className="space-y-3 text-coffee">
+            <ul className="space-y-3 text-muted">
               {[
                 translations.storage1,
                 translations.storage2,
@@ -300,7 +300,7 @@ function OrderSuccessContent() {
                 translations.storage4,
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-2">
-                  <span className="text-terracotta font-bold">•</span>
+                  <span className="text-secondary font-bold">•</span>
                   <span>{item[currentLang]}</span>
                 </li>
               ))}
@@ -308,7 +308,7 @@ function OrderSuccessContent() {
           </div>
 
           {/* Contact Info */}
-          <div className="bg-espresso text-warmwhite p-8 mb-8">
+          <div className="bg-primary text-light p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4 font-serif">
               {translations.needHelp[currentLang]}
             </h2>
@@ -317,7 +317,7 @@ function OrderSuccessContent() {
               href="https://www.facebook.com/profile.php?id=100009102362568"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-terracotta text-white px-6 py-3 font-semibold hover:bg-terracotta/90 transition-colors"
+              className="inline-flex items-center gap-3 bg-secondary text-primary px-6 py-3 font-semibold hover:bg-secondary/90 transition-colors"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -330,14 +330,14 @@ function OrderSuccessContent() {
           <div className="text-center space-y-4">
             <Link
               href="/products"
-              className="inline-block bg-terracotta text-white px-8 py-4 font-semibold text-lg hover:bg-terracotta/90 transition-colors"
+              className="inline-block bg-primary text-white px-8 py-4 font-semibold text-lg hover:bg-primary/90 transition-colors"
             >
               {translations.continueShopping[currentLang]}
             </Link>
             <div>
               <Link
                 href="/"
-                className="text-coffee hover:text-terracotta transition-colors"
+                className="text-muted hover:text-secondary transition-colors"
               >
                 {translations.backToHome[currentLang]}
               </Link>

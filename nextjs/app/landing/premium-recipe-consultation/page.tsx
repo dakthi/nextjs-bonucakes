@@ -20,29 +20,29 @@ export default function PremiumRecipeConsultationPage() {
 
   return (
     <>
-      <header className="pt-24 md:pt-28 pb-10 bg-warmwhite border-b border-espresso/10">
+      <header className="pt-24 md:pt-28 pb-10 bg-[#f8faf9] border-b border-[#083121]/10">
         <div className="max-w-5xl mx-auto px-6">
-          <p className="text-terracotta uppercase tracking-widest text-sm mb-3 font-medium">
+          <p className="text-[#fcc56c] uppercase tracking-widest text-sm mb-3 font-medium">
             Signature • {currentLang === 'vi' ? 'Trọn gói' : 'Full package'}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-espresso mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Tư vấn công thức độc quyền 1-1'
               : 'Premium 1-1 Recipe Consultation'}
           </h1>
-          <p className="text-lg text-coffee max-w-3xl">
+          <p className="text-lg text-[#4a5c52] max-w-3xl">
             {currentLang === 'vi'
               ? 'Nhận công thức đã test & tối ưu theo nguyên liệu bạn có sẵn. Gửi ảnh/website nguyên liệu → nhận công thức chuẩn → support đến khi ra thành phẩm. Phù hợp mở quán và mở rộng.'
               : 'Receive tested & optimized formulas for your available ingredients. Send photos/ingredient website → receive precise formula → support until finished product. Suitable for opening shop and scaling.'}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-coffee/80">
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[#4a5c52]/80">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Phù hợp mọi địa điểm' : 'Suitable for any location'}
             </span>
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Support 1-1' : '1-1 Support'}
             </span>
-            <span className="px-3 py-1 bg-cream border border-espresso/10">
+            <span className="px-3 py-1 bg-[#f8faf9] border border-[#083121]/10">
               {currentLang === 'vi' ? 'Scale‑ready' : 'Scale‑ready'}
             </span>
           </div>
@@ -51,11 +51,11 @@ export default function PremiumRecipeConsultationPage() {
 
       <main className="max-w-5xl mx-auto px-6 py-12">
         <section className="grid md:grid-cols-2 gap-8 mb-10">
-          <div className="bg-white border border-espresso/10 p-6">
-            <h2 className="text-2xl font-bold text-espresso mb-4">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h2 className="text-2xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi' ? 'Quy trình làm việc' : 'Work process'}
             </h2>
-            <ol className="list-decimal pl-6 text-coffee space-y-2">
+            <ol className="list-decimal pl-6 text-[#4a5c52] space-y-2">
               {currentLang === 'vi' ? (
                 <>
                   <li>Khảo sát nguyên liệu địa phương (ảnh/link cửa hàng).</li>
@@ -73,11 +73,11 @@ export default function PremiumRecipeConsultationPage() {
               )}
             </ol>
           </div>
-          <div className="bg-white border border-espresso/10 p-6">
-            <h2 className="text-2xl font-bold text-espresso mb-4">
+          <div className="bg-white border border-[#083121]/10 p-6">
+            <h2 className="text-2xl font-bold text-[#083121] mb-4">
               {currentLang === 'vi' ? 'Phạm vi món' : 'Dish scope'}
             </h2>
-            <ul className="space-y-2 text-coffee">
+            <ul className="space-y-2 text-[#4a5c52]">
               {currentLang === 'vi' ? (
                 <>
                   <li>• Bánh ngọt/bánh mì; món nước; đồ uống; topping/syrup.</li>
@@ -92,7 +92,7 @@ export default function PremiumRecipeConsultationPage() {
                 </>
               )}
             </ul>
-            <p className="text-coffee/70 mt-3 text-sm">
+            <p className="text-[#4a5c52]/70 mt-3 text-sm">
               {currentLang === 'vi'
                 ? 'Chi phí theo độ khó & độ tuỳ chỉnh; on‑site tính thêm di chuyển/lưu trú.'
                 : 'Cost by difficulty & customization level; on‑site includes travel/accommodation.'}
@@ -101,35 +101,35 @@ export default function PremiumRecipeConsultationPage() {
         </section>
 
         <section className="grid md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-espresso text-warmwhite p-6">
-            <p className="text-3xl font-bold text-gold mb-1">100%</p>
-            <p className="text-cream/80 text-sm">
+          <div className="bg-[#083121] text-[#f8faf9] p-6">
+            <p className="text-3xl font-bold text-[#fcc56c] mb-1">100%</p>
+            <p className="text-[#f8faf9]/80 text-sm">
               {currentLang === 'vi' ? 'Cam kết ra sản phẩm' : 'Product guarantee'}
             </p>
           </div>
-          <div className="bg-warmwhite border border-espresso/10 p-6">
-            <p className="text-espresso font-bold mb-1">
+          <div className="bg-[#f8faf9] border border-[#083121]/10 p-6">
+            <p className="text-[#083121] font-bold mb-1">
               {currentLang === 'vi' ? 'Tối ưu thực tế' : 'Real optimization'}
             </p>
-            <p className="text-coffee/80 text-sm">
+            <p className="text-[#4a5c52]/80 text-sm">
               {currentLang === 'vi' ? 'Theo nguyên liệu địa phương' : 'Based on local ingredients'}
             </p>
           </div>
-          <div className="bg-warmwhite border border-espresso/10 p-6">
-            <p className="text-espresso font-bold mb-1">
+          <div className="bg-[#f8faf9] border border-[#083121]/10 p-6">
+            <p className="text-[#083121] font-bold mb-1">
               {currentLang === 'vi' ? 'Vận hành' : 'Operations'}
             </p>
-            <p className="text-coffee/80 text-sm">
+            <p className="text-[#4a5c52]/80 text-sm">
               {currentLang === 'vi' ? 'SOP sẵn sàng scale' : 'SOP ready to scale'}
             </p>
           </div>
         </section>
 
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Câu hỏi để chốt lộ trình' : 'Questions to determine roadmap'}
           </h2>
-          <ul className="list-disc pl-6 text-coffee space-y-2">
+          <ul className="list-disc pl-6 text-[#4a5c52] space-y-2">
             {currentLang === 'vi' ? (
               <>
                 <li>Mục tiêu 3–6 tháng? (doanh thu/sản phẩm/hệ thống)</li>
@@ -149,16 +149,16 @@ export default function PremiumRecipeConsultationPage() {
         </section>
 
         {/* Narrative: vì sao 1-1 */}
-        <section className="bg-white border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-white border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi' ? 'Tại sao 1‑1 hiệu quả?' : 'Why is 1‑1 effective?'}
           </h2>
-          <p className="text-coffee mb-3">
+          <p className="text-[#4a5c52] mb-3">
             {currentLang === 'vi'
               ? 'Mỗi nơi một khác: bột, đường, sữa, thậm chí nước và lò nướng. 1‑1 cho phép hiệu chỉnh công thức theo đúng nguyên liệu bạn có – thay vì cố ép theo một bản công thức "chuẩn chung".'
               : 'Every place is different: flour, sugar, milk, even water and ovens. 1‑1 allows formula adjustment according to your exact ingredients – instead of forcing a "standard" formula.'}
           </p>
-          <p className="text-coffee">
+          <p className="text-[#4a5c52]">
             {currentLang === 'vi'
               ? 'Mục tiêu: ra sản phẩm đúng và ra tiền sớm – không sa đà học quá rộng mà không bán được.'
               : 'Goal: get the right product and earn money early – not getting lost in learning too broadly without selling.'}
@@ -171,36 +171,36 @@ export default function PremiumRecipeConsultationPage() {
           <div className="md:hidden space-y-3">
             {currentLang === 'vi' ? (
               <>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Khảo sát:</span> 1–3 ngày
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Thiết kế + test:</span> 3–7 ngày
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Tinh chỉnh:</span> 3–7 ngày (tùy món)
                   </p>
                 </div>
               </>
             ) : (
               <>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Survey:</span> 1–3 days
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Design + test:</span> 3–7 days
                   </p>
                 </div>
-                <div className="border border-espresso/10 p-3">
-                  <p className="text-coffee">
+                <div className="border border-[#083121]/10 p-3">
+                  <p className="text-[#4a5c52]">
                     <span className="font-semibold">Refinement:</span> 3–7 days (depends on dish)
                   </p>
                 </div>
@@ -211,55 +211,55 @@ export default function PremiumRecipeConsultationPage() {
           <div className="hidden md:block overflow-x-auto mb-6">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="text-left bg-cream">
-                  <th className="p-3 border border-espresso/10 w-56">
+                <tr className="text-left bg-[#f8faf9]">
+                  <th className="p-3 border border-[#083121]/10 w-56">
                     {currentLang === 'vi' ? 'Giai đoạn' : 'Phase'}
                   </th>
-                  <th className="p-3 border border-espresso/10">
+                  <th className="p-3 border border-[#083121]/10">
                     {currentLang === 'vi' ? 'Thời gian' : 'Duration'}
                   </th>
                 </tr>
               </thead>
-              <tbody className="text-coffee">
+              <tbody className="text-[#4a5c52]">
                 {currentLang === 'vi' ? (
                   <>
                     <tr>
-                      <td className="p-3 border border-espresso/10">Khảo sát</td>
-                      <td className="p-3 border border-espresso/10">1–3 ngày</td>
+                      <td className="p-3 border border-[#083121]/10">Khảo sát</td>
+                      <td className="p-3 border border-[#083121]/10">1–3 ngày</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">Thiết kế + test</td>
-                      <td className="p-3 border border-espresso/10">3–7 ngày</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">Thiết kế + test</td>
+                      <td className="p-3 border border-[#083121]/10">3–7 ngày</td>
                     </tr>
                     <tr>
-                      <td className="p-3 border border-espresso/10">Tinh chỉnh</td>
-                      <td className="p-3 border border-espresso/10">3–7 ngày (tùy món)</td>
+                      <td className="p-3 border border-[#083121]/10">Tinh chỉnh</td>
+                      <td className="p-3 border border-[#083121]/10">3–7 ngày (tùy món)</td>
                     </tr>
                   </>
                 ) : (
                   <>
                     <tr>
-                      <td className="p-3 border border-espresso/10">Survey</td>
-                      <td className="p-3 border border-espresso/10">1–3 days</td>
+                      <td className="p-3 border border-[#083121]/10">Survey</td>
+                      <td className="p-3 border border-[#083121]/10">1–3 days</td>
                     </tr>
-                    <tr className="bg-warmwhite/50">
-                      <td className="p-3 border border-espresso/10">Design + test</td>
-                      <td className="p-3 border border-espresso/10">3–7 days</td>
+                    <tr className="bg-[#f8faf9]/50">
+                      <td className="p-3 border border-[#083121]/10">Design + test</td>
+                      <td className="p-3 border border-[#083121]/10">3–7 days</td>
                     </tr>
                     <tr>
-                      <td className="p-3 border border-espresso/10">Refinement</td>
-                      <td className="p-3 border border-espresso/10">3–7 days (depends on dish)</td>
+                      <td className="p-3 border border-[#083121]/10">Refinement</td>
+                      <td className="p-3 border border-[#083121]/10">3–7 days (depends on dish)</td>
                     </tr>
                   </>
                 )}
               </tbody>
             </table>
           </div>
-          <div className="bg-warmwhite border border-espresso/10 p-6 mb-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-[#f8faf9] border border-[#083121]/10 p-6 mb-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Bạn sẽ có' : 'You will have'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Công thức đã test theo nguyên liệu của bạn</li>
@@ -275,11 +275,11 @@ export default function PremiumRecipeConsultationPage() {
               )}
             </ul>
           </div>
-          <div className="bg-warmwhite border border-espresso/10 p-6">
-            <h3 className="font-semibold text-espresso mb-2">
+          <div className="bg-[#f8faf9] border border-[#083121]/10 p-6">
+            <h3 className="font-semibold text-[#083121] mb-2">
               {currentLang === 'vi' ? 'Case ngắn' : 'Case studies'}
             </h3>
-            <ul className="list-disc pl-5 text-coffee space-y-1">
+            <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
               {currentLang === 'vi' ? (
                 <>
                   <li>Mỹ: tối ưu syrup đồ uống theo đường địa phương</li>
@@ -298,18 +298,18 @@ export default function PremiumRecipeConsultationPage() {
         </section>
 
         {/* Beyond recipes: F&B mindset */}
-        <section className="bg-warmwhite border border-espresso/10 p-6 md:p-8 mb-10">
-          <h2 className="text-2xl font-bold text-espresso mb-4">
+        <section className="bg-[#f8faf9] border border-[#083121]/10 p-6 md:p-8 mb-10">
+          <h2 className="text-2xl font-bold text-[#083121] mb-4">
             {currentLang === 'vi'
               ? 'Không chỉ là công thức: tư duy vận hành F&B'
               : 'Beyond recipes: F&B operations mindset'}
           </h2>
-          <p className="text-coffee mb-3">
+          <p className="text-[#4a5c52] mb-3">
             {currentLang === 'vi'
               ? '1‑1 giúp bạn vừa có công thức đúng, vừa lắp tư duy vận hành chuẩn để đi đường dài.'
               : '1‑1 helps you get the right formula while installing proper operational mindset for the long road.'}
           </p>
-          <ul className="list-disc pl-5 text-coffee space-y-1">
+          <ul className="list-disc pl-5 text-[#4a5c52] space-y-1">
             {currentLang === 'vi' ? (
               <>
                 <li>Chân dung khách hàng – chiến lược giữ chân</li>
@@ -330,7 +330,7 @@ export default function PremiumRecipeConsultationPage() {
           </ul>
         </section>
 
-        <section className="bg-espresso text-warmwhite p-6 md:p-8">
+        <section className="bg-[#083121] text-[#f8faf9] p-6 md:p-8">
           <div className="md:flex md:items-center md:justify-between gap-6">
             <div className="mb-4 md:mb-0">
               <h2 className="text-2xl font-bold mb-2">
@@ -338,7 +338,7 @@ export default function PremiumRecipeConsultationPage() {
                   ? 'Đăng ký tư vấn công thức 1-1'
                   : 'Register for 1-1 Recipe Consultation'}
               </h2>
-              <p className="text-cream/80">
+              <p className="text-[#f8faf9]/80">
                 {currentLang === 'vi'
                   ? 'Nhắn để nhận lịch & lộ trình phù hợp mục tiêu của bạn.'
                   : 'Message to receive schedule & roadmap suitable for your goals.'}
@@ -347,13 +347,13 @@ export default function PremiumRecipeConsultationPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/culinary-consultation#contact"
-                className="inline-flex items-center justify-center gap-3 bg-gold text-espresso px-6 py-3 font-semibold hover:bg-gold/90 transition-colors"
+                className="inline-flex items-center justify-center gap-3 bg-[#fcc56c] text-[#083121] px-6 py-3 font-semibold hover:bg-[#fcc56c]/90 transition-colors"
               >
                 {currentLang === 'vi' ? 'Liên hệ tư vấn' : 'Contact for consultation'}
               </Link>
               <Link
                 href="/workshop-register?course=premium-recipe-consultation"
-                className="inline-flex items-center justify-center gap-3 border-2 border-warmwhite text-warmwhite px-6 py-3 font-semibold hover:bg-warmwhite/10 transition-colors"
+                className="inline-flex items-center justify-center gap-3 border-2 border-[#f8faf9] text-[#f8faf9] px-6 py-3 font-semibold hover:bg-[#f8faf9]/10 transition-colors"
               >
                 {currentLang === 'vi' ? 'Đăng ký nhanh' : 'Quick register'}
               </Link>

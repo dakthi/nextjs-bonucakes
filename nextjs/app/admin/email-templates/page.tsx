@@ -184,7 +184,7 @@ export default function EmailTemplatesPage() {
             </div>
             <button
               onClick={openAddModal}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52]"
             >
               <Plus className="h-4 w-4 mr-2" />
               New Template
@@ -270,7 +270,7 @@ export default function EmailTemplatesPage() {
                             </button>
                             <button
                               onClick={() => openEditModal(template)}
-                              className="text-amber-600 hover:text-amber-900"
+                              className="text-[#083121] hover:text-[#4a5c52]"
                               title="Edit template"
                             >
                               <Edit className="h-4 w-4" />
@@ -313,7 +313,7 @@ export default function EmailTemplatesPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         placeholder="newsletter-monthly"
-                        className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                       />
                     </div>
 
@@ -326,7 +326,7 @@ export default function EmailTemplatesPage() {
                         value={formData.displayName}
                         onChange={(e) => setFormData({...formData, displayName: e.target.value})}
                         placeholder="Monthly Newsletter"
-                        className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                       />
                     </div>
                   </div>
@@ -340,7 +340,7 @@ export default function EmailTemplatesPage() {
                       value={formData.description}
                       onChange={(e) => setFormData({...formData, description: e.target.value})}
                       placeholder="Template for monthly newsletter campaigns"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
 
@@ -352,8 +352,8 @@ export default function EmailTemplatesPage() {
                       type="text"
                       value={formData.subject}
                       onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      placeholder="Your Monthly Newsletter from Bonu Cakes"
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                      placeholder="Your Monthly Newsletter from Bonucakes"
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                     />
                   </div>
 
@@ -365,7 +365,7 @@ export default function EmailTemplatesPage() {
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({...formData, category: e.target.value})}
-                        className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500"
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121]"
                       >
                         <option value="marketing">Marketing</option>
                         <option value="transactional">Transactional</option>
@@ -379,7 +379,7 @@ export default function EmailTemplatesPage() {
                           type="checkbox"
                           checked={formData.active}
                           onChange={(e) => setFormData({...formData, active: e.target.checked})}
-                          className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                          className="h-4 w-4 text-[#083121] focus:ring-[#083121] border-gray-300 rounded"
                         />
                         <span className="ml-2 text-sm font-medium text-gray-700">Active</span>
                       </label>
@@ -394,7 +394,7 @@ export default function EmailTemplatesPage() {
                       <button
                         type="button"
                         onClick={() => setShowLivePreview(!showLivePreview)}
-                        className="inline-flex items-center px-3 py-1 text-xs font-medium text-amber-700 bg-amber-100 rounded hover:bg-amber-200"
+                        className="inline-flex items-center px-3 py-1 text-xs font-medium text-[#083121] bg-[#fcc56c]/20 rounded hover:bg-[#fcc56c]/40"
                       >
                         <Eye className="h-3 w-3 mr-1" />
                         {showLivePreview ? "Hide" : "Show"} Preview
@@ -408,7 +408,7 @@ export default function EmailTemplatesPage() {
                           onChange={(e) => setFormData({...formData, htmlContent: e.target.value})}
                           placeholder="<!DOCTYPE html>..."
                           rows={15}
-                          className="w-full rounded-md border-gray-300 shadow-sm focus:ring-amber-500 focus:border-amber-500 font-mono text-sm"
+                          className="w-full rounded-md border-gray-300 shadow-sm focus:ring-[#083121] focus:border-[#083121] font-mono text-sm"
                         />
                         <p className="mt-1 text-xs text-gray-500">
                           Use <code className="bg-gray-100 px-1 rounded">{`{name}`}</code>, <code className="bg-gray-100 px-1 rounded">{`{email}`}</code>, <code className="bg-gray-100 px-1 rounded">{`{content}`}</code> to personalize.
@@ -441,7 +441,7 @@ export default function EmailTemplatesPage() {
                   <button
                     onClick={saveTemplate}
                     disabled={saving}
-                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-50"
+                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#083121] hover:bg-[#4a5c52] disabled:opacity-50"
                   >
                     {saving ? "Saving..." : editingTemplate ? "Update Template" : "Create Template"}
                   </button>

@@ -27,7 +27,7 @@ export default function CartBadge({ className = '', showBadge = true }: CartBadg
 
       {showBadge && itemCount > 0 && (
         <span
-          className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white"
+          className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary text-xs font-bold text-primary"
           aria-label={`${itemCount} items in cart`}
         >
           {itemCount > 99 ? '99+' : itemCount}
