@@ -11,6 +11,7 @@ import CoursesSection from './components/CoursesSection';
 import BusinessModelsSection from './components/BusinessModelsSection';
 import FAQSection from './components/FAQSection';
 import ContactFormSection from './components/ContactFormSection';
+import HandsOnCoursesSection from '@/components/HandsOnCoursesSection';
 
 export default function CulinaryConsultationPage() {
   const currentLang = useLanguage();
@@ -538,6 +539,7 @@ export default function CulinaryConsultationPage() {
           model3Benefits={t.model3Benefits}
           model3Timeline={t.model3Timeline}
         />
+        <HandsOnCoursesSection />
         <FAQSection
           faqLabel={t.faqLabel}
           faqHeading={t.faqHeading}
